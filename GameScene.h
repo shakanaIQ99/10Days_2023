@@ -1,0 +1,12 @@
+#pragma once
+class GameScene
+{
+public:
+
+	void Init();
+
+	void Update();
+
+	void Draw();
+};
+

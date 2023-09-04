@@ -1,5 +1,5 @@
 ﻿#include "DxLib.h"
-
+#include "GameScene.h"
 // ウィンドウのタイトルに表示する文字列
 const wchar_t TITLE[] = L"10daysJam";
 
@@ -8,6 +8,12 @@ const int WIN_WIDTH = 1280;
 
 // ウィンドウ縦幅
 const int WIN_HEIGHT = 720;
+
+template<class T> inline void SafeDelete(T*& p)
+{
+	delete p;
+	p = nullptr;
+}
 
 
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow)
@@ -41,6 +47,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 
 	// ゲームループで使う変数の宣言
+	GameScene* gameScene = nullptr;
+	gameScene = new GameScene();
+	gameScene->Init();
 	
 	// ゲームループ
 	while (true)
@@ -53,9 +62,10 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		//---------  ここからプログラムを記述  ----------//
 
 		// 更新処理
-		
+		gameScene->Update();
 
 		// 描画処理
+		gameScene->Draw();
 		
 
 		//---------  ここまでにプログラムを記述  ---------//
@@ -78,6 +88,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		}
 	}
 	// Dxライブラリ終了処理
+	SafeDelete(gameScene);
 	DxLib_End();
 
 	// 正常終了
