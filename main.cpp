@@ -4,10 +4,10 @@
 const wchar_t TITLE[] = L"10daysJam";
 
 // ウィンドウ横幅
-const int WIN_WIDTH = 600;
+const int WIN_WIDTH = 1280;
 
 // ウィンドウ縦幅
-const int WIN_HEIGHT = 400;
+const int WIN_HEIGHT = 720;
 
 
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow)
@@ -23,7 +23,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	SetMainWindowText(TITLE);
 
 	// 画面サイズの最大サイズ、カラービット数を設定(モニターの解像度に合わせる)
-	SetGraphMode(1280, 720, 32);
+	SetGraphMode(WIN_WIDTH, WIN_HEIGHT, 32);
 
 	// 画面サイズを設定(解像度との比率で設定)
 	SetWindowSizeExtendRate(1.0);
