@@ -151,6 +151,7 @@
     <ClCompile Include="PlayerContorol.cpp" />
     <ClCompile Include="Util.cpp" />
     <ClCompile Include="Vector2.cpp" />
+    <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Daruma.h" />
@@ -161,6 +162,7 @@
     <ClInclude Include="struct.h" />
     <ClInclude Include="Util.h" />
     <ClInclude Include="Vector2.h" />
+    <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

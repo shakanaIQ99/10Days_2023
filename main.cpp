@@ -1,4 +1,5 @@
 ﻿#include "DxLib.h"
+#include "Input.h"
 #include "GameScene.h"
 // ウィンドウのタイトルに表示する文字列
 const wchar_t TITLE[] = L"10daysJam";
@@ -15,6 +16,12 @@ template<class T> inline void SafeDelete(T*& p)
 	p = nullptr;
 }
 
+enum class SceneNum
+{
+	TitleScene,
+	GameScene,
+	ResultScene
+};
 
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow)
 {
@@ -48,8 +55,10 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 	// 画像などのリソースデータの変数宣言と読み込み
 
-
 	// ゲームループで使う変数の宣言
+	SceneNum scene = SceneNum::TitleScene;
+	Input* input = nullptr;
+
 	GameScene* gameScene = nullptr;
 	gameScene = new GameScene();
 	gameScene->Init();
@@ -59,17 +68,39 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	{
 		// 最新のキーボード情報だったものは1フレーム前のキーボード情報として保存
 		// 最新のキーボード情報を取得
+		input->InputUpdate();
 
 		// 画面クリア
 		ClearDrawScreen();
 		//---------  ここからプログラムを記述  ----------//
 
-		// 更新処理
-		gameScene->Update();
+		switch (scene)
+		{
+		case SceneNum::TitleScene:
+			if (input->GetTriggerKey(KEY_INPUT_LEFT))
+			{
+				scene = SceneNum::GameScene;
+			}
+			
+			//更新処理
+			DrawFormatString(500,300,GetColor(255,0,0), L"TitleScene");
+			//描画処理
 
-		// 描画処理
-		gameScene->Draw();
-		
+			break;
+		case SceneNum::GameScene:
+			//更新処理
+			gameScene->Update();
+
+			//描画処理
+			gameScene->Draw();
+
+			break;
+		case SceneNum::ResultScene:
+
+			break;
+		default:
+			break;
+		}
 
 		//---------  ここまでにプログラムを記述  ---------//
 		// (ダブルバッファ)裏面
