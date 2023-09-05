@@ -53,7 +53,7 @@ void Daruma::Update()
 void Daruma::Draw()
 {
 	int Orderfloar = 0;
-	for (auto itr = orderkoma.begin(); itr !=orderkoma.end(); itr++)
+	for (auto itr = orderkoma.rbegin(); itr !=orderkoma.rend(); itr++)
 	{
 		SetKomaColor(*itr);
 		Vector2 pos = Orderboxs.pos;
@@ -70,7 +70,7 @@ void Daruma::Draw()
 
 	int floar = 0;
 	Head.pos.y = 400.0f;
-	for (auto itr = koma.begin(); itr != koma.end(); itr++)
+	for (auto itr = koma.rbegin(); itr != koma.rend(); itr++)
 	{
 		SetKomaColor(*itr);
 
