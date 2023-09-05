@@ -26,6 +26,13 @@ public:
 	void ClickAddKoma(Koma add);
 	void ClickRemoveKoma();
 
+	BoxTransform GetKomaTransform();
+	BoxTransform GetHead();
+
+	bool GetBeKoma();
+
+	void HeadReset();
+
 private:
 
 	void KomaReset();
@@ -33,8 +40,11 @@ private:
 
 	void SetKomaColor(Koma a);
 
+	bool Comparison();
+
 	BoxTransform Orderboxs;
-	BoxTransform head;
+	BoxTransform Orderhead;
+	BoxTransform Head;
 	BoxTransform Komaboxs;
 
 	std::vector<Koma> koma;
