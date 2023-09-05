@@ -41,7 +41,7 @@ void Daruma::KomaReset()
 
 void Daruma::Update()
 {
-	if (Input::GetTriggerKey(KEY_INPUT_R))
+	if (Input::GetTriggerKey(KEY_INPUT_R)|| Comparison())
 	{
 		Order();
 	}
@@ -116,6 +116,11 @@ bool Daruma::GetBeKoma()
 	return false;
 }
 
+void Daruma::HeadReset()
+{
+	koma.clear();
+}
+
 void Daruma::Order()
 {
 	KomaReset();
@@ -155,4 +160,25 @@ void Daruma::SetKomaColor(Koma a)
 		Color = GetColor(255, 255, 255);
 		break;
 	}
+}
+
+bool Daruma::Comparison()
+{
+	
+	if (koma.size() == orderkoma.size())
+	{
+		int clearNum = orderkoma.size();
+		for (int i = 0; i < orderkoma.size(); i++)
+		{
+			if (koma[i] == orderkoma[i])
+			{
+				clearNum--;
+			}
+			if (clearNum <= 0)
+			{
+				return true;
+			}
+		}
+	}
+	return false;
 }

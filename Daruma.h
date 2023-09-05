@@ -31,12 +31,16 @@ public:
 
 	bool GetBeKoma();
 
+	void HeadReset();
+
 private:
 
 	void KomaReset();
 	void Order();
 
 	void SetKomaColor(Koma a);
+
+	bool Comparison();
 
 	BoxTransform Orderboxs;
 	BoxTransform Orderhead;

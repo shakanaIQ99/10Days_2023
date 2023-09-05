@@ -98,7 +98,7 @@ void GameScene::KomaUpdate()
         }
         if (MouseBoxHit(daruma.GetHead(), mousePos))
         {
-
+            daruma.HeadReset();
         }
     }
    
