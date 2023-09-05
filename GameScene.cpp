@@ -31,7 +31,7 @@ void GameScene::Init()
 
 void GameScene::Update()
 {
-	Input::InputUpdate();
+	
     GetMousePoint(&mouseX, &mouseY);
     mousePos = { (float)mouseX,(float)mouseY };
 

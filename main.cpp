@@ -57,7 +57,6 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 	// ゲームループで使う変数の宣言
 	SceneNum scene = SceneNum::TitleScene;
-	Input* input = nullptr;
 
 	GameScene* gameScene = nullptr;
 	gameScene = new GameScene();
@@ -68,7 +67,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	{
 		// 最新のキーボード情報だったものは1フレーム前のキーボード情報として保存
 		// 最新のキーボード情報を取得
-		input->InputUpdate();
+		Input::InputUpdate();
 
 		// 画面クリア
 		ClearDrawScreen();
@@ -77,7 +76,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		switch (scene)
 		{
 		case SceneNum::TitleScene:
-			if (input->GetTriggerKey(KEY_INPUT_LEFT))
+			if (Input::GetTriggerKey(KEY_INPUT_LEFT))
 			{
 				scene = SceneNum::GameScene;
 			}
@@ -97,8 +96,6 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			break;
 		case SceneNum::ResultScene:
 
-			break;
-		default:
 			break;
 		}
 
