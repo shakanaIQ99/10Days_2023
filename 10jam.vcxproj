@@ -147,11 +147,13 @@
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PileEffect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Daruma.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="PileEffect.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
