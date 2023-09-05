@@ -23,11 +23,16 @@ public:
 	/// 離した時
 	/// </summary>
 	static bool GetReleaseKey(int key);
+
+	static bool GetTriggerMouseLeft();
 	
 private:
 	// 最新のキーボード情報用
 	char keys[256] = { 0 };
 	// 1ループ(フレーム)前のキーボード情報
 	char prev[256] = { 0 };
+
+	bool preMouseLeft = false;
+	bool MouseLeft = false;
 
 };

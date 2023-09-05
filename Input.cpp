@@ -15,6 +15,11 @@ bool Input::GetReleaseKey(int key)
 	return !GetInstance()->keys[key] && GetInstance()->prev[key];
 }
 
+bool Input::GetTriggerMouseLeft()
+{
+	return GetInstance()->MouseLeft && !GetInstance()->preMouseLeft;
+}
+
 Input::Input()
 {
 	
@@ -35,6 +40,10 @@ void Input::InputUpdate()
 	{
 		instance->prev[i] = instance->keys[i];
 	}
+
+	instance->preMouseLeft = instance->MouseLeft;
+
+	instance->MouseLeft = (GetMouseInput() & MOUSE_INPUT_LEFT);
 	// 最新のキーボード情報を取得
 	GetHitKeyStateAll(instance->keys);
 }

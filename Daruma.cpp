@@ -8,14 +8,27 @@ using namespace Util;
 void Daruma::Init()
 {
 	KomaReset();
-	head.height = 32;
-	head.width = 40;
 
+	//オーダーの頭
+	Orderhead.height = 32;
+	Orderhead.width = 40;
+	Orderhead.pos = { 200.0f,400.0f };
+
+	//実際の頭
+	Head.pos = { 700.0f,400.0f };
+	Head.height = 32;
+	Head.width = 40;
+
+	//オーダーのボデー
 	Orderboxs.width = 32;
 	Orderboxs.height = 16;
+	Orderboxs.pos = Orderhead.pos;
 
-	Orderboxs.pos = { 200.0f,600.0f };
-	head.pos = { 200.0f,600.0f };
+	//実際のボデー
+	Komaboxs.width = 32;
+	Komaboxs.height = 16;
+	Komaboxs.pos = Head.pos;
+
 
 }
 
@@ -45,26 +58,32 @@ void Daruma::Draw()
 		SetKomaColor(*itr);
 		Vector2 pos = Orderboxs.pos;
 		
-		pos.y -= 32 * Orderfloar;
+		pos.y -= (Orderboxs.height*2) * Orderfloar;
 		DrawBox(pos, Orderboxs.width, Orderboxs.height, Color, true);
 		DrawBox(pos, Orderboxs.width, Orderboxs.height, GetColor(0, 0, 0), false);
 
 		Orderfloar++;
 		
-		head.pos.y = pos.y - (head.height+Orderboxs.height);
+		Orderhead.pos.y = pos.y - (Orderhead.height+Orderboxs.height);
 	}
-	DrawBox(head.pos, head.width, head.height, GetColor(0, 0, 0), true);
+	//DrawBox(Orderhead.pos, Orderhead.width, Orderhead.height, GetColor(0, 0, 0), true);
 
-	/*int floar = 0;
+	int floar = 0;
+	Head.pos.y = 400.0f;
 	for (auto itr = koma.begin(); itr != koma.end(); itr++)
 	{
 		SetKomaColor(*itr);
 
-		DrawBox(1280 / 2 - 32, 600 - 16 - (32 * floar), 1280 / 2 + 32, 600 + 16 - (32 * floar), Color, true);
+		Vector2 pos = Komaboxs.pos;
+
+		pos.y -= (Komaboxs.height*2) * floar;
+		DrawBox(pos, Komaboxs.width, Komaboxs.height, Color, true);
+		DrawBox(pos, Komaboxs.width, Komaboxs.height, GetColor(0, 0, 0), false);
 
 		floar++;
-	}*/
-
+		Head.pos.y = pos.y - (Head.height + Komaboxs.height);
+	}
+	DrawBox(Head.pos, Head.width, Head.height, GetColor(0, 0, 0), true);
 
 }
 
@@ -76,6 +95,25 @@ void Daruma::ClickAddKoma(Koma add)
 void Daruma::ClickRemoveKoma()
 {
 	koma.pop_back();
+}
+
+BoxTransform Daruma::GetKomaTransform()
+{
+	return Komaboxs;
+}
+
+BoxTransform Daruma::GetHead()
+{
+	return Head;
+}
+
+bool Daruma::GetBeKoma()
+{
+	if (!koma.empty())
+	{
+		return true;
+	}
+	return false;
 }
 
 void Daruma::Order()
