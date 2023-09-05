@@ -1,6 +1,7 @@
 #pragma once
 #include"DxLib.h"
 #include <vector>
+#include"struct.h"
 
 enum struct Koma : int
 {
@@ -22,12 +23,19 @@ public:
 
 	void Draw();
 
+	void ClickAddKoma(Koma add);
+	void ClickRemoveKoma();
+
 private:
 
 	void KomaReset();
 	void Order();
 
 	void SetKomaColor(Koma a);
+
+	BoxTransform Orderboxs;
+	BoxTransform head;
+	BoxTransform Komaboxs;
 
 	std::vector<Koma> koma;
 	std::vector<Koma> orderkoma;

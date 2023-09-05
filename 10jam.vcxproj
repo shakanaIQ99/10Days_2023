@@ -148,12 +148,19 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PileEffect.cpp" />
+    <ClCompile Include="PlayerContorol.cpp" />
+    <ClCompile Include="Util.cpp" />
+    <ClCompile Include="Vector2.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Daruma.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="PileEffect.h" />
+    <ClInclude Include="PlayerContorol.h" />
+    <ClInclude Include="struct.h" />
+    <ClInclude Include="Util.h" />
+    <ClInclude Include="Vector2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
