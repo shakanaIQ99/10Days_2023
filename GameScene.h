@@ -1,5 +1,6 @@
 #pragma once
 #include"DxLib.h"
+#include"Daruma.h"
 class GameScene
 {
 public:
@@ -9,5 +10,10 @@ public:
 	void Update();
 
 	void Draw();
+
+private:
+
+	Daruma daruma;
+
 };
 

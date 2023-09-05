@@ -1,8 +1,8 @@
 #pragma once
 #include"DxLib.h"
-#include<queue>
+#include <vector>
 
-enum struct Koma
+enum struct Koma : int
 {
 	RED,
 	BLUE,
@@ -17,7 +17,6 @@ public:
 
 	void Init();
 
-	void KomaReset();
 
 	void Update();
 
@@ -25,12 +24,21 @@ public:
 
 private:
 
+	void KomaReset();
 	void Order();
 
-	std::queue<Koma> koma;
-	std::queue<Koma> orderkoma;
+	void SetKomaColor(Koma a);
 
+	std::vector<Koma> koma;
+	std::vector<Koma> orderkoma;
+	//—v‹‚·‚é‹î‚Ì‚‚³
+	int OrderRange = 0;
+	//¡‹î‚ª‰½’i–Ú‚©
+	int OrderNum = 0;
+
+	bool Ordered = false;
 	
+	int Color = GetColor(0, 0, 0);
 
 };
 
