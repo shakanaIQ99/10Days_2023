@@ -48,8 +48,8 @@ void Daruma::Order()
 {
 	KomaReset();
 
-	//OrderRange = rand() % 3 + 3;
-	OrderRange = 6;
+	OrderRange = rand() % 4 + 3;
+	//OrderRange = 6;
 	OrderNum = 0;
 
 	while (OrderNum<OrderRange)
