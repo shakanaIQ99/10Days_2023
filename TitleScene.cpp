@@ -2,6 +2,7 @@
 
 void TitleScene::Init()
 {
+
 }
 
 void TitleScene::Update()
