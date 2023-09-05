@@ -18,6 +18,9 @@ template<class T> inline void SafeDelete(T*& p)
 
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow)
 {
+	//Log.txtを無効
+	SetOutApplicationLogValidFlag(FALSE);
+
 	// ウィンドウモードに設定
 	ChangeWindowMode(TRUE);
 
