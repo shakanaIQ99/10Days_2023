@@ -147,6 +147,7 @@
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="PlayerContorol.cpp" />
     <ClCompile Include="Util.cpp" />
     <ClCompile Include="Vector2.cpp" />
   </ItemGroup>
@@ -154,6 +155,7 @@
     <ClInclude Include="Daruma.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="PlayerContorol.h" />
     <ClInclude Include="struct.h" />
     <ClInclude Include="Util.h" />
     <ClInclude Include="Vector2.h" />
