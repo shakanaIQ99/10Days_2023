@@ -7,7 +7,7 @@ using namespace Util;
 
 void GameScene::Init()
 {
-	daruma.Init();
+    daruma.Init(Vector2(WIN_WIDTH / 2.0f, 400.0f));
 
     for (int i = 0; i < 3; i++)
     {
@@ -114,7 +114,7 @@ void GameScene::KomaUpdate()
         
     }
 
-    if (Input::GetTriggerMouseLeftButton(AddButton))
+    if (Input::GetTriggerMouseLeftButton(AddButton)&&!daruma.MaxKoma())
     {
         daruma.ClickAddKoma(Komalist.front());
         Komalist.erase(Komalist.begin());

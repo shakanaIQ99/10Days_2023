@@ -6,19 +6,20 @@
 
 using namespace Util;
 
-void Daruma::Init()
+void Daruma::Init(Vector2 pos)
 {
 	KomaReset();
+
+
+	//実際の頭
+	Head.pos = pos;
+	Head.height = 32;
+	Head.width = 40;
 
 	//オーダーの頭
 	Orderhead.height = 32;
 	Orderhead.width = 40;
-	Orderhead.pos = { 200.0f,400.0f };
-
-	//実際の頭
-	Head.pos = { 700.0f,400.0f };
-	Head.height = 32;
-	Head.width = 40;
+	Orderhead.pos = { Head.pos.x-120.0f,350.0f };
 
 	//オーダーのボデー
 	Orderboxs.width = 32;
@@ -112,6 +113,15 @@ bool Daruma::GetBeKoma()
 		return true;
 	}
 	return false;
+}
+
+bool Daruma::MaxKoma()
+{
+	if (koma.size() < 8)
+	{
+		return false;
+	}
+	return true;
 }
 
 void Daruma::HeadReset()

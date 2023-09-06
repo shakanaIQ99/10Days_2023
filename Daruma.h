@@ -16,7 +16,7 @@ class Daruma
 {
 public:
 
-	void Init();
+	void Init(Vector2 pos);
 
 
 	void Update();
@@ -30,6 +30,7 @@ public:
 	BoxTransform GetHead();
 
 	bool GetBeKoma();
+	bool MaxKoma();
 
 	void HeadReset();
 	void Order();
