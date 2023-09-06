@@ -106,6 +106,11 @@ void GameScene::KomaUpdate()
     {
         daruma.ClickAddKoma(Komalist.front());
         Komalist.erase(Komalist.begin());
+        for (size_t i = 0; i < 5; i++)
+        {
+            pileEffect->Set(daruma.GetKomaTransform().pos,
+                { (float)daruma.GetKomaTransform().width, (float)daruma.GetKomaTransform().height });
+        }
     }
     if (Input::GetTriggerMouseLeftButton(daruma.GetKomaTransform()))
     {
@@ -126,5 +131,5 @@ void GameScene::KomaUpdate()
     if (Input::GetTriggerMouseLeftButton(daruma.GetHead()))
     {
         daruma.HeadReset();
-    }
+    }*/
 }
