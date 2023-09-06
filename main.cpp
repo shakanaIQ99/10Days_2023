@@ -2,6 +2,8 @@
 #include "Input.h"
 #include "GameScene.h"
 #include "main.h"
+#include<memory>
+#include"TitleScene.h"
 
 template<class T> inline void SafeDelete(T*& p)
 {
