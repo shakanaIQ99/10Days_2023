@@ -32,11 +32,11 @@ public:
 	bool GetBeKoma();
 
 	void HeadReset();
+	void Order();
 
 private:
 
 	void KomaReset();
-	void Order();
 
 	void SetKomaColor(Koma a);
 

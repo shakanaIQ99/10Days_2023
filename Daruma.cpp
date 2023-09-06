@@ -3,6 +3,7 @@
 #include"Input.h"
 #include"Util.h"
 
+
 using namespace Util;
 
 void Daruma::Init()
@@ -125,13 +126,13 @@ void Daruma::Order()
 {
 	KomaReset();
 
-	OrderRange = rand() % 4 + 3;
+	OrderRange = GetRand(3, 6);
 	//OrderRange = 6;
 	OrderNum = 0;
 
 	while (OrderNum<OrderRange)
 	{
-		Koma AddKoma = static_cast<Koma>(rand() % sizeof(Koma) );
+		Koma AddKoma = static_cast<Koma>(GetRand(0, sizeof(Koma)));
 
 		orderkoma.push_back(AddKoma);
 

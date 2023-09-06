@@ -25,21 +25,16 @@ void GameScene::Init()
     BlackButton.width = ButtonWidth;
     BlackButton.height = Buttonheight;
 
+    daruma.Order();
     
 }
 
 
 void GameScene::Update()
 {
-	
-    
-
-   
     KomaUpdate();
 
-	daruma.Update();
-
-   
+	daruma.Update();  
 }
 
 void GameScene::Draw()
