@@ -28,6 +28,7 @@ public:
 
 	BoxTransform GetKomaTransform();
 	BoxTransform GetHead();
+	BoxTransform GetDragAndDropArea();
 
 	bool GetBeKoma();
 	bool MaxKoma();
@@ -44,9 +45,18 @@ private:
 	bool Comparison();
 
 	BoxTransform Orderboxs;
-	BoxTransform Orderhead;
 	BoxTransform Head;
 	BoxTransform Komaboxs;
+
+	BoxTransform DragAndDropArea;
+
+	const int HeadWidth = 50;
+	const int HeadHeight = 50;
+
+	const int KomaWidth = 50;
+	const int KomaHeight = 25;
+
+	float defY = 0;
 
 	std::vector<Koma> koma;
 	std::vector<Koma> orderkoma;

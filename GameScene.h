@@ -44,5 +44,7 @@ private:
 	int mouseX, mouseY;
 
 	Vector2 mousePos = { 0,0 };
+
+	bool Komacatch = false;
 };
 

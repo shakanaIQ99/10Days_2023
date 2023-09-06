@@ -10,28 +10,26 @@ void Daruma::Init(Vector2 pos)
 {
 	KomaReset();
 
+	defY = pos.y;
 
 	//実際の頭
 	Head.pos = pos;
-	Head.height = 32;
-	Head.width = 40;
+	Head.height = HeadHeight;
+	Head.width = HeadWidth;
 
-	//オーダーの頭
-	Orderhead.height = 32;
-	Orderhead.width = 40;
-	Orderhead.pos = { Head.pos.x-120.0f,350.0f };
-
-	//オーダーのボデー
-	Orderboxs.width = 32;
-	Orderboxs.height = 16;
-	Orderboxs.pos = Orderhead.pos;
+	//オーダーのボデ
+	Orderboxs.width = KomaWidth;
+	Orderboxs.height = KomaHeight;
+	Orderboxs.pos = { Head.pos.x - 120.0f,pos.y };
 
 	//実際のボデー
-	Komaboxs.width = 32;
-	Komaboxs.height = 16;
+	Komaboxs.width = KomaWidth;
+	Komaboxs.height = KomaHeight;
 	Komaboxs.pos = Head.pos;
 
-
+	DragAndDropArea.width = Head.width * 2;
+	DragAndDropArea.height = Head.height * 5;
+	DragAndDropArea.pos = { pos.x,pos.y + KomaHeight - DragAndDropArea.height };
 }
 
 void Daruma::KomaReset()
@@ -64,13 +62,10 @@ void Daruma::Draw()
 		DrawBox(pos, Orderboxs.width, Orderboxs.height, GetColor(0, 0, 0), false);
 
 		Orderfloar++;
-		
-		Orderhead.pos.y = pos.y - (Orderhead.height+Orderboxs.height);
 	}
-	//DrawBox(Orderhead.pos, Orderhead.width, Orderhead.height, GetColor(0, 0, 0), true);
-
+	
 	int floar = 0;
-	Head.pos.y = 400.0f;
+	Head.pos.y = defY-KomaHeight;
 	for (auto itr = koma.rbegin(); itr != koma.rend(); itr++)
 	{
 		Vector2 pos = Komaboxs.pos;
@@ -83,6 +78,8 @@ void Daruma::Draw()
 		Head.pos.y = pos.y - (Head.height + Komaboxs.height);
 	}
 	DrawBox(Head.pos, Head.width, Head.height, GetColor(0, 0, 0), true);
+
+	DrawBox(DragAndDropArea.pos, DragAndDropArea.width, DragAndDropArea.height, GetColor(20, 120, 255), false);
 
 }
 
@@ -104,6 +101,11 @@ BoxTransform Daruma::GetKomaTransform()
 BoxTransform Daruma::GetHead()
 {
 	return Head;
+}
+
+BoxTransform Daruma::GetDragAndDropArea()
+{
+	return DragAndDropArea;
 }
 
 bool Daruma::GetBeKoma()

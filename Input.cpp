@@ -20,16 +20,41 @@ bool Input::GetTriggerMouseLeft()
 	return GetInstance()->MouseLeft && !GetInstance()->preMouseLeft;
 }
 
+bool Input::GetReleaseMouseLeft()
+{
+	return !GetInstance()->MouseLeft && GetInstance()->preMouseLeft;
+}
+
+bool Input::GetMouseLeft()
+{
+	return (GetMouseInput() & MOUSE_INPUT_LEFT);
+}
+
 bool Input::GetTriggerMouseLeftButton(BoxTransform box)
+{
+	if (GetMouseHitBox(box))
+	{
+		return GetTriggerMouseLeft();
+	}
+	return false;
+}
+
+bool Input::GetMouseHitBox(BoxTransform box)
 {
 	if (box.pos.x - (float)box.width <= GetInstance()->Mousepos.x &&
 		box.pos.x + (float)box.width >= GetInstance()->Mousepos.x &&
 		box.pos.y - (float)box.height <= GetInstance()->Mousepos.y &&
 		box.pos.y + (float)box.height >= GetInstance()->Mousepos.y)
 	{
-		return GetTriggerMouseLeft();
+		return true;
 	}
 	return false;
+}
+
+Vector2 Input::GetMousePos()
+{
+
+	return GetInstance()->Mousepos;
 }
 
 Input::Input()

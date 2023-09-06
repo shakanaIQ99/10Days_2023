@@ -7,7 +7,7 @@ using namespace Util;
 
 void GameScene::Init()
 {
-    daruma.Init(Vector2(WIN_WIDTH / 2.0f, 400.0f));
+    daruma.Init(Vector2(WIN_WIDTH / 2.0f, 470.0f));
 
     for (int i = 0; i < 3; i++)
     {
@@ -69,13 +69,10 @@ void GameScene::ButtonsDraw()
     int floar = 0;
     for (auto itr = Komalist.begin(); itr != Komalist.end(); itr++)
     {
-        //DrawBox(Komas[static_cast<int>(*itr)].pos, Komas[static_cast<int>(*itr)].width, Komas[static_cast<int>(*itr)].height, daruma.GetKomaColor(*itr), true);
         DrawBox(Komas[floar].pos, Komas[floar].width, Komas[floar].height, daruma.GetKomaColor(*itr), true);
         floar++;
     }
     if (KeepFlag)DrawBox(KeepKoma.pos, KeepKoma.width, KeepKoma.height, daruma.GetKomaColor(KeepSlot), true);
-
-    DrawFormatString(100, 100, GetColor(55, 255, 255), L"RED:%d BLUE:%d GREEN:%d YELLOW:%d", ColorCounts[0], ColorCounts[1], ColorCounts[2], ColorCounts[3]);
 }
 
 void GameScene::KomaUpdate()
@@ -114,11 +111,38 @@ void GameScene::KomaUpdate()
         
     }
 
-    if (Input::GetTriggerMouseLeftButton(AddButton)&&!daruma.MaxKoma())
+    if (Input::GetTriggerMouseLeftButton(AddButton))
+    {
+        Komacatch = true;
+    }
+
+    if (Komacatch)
+    {
+        Komas[0].pos = Input::GetMousePos();
+        if (Input::GetReleaseMouseLeft())
+        {
+            if (Input::GetMouseHitBox(daruma.GetDragAndDropArea()))
+            {
+                if (!daruma.MaxKoma())
+                {
+                    daruma.ClickAddKoma(Komalist.front());
+                    Komalist.erase(Komalist.begin());
+                }
+               
+            }
+            Komas[0].pos = AddButton.pos;
+            Komacatch = false;
+            
+        }
+    }
+
+    
+
+   /* if (Input::GetTriggerMouseLeftButton(AddButton)&&!daruma.MaxKoma())
     {
         daruma.ClickAddKoma(Komalist.front());
         Komalist.erase(Komalist.begin());
-    }
+    }*/
     if (Input::GetTriggerMouseLeftButton(KeepButton))
     {
         Koma preKoma = KeepSlot;
@@ -136,16 +160,4 @@ void GameScene::KomaUpdate()
         if (daruma.GetBeKoma())daruma.ClickRemoveKoma();
     }
     if (Input::GetTriggerMouseLeftButton(daruma.GetHead())) daruma.Order();
-
-
-
-    /*if (Input::GetTriggerMouseLeftButton(RedButton))daruma.ClickAddKoma(Koma::RED);
-    if (Input::GetTriggerMouseLeftButton(GreanButton))daruma.ClickAddKoma(Koma::GREEN);
-    if (Input::GetTriggerMouseLeftButton(BlueButton))daruma.ClickAddKoma(Koma::BLUE);
-    if (Input::GetTriggerMouseLeftButton(BlackButton))daruma.ClickAddKoma(Koma::BLACK);
-    if (Input::GetTriggerMouseLeftButton(daruma.GetKomaTransform()))
-    {
-        if (daruma.GetBeKoma())daruma.ClickRemoveKoma();
-    }
-    if (Input::GetTriggerMouseLeftButton(daruma.GetHead())) daruma.HeadReset();*/
 }
