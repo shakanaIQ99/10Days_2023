@@ -106,7 +106,7 @@ void GameScene::KomaUpdate()
     {
         daruma.ClickAddKoma(Komalist.front());
         Komalist.erase(Komalist.begin());
-        for (size_t i = 0; i < 5; i++)
+        for (size_t i = 0; i < 2; i++)
         {
             pileEffect->Set(daruma.GetKomaTransform().pos,
                 { (float)daruma.GetKomaTransform().width, (float)daruma.GetKomaTransform().height });

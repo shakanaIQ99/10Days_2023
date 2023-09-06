@@ -24,5 +24,7 @@ private:
 	std::list<std::unique_ptr<Star>> objects;
 
 	int texNum = 0;
+
+	int texNum2 = 0;
 };
 

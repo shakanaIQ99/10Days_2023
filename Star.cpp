@@ -46,7 +46,9 @@ void Star::Update()
 
 void Star::Draw()
 {
-    DxLib::DrawExtendGraph(pos.x - range.x, pos.y - range.y, pos.x + range.x, pos.y + range.y, texNum, TRUE);
+    //DxLib::DrawExtendGraph(pos.x - range.x, pos.y - range.y, pos.x + range.x, pos.y + range.y, texNum, TRUE);
+
+    DxLib::DrawRotaGraph(pos.x, pos.y , 1, 1,texNum, true);
 }
 
 const bool Star::GetIsDead() const
