@@ -18,3 +18,11 @@ int Util::GetRand(int min, int max)
 	std::uniform_int_distribution<> distr(min, max);
 	return distr(eng);
 }
+
+float Util::GetRand(float min, float max)
+{
+	std::random_device rd;
+	std::default_random_engine eng(rd());
+	std::uniform_int_distribution<> distr(min, max);
+	return distr(eng);
+}

@@ -21,5 +21,6 @@ namespace Util
 
 	//—”¶¬(ˆê—l•ª•z)
 	int GetRand(int min, int max);
+	float GetRand(float min, float max);
 };
 

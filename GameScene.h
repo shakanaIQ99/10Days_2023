@@ -2,6 +2,8 @@
 #include"DxLib.h"
 #include"Daruma.h"
 
+#include "PileEffect.h"
+
 class GameScene
 {
 public:
@@ -40,5 +42,8 @@ private:
 	int mouseX, mouseY;
 
 	Vector2 mousePos = { 0,0 };
+
+	// d‚Ë‰‰o
+	std::unique_ptr<PileEffect> pileEffect = nullptr;
 };
 

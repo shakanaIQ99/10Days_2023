@@ -43,6 +43,8 @@ void GameScene::Init()
     Komas[0].height = Buttonheight;
 
     daruma.Order();
+    
+    pileEffect.reset(PileEffect::Create());
     Komalist.clear();
   
 }
@@ -53,12 +55,25 @@ void GameScene::Update()
     KomaUpdate();
 
 	daruma.Update();  
+
+    if (Input::GetInstance()->GetTriggerKey(KEY_INPUT_SPACE))
+    {
+        for (size_t i = 0; i < 5; i++)
+        {
+            pileEffect->Set(daruma.GetKomaTransform().pos, 
+                { (float)daruma.GetKomaTransform().width, (float)daruma.GetKomaTransform().height });
+        }
+    }
+
+    pileEffect->Update();
 }
 
 void GameScene::Draw()
 {
 	daruma.Draw();
     ButtonsDraw();
+
+    pileEffect->Draw();
 }
 
 
@@ -108,5 +123,8 @@ void GameScene::KomaUpdate()
     {
         if (daruma.GetBeKoma())daruma.ClickRemoveKoma();
     }
-    if (Input::GetTriggerMouseLeftButton(daruma.GetHead())) daruma.HeadReset();*/
+    if (Input::GetTriggerMouseLeftButton(daruma.GetHead()))
+    {
+        daruma.HeadReset();
+    }
 }

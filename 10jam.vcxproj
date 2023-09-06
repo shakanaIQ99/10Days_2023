@@ -148,6 +148,7 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PileEffect.cpp" />
+    <ClCompile Include="Star.cpp" />
     <ClCompile Include="Util.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="TitleScene.cpp" />
@@ -159,6 +160,7 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="PileEffect.h" />
     <ClInclude Include="PlayerContorol.h" />
+    <ClInclude Include="Star.h" />
     <ClInclude Include="struct.h" />
     <ClInclude Include="Util.h" />
     <ClInclude Include="Vector2.h" />
