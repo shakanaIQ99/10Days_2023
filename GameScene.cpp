@@ -44,6 +44,11 @@ void GameScene::Init()
 
     daruma.Order();
     Komalist.clear();
+
+    for (int colorCounts: ColorCounts)
+    {
+        colorCounts = 0;
+    }
   
 }
 
@@ -76,6 +81,8 @@ void GameScene::ButtonsDraw()
         DrawBox(Komas[floar].pos, Komas[floar].width, Komas[floar].height, daruma.GetKomaColor(*itr), true);
         floar++;
     }
+
+    DrawFormatString(100, 100, GetColor(55, 255, 255), L"RED:%d BLUE:%d GREEN:%d YELLOW:%d", ColorCounts[0], ColorCounts[1], ColorCounts[2], ColorCounts[3]);
 }
 
 void GameScene::KomaUpdate()
@@ -83,8 +90,35 @@ void GameScene::KomaUpdate()
     if (Komalist.size() < 4)
     {
         Koma AddKoma = static_cast<Koma>(GetRand(0, sizeof(Koma)-1));
-
-        Komalist.push_back(AddKoma);
+        Kyuusai = false;
+        switch (AddKoma)
+        {
+        case Koma::RED:
+            ColorCounts[static_cast<int>(Koma::RED)] = 0;
+            break;
+        case Koma::BLUE:
+            ColorCounts[static_cast<int>(Koma::BLUE)] = 0;
+            break;
+        case Koma::GREEN:
+            ColorCounts[static_cast<int>(Koma::GREEN)] = 0;
+            break;
+        case Koma::YELLOW:
+            ColorCounts[static_cast<int>(Koma::YELLOW)] = 0;
+            break;
+        }
+        for (int i = 0; i < sizeof(Koma); i++)
+        {
+            ColorCounts[i]++;
+            if (ColorCounts[i] > 4)
+            {
+                Kyuusai = true;
+                Komalist.push_back(static_cast<Koma>(i));
+                ColorCounts[i] = 0;
+                break;
+            }
+        }
+        if(!Kyuusai)Komalist.push_back(AddKoma);
+        
     }
 
     if (Input::GetTriggerMouseLeftButton(AddButton))

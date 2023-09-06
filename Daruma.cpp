@@ -151,8 +151,8 @@ int Daruma::GetKomaColor(Koma a)
 		return GetColor(0, 0, 255);
 	case Koma::GREEN:
 		return GetColor(0, 255, 0);
-	case Koma::BLACK:
-		return GetColor(255, 255, 255);
+	case Koma::YELLOW:
+		return GetColor(255, 255, 0);
 	}
 
 	return GetColor(255, 255, 255);

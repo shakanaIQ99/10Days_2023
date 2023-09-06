@@ -31,7 +31,11 @@ private:
 
 	BoxTransform Komas[4];
 
+	int ColorCounts[sizeof(Koma)];
+
 	std::vector<Koma> Komalist;
+
+	bool Kyuusai = false;
 	
 
 	const int ButtonWidth = 50;

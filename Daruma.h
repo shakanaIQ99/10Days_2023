@@ -8,7 +8,7 @@ enum struct Koma : int
 	RED,
 	BLUE,
 	GREEN,
-	BLACK
+	YELLOW
 };
 
 
