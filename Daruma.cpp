@@ -129,7 +129,7 @@ void Daruma::Order()
 
 	while (OrderNum<OrderRange)
 	{
-		Koma AddKoma = static_cast<Koma>(GetRand(0, sizeof(Koma)));
+		Koma AddKoma = static_cast<Koma>(GetRand(0, sizeof(Koma)-1));
 
 		orderkoma.push_back(AddKoma);
 

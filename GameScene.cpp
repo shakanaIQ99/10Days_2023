@@ -82,7 +82,7 @@ void GameScene::KomaUpdate()
 {
     if (Komalist.size() < 4)
     {
-        Koma AddKoma = static_cast<Koma>(GetRand(0, sizeof(Koma)));
+        Koma AddKoma = static_cast<Koma>(GetRand(0, sizeof(Koma)-1));
 
         Komalist.push_back(AddKoma);
     }
