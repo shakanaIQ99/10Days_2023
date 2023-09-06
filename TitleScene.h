@@ -1,5 +1,6 @@
 #pragma once
 #include"DxLib.h"
+#include "Vector2.h"
 
 /// <summary>
 /// タイトルシーン
@@ -21,5 +22,13 @@ public:
 	/// 描画
 	/// </summary>
 	void Draw();
+
+private:
+	//タイトル画像用変数
+	int title;
+	
+	Vector2 boxPos;
+	int width = 100;
+	int height = 100;
 };
 
