@@ -1,6 +1,9 @@
 ﻿#include "DxLib.h"
 #include "Input.h"
 #include "GameScene.h"
+#include "TitleScene.h"
+#include <memory>
+
 // ウィンドウのタイトルに表示する文字列
 const wchar_t TITLE[] = L"10daysJam";
 
@@ -61,6 +64,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	GameScene* gameScene = nullptr;
 	gameScene = new GameScene();
 	gameScene->Init();
+
+	std::unique_ptr<TitleScene> titleScene = std::make_unique<TitleScene>();
+	titleScene->Init();
 	
 	// ゲームループ
 	while (true)
@@ -82,8 +88,11 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			}
 			
 			//更新処理
-			DrawFormatString(500,300,GetColor(255,0,0), L"TitleScene");
+			titleScene->Update();
+			
 			//描画処理
+			titleScene->Draw();
+			DrawFormatString(500, 300, GetColor(255, 0, 0), L"TitleScene");
 
 			break;
 		case SceneNum::GameScene:
