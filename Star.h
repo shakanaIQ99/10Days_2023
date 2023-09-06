@@ -28,5 +28,7 @@ private:
 	const int32_t lifeTime = 30;
 
 	bool isDead = false;
+
+	double angle = 0;
 };
 

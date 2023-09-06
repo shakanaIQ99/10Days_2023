@@ -27,6 +27,8 @@ void Star::Init(const int& texNum_, const Vector2& pos_, const Vector2& velocity
     lifeTimer = 0;
 
     isDead = false;
+
+    angle = 0;
 }
 
 void Star::Update()
@@ -38,6 +40,8 @@ void Star::Update()
     pos.x += velocity.x;
     pos.y += -velocity.y;
 
+    angle++;
+
     if (lifeTimer >= lifeTime)
     {
         isDead = true;
@@ -46,9 +50,12 @@ void Star::Update()
 
 void Star::Draw()
 {
-    //DxLib::DrawExtendGraph(pos.x - range.x, pos.y - range.y, pos.x + range.x, pos.y + range.y, texNum, TRUE);
-
-    DxLib::DrawRotaGraph(pos.x, pos.y , 1, 1,texNum, true);
+    DxLib::DrawRotaGraph(pos.x,
+        pos.y,
+        0.2f,
+        angle,
+        texNum,
+        true);
 }
 
 const bool Star::GetIsDead() const
