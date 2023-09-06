@@ -29,7 +29,7 @@ public:
 	static bool GetTriggerMouseLeft();
 
 	/// <summary>
-	/// BoxTransform‚Åì‚Á‚½ƒ{ƒ^ƒ“‚Ì‰Ÿ‚µ‚Ä‚é‚©‚Ì”»’è
+	/// BoxTransform\‘¢‘Ì‚Åì‚Á‚½Box‚ğ‰Ÿ‚µ‚Ä‚é‚©‚Ì”»’è
 	/// </summary>
 	/// <returns></returns>
 	static bool GetTriggerMouseLeftButton(BoxTransform box);
