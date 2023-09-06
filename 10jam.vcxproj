@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Circle.cpp" />
     <ClCompile Include="Daruma.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -154,6 +155,7 @@
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Circle.h" />
     <ClInclude Include="Daruma.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="Input.h" />
