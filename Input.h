@@ -1,4 +1,6 @@
 #pragma once
+#include"struct.h"
+#include"Vector2.h"
 class Input
 {
 public:
@@ -25,6 +27,12 @@ public:
 	static bool GetReleaseKey(int key);
 
 	static bool GetTriggerMouseLeft();
+
+	/// <summary>
+	/// BoxTransformで作ったボタンの押してるかの判定
+	/// </summary>
+	/// <returns></returns>
+	static bool GetTriggerMouseLeftButton(BoxTransform box);
 	
 private:
 	// 最新のキーボード情報用
@@ -34,5 +42,8 @@ private:
 
 	bool preMouseLeft = false;
 	bool MouseLeft = false;
+
+	Vector2 Mousepos = { 0,0 };
+	int mouseX, mouseY;
 
 };

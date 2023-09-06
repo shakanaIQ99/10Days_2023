@@ -16,8 +16,6 @@ private:
 
 	Daruma daruma;
 
-	bool MouseBoxHit(BoxTransform box, Vector2 mousePos);
-
 	void ButtonsDraw();
 
 	void KomaUpdate();

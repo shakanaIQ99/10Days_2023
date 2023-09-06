@@ -32,8 +32,7 @@ void GameScene::Init()
 void GameScene::Update()
 {
 	
-    GetMousePoint(&mouseX, &mouseY);
-    mousePos = { (float)mouseX,(float)mouseY };
+    
 
    
     KomaUpdate();
@@ -49,17 +48,6 @@ void GameScene::Draw()
     ButtonsDraw();
 }
 
-bool GameScene::MouseBoxHit(BoxTransform box, Vector2 mousePos)
-{
-    if (box.pos.x - (float)box.width <= mousePos.x &&
-        box.pos.x + (float)box.width >= mousePos.x &&
-        box.pos.y - (float)box.height <= mousePos.y &&
-        box.pos.y + (float)box.height >= mousePos.y)
-    {
-        return true;
-    }
-    return false;
-}
 
 void GameScene::ButtonsDraw()
 {
@@ -71,37 +59,13 @@ void GameScene::ButtonsDraw()
 
 void GameScene::KomaUpdate()
 {
-    if (Input::GetTriggerMouseLeft())
+    if (Input::GetTriggerMouseLeftButton(RedButton))daruma.ClickAddKoma(Koma::RED);
+    if (Input::GetTriggerMouseLeftButton(GreanButton))daruma.ClickAddKoma(Koma::GREEN);
+    if (Input::GetTriggerMouseLeftButton(BlueButton))daruma.ClickAddKoma(Koma::BLUE);
+    if (Input::GetTriggerMouseLeftButton(BlackButton))daruma.ClickAddKoma(Koma::BLACK);
+    if (Input::GetTriggerMouseLeftButton(daruma.GetKomaTransform()))
     {
-        if (MouseBoxHit(RedButton, mousePos))
-        {
-            daruma.ClickAddKoma(Koma::RED);
-        }
-        if (MouseBoxHit(GreanButton, mousePos))
-        {
-            daruma.ClickAddKoma(Koma::GREEN);
-        }
-        if (MouseBoxHit(BlueButton, mousePos))
-        {
-            daruma.ClickAddKoma(Koma::BLUE);
-        }
-        if (MouseBoxHit(BlackButton, mousePos))
-        {
-            daruma.ClickAddKoma(Koma::BLACK);
-        }
-        if (MouseBoxHit(daruma.GetKomaTransform(), mousePos))
-        {
-            if (daruma.GetBeKoma())
-            {
-                daruma.ClickRemoveKoma();
-            }
-        }
-        if (MouseBoxHit(daruma.GetHead(), mousePos))
-        {
-            daruma.HeadReset();
-        }
+        if (daruma.GetBeKoma())daruma.ClickRemoveKoma();
     }
-   
-
-
+    if (Input::GetTriggerMouseLeftButton(daruma.GetHead())) daruma.HeadReset();
 }

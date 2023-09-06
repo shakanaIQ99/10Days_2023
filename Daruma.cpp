@@ -167,7 +167,7 @@ bool Daruma::Comparison()
 	
 	if (koma.size() == orderkoma.size())
 	{
-		int clearNum = orderkoma.size();
+		size_t clearNum = orderkoma.size();
 		for (int i = 0; i < orderkoma.size(); i++)
 		{
 			if (koma[i] == orderkoma[i])

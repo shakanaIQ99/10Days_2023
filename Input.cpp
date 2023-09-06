@@ -20,6 +20,18 @@ bool Input::GetTriggerMouseLeft()
 	return GetInstance()->MouseLeft && !GetInstance()->preMouseLeft;
 }
 
+bool Input::GetTriggerMouseLeftButton(BoxTransform box)
+{
+	if (box.pos.x - (float)box.width <= GetInstance()->Mousepos.x &&
+		box.pos.x + (float)box.width >= GetInstance()->Mousepos.x &&
+		box.pos.y - (float)box.height <= GetInstance()->Mousepos.y &&
+		box.pos.y + (float)box.height >= GetInstance()->Mousepos.y)
+	{
+		return GetTriggerMouseLeft();
+	}
+	return false;
+}
+
 Input::Input()
 {
 	
@@ -34,6 +46,9 @@ Input* Input::GetInstance()
 void Input::InputUpdate()
 {
 	Input* instance = GetInstance();
+
+	GetMousePoint(&instance->mouseX, &instance->mouseY);
+	instance->Mousepos = { (float)instance->mouseX,(float)instance->mouseY };
 
 	// 最新のキーボード情報だったものは1フレーム前のキーボード情報として保存
 	for (int i = 0; i < 256; i++)
