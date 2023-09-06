@@ -156,6 +156,7 @@
     <ClInclude Include="Daruma.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="main.h" />
     <ClInclude Include="PileEffect.h" />
     <ClInclude Include="PlayerContorol.h" />
     <ClInclude Include="struct.h" />

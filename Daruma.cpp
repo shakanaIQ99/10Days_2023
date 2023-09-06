@@ -56,11 +56,10 @@ void Daruma::Draw()
 	int Orderfloar = 0;
 	for (auto itr = orderkoma.rbegin(); itr !=orderkoma.rend(); itr++)
 	{
-		SetKomaColor(*itr);
 		Vector2 pos = Orderboxs.pos;
 		
 		pos.y -= (Orderboxs.height*2) * Orderfloar;
-		DrawBox(pos, Orderboxs.width, Orderboxs.height, Color, true);
+		DrawBox(pos, Orderboxs.width, Orderboxs.height, GetKomaColor(*itr), true);
 		DrawBox(pos, Orderboxs.width, Orderboxs.height, GetColor(0, 0, 0), false);
 
 		Orderfloar++;
@@ -73,12 +72,10 @@ void Daruma::Draw()
 	Head.pos.y = 400.0f;
 	for (auto itr = koma.rbegin(); itr != koma.rend(); itr++)
 	{
-		SetKomaColor(*itr);
-
 		Vector2 pos = Komaboxs.pos;
 
 		pos.y -= (Komaboxs.height*2) * floar;
-		DrawBox(pos, Komaboxs.width, Komaboxs.height, Color, true);
+		DrawBox(pos, Komaboxs.width, Komaboxs.height, GetKomaColor(*itr), true);
 		DrawBox(pos, Komaboxs.width, Komaboxs.height, GetColor(0, 0, 0), false);
 
 		floar++;
@@ -144,23 +141,21 @@ void Daruma::Order()
 
 }
 
-void Daruma::SetKomaColor(Koma a)
+int Daruma::GetKomaColor(Koma a)
 {
 	switch (a)
 	{
 	case Koma::RED:
-		Color= GetColor(255, 0, 0);
-		break;
+		return GetColor(255, 0, 0);
 	case Koma::BLUE:
-		Color = GetColor(0, 0, 255);
-		break;
+		return GetColor(0, 0, 255);
 	case Koma::GREEN:
-		Color = GetColor(0, 255, 0);
-		break;
+		return GetColor(0, 255, 0);
 	case Koma::BLACK:
-		Color = GetColor(255, 255, 255);
-		break;
+		return GetColor(255, 255, 255);
 	}
+
+	return GetColor(255, 255, 255);
 }
 
 bool Daruma::Comparison()

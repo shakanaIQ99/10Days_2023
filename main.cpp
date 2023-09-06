@@ -1,14 +1,7 @@
 ﻿#include "DxLib.h"
 #include "Input.h"
 #include "GameScene.h"
-// ウィンドウのタイトルに表示する文字列
-const wchar_t TITLE[] = L"10daysJam";
-
-// ウィンドウ横幅
-const int WIN_WIDTH = 1280;
-
-// ウィンドウ縦幅
-const int WIN_HEIGHT = 720;
+#include "main.h"
 
 template<class T> inline void SafeDelete(T*& p)
 {

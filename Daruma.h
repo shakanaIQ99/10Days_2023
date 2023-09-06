@@ -34,11 +34,11 @@ public:
 	void HeadReset();
 	void Order();
 
+	int GetKomaColor(Koma a);
 private:
 
 	void KomaReset();
 
-	void SetKomaColor(Koma a);
 
 	bool Comparison();
 
@@ -56,7 +56,7 @@ private:
 
 	bool Ordered = false;
 	
-	int Color = GetColor(0, 0, 0);
+	
 
 };
 

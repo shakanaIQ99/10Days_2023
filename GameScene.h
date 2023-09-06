@@ -25,6 +25,13 @@ private:
 	BoxTransform GreanButton;
 	BoxTransform BlueButton;
 	BoxTransform BlackButton;
+
+	BoxTransform AddButton;
+	BoxTransform KeepButton;
+
+	BoxTransform Komas[4];
+
+	std::vector<Koma> Komalist;
 	
 
 	const int ButtonWidth = 50;
