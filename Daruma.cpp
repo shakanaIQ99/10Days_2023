@@ -42,29 +42,34 @@ void Daruma::KomaReset()
 
 void Daruma::Update()
 {
-	if (Input::GetTriggerKey(KEY_INPUT_R)|| Comparison())
+	if (Input::GetTriggerKey(KEY_INPUT_R) || Comparison())
 	{
 		Order();
 	}
 
-
+	// êÅÇ¡îÚÇŒÇ∑ââèo
+	if (isSlap)
+	{
+		koma.pop_back();
+		isSlap = false;
+	}
 
 }
 
 void Daruma::Draw()
 {
 	int Orderfloar = 0;
-	for (auto itr = orderkoma.rbegin(); itr !=orderkoma.rend(); itr++)
+	for (auto itr = orderkoma.rbegin(); itr != orderkoma.rend(); itr++)
 	{
 		Vector2 pos = Orderboxs.pos;
-		
-		pos.y -= (Orderboxs.height*2) * Orderfloar;
+
+		pos.y -= (Orderboxs.height * 2) * Orderfloar;
 		DrawBox(pos, Orderboxs.width, Orderboxs.height, GetKomaColor(*itr), true);
 		DrawBox(pos, Orderboxs.width, Orderboxs.height, GetColor(0, 0, 0), false);
 
 		Orderfloar++;
-		
-		Orderhead.pos.y = pos.y - (Orderhead.height+Orderboxs.height);
+
+		Orderhead.pos.y = pos.y - (Orderhead.height + Orderboxs.height);
 	}
 	//DrawBox(Orderhead.pos, Orderhead.width, Orderhead.height, GetColor(0, 0, 0), true);
 
@@ -74,7 +79,7 @@ void Daruma::Draw()
 	{
 		Vector2 pos = Komaboxs.pos;
 
-		pos.y -= (Komaboxs.height*2) * floar;
+		pos.y -= (Komaboxs.height * 2) * floar;
 		DrawBox(pos, Komaboxs.width, Komaboxs.height, GetKomaColor(*itr), true);
 		DrawBox(pos, Komaboxs.width, Komaboxs.height, GetColor(0, 0, 0), false);
 
@@ -92,7 +97,7 @@ void Daruma::ClickAddKoma(Koma add)
 
 void Daruma::ClickRemoveKoma()
 {
-	koma.pop_back();
+	isSlap = true;
 }
 
 BoxTransform Daruma::GetKomaTransform()
@@ -127,7 +132,7 @@ void Daruma::Order()
 	//OrderRange = 6;
 	OrderNum = 0;
 
-	while (OrderNum<OrderRange)
+	while (OrderNum < OrderRange)
 	{
 		Koma AddKoma = static_cast<Koma>(GetRand(0, sizeof(Koma)));
 
@@ -160,7 +165,7 @@ int Daruma::GetKomaColor(Koma a)
 
 bool Daruma::Comparison()
 {
-	
+
 	if (koma.size() == orderkoma.size())
 	{
 		size_t clearNum = orderkoma.size();

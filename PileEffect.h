@@ -16,7 +16,9 @@ public:
 
 	void Draw();
 
-	void Set(const Vector2& pos, const Vector2& range);
+	void PileSet(const Vector2& pos, const Vector2& range);
+
+	void SlapSet(const Vector2& pos);
 
 private:
 	const int PartNum = 5;

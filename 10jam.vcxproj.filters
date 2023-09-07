@@ -11,6 +11,7 @@
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="SlapEffect.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Daruma.h" />
@@ -25,5 +26,6 @@
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="Circle.h" />
+    <ClInclude Include="SlapEffect.h" />
   </ItemGroup>
 </Project>

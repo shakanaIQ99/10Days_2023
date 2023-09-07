@@ -56,7 +56,7 @@ private:
 
 	bool Ordered = false;
 	
-	
+	bool isSlap = false;
 
 };
 

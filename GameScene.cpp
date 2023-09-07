@@ -54,16 +54,7 @@ void GameScene::Update()
 {
     KomaUpdate();
 
-	daruma.Update();  
-
-    if (Input::GetInstance()->GetTriggerKey(KEY_INPUT_SPACE))
-    {
-        for (size_t i = 0; i < 5; i++)
-        {
-            pileEffect->Set(daruma.GetKomaTransform().pos, 
-                { (float)daruma.GetKomaTransform().width, (float)daruma.GetKomaTransform().height });
-        }
-    }
+	daruma.Update(); 
 
     pileEffect->Update();
 }
@@ -108,13 +99,17 @@ void GameScene::KomaUpdate()
         Komalist.erase(Komalist.begin());
         for (size_t i = 0; i < 2; i++)
         {
-            pileEffect->Set(daruma.GetKomaTransform().pos,
+            pileEffect->PileSet(daruma.GetKomaTransform().pos,
                 { (float)daruma.GetKomaTransform().width, (float)daruma.GetKomaTransform().height });
         }
     }
     if (Input::GetTriggerMouseLeftButton(daruma.GetKomaTransform()))
     {
-        if (daruma.GetBeKoma())daruma.ClickRemoveKoma();
+        if (daruma.GetBeKoma())
+        {
+            daruma.ClickRemoveKoma();
+            pileEffect->SlapSet(daruma.GetKomaTransform().pos);
+        }
     }
     if (Input::GetTriggerMouseLeftButton(daruma.GetHead())) daruma.HeadReset();
 

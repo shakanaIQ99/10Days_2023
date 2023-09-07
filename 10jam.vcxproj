@@ -149,6 +149,7 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PileEffect.cpp" />
+    <ClCompile Include="SlapEffect.cpp" />
     <ClCompile Include="Star.cpp" />
     <ClCompile Include="Util.cpp" />
     <ClCompile Include="Vector2.cpp" />
@@ -162,6 +163,7 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="PileEffect.h" />
     <ClInclude Include="PlayerContorol.h" />
+    <ClInclude Include="SlapEffect.h" />
     <ClInclude Include="Star.h" />
     <ClInclude Include="struct.h" />
     <ClInclude Include="Util.h" />
