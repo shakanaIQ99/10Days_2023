@@ -45,5 +45,9 @@ private:
 
 	// 重ね演出
 	std::unique_ptr<PileEffect> pileEffect = nullptr;
+
+	//リソース用変数
+	int backGroundGame;
+	int pedestal;
 };
 

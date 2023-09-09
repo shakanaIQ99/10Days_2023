@@ -9,6 +9,10 @@ void GameScene::Init()
 {
 	daruma.Init();
 
+    //ÉäÉ\Å[ÉXì«Ç›çûÇ›
+    backGroundGame = LoadGraph(L"Resources/Scene/game.png");
+    pedestal = LoadGraph(L"Resources/Scene/pedestal.png");
+
    /* RedButton.pos = { 320.0f-160.0f,600.0f };
     GreanButton.pos = { 320.0f * 2.0f - 160.0f,600.0f };
     BlueButton.pos = { 320.0f * 3.0f - 160.0f,600.0f };
@@ -61,6 +65,9 @@ void GameScene::Update()
 
 void GameScene::Draw()
 {
+    DrawGraph(0, 0, backGroundGame, TRUE);
+    DrawGraph(180, 400, pedestal, TRUE);
+    DrawGraph(720, 400, pedestal, TRUE);
 	daruma.Draw();
     ButtonsDraw();
 
