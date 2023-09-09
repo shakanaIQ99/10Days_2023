@@ -2,6 +2,9 @@
 #include"DxLib.h"
 #include <vector>
 #include"struct.h"
+#include "SlapKoma.h"
+#include <list>
+#include <memory>
 
 enum struct Koma : int
 {
@@ -58,5 +61,6 @@ private:
 	
 	bool isSlap = false;
 
+	std::list<std::unique_ptr<SlapKoma>> slapKomas;
 };
 

@@ -54,6 +54,12 @@ void Daruma::Update()
 		isSlap = false;
 	}
 
+	slapKomas.remove_if([](std::unique_ptr<SlapKoma>& slapKoma) {return slapKoma->GetIsDead(); });
+
+	for (std::unique_ptr<SlapKoma>& slapKoma : slapKomas)
+	{
+		slapKoma->Update();
+	}
 }
 
 void Daruma::Draw()
@@ -88,6 +94,10 @@ void Daruma::Draw()
 	}
 	DrawBox(Head.pos, Head.width, Head.height, GetColor(0, 0, 0), true);
 
+	for (std::unique_ptr<SlapKoma>& slapKoma : slapKomas)
+	{
+		slapKoma->Draw();
+	}
 }
 
 void Daruma::ClickAddKoma(Koma add)
@@ -98,6 +108,10 @@ void Daruma::ClickAddKoma(Koma add)
 void Daruma::ClickRemoveKoma()
 {
 	isSlap = true;
+
+	std::unique_ptr<SlapKoma> newSlapKoma;
+	newSlapKoma.reset(SlapKoma::Create(GetKomaTransform().pos));
+	slapKomas.push_back(std::move(newSlapKoma));
 }
 
 BoxTransform Daruma::GetKomaTransform()

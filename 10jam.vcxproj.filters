@@ -12,6 +12,7 @@
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="Circle.cpp" />
     <ClCompile Include="SlapEffect.cpp" />
+    <ClCompile Include="SlapKoma.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Daruma.h" />
@@ -27,5 +28,6 @@
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="Circle.h" />
     <ClInclude Include="SlapEffect.h" />
+    <ClInclude Include="SlapKoma.h" />
   </ItemGroup>
 </Project>
