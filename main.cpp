@@ -74,7 +74,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		switch (scene)
 		{
 		case SceneNum::TitleScene:
-			if (Input::GetTriggerKey(KEY_INPUT_LEFT))
+			if (Input::Input::GetTriggerMouseLeft())
 			{
 				scene = SceneNum::GameScene;
 			}
