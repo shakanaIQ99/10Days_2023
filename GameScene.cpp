@@ -66,8 +66,9 @@ void GameScene::Update()
 void GameScene::Draw()
 {
     DrawGraph(0, 0, backGroundGame, TRUE);
-    DrawGraph(180, 400, pedestal, TRUE);
-    DrawGraph(720, 400, pedestal, TRUE);
+    DrawGraph(200, 450, pedestal, TRUE);
+    DrawGraph(780, 450, pedestal, TRUE);
+
 	daruma.Draw();
     ButtonsDraw();
 
