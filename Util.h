@@ -18,6 +18,11 @@ namespace Util
 	/// <param name="height2=‰º"></param>
 	void DrawBox(Vector2 pos, int width,int width2, int height,int height2, int color, bool fillflag);
 
+	/// <summary>
+	/// ‘‚«‚â‚·‚³‚Ì‚©‚½‚Ü‚èRotaGraph
+	/// </summary>
+	void DrawRoTaGraph3(Vector2 pos, double widthRateX, double heightRateX, float Angle, int Ghandle, int TransFlag = 0, int TurnFlag = 0);
+
 
 	//—”¶¬(ˆê—l•ª•z)
 	int GetRand(int min, int max);
