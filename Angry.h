@@ -5,9 +5,9 @@
 class Angry
 {
 public:
-	static Angry* Create(const int& texNum_, const Vector2& pos_, const Vector2& velocity_);
+	static Angry* Create(const int& texNum_, const Vector2& pos_, const Vector2& velocity_, const float& angle_);
 
-	void Init(const int& texNum_, const Vector2& pos_, const Vector2& velocity_);
+	void Init(const int& texNum_, const Vector2& pos_, const Vector2& velocity_, const float& angle_);
 
 	void Update();
 

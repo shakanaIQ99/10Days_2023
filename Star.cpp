@@ -50,12 +50,7 @@ void Star::Update()
 
 void Star::Draw()
 {
-    DxLib::DrawRotaGraph(pos.x,
-        pos.y,
-        0.2f,
-        angle,
-        texNum,
-        true);
+    DxLib::DrawRotaGraph(pos.x, pos.y, 0.2f, angle, texNum, true);
 }
 
 const bool Star::GetIsDead() const

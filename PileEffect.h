@@ -21,8 +21,6 @@ public:
 	void SlapSet(const Vector2& pos);
 
 private:
-	const int PartNum = 5;
-
 	std::list<std::unique_ptr<Star>> objects;
 
 	int texNum = 0;
