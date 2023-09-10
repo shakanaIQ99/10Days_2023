@@ -32,8 +32,6 @@ private:
 
 	void AddAction();
 
-	void GetDarumaArea();
-	
 
 	BoxTransform AddButton;
 	BoxTransform KeepButton;
