@@ -143,13 +143,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Circle.cpp" />
+    <ClCompile Include="Angry.cpp" />
+    <ClCompile Include="AngryEffect.cpp" />
     <ClCompile Include="Daruma.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PileEffect.cpp" />
-    <ClCompile Include="SlapEffect.cpp" />
     <ClCompile Include="SlapKoma.cpp" />
     <ClCompile Include="Star.cpp" />
     <ClCompile Include="Util.cpp" />
@@ -157,14 +157,14 @@
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Circle.h" />
+    <ClInclude Include="Angry.h" />
+    <ClInclude Include="AngryEffect.h" />
     <ClInclude Include="Daruma.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="PileEffect.h" />
     <ClInclude Include="PlayerContorol.h" />
-    <ClInclude Include="SlapEffect.h" />
     <ClInclude Include="SlapKoma.h" />
     <ClInclude Include="Star.h" />
     <ClInclude Include="struct.h" />
