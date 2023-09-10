@@ -74,7 +74,6 @@ void Daruma::Draw()
 
 		Orderfloar++;
 
-		Orderhead.pos.y = pos.y - (Orderhead.height + Orderboxs.height);
 	}
 	
 	int floar = 0;
