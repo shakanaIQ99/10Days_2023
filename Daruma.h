@@ -40,7 +40,7 @@ public:
 	void HeadReset();
 	void Order();
 
-	int GetKomaColor(Koma a);
+	static int GetKomaColor(Koma a);
 private:
 
 	void KomaReset();
