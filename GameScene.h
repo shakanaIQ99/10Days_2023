@@ -22,18 +22,22 @@ private:
 
 	void KomaUpdate();
 
-
-	BoxTransform RedButton;
-	BoxTransform GreanButton;
-	BoxTransform BlueButton;
-	BoxTransform BlackButton;
+	
 
 	BoxTransform AddButton;
 	BoxTransform KeepButton;
 
 	BoxTransform Komas[4];
+	BoxTransform KeepKoma;
+
+	int ColorCounts[sizeof(Koma)];
+
+	Koma KeepSlot;
+	bool KeepFlag = false;;
 
 	std::vector<Koma> Komalist;
+
+	bool Kyuusai = false;
 	
 
 	const int ButtonWidth = 50;
@@ -49,5 +53,7 @@ private:
 	//リソース用変数
 	int backGroundGame;
 	int pedestal;
+
+	bool Komacatch = false;
 };
 

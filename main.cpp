@@ -3,6 +3,9 @@
 #include "GameScene.h"
 #include "main.h"
 #include "TitleScene.h"
+#include<memory>
+#include"TitleScene.h"
+#include"GameTime.h"
 
 template<class T> inline void SafeDelete(T*& p)
 {
@@ -53,6 +56,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	// ゲームループで使う変数の宣言
 	SceneNum scene = SceneNum::TitleScene;
 
+	GameTime::SetMaxTime(60);
+
 	GameScene* gameScene = nullptr;
 	gameScene = new GameScene();
 	gameScene->Init();
@@ -77,6 +82,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			if (Input::Input::GetTriggerMouseLeft())
 			{
 				scene = SceneNum::GameScene;
+				gameScene->Init();
 			}
 			
 			//更新処理
@@ -88,6 +94,12 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 			break;
 		case SceneNum::GameScene:
+
+			if (GameTime::TimeUp())
+			{
+				scene = SceneNum::TitleScene;
+				titleScene->Init();
+			}
 			//更新処理
 			gameScene->Update();
 

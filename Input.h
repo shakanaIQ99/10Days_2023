@@ -28,11 +28,19 @@ public:
 
 	static bool GetTriggerMouseLeft();
 
+	static bool GetReleaseMouseLeft();
+
+	static bool GetMouseLeft();
+
 	/// <summary>
 	/// BoxTransform構造体で作ったBoxを押してるかの判定
 	/// </summary>
 	/// <returns></returns>
 	static bool GetTriggerMouseLeftButton(BoxTransform box);
+
+	static bool GetMouseHitBox(BoxTransform box);
+
+	static Vector2 GetMousePos();
 	
 private:
 	// 最新のキーボード情報用

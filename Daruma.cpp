@@ -6,31 +6,30 @@
 
 using namespace Util;
 
-void Daruma::Init()
+void Daruma::Init(Vector2 pos)
 {
 	KomaReset();
 
-	//オーダーの頭
-	Orderhead.height = 32;
-	Orderhead.width = 40;
-	Orderhead.pos = { 200.0f,400.0f };
+	defY = pos.y;
 
 	//実際の頭
-	Head.pos = { 700.0f,400.0f };
-	Head.height = 32;
-	Head.width = 40;
+	Head.pos = pos;
+	Head.height = HeadHeight;
+	Head.width = HeadWidth;
 
-	//オーダーのボデー
-	Orderboxs.width = 32;
-	Orderboxs.height = 16;
-	Orderboxs.pos = Orderhead.pos;
+	//オーダーのボデ
+	Orderboxs.width = KomaWidth;
+	Orderboxs.height = KomaHeight;
+	Orderboxs.pos = { Head.pos.x - 120.0f,pos.y };
 
 	//実際のボデー
-	Komaboxs.width = 32;
-	Komaboxs.height = 16;
+	Komaboxs.width = KomaWidth;
+	Komaboxs.height = KomaHeight;
 	Komaboxs.pos = Head.pos;
 
-
+	DragAndDropArea.width = Head.width * 2;
+	DragAndDropArea.height = Head.height * 5;
+	DragAndDropArea.pos = { pos.x,pos.y + KomaHeight - DragAndDropArea.height };
 }
 
 void Daruma::KomaReset()
@@ -77,10 +76,9 @@ void Daruma::Draw()
 
 		Orderhead.pos.y = pos.y - (Orderhead.height + Orderboxs.height);
 	}
-	//DrawBox(Orderhead.pos, Orderhead.width, Orderhead.height, GetColor(0, 0, 0), true);
-
+	
 	int floar = 0;
-	Head.pos.y = 400.0f;
+	Head.pos.y = defY-KomaHeight;
 	for (auto itr = koma.rbegin(); itr != koma.rend(); itr++)
 	{
 		Vector2 pos = Komaboxs.pos;
@@ -98,6 +96,8 @@ void Daruma::Draw()
 	{
 		slapKoma->Draw();
 	}
+	DrawBox(DragAndDropArea.pos, DragAndDropArea.width, DragAndDropArea.height, GetColor(20, 120, 255), false);
+
 }
 
 void Daruma::ClickAddKoma(Koma add)
@@ -124,6 +124,11 @@ BoxTransform Daruma::GetHead()
 	return Head;
 }
 
+BoxTransform Daruma::GetDragAndDropArea()
+{
+	return DragAndDropArea;
+}
+
 bool Daruma::GetBeKoma()
 {
 	if (!koma.empty())
@@ -131,6 +136,15 @@ bool Daruma::GetBeKoma()
 		return true;
 	}
 	return false;
+}
+
+bool Daruma::MaxKoma()
+{
+	if (koma.size() < 8)
+	{
+		return false;
+	}
+	return true;
 }
 
 void Daruma::HeadReset()
@@ -148,7 +162,7 @@ void Daruma::Order()
 
 	while (OrderNum < OrderRange)
 	{
-		Koma AddKoma = static_cast<Koma>(GetRand(0, sizeof(Koma)));
+		Koma AddKoma = static_cast<Koma>(GetRand(0, sizeof(Koma)-1));
 
 		orderkoma.push_back(AddKoma);
 
@@ -170,8 +184,8 @@ int Daruma::GetKomaColor(Koma a)
 		return GetColor(0, 0, 255);
 	case Koma::GREEN:
 		return GetColor(0, 255, 0);
-	case Koma::BLACK:
-		return GetColor(255, 255, 255);
+	case Koma::YELLOW:
+		return GetColor(255, 255, 0);
 	}
 
 	return GetColor(255, 255, 255);

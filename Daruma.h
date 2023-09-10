@@ -11,7 +11,7 @@ enum struct Koma : int
 	RED,
 	BLUE,
 	GREEN,
-	BLACK
+	YELLOW
 };
 
 
@@ -19,7 +19,7 @@ class Daruma
 {
 public:
 
-	void Init();
+	void Init(Vector2 pos);
 
 
 	void Update();
@@ -31,8 +31,10 @@ public:
 
 	BoxTransform GetKomaTransform();
 	BoxTransform GetHead();
+	BoxTransform GetDragAndDropArea();
 
 	bool GetBeKoma();
+	bool MaxKoma();
 
 	void HeadReset();
 	void Order();
@@ -46,9 +48,18 @@ private:
 	bool Comparison();
 
 	BoxTransform Orderboxs;
-	BoxTransform Orderhead;
 	BoxTransform Head;
 	BoxTransform Komaboxs;
+
+	BoxTransform DragAndDropArea;
+
+	const int HeadWidth = 50;
+	const int HeadHeight = 50;
+
+	const int KomaWidth = 50;
+	const int KomaHeight = 25;
+
+	float defY = 0;
 
 	std::vector<Koma> koma;
 	std::vector<Koma> orderkoma;
