@@ -167,7 +167,6 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="PileEffect.h" />
-    <ClInclude Include="PlayerContorol.h" />
     <ClInclude Include="SlapKoma.h" />
     <ClInclude Include="Star.h" />
     <ClInclude Include="Score.h" />

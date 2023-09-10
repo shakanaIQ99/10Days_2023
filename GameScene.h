@@ -16,12 +16,23 @@ public:
 
 private:
 
-	Daruma daruma;
+	Daruma daruma[2];
+
+	Daruma preDaruma;
 
 	void ButtonsDraw();
 
 	void KomaUpdate();
 
+	void KomaSlotUpdate();
+
+	void KeepAction();
+
+	void HammerAction();
+
+	void AddAction();
+
+	void GetDarumaArea();
 	
 
 	BoxTransform AddButton;
