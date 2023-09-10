@@ -2,6 +2,7 @@
 #include"Input.h"
 #include"Util.h"
 #include"main.h"
+#include"GameTime.h"
 
 using namespace Util;
 
@@ -39,12 +40,15 @@ void GameScene::Init()
     {
         colorCounts = 0;
     }
+
+    GameTime::Reset();
   
 }
 
 
 void GameScene::Update()
 {
+    GameTime::DecreaseTime();
     KomaUpdate();
 
     if (KeepFlag)
@@ -59,6 +63,8 @@ void GameScene::Draw()
 {
 	daruma.Draw();
     ButtonsDraw();
+
+    DrawFormatString(100, 100, GetColor(255, 255, 255), L"Time:%d", GameTime::GetNowTime());
 }
 
 
@@ -159,5 +165,9 @@ void GameScene::KomaUpdate()
     {
         if (daruma.GetBeKoma())daruma.ClickRemoveKoma();
     }
-    if (Input::GetTriggerMouseLeftButton(daruma.GetHead())) daruma.Order();
+    if (Input::GetTriggerMouseLeftButton(daruma.GetHead()))
+    {
+        GameTime::LossTime(5);
+        daruma.Order();
+    }
 }
