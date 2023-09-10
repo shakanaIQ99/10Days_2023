@@ -88,7 +88,7 @@ void GameScene::Draw()
 
     pileEffect->Draw();
 
-    DrawFormatString(100, 100, GetColor(255, 255, 255), L"Time:%d", GameTime::GetNowTime());
+    DrawFormatString(WIN_WIDTH/2-20, WIN_HEIGHT / 2, GetColor(255, 255, 255), L"Time:%d", GameTime::GetNowTime());
 }
 
 
