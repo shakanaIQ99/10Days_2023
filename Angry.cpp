@@ -29,6 +29,8 @@ void Angry::Init(const int& texNum_, const Vector2& pos_, const Vector2& velocit
     isDead = false;
 
     angle = angle_;
+
+    Rate = 1;
 }
 
 void Angry::Update()
@@ -38,6 +40,8 @@ void Angry::Update()
     pos.x += velocity.x;
     pos.y += -velocity.y;
 
+    Rate -= 0.02f;
+
     if (lifeTimer >= lifeTime)
     {
         isDead = true;
@@ -46,7 +50,8 @@ void Angry::Update()
 
 void Angry::Draw()
 {
-    DxLib::DrawRotaGraph(pos.x, pos.y, 0.2f, angle, texNum, true);
+    DxLib::DrawRotaGraph(pos.x, pos.y, Rate, angle, texNum, true);
+    //Util::DrawRoTaGraph3(pos, 0, 0, angle, texNum);
 }
 
 const bool Angry::GetIsDead() const

@@ -5,6 +5,7 @@
 #include "SlapKoma.h"
 #include <list>
 #include <memory>
+#include "AngryEffect.h"
 
 enum struct Koma : int
 {
@@ -73,5 +74,7 @@ private:
 	bool isSlap = false;
 
 	std::list<std::unique_ptr<SlapKoma>> slapKomas;
+
+	std::unique_ptr<AngryEffect> angryEffect;
 };
 

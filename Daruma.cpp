@@ -30,6 +30,8 @@ void Daruma::Init(Vector2 pos)
 	DragAndDropArea.width = Head.width * 2;
 	DragAndDropArea.height = Head.height * 5;
 	DragAndDropArea.pos = { pos.x,pos.y + KomaHeight - DragAndDropArea.height };
+
+	angryEffect.reset(AngryEffect::Create());
 }
 
 void Daruma::KomaReset()
@@ -53,12 +55,19 @@ void Daruma::Update()
 		isSlap = false;
 	}
 
+	if (Input::GetTriggerKey(KEY_INPUT_1))
+	{
+		angryEffect->Set(Head.pos, { (float)Head.width,(float)Head.height });
+	}
+
 	slapKomas.remove_if([](std::unique_ptr<SlapKoma>& slapKoma) {return slapKoma->GetIsDead(); });
 
 	for (std::unique_ptr<SlapKoma>& slapKoma : slapKomas)
 	{
 		slapKoma->Update();
 	}
+
+	angryEffect->Update();
 }
 
 void Daruma::Draw()
@@ -97,6 +106,7 @@ void Daruma::Draw()
 	}
 	DrawBox(DragAndDropArea.pos, DragAndDropArea.width, DragAndDropArea.height, GetColor(20, 120, 255), false);
 
+	angryEffect->Draw();
 }
 
 void Daruma::ClickAddKoma(Koma add)
@@ -109,7 +119,7 @@ void Daruma::ClickRemoveKoma()
 	isSlap = true;
 
 	std::unique_ptr<SlapKoma> newSlapKoma;
-	newSlapKoma.reset(SlapKoma::Create(GetKomaTransform().pos));
+	newSlapKoma.reset(SlapKoma::Create(GetKomaTransform().pos,GetKomaColor(koma.back())));
 	slapKomas.push_back(std::move(newSlapKoma));
 }
 

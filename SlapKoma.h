@@ -5,9 +5,9 @@
 class SlapKoma
 {
 public:
-	static SlapKoma* Create(const Vector2& pos_);
+	static SlapKoma* Create(const Vector2& pos_, const int& color_);
 
-	void Init(const Vector2& pos_);
+	void Init(const Vector2& pos_, const int& color_);
 
 	void Update();
 
@@ -19,5 +19,7 @@ private:
 	BoxTransform box;
 
 	bool isDead = false;
+
+	int color = 0;
 };
 

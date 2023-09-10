@@ -3,7 +3,7 @@
 
 using namespace Util;
 
-SlapKoma* SlapKoma::Create(const Vector2& pos_)
+SlapKoma* SlapKoma::Create(const Vector2& pos_, const int& color_)
 {
     SlapKoma* slapKoma = new SlapKoma();
     if (slapKoma == nullptr)
@@ -11,18 +11,20 @@ SlapKoma* SlapKoma::Create(const Vector2& pos_)
         return nullptr;
     }
 
-    slapKoma->Init(pos_);
+    slapKoma->Init(pos_, color_);
 
     return slapKoma;
 }
 
-void SlapKoma::Init(const Vector2& pos_)
+void SlapKoma::Init(const Vector2& pos_, const int& color_)
 {
     box.pos = pos_;
     box.width = 32;
     box.height = 16;
 
     isDead = false;
+
+    color = color_;
 }
 
 void SlapKoma::Update()
@@ -37,7 +39,7 @@ void SlapKoma::Update()
 
 void SlapKoma::Draw()
 {
-    DrawBox(box.pos, box.width, box.height, GetColor(255, 255, 255), true);
+    DrawBox(box.pos, box.width, box.height, color, true);
 }
 
 const bool SlapKoma::GetIsDead() const

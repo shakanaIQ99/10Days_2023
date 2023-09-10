@@ -40,10 +40,10 @@ void AngryEffect::Draw()
 void AngryEffect::Set(const Vector2& pos, const Vector2& range)
 {
 	std::unique_ptr<Angry> newRight;
-	newRight.reset(Angry::Create(texNum, { pos.x + range.x,pos.y - range.y }, { 1,1 }, 2));
+	newRight.reset(Angry::Create(texNum, { pos.x + range.x,pos.y - range.y }, { 1,1 }, 0.8f));
 	objects.push_back(std::move(newRight));
 
 	std::unique_ptr<Angry> newLeft;
-	newLeft.reset(Angry::Create(texNum, { pos.x - range.x,pos.y - range.y }, { -1,1 }, -2));
+	newLeft.reset(Angry::Create(texNum, { pos.x - range.x,pos.y - range.y }, { -1,1 }, -0.8f));
 	objects.push_back(std::move(newLeft));
 }

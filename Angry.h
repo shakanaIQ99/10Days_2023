@@ -30,5 +30,7 @@ private:
 	bool isDead = false;
 
 	double angle = 0;
+
+	double Rate = 0;
 };
 
