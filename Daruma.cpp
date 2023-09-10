@@ -31,7 +31,11 @@ void Daruma::Init(Vector2 pos)
 	DragAndDropArea.height = Head.height * 5;
 	DragAndDropArea.pos = { pos.x,pos.y + KomaHeight - DragAndDropArea.height };
 
+
 	angryEffect.reset(AngryEffect::Create());
+
+	darumaFace = LoadGraph(L"Resources/Daruma/daruma03.png");
+
 }
 
 void Daruma::KomaReset()
@@ -98,7 +102,8 @@ void Daruma::Draw()
 		floar++;
 		Head.pos.y = pos.y - (Head.height + Komaboxs.height);
 	}
-	DrawBox(Head.pos, Head.width, Head.height, GetColor(0, 0, 0), true);
+	//DrawBox(Head.pos, Head.width, Head.height, GetColor(0, 0, 0), true);
+	DrawGraph(Head.pos.x - Head.width - 5, Head.pos.y - Head.height - 5, darumaFace, TRUE);
 
 	for (std::unique_ptr<SlapKoma>& slapKoma : slapKomas)
 	{

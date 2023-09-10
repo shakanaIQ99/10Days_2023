@@ -75,6 +75,10 @@ private:
 
 	std::list<std::unique_ptr<SlapKoma>> slapKomas;
 
+
 	std::unique_ptr<AngryEffect> angryEffect;
+
+	int darumaFace;
+
 };
 

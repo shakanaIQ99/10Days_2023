@@ -23,6 +23,7 @@ namespace Util
 	/// </summary>
 	void DrawRoTaGraph3(Vector2 pos, double widthRateX, double heightRateX, float Angle, int Ghandle, int TransFlag = 0, int TurnFlag = 0);
 
+	//void DrawExtendGraph(Vector2 pos, Vector2 pos, int width, int height, int color, bool fillflag)
 
 	//—”¶¬(ˆê—l•ª•z)
 	int GetRand(int min, int max);
