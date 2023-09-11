@@ -63,8 +63,8 @@ void Audience::Update()
     {
         phase = 0;
         phaseTimer = 0;
-        transform[0].pos.y = 720 - 32;
-        transform[1].pos.y = 720 - 32;
+        transform[0].pos.y = 720 - 64;
+        transform[1].pos.y = 720 - 64;
     }
 }
 
