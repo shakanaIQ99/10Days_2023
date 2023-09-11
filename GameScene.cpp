@@ -8,8 +8,8 @@ using namespace Util;
 
 void GameScene::Init()
 {
-	daruma[0].Init(Vector2(345.0f, 470.0f));
-    daruma[1].Init(Vector2(780.0f+145.0f, 470.0f));
+	daruma[0].Init(Vector2(WIN_WIDTH / 4, 470.0f));
+    daruma[1].Init(Vector2((WIN_WIDTH / 4 )*3, 470.0f));
     for (int i = 0; i < 2; i++)
     {
         daruma[i].Order();
@@ -27,11 +27,11 @@ void GameScene::Init()
         Komas[i + 1].height = Buttonheight;
     }
 
-    AddButton.pos = {(float)WIN_WIDTH/2.0f,((float)WIN_HEIGHT/6.0f)*5.0f};
+    AddButton.pos = {(float)WIN_WIDTH/2.0f,((float)WIN_HEIGHT/8.0f)*7.0f};
     AddButton.width = 60;
     AddButton.height = 60;
 
-    KeepButton.pos = { (float)WIN_WIDTH / 4.0f,((float)WIN_HEIGHT / 6.0f) * 5.0f };
+    KeepButton.pos = { (float)WIN_WIDTH / 4.0f,((float)WIN_HEIGHT / 8.0f) * 7.0f };
     KeepButton.width = 60;
     KeepButton.height = 60;
 
@@ -62,16 +62,19 @@ void GameScene::Init()
 
 void GameScene::Update()
 {
+    CursorAdd = 0.0;
+    CursorKeep = 0.0;
+    if (Input::GetMouseHitBox(AddButton))CursorAdd = 0.3;
+    if (Input::GetMouseHitBox(KeepButton))CursorKeep = 0.3;
     GameTime::DecreaseTime();
     KomaUpdate();
 
+
     pileEffect->Update();
-    /*if (KeepFlag)
-    {
-        
-    }*/
+
     for (int i = 0; i < 2; i++)
     {
+        daruma[i].SetCatchOn(Komacatch);
 	    daruma[i].Update();
     }
 
@@ -81,8 +84,9 @@ void GameScene::Update()
 void GameScene::Draw()
 {
     DrawGraph(0, 0, backGroundGame, TRUE);
-    DrawGraph(200, 450, pedestal, TRUE);
-    DrawGraph(780, 450, pedestal, TRUE);
+    DrawRotaGraph3(Vector2(WIN_WIDTH / 4, 530.0f), 1.0, 1.0, 0, pedestal);
+    DrawRotaGraph3(Vector2((WIN_WIDTH/4)*3, 530.0f), 1.0, 1.0, 0, pedestal);
+    //DrawGraph(780, 450, pedestal, TRUE);
 
     audience->Draw();
 
@@ -101,16 +105,26 @@ void GameScene::Draw()
 
 void GameScene::ButtonsDraw()
 {
+
     DrawBox(AddButton.pos, AddButton.width, AddButton.height, GetColor(255, 255, 0), false);
     DrawBox(KeepButton.pos, KeepButton.width, KeepButton.height, GetColor(0, 255, 255), false);
     int floar = 0;
     for (auto itr = Komalist.begin(); itr != Komalist.end(); itr++)
     {
-        //DrawBox(Komas[floar].pos, Komas[floar].width, Komas[floar].height, Daruma::GetKomaColor(*itr), true);
-        DrawRotaGraph3(Komas[floar].pos, 1.6, 1.6, 0, Daruma::GetKomaColor(*itr));
+        if (floar == 0)
+        {
+            DrawRotaGraph3(Komas[floar].pos, 1.6 + CursorAdd, 1.6 + CursorAdd, 0, Daruma::GetKomaColor(*itr));
+        }
+        else
+        {
+            Vector2 prePos = Komas[floar].pos;
+            prePos.y += 80.0f;
+
+            DrawRotaGraph3(prePos, 1.6, 1.6, 0, Daruma::GetKomaColor(*itr));
+        }
         floar++;
     }
-    if (KeepFlag) DrawRotaGraph3(KeepKoma.pos, 1.6, 1.6, 0, Daruma::GetKomaColor(KeepSlot));
+    if (KeepFlag) DrawRotaGraph3(KeepKoma.pos, 1.6 + CursorKeep, 1.6 + CursorKeep, 0, Daruma::GetKomaColor(KeepSlot));
 }
 
 void GameScene::KomaUpdate()
@@ -121,10 +135,12 @@ void GameScene::KomaUpdate()
     if (Input::GetTriggerMouseLeftButton(AddButton))
     {
         KomaCatch = true;
+        Komacatch = true;
     }
     if (Input::GetTriggerMouseLeftButton(KeepButton)&&KeepFlag)
     {
         KeepCatch = true;
+        Komacatch = true;
     }
     if (KomaCatch)
     {
@@ -135,6 +151,7 @@ void GameScene::KomaUpdate()
             KeepAction();
             Komas[0].pos = AddButton.pos;
             KomaCatch = false;
+            Komacatch = false;
 
         }
     }
@@ -146,6 +163,7 @@ void GameScene::KomaUpdate()
             AddAction(KeepCatch);
             KeepKoma.pos = KeepButton.pos;
             KeepCatch = false;
+            Komacatch = false;
            
 
         }
