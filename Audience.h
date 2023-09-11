@@ -13,6 +13,8 @@ public:
 	void Update();
 
 	void Draw();
+
+	void SetIsCheers(const bool isCheers_);
 private:
 	std::array<BoxTransform,2> transform;
 

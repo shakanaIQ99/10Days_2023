@@ -61,6 +61,7 @@ void Audience::Update()
     }
     else
     {
+        phase = 0;
         phaseTimer = 0;
         transform[0].pos.y = 720 - 32;
         transform[1].pos.y = 720 - 32;
@@ -73,4 +74,9 @@ void Audience::Draw()
     {
         Util::DrawBox(transform[i].pos, transform[i].width, transform[i].height, DxLib::GetColor(200, 200, 200), true);
     }
+}
+
+void Audience::SetIsCheers(const bool isCheers_)
+{
+    isCheers = isCheers_;
 }
