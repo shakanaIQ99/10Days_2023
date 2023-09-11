@@ -7,6 +7,7 @@
 #include <memory>
 #include "AngryEffect.h"
 #include "SlapHead.h"
+#include "PileEffect.h"
 
 enum struct Koma : int
 {
@@ -67,14 +68,15 @@ public:
 	std::vector<Koma> GetKomas();
 
 	void SlapEffect();
+
+	// ê¨å˜îªíË
+	bool Comparison();
 	
 private:
 
 	void KomaReset();
 
 	void Reaction();
-
-	bool Comparison();
 
 	BoxTransform Orderboxs;
 	BoxTransform Head;
@@ -117,5 +119,7 @@ private:
 	double CursorCatch = 0.0f;
 
 	bool CacthFlag = false;
+
+	std::unique_ptr<PileEffect> comitEffect = nullptr;
 };
 

@@ -74,11 +74,9 @@ void Daruma::Init(Vector2 pos)
 	DragAndDropArea.height = Head.height * 5;
 	DragAndDropArea.pos = { pos.x,pos.y + KomaHeight - DragAndDropArea.height+40.0f };
 
-
 	angryEffect.reset(AngryEffect::Create());
 
-	
-
+	comitEffect.reset(PileEffect::Create());
 }
 
 void Daruma::KomaReset()
@@ -122,12 +120,11 @@ void Daruma::Update()
 {
 	if (Input::GetTriggerKey(KEY_INPUT_R) || Comparison())
 	{
+		comitEffect->FanfarleSet();
 		Order();
 	}
 
-	
 	Reaction();
-
 
 	// ‚Á”ò‚Î‚·‰‰o
 	if (isSlap)
@@ -153,6 +150,8 @@ void Daruma::Update()
 	{
 		slapHead->Update();
 	}
+
+	comitEffect->Update();
 
 	angryEffect->Update();
 }
@@ -207,6 +206,8 @@ void Daruma::Draw()
 	DrawBox(DragAndDropArea.pos, DragAndDropArea.width, DragAndDropArea.height, GetColor(20, 120, 255), false);
 
 	if(debugBool)DrawBox(DragAndDropArea.pos, DragAndDropArea.width, DragAndDropArea.height, GetColor(20, 120, 255), false);
+
+	comitEffect->Draw();
 
 	angryEffect->Draw();
 }

@@ -69,20 +69,15 @@ void GameScene::Update()
     GameTime::DecreaseTime();
     KomaUpdate();
 
-    pileEffect->Update();
-
     for (int i = 0; i < 2; i++)
     {
         daruma[i].SetCatchOn(Komacatch);
 	    daruma[i].Update();
     }
 
-    audience->Update();
+    pileEffect->Update();
 
-    if (Input::GetInstance()->GetTriggerKey(KEY_INPUT_5))
-    {
-        pileEffect->FanfarleSet();
-    }
+    audience->Update();
 }
 
 void GameScene::Draw()
