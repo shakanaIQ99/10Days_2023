@@ -27,9 +27,12 @@ std::vector<Koma> Daruma::GetKomas()
 
 	return prekoma;
 }
-void Daruma::Init(Vector2 pos)
+void Daruma::Init(Vector2 pos, bool mode)
 {
 	KomaReset();
+	DressReset();
+
+	DressMode = mode;
 
 	defY = pos.y;
 
@@ -80,6 +83,13 @@ void Daruma::KomaReset()
 
 }
 
+void Daruma::DressReset()
+{
+
+	huku.clear();
+	orderhuku.clear();
+}
+
 void Daruma::Reaction()
 {
 	CursorHead = 0.0;
@@ -113,7 +123,7 @@ void Daruma::Reaction()
 
 void Daruma::Update()
 {
-	if (Input::GetTriggerKey(KEY_INPUT_R) || Comparison())
+	if (Input::GetTriggerKey(KEY_INPUT_R) || KomaComparison())
 	{
 		Order();
 	}
@@ -246,9 +256,12 @@ void Daruma::HeadReset()
 void Daruma::Order()
 {
 	KomaReset();
+	
 
 	OrderRange = 4;
 	OrderNum = 0;
+
+	
 
 	while (OrderNum < OrderRange)
 	{
@@ -264,6 +277,18 @@ void Daruma::Order()
 
 }
 
+void Daruma::DressOrder()
+{
+	DressReset();
+
+	for (int i = 0; i < sizeof(Dress); i++)
+	{
+		orderhuku.push_back(static_cast<Dress>(i));
+	}
+
+	DressOrdered = true;
+}
+
 int Daruma::GetKomaColor(Koma a)
 {
 	return KomaGraph[(int)a];
@@ -271,7 +296,27 @@ int Daruma::GetKomaColor(Koma a)
 
 
 
-bool Daruma::Comparison()
+bool Daruma::DressComparison()
+{
+	if (huku.size() == orderhuku.size())
+	{
+		size_t clearNum = orderhuku.size();
+		for (int i = 0; i < orderhuku.size(); i++)
+		{
+			if (huku[i] == orderhuku[i])
+			{
+				clearNum--;
+			}
+			if (clearNum <= 0)
+			{
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+bool Daruma::KomaComparison()
 {
 
 	if (koma.size() == orderkoma.size())

@@ -23,6 +23,12 @@ enum struct Dress :int
 	BOOTS
 };
 
+struct DressKoma
+{
+	Koma koma;
+	Dress dress;
+};
+
 
 class Daruma
 {
@@ -42,7 +48,7 @@ private:
 
 public:
 
-	void Init(Vector2 pos);
+	void Init(Vector2 pos, bool mode = false);
 
 
 	void Update();
@@ -61,6 +67,7 @@ public:
 
 	void HeadReset();
 	void Order();
+	void DressOrder();
 
 	void SetCatchOn(bool catchflag);
 
@@ -70,9 +77,14 @@ private:
 
 	void KomaReset();
 
+	void DressReset();
+
 	void Reaction();
 
-	bool Comparison();
+	bool DressComparison();
+	bool KomaComparison();
+
+	bool DressMode = false;
 
 	BoxTransform Orderboxs;
 	BoxTransform Head;
@@ -100,7 +112,13 @@ private:
 	//¡‹î‚ª‰½’i–Ú‚©
 	int OrderNum = 0;
 
+	//—v‹‚·‚é‹î‚Ì‚‚³
+	int OrderHukuRange = 0;
+	//¡‹î‚ª‰½’i–Ú‚©
+	int OrderHukuNum = 0;
+
 	bool Ordered = false;
+	bool DressOrdered = false;
 	
 	bool isSlap = false;
 
