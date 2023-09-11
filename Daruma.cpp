@@ -48,9 +48,9 @@ void Daruma::Init(Vector2 pos)
 	Komaboxs.height = KomaHeight;
 	Komaboxs.pos = Head.pos;
 
-	DragAndDropArea.width = Head.width * 2;
+	DragAndDropArea.width = 64 * 2;
 	DragAndDropArea.height = Head.height * 5;
-	DragAndDropArea.pos = { pos.x,pos.y + KomaHeight - DragAndDropArea.height+30.0f };
+	DragAndDropArea.pos = { pos.x,pos.y + KomaHeight - DragAndDropArea.height+40.0f };
 
 
 	angryEffect.reset(AngryEffect::Create());
@@ -185,7 +185,8 @@ void Daruma::Draw()
 	{
 		slapKoma->Draw();
 	}
-	DrawBox(DragAndDropArea.pos, DragAndDropArea.width, DragAndDropArea.height, GetColor(20, 120, 255), false);
+
+	if(debugBool)DrawBox(DragAndDropArea.pos, DragAndDropArea.width, DragAndDropArea.height, GetColor(20, 120, 255), false);
 
 	angryEffect->Draw();
 }

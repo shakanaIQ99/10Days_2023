@@ -6,6 +6,7 @@
 #include<memory>
 #include"TitleScene.h"
 #include"GameTime.h"
+#include"Util.h"
 
 template<class T> inline void SafeDelete(T*& p)
 {
@@ -75,6 +76,11 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		// 画面クリア
 		ClearDrawScreen();
 		//---------  ここからプログラムを記述  ----------//
+
+		if (Input::GetTriggerKey(KEY_INPUT_F5))
+		{
+			Util::debugBool = !Util::debugBool;
+		}
 
 		switch (scene)
 		{

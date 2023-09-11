@@ -1,6 +1,9 @@
 #include "Util.h"
 #include"DxLib.h"
 #include<random>
+
+bool Util::debugBool = false;
+
 void Util::DrawBox(Vector2 pos, int width, int height, int color, bool fillflag)
 {
 	DxLib::DrawBox((int)pos.x - width, (int)pos.y - height, (int)pos.x + width, (int)pos.y + height, color, fillflag);
