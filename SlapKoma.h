@@ -20,6 +20,12 @@ private:
 
 	bool isDead = false;
 
-	int color = 0;
+	int texNum = 0;
+
+	double angle = 0;
+
+	int alphaNum = 0;
+
+	Vector2 speed = { 0,0 };
 };
 
