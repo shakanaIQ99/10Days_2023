@@ -30,7 +30,7 @@ private:
 
 	void HammerAction();
 
-	void AddAction();
+	void AddAction(bool keep);
 
 
 	BoxTransform AddButton;
@@ -47,7 +47,7 @@ private:
 	std::vector<Koma> Komalist;
 
 	bool Kyuusai = false;
-	
+
 
 	const int ButtonWidth = 50;
 	const int Buttonheight = 20;
@@ -63,6 +63,7 @@ private:
 	int backGroundGame;
 	int pedestal;
 
-	bool Komacatch = false;
+	bool KomaCatch = false;
+	bool KeepCatch = false;
 };
 
