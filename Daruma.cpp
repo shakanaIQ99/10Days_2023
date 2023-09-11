@@ -203,21 +203,7 @@ void Daruma::Order()
 
 int Daruma::GetKomaColor(Koma a)
 {
-	/*switch (a)
-	{
-	case Koma::RED:
-		return GetColor(255, 0, 0);
-	case Koma::BLUE:
-		return GetColor(0, 0, 255);
-	case Koma::GREEN:
-		return GetColor(0, 255, 0);
-	case Koma::YELLOW:
-		return GetColor(255, 255, 0);
-	}*/
-
 	return KomaGraph[(int)a];
-
-	//return GetColor(255, 255, 255);
 }
 
 
