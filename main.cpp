@@ -133,6 +133,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		}
 	}
 	// Dxライブラリ終了処理
+	InitGraph();
 	SafeDelete(gameScene);
 	DxLib_End();
 
