@@ -51,7 +51,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	SetDrawScreen(DX_SCREEN_BACK);
 
 	// 画像などのリソースデータの変数宣言と読み込み
-	
+	Daruma::TextureSet();
 
 	// ゲームループで使う変数の宣言
 	SceneNum scene = SceneNum::TitleScene;

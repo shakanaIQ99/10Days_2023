@@ -18,6 +18,18 @@ enum struct Koma : int
 
 class Daruma
 {
+	//ê√ìIä÷êîê®
+public:
+	static int GetKomaColor(Koma a);
+
+	static void TextureSet();
+
+private:
+
+	static int KomaGraph[sizeof(Koma)];
+
+	static int darumaFace;
+
 public:
 
 	void Init(Vector2 pos);
@@ -40,7 +52,7 @@ public:
 	void HeadReset();
 	void Order();
 
-	static int GetKomaColor(Koma a);
+	
 private:
 
 	void KomaReset();
@@ -78,7 +90,7 @@ private:
 
 	std::unique_ptr<AngryEffect> angryEffect;
 
-	int darumaFace;
+	
 
 };
 

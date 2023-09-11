@@ -99,10 +99,11 @@ void GameScene::ButtonsDraw()
     int floar = 0;
     for (auto itr = Komalist.begin(); itr != Komalist.end(); itr++)
     {
-        DrawBox(Komas[floar].pos, Komas[floar].width, Komas[floar].height, Daruma::GetKomaColor(*itr), true);
+        //DrawBox(Komas[floar].pos, Komas[floar].width, Komas[floar].height, Daruma::GetKomaColor(*itr), true);
+        DrawRotaGraph3(Komas[floar].pos, 1.6, 1.6, 0, Daruma::GetKomaColor(*itr));
         floar++;
     }
-    if (KeepFlag)DrawBox(KeepKoma.pos, KeepKoma.width, KeepKoma.height, Daruma::GetKomaColor(KeepSlot), true);
+    if (KeepFlag) DrawRotaGraph3(KeepKoma.pos, 1.6, 1.6, 0, Daruma::GetKomaColor(KeepSlot));
 }
 
 void GameScene::KomaUpdate()
