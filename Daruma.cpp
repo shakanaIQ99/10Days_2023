@@ -51,6 +51,20 @@ void Daruma::Init(Vector2 pos)
 
 void Daruma::KomaReset()
 {
+	int floar = 0;
+	for (auto itr = koma.rbegin(); itr != koma.rend(); itr++)
+	{
+		Vector2 pos = Komaboxs.pos;
+
+		pos.y -= (Komaboxs.height * 2) * floar;
+
+		std::unique_ptr<SlapKoma> newSlapKoma;
+		newSlapKoma.reset(SlapKoma::Create(pos, GetKomaColor(*itr), { (float)Util::GetRand(-8,8),20 }));
+		slapKomas.push_back(std::move(newSlapKoma));
+
+		floar++;
+	}
+
 	koma.clear();
 	orderkoma.clear();
 
@@ -137,7 +151,7 @@ void Daruma::ClickRemoveKoma()
 	isSlap = true;
 
 	std::unique_ptr<SlapKoma> newSlapKoma;
-	newSlapKoma.reset(SlapKoma::Create(GetKomaTransform().pos,GetKomaColor(koma.back())));
+	newSlapKoma.reset(SlapKoma::Create(GetKomaTransform().pos, GetKomaColor(koma.back()), { 8,20 }));
 	slapKomas.push_back(std::move(newSlapKoma));
 }
 

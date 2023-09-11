@@ -3,7 +3,7 @@
 
 using namespace Util;
 
-SlapKoma* SlapKoma::Create(const Vector2& pos_, const int& texNum_)
+SlapKoma* SlapKoma::Create(const Vector2& pos_, const int& texNum_, const Vector2& velocity_)
 {
     SlapKoma* slapKoma = new SlapKoma();
     if (slapKoma == nullptr)
@@ -11,12 +11,12 @@ SlapKoma* SlapKoma::Create(const Vector2& pos_, const int& texNum_)
         return nullptr;
     }
 
-    slapKoma->Init(pos_, texNum_);
+    slapKoma->Init(pos_, texNum_,velocity_);
 
     return slapKoma;
 }
 
-void SlapKoma::Init(const Vector2& pos_, const int& texNum_)
+void SlapKoma::Init(const Vector2& pos_, const int& texNum_, const Vector2& velocity_)
 {
     box.pos = pos_;
     box.width = 32;
@@ -30,7 +30,7 @@ void SlapKoma::Init(const Vector2& pos_, const int& texNum_)
 
     alphaNum = 255;
 
-    speed = { 8,20 };
+    speed = velocity_;
 }
 
 void SlapKoma::Update()

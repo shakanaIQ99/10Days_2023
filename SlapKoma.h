@@ -5,9 +5,9 @@
 class SlapKoma
 {
 public:
-	static SlapKoma* Create(const Vector2& pos_, const int& color_);
+	static SlapKoma* Create(const Vector2& pos_, const int& color_, const Vector2& velocity_);
 
-	void Init(const Vector2& pos_, const int& color_);
+	void Init(const Vector2& pos_, const int& color_, const Vector2& velocity_);
 
 	void Update();
 
