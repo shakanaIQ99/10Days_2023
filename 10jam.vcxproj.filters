@@ -49,7 +49,12 @@
     <ClCompile Include="Ease.cpp">
       <Filter>ソースファイル</Filter>
     </ClCompile>
-    <ClCompile Include="SlapHead.cpp" />
+    <ClCompile Include="SlapHead.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="kurakka.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -156,7 +161,12 @@
     <ClInclude Include="Ease.h">
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
-    <ClInclude Include="SlapHead.h" />
+    <ClInclude Include="kurakka.h">
+      <Filter>ヘッダーファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="SlapHead.h">
+      <Filter>ヘッダーファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ソースファイル">

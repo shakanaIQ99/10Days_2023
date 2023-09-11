@@ -151,6 +151,7 @@
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GameTime.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="kurakka.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PileEffect.cpp" />
     <ClCompile Include="SlapHead.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GameTime.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="kurakka.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="PileEffect.h" />
     <ClInclude Include="SlapHead.h" />

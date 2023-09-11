@@ -69,7 +69,6 @@ void GameScene::Update()
     GameTime::DecreaseTime();
     KomaUpdate();
 
-
     pileEffect->Update();
 
     for (int i = 0; i < 2; i++)
@@ -79,6 +78,11 @@ void GameScene::Update()
     }
 
     audience->Update();
+
+    if (Input::GetInstance()->GetTriggerKey(KEY_INPUT_5))
+    {
+        pileEffect->FanfarleSet();
+    }
 }
 
 void GameScene::Draw()

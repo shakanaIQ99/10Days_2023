@@ -4,6 +4,7 @@
 
 #include "Vector2.h"
 #include "Star.h"
+#include "kurakka.h"
 
 class PileEffect
 {
@@ -20,8 +21,11 @@ public:
 
 	void SlapSet(const Vector2& pos);
 
+	void FanfarleSet();
+
 private:
 	std::list<std::unique_ptr<Star>> objects;
+	std::list<std::unique_ptr<Cracker>> crackers;
 
 	int texNum = 0;
 

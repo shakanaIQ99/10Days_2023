@@ -1,5 +1,6 @@
 #include "PileEffect.h"
 #include "Util.h"
+#include "main.h"
 
 PileEffect* PileEffect::Create()
 {
@@ -28,6 +29,11 @@ void PileEffect::Update()
 	{
 		object->Update();
 	}
+
+	for (std::unique_ptr<Cracker>& cracker : crackers)
+	{
+		cracker->Update();
+	}
 }
 
 void PileEffect::Draw()
@@ -35,6 +41,11 @@ void PileEffect::Draw()
 	for (std::unique_ptr<Star>& object : objects)
 	{
 		object->Draw();
+	}
+
+	for (std::unique_ptr<Cracker>& cracker : crackers)
+	{
+		cracker->Draw();
 	}
 }
 
@@ -72,4 +83,30 @@ void PileEffect::SlapSet(const Vector2& pos)
 	newFrameRight.reset(Star::Create(texNum2, pos,
 		{ (Util::GetRand(28,40) * 0.1f),(Util::GetRand(10,20) * 0.1f) }));
 	objects.push_back(std::move(newFrameRight));
+}
+
+void PileEffect::FanfarleSet()
+{
+	for (size_t i = 0; i < 35; i++)
+	{
+		std::unique_ptr<Cracker> newRight;
+		newRight.reset(Cracker::Create(texNum, { 1280,(float)Util::GetRand(WIN_HEIGHT / 2, WIN_HEIGHT * 2 / 3) },
+			{ -(float)(Util::GetRand(4,20)),(float)(Util::GetRand(10,35)) }));
+		crackers.push_back(std::move(newRight));
+
+		std::unique_ptr<Cracker> newFrameRight;
+		newFrameRight.reset(Cracker::Create(texNum2, { 1280,(float)Util::GetRand(WIN_HEIGHT / 2, WIN_HEIGHT * 2/3) },
+			{ -(float)(Util::GetRand(4,20)),(float)(Util::GetRand(10,35)) }));
+		crackers.push_back(std::move(newFrameRight));
+
+		std::unique_ptr<Cracker> newLeft;
+		newLeft.reset(Cracker::Create(texNum, { 0,(float)Util::GetRand(WIN_HEIGHT / 2, WIN_HEIGHT * 2 / 3) },
+			{ (float)(Util::GetRand(4,20)),(float)(Util::GetRand(10,35)) }));
+		crackers.push_back(std::move(newLeft));
+
+		std::unique_ptr<Cracker> newFrameLeft;
+		newFrameLeft.reset(Cracker::Create(texNum2, { 0,(float)Util::GetRand(WIN_HEIGHT / 2, WIN_HEIGHT * 2 / 3) },
+			{ (float)(Util::GetRand(4,20)),(float)(Util::GetRand(10,35)) }));
+		crackers.push_back(std::move(newFrameLeft));
+	}
 }
