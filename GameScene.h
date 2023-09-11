@@ -4,6 +4,12 @@
 
 #include "PileEffect.h"
 
+enum struct GameType
+{
+	TUTORIAL,
+	MAIN
+};
+
 class GameScene
 {
 public:
