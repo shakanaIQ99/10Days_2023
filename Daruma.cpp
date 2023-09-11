@@ -88,7 +88,7 @@ void Daruma::Reaction()
 
 	if (CacthFlag)
 	{
-		if (Input::GetMouseHitBox(DragAndDropArea))
+		if (Input::GetMouseHitBox(DragAndDropArea) && !MaxKoma())
 		{
 			CursorHead = 0.3;
 			CursorKoma = 0.3;
