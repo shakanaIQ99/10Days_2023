@@ -21,7 +21,7 @@ namespace Util
 	/// <summary>
 	/// èëÇ´Ç‚Ç∑Ç≥ÇÃÇ©ÇΩÇ‹ÇËRotaGraph
 	/// </summary>
-	void DrawRotaGraph3(Vector2 pos, double widthRateX, double heightRateX, float Angle, int Ghandle, int TransFlag = 0, int TurnFlag = 0);
+	void DrawRotaGraph3(Vector2 pos, double widthRateX, double heightRateX, float Angle, int Ghandle, int TransFlag = 1, int TurnFlag = 0);
 
 	//void DrawExtendGraph(Vector2 pos, Vector2 pos, int width, int height, int color, bool fillflag)
 
