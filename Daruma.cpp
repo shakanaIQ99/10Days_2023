@@ -11,11 +11,21 @@ int Daruma::KomaGraph[sizeof(Koma)];
 
 void Daruma::TextureSet()
 {
-	darumaFace = LoadGraph(L"Resources/Daruma/daruma03.png");
+	darumaFace = LoadGraph(L"Resources/Daruma/daruma01.png");
 
 	LoadDivGraph(L"Resources/Daruma/koma.png", sizeof(Koma), sizeof(Koma), 1, 64, 32,KomaGraph);
 
 
+}
+void Daruma::SetCatchOn(bool catchflag)
+{
+	CacthFlag = catchflag;
+}
+std::vector<Koma> Daruma::GetKomas()
+{
+	std::vector<Koma> prekoma = koma;
+
+	return prekoma;
 }
 void Daruma::Init(Vector2 pos)
 {
@@ -30,7 +40,7 @@ void Daruma::Init(Vector2 pos)
 
 	//オーダーのボデ
 	Orderboxs.width = KomaWidth;
-	Orderboxs.height = KomaHeight;
+	Orderboxs.height = 32;
 	Orderboxs.pos = { Head.pos.x - 120.0f,pos.y };
 
 	//実際のボデー
@@ -40,7 +50,7 @@ void Daruma::Init(Vector2 pos)
 
 	DragAndDropArea.width = Head.width * 2;
 	DragAndDropArea.height = Head.height * 5;
-	DragAndDropArea.pos = { pos.x,pos.y + KomaHeight - DragAndDropArea.height };
+	DragAndDropArea.pos = { pos.x,pos.y + KomaHeight - DragAndDropArea.height+30.0f };
 
 
 	angryEffect.reset(AngryEffect::Create());
@@ -56,12 +66,47 @@ void Daruma::KomaReset()
 
 }
 
+void Daruma::Reaction()
+{
+	CursorHead = 0.0;
+	CursorKoma = 0.0;
+	CursorCatch = 0.0f;
+
+	if (CacthFlag)
+	{
+		if (Input::GetMouseHitBox(DragAndDropArea))
+		{
+			CursorHead = 0.3;
+			CursorKoma = 0.3;
+			CursorCatch = 0.3f;
+		}
+	}
+	else
+	{
+		if (Input::GetMouseHitBox(GetKomaTransform()))
+		{
+			CursorKoma = 0.3;
+		}
+		if (Input::GetMouseHitBox(GetHead()))
+		{
+			CursorHead = 0.3;
+		}
+	}
+	
+
+
+}
+
 void Daruma::Update()
 {
 	if (Input::GetTriggerKey(KEY_INPUT_R) || Comparison())
 	{
 		Order();
 	}
+
+	
+	Reaction();
+
 
 	// 吹っ飛ばす演出
 	if (isSlap)
@@ -92,11 +137,9 @@ void Daruma::Draw()
 	{
 		Vector2 pos = Orderboxs.pos;
 
-		pos.y -= (Orderboxs.height * 2) * Orderfloar;
-		//DrawBox(pos, Orderboxs.width, Orderboxs.height, GetKomaColor(*itr), true);
-		DrawRotaGraph3(pos, 1.6, 1.6, 0, GetKomaColor(*itr));
-		//DrawBox(pos, Orderboxs.width, Orderboxs.height, GetColor(0, 0, 0), false);
-
+		pos.y -= (Orderboxs.height) * Orderfloar;
+		DrawRotaGraph3(pos, Komasize-0.6, Komasize-0.6, 0, GetKomaColor(*itr));
+		
 		Orderfloar++;
 
 	}
@@ -108,15 +151,21 @@ void Daruma::Draw()
 		Vector2 pos = Komaboxs.pos;
 
 		pos.y -= (Komaboxs.height * 2) * floar;
-		//DrawBox(pos, Komaboxs.width, Komaboxs.height, GetKomaColor(*itr), true);
-		DrawRotaGraph3(pos, 1.6, 1.6, 0, GetKomaColor(*itr));
-		//DrawBox(pos, Komaboxs.width, Komaboxs.height, GetColor(0, 0, 0), false);
+		if (floar == 0)
+		{
+			DrawRotaGraph3(pos, Komasize + CursorKoma, Komasize + CursorKoma, 0, GetKomaColor(*itr));
+		}
+		else
+		{
+			DrawRotaGraph3(pos, Komasize+ CursorCatch, Komasize+ CursorCatch, 0, GetKomaColor(*itr));
+		}
 
 		floar++;
 		Head.pos.y = pos.y - (Head.height + Komaboxs.height);
 	}
 	//DrawBox(Head.pos, Head.width, Head.height, GetColor(0, 0, 0), true);
-	DrawGraph(Head.pos.x - Head.width - 5, Head.pos.y - Head.height - 5, darumaFace, TRUE);
+	//DrawGraph(Head.pos.x - Head.width - 5, Head.pos.y - Head.height - 5, darumaFace, TRUE);
+	DrawRotaGraph3(Head.pos, 1.0+CursorHead, 1.0 + CursorHead, 0, darumaFace);
 
 	for (std::unique_ptr<SlapKoma>& slapKoma : slapKomas)
 	{

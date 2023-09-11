@@ -15,6 +15,13 @@ enum struct Koma : int
 	YELLOW
 };
 
+enum struct Dress :int
+{
+	BOOTS,
+	WEAR,
+	PANTS
+};
+
 
 class Daruma
 {
@@ -23,6 +30,8 @@ public:
 	static int GetKomaColor(Koma a);
 
 	static void TextureSet();
+
+	
 
 private:
 
@@ -52,17 +61,23 @@ public:
 	void HeadReset();
 	void Order();
 
+	void SetCatchOn(bool catchflag);
+
+	std::vector<Koma> GetKomas();
 	
 private:
 
 	void KomaReset();
 
+	void Reaction();
 
 	bool Comparison();
 
 	BoxTransform Orderboxs;
 	BoxTransform Head;
 	BoxTransform Komaboxs;
+
+	double Komasize = 1.6;
 
 	BoxTransform DragAndDropArea;
 
@@ -76,6 +91,9 @@ private:
 
 	std::vector<Koma> koma;
 	std::vector<Koma> orderkoma;
+
+	std::vector<Dress> huku;
+	std::vector<Dress> orderhuku;
 	//óvãÅÇ∑ÇÈãÓÇÃçÇÇ≥
 	int OrderRange = 0;
 	//ç°ãÓÇ™âΩíiñ⁄Ç©
@@ -90,7 +108,10 @@ private:
 
 	std::unique_ptr<AngryEffect> angryEffect;
 
-	
+	double CursorHead = 0.0;
+	double CursorKoma = 0.0;
+	double CursorCatch = 0.0f;
 
+	bool CacthFlag = false;
 };
 

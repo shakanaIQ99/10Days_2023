@@ -75,5 +75,8 @@ private:
 	std::unique_ptr<Audience> audience = nullptr;
 	bool KomaCatch = false;
 	bool KeepCatch = false;
+
+	double CursorAdd = 0.0;
+	double CursorKeep = 0.0;
 };
 
