@@ -38,7 +38,7 @@ void Daruma::SlapEffect()
 		pos.y -= (Komaboxs.height * 2) * floar;
 
 		std::unique_ptr<SlapKoma> newSlapKoma;
-		newSlapKoma.reset(SlapKoma::Create(pos, GetKomaColor(*itr), { (float)Util::GetRand(-8,8),20 }));
+		newSlapKoma.reset(SlapKoma::Create(pos, GetKomaColor(*itr), { (float)Util::GetRand(-16,16),20 }));
 		slapKomas.push_back(std::move(newSlapKoma));
 
 		floar++;
