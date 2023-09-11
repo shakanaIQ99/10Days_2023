@@ -39,7 +39,7 @@ void GameScene::Init()
     Komas[0].width = ButtonWidth;
     Komas[0].height = Buttonheight;
 
-    KeepKoma.pos = { 0,0 };
+    KeepKoma.pos = KeepButton.pos;
     KeepKoma.width = ButtonWidth;
     KeepKoma.height = Buttonheight;
 
@@ -66,10 +66,10 @@ void GameScene::Update()
     KomaUpdate();
 
     pileEffect->Update();
-    if (KeepFlag)
+    /*if (KeepFlag)
     {
-        KeepKoma.pos = KeepButton.pos;
-    }
+        
+    }*/
     for (int i = 0; i < 2; i++)
     {
 	    daruma[i].Update();
@@ -106,10 +106,11 @@ void GameScene::ButtonsDraw()
     int floar = 0;
     for (auto itr = Komalist.begin(); itr != Komalist.end(); itr++)
     {
-        DrawBox(Komas[floar].pos, Komas[floar].width, Komas[floar].height, Daruma::GetKomaColor(*itr), true);
+        //DrawBox(Komas[floar].pos, Komas[floar].width, Komas[floar].height, Daruma::GetKomaColor(*itr), true);
+        DrawRotaGraph3(Komas[floar].pos, 1.6, 1.6, 0, Daruma::GetKomaColor(*itr));
         floar++;
     }
-    if (KeepFlag)DrawBox(KeepKoma.pos, KeepKoma.width, KeepKoma.height, Daruma::GetKomaColor(KeepSlot), true);
+    if (KeepFlag) DrawRotaGraph3(KeepKoma.pos, 1.6, 1.6, 0, Daruma::GetKomaColor(KeepSlot));
 }
 
 void GameScene::KomaUpdate()
@@ -119,26 +120,40 @@ void GameScene::KomaUpdate()
 
     if (Input::GetTriggerMouseLeftButton(AddButton))
     {
-        Komacatch = true;
+        KomaCatch = true;
     }
-    if (Komacatch)
+    if (Input::GetTriggerMouseLeftButton(KeepButton)&&KeepFlag)
+    {
+        KeepCatch = true;
+    }
+    if (KomaCatch)
     {
         Komas[0].pos = Input::GetMousePos();
         if (Input::GetReleaseMouseLeft())
         {
-            AddAction();
+            AddAction(KeepCatch);
+            KeepAction();
             Komas[0].pos = AddButton.pos;
-            Komacatch = false;
+            KomaCatch = false;
+
+        }
+    }
+    if (KeepCatch)
+    {
+        KeepKoma.pos = Input::GetMousePos();
+        if (Input::GetReleaseMouseLeft())
+        {
+            AddAction(KeepCatch);
+            KeepKoma.pos = KeepButton.pos;
+            KeepCatch = false;
+           
 
         }
     }
 
     HammerAction();
 
-    KeepAction();
-    
-
-  
+   
    
 }
 
@@ -181,7 +196,7 @@ void GameScene::KomaSlotUpdate()
 
 void GameScene::KeepAction()
 {
-    if (Input::GetTriggerMouseLeftButton(KeepButton))
+    if (Input::GetMouseHitBox(KeepButton))
     {
         Koma preKoma = KeepSlot;
         KeepSlot = Komalist.front();
@@ -192,6 +207,10 @@ void GameScene::KeepAction()
         }
         KeepFlag = true;
 
+    }
+    else
+    {
+        KeepKoma.pos = KeepButton.pos;
     }
 }
 
@@ -216,7 +235,7 @@ void GameScene::HammerAction()
     
 }
 
-void GameScene::AddAction()
+void GameScene::AddAction(bool keep)
 {
     for (int i = 0; i < 2; i++)
     {
@@ -224,8 +243,17 @@ void GameScene::AddAction()
         {
             if (!daruma[i].MaxKoma())
             {
-                daruma[i].ClickAddKoma(Komalist.front());
-                Komalist.erase(Komalist.begin());
+                if (keep)
+                {
+                    daruma[i].ClickAddKoma(KeepSlot);
+                    KeepFlag = false;
+                }
+                else
+                {
+                    daruma[i].ClickAddKoma(Komalist.front());
+                    Komalist.erase(Komalist.begin());
+                }
+                
                 for (size_t j = 0; j < 2; j++)
                 {
                     pileEffect->PileSet(daruma[i].GetKomaTransform().pos,
@@ -233,6 +261,13 @@ void GameScene::AddAction()
                 }
             }
 
+        }
+        else 
+        {
+            if (keep)
+            {
+                KeepKoma.pos = KeepButton.pos;
+            }
         }
     }
 }

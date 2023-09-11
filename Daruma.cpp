@@ -6,6 +6,17 @@
 
 using namespace Util;
 
+int Daruma::darumaFace;
+int Daruma::KomaGraph[sizeof(Koma)];
+
+void Daruma::TextureSet()
+{
+	darumaFace = LoadGraph(L"Resources/Daruma/daruma03.png");
+
+	LoadDivGraph(L"Resources/Daruma/koma.png", sizeof(Koma), sizeof(Koma), 1, 64, 32,KomaGraph);
+
+
+}
 void Daruma::Init(Vector2 pos)
 {
 	KomaReset();
@@ -34,7 +45,7 @@ void Daruma::Init(Vector2 pos)
 
 	angryEffect.reset(AngryEffect::Create());
 
-	darumaFace = LoadGraph(L"Resources/Daruma/daruma03.png");
+	
 
 }
 
@@ -82,8 +93,9 @@ void Daruma::Draw()
 		Vector2 pos = Orderboxs.pos;
 
 		pos.y -= (Orderboxs.height * 2) * Orderfloar;
-		DrawBox(pos, Orderboxs.width, Orderboxs.height, GetKomaColor(*itr), true);
-		DrawBox(pos, Orderboxs.width, Orderboxs.height, GetColor(0, 0, 0), false);
+		//DrawBox(pos, Orderboxs.width, Orderboxs.height, GetKomaColor(*itr), true);
+		DrawRotaGraph3(pos, 1.6, 1.6, 0, GetKomaColor(*itr));
+		//DrawBox(pos, Orderboxs.width, Orderboxs.height, GetColor(0, 0, 0), false);
 
 		Orderfloar++;
 
@@ -96,8 +108,9 @@ void Daruma::Draw()
 		Vector2 pos = Komaboxs.pos;
 
 		pos.y -= (Komaboxs.height * 2) * floar;
-		DrawBox(pos, Komaboxs.width, Komaboxs.height, GetKomaColor(*itr), true);
-		DrawBox(pos, Komaboxs.width, Komaboxs.height, GetColor(0, 0, 0), false);
+		//DrawBox(pos, Komaboxs.width, Komaboxs.height, GetKomaColor(*itr), true);
+		DrawRotaGraph3(pos, 1.6, 1.6, 0, GetKomaColor(*itr));
+		//DrawBox(pos, Komaboxs.width, Komaboxs.height, GetColor(0, 0, 0), false);
 
 		floar++;
 		Head.pos.y = pos.y - (Head.height + Komaboxs.height);
@@ -170,8 +183,7 @@ void Daruma::Order()
 {
 	KomaReset();
 
-	OrderRange = GetRand(3, 6);
-	//OrderRange = 6;
+	OrderRange = 4;
 	OrderNum = 0;
 
 	while (OrderNum < OrderRange)
@@ -190,20 +202,10 @@ void Daruma::Order()
 
 int Daruma::GetKomaColor(Koma a)
 {
-	switch (a)
-	{
-	case Koma::RED:
-		return GetColor(255, 0, 0);
-	case Koma::BLUE:
-		return GetColor(0, 0, 255);
-	case Koma::GREEN:
-		return GetColor(0, 255, 0);
-	case Koma::YELLOW:
-		return GetColor(255, 255, 0);
-	}
-
-	return GetColor(255, 255, 255);
+	return KomaGraph[(int)a];
 }
+
+
 
 bool Daruma::Comparison()
 {

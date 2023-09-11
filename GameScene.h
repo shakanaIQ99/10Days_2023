@@ -5,6 +5,12 @@
 #include "PileEffect.h"
 #include "Audience.h"
 
+enum struct GameType
+{
+	TUTORIAL,
+	MAIN
+};
+
 class GameScene
 {
 public:
@@ -31,7 +37,7 @@ private:
 
 	void HammerAction();
 
-	void AddAction();
+	void AddAction(bool keep);
 
 
 	BoxTransform AddButton;
@@ -48,7 +54,7 @@ private:
 	std::vector<Koma> Komalist;
 
 	bool Kyuusai = false;
-	
+
 
 	const int ButtonWidth = 50;
 	const int Buttonheight = 20;
@@ -67,5 +73,7 @@ private:
 	bool Komacatch = false;
 
 	std::unique_ptr<Audience> audience = nullptr;
+	bool KomaCatch = false;
+	bool KeepCatch = false;
 };
 

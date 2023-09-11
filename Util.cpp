@@ -11,10 +11,13 @@ void Util::DrawBox(Vector2 pos, int width, int width2, int height, int height2, 
 	DxLib::DrawBox((int)pos.x - width, (int)pos.y - height, (int)pos.x + width2, (int)pos.y + height2, color, fillflag);
 }
 
-void Util::DrawRoTaGraph3(Vector2 pos, double widthRateX, double heightRateX, float Angle, int Ghandle, int TransFlag, int TurnFlag)
+void Util::DrawRotaGraph3(Vector2 pos, double widthRateX, double heightRateX, float Angle, int Ghandle, int TransFlag, int TurnFlag)
 {
 
-	DxLib::DrawRotaGraph3((int)pos.x, (int)pos.y, (int)pos.x, (int)pos.y, widthRateX, heightRateX, Angle, Ghandle, TransFlag, TurnFlag, TurnFlag);
+	int sizex, sizey;
+	DxLib::GetGraphSize(Ghandle, &sizex, &sizey);
+
+	DxLib::DrawRotaGraph3((int)pos.x, (int)pos.y, sizex/2, sizey/2, widthRateX, heightRateX, Angle, Ghandle, TransFlag, TurnFlag, TurnFlag);
 
 }
 
