@@ -1,22 +1,20 @@
-#include "SlapKoma.h"
+#include "SlapHead.h"
 #include "Util.h"
 
-using namespace Util;
-
-SlapKoma* SlapKoma::Create(const Vector2& pos_, const int& texNum_, const Vector2& velocity_)
+SlapHead* SlapHead::Create(const Vector2& pos_, const int& texNum_, const Vector2& velocity_)
 {
-    SlapKoma* instance = new SlapKoma();
+    SlapHead* instance = new SlapHead();
     if (instance == nullptr)
     {
         return nullptr;
     }
 
-    instance->Init(pos_, texNum_,velocity_);
+    instance->Init(pos_, texNum_, velocity_);
 
     return instance;
 }
 
-void SlapKoma::Init(const Vector2& pos_, const int& texNum_, const Vector2& velocity_)
+void SlapHead::Init(const Vector2& pos_, const int& texNum_, const Vector2& velocity_)
 {
     box.pos = pos_;
     box.width = 32;
@@ -33,7 +31,7 @@ void SlapKoma::Init(const Vector2& pos_, const int& texNum_, const Vector2& velo
     speed = velocity_;
 }
 
-void SlapKoma::Update()
+void SlapHead::Update()
 {
     box.pos.x -= speed.x;
     box.pos.y -= speed.y;
@@ -50,14 +48,14 @@ void SlapKoma::Update()
     }
 }
 
-void SlapKoma::Draw()
+void SlapHead::Draw()
 {
     DxLib::SetDrawBlendMode(DX_BLENDMODE_ALPHA, alphaNum);
-    DrawRotaGraph(box.pos.x, box.pos.y, 1.5f, angle, texNum, true);
+    DrawRotaGraph(box.pos.x, box.pos.y, 1.0f, angle, texNum, true);
     DxLib::SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 }
 
-const bool SlapKoma::GetIsDead() const
+const bool SlapHead::GetIsDead() const
 {
     return isDead;
 }

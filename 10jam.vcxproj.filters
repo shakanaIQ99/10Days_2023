@@ -49,6 +49,7 @@
     <ClCompile Include="Ease.cpp">
       <Filter>ソースファイル</Filter>
     </ClCompile>
+    <ClCompile Include="SlapHead.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -155,6 +156,7 @@
     <ClInclude Include="Ease.h">
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
+    <ClInclude Include="SlapHead.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ソースファイル">

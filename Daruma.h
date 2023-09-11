@@ -6,6 +6,7 @@
 #include <list>
 #include <memory>
 #include "AngryEffect.h"
+#include "SlapHead.h"
 
 enum struct Koma : int
 {
@@ -64,6 +65,8 @@ public:
 	void SetCatchOn(bool catchflag);
 
 	std::vector<Koma> GetKomas();
+
+	void SlapEffect();
 	
 private:
 
@@ -105,6 +108,7 @@ private:
 
 	std::list<std::unique_ptr<SlapKoma>> slapKomas;
 
+	std::list<std::unique_ptr<SlapHead>> slapHeads;
 
 	std::unique_ptr<AngryEffect> angryEffect;
 

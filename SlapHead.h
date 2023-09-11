@@ -1,11 +1,10 @@
 #pragma once
-#include "Vector2.h"
 #include "struct.h"
 
-class SlapKoma
+class SlapHead
 {
 public:
-	static SlapKoma* Create(const Vector2& pos_, const int& texNum_, const Vector2& velocity_);
+	static SlapHead* Create(const Vector2& pos_, const int& texNum_, const Vector2& velocity_);
 
 	void Init(const Vector2& pos_, const int& texNum_, const Vector2& velocity_);
 

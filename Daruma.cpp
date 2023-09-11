@@ -27,6 +27,28 @@ std::vector<Koma> Daruma::GetKomas()
 
 	return prekoma;
 }
+
+void Daruma::SlapEffect()
+{
+	int floar = 0;
+	for (auto itr = koma.rbegin(); itr != koma.rend(); itr++)
+	{
+		Vector2 pos = Komaboxs.pos;
+
+		pos.y -= (Komaboxs.height * 2) * floar;
+
+		std::unique_ptr<SlapKoma> newSlapKoma;
+		newSlapKoma.reset(SlapKoma::Create(pos, GetKomaColor(*itr), { (float)Util::GetRand(-8,8),20 }));
+		slapKomas.push_back(std::move(newSlapKoma));
+
+		floar++;
+	}
+
+	std::unique_ptr<SlapHead> newSlapHead;
+	newSlapHead.reset(SlapHead::Create(Head.pos, darumaFace, { 20,20 }));
+	slapHeads.push_back(std::move(newSlapHead));
+}
+
 void Daruma::Init(Vector2 pos)
 {
 	KomaReset();
@@ -61,23 +83,8 @@ void Daruma::Init(Vector2 pos)
 
 void Daruma::KomaReset()
 {
-	int floar = 0;
-	for (auto itr = koma.rbegin(); itr != koma.rend(); itr++)
-	{
-		Vector2 pos = Komaboxs.pos;
-
-		pos.y -= (Komaboxs.height * 2) * floar;
-
-		std::unique_ptr<SlapKoma> newSlapKoma;
-		newSlapKoma.reset(SlapKoma::Create(pos, GetKomaColor(*itr), { (float)Util::GetRand(-8,8),20 }));
-		slapKomas.push_back(std::move(newSlapKoma));
-
-		floar++;
-	}
-
 	koma.clear();
 	orderkoma.clear();
-
 }
 
 void Daruma::Reaction()
@@ -135,10 +142,16 @@ void Daruma::Update()
 	}
 
 	slapKomas.remove_if([](std::unique_ptr<SlapKoma>& slapKoma) {return slapKoma->GetIsDead(); });
+	slapHeads.remove_if([](std::unique_ptr<SlapHead>& slapHead) {return slapHead->GetIsDead(); });
 
 	for (std::unique_ptr<SlapKoma>& slapKoma : slapKomas)
 	{
 		slapKoma->Update();
+	}
+
+	for (std::unique_ptr<SlapHead>& slapHead : slapHeads)
+	{
+		slapHead->Update();
 	}
 
 	angryEffect->Update();
@@ -185,6 +198,13 @@ void Daruma::Draw()
 	{
 		slapKoma->Draw();
 	}
+
+	for (std::unique_ptr<SlapHead>& slapHead : slapHeads)
+	{
+		slapHead->Draw();
+	}
+
+	DrawBox(DragAndDropArea.pos, DragAndDropArea.width, DragAndDropArea.height, GetColor(20, 120, 255), false);
 
 	if(debugBool)DrawBox(DragAndDropArea.pos, DragAndDropArea.width, DragAndDropArea.height, GetColor(20, 120, 255), false);
 

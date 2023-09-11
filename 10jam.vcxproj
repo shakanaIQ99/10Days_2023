@@ -153,6 +153,7 @@
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PileEffect.cpp" />
+    <ClCompile Include="SlapHead.cpp" />
     <ClCompile Include="SlapKoma.cpp" />
     <ClCompile Include="Star.cpp" />
     <ClCompile Include="Score.cpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="Input.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="PileEffect.h" />
+    <ClInclude Include="SlapHead.h" />
     <ClInclude Include="SlapKoma.h" />
     <ClInclude Include="Star.h" />
     <ClInclude Include="Score.h" />
