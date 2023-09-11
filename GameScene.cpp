@@ -53,6 +53,8 @@ void GameScene::Init()
         colorCounts = 0;
     }
 
+    audience.reset(Audience::Create());
+
     GameTime::Reset();
   
 }
@@ -72,6 +74,8 @@ void GameScene::Update()
     {
 	    daruma[i].Update();
     }
+
+    audience->Update();
 }
 
 void GameScene::Draw()
@@ -79,6 +83,9 @@ void GameScene::Draw()
     DrawGraph(0, 0, backGroundGame, TRUE);
     DrawGraph(200, 450, pedestal, TRUE);
     DrawGraph(780, 450, pedestal, TRUE);
+
+    audience->Draw();
+
     for (int i = 0; i < 2; i++)
     {
 	    daruma[i].Draw();

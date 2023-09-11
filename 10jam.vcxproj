@@ -145,7 +145,9 @@
   <ItemGroup>
     <ClCompile Include="Angry.cpp" />
     <ClCompile Include="AngryEffect.cpp" />
+    <ClCompile Include="Audience.cpp" />
     <ClCompile Include="Daruma.cpp" />
+    <ClCompile Include="Ease.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GameTime.cpp" />
     <ClCompile Include="Input.cpp" />
@@ -161,7 +163,9 @@
   <ItemGroup>
     <ClInclude Include="Angry.h" />
     <ClInclude Include="AngryEffect.h" />
+    <ClInclude Include="Audience.h" />
     <ClInclude Include="Daruma.h" />
+    <ClInclude Include="Ease.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GameTime.h" />
     <ClInclude Include="Input.h" />

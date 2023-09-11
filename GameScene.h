@@ -3,6 +3,7 @@
 #include"Daruma.h"
 
 #include "PileEffect.h"
+#include "Audience.h"
 
 class GameScene
 {
@@ -64,5 +65,7 @@ private:
 	int pedestal;
 
 	bool Komacatch = false;
+
+	std::unique_ptr<Audience> audience = nullptr;
 };
 
