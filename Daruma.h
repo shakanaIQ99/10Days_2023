@@ -17,9 +17,10 @@ enum struct Koma : int
 
 enum struct Dress :int
 {
-	BOOTS,
-	WEAR,
-	PANTS
+	ACCESSORY,
+	TOP,
+	BOTTOM,
+	BOOTS
 };
 
 
