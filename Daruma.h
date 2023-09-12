@@ -25,8 +25,8 @@ enum struct Dress :int
 
 struct DressKoma
 {
-	Koma koma;
-	Dress dress;
+	std::vector<Koma> koma;
+	std::vector<Dress> huku;
 };
 
 
@@ -36,6 +36,8 @@ class Daruma
 public:
 	static int GetKomaColor(Koma a);
 
+	static int GetDress(Dress a);
+
 	static void TextureSet();
 
 	
@@ -44,10 +46,17 @@ private:
 
 	static int KomaGraph[sizeof(Koma)];
 
+	static int DressGraph[sizeof(Dress)];
+
 	static int darumaFace;
 
 public:
 
+	/// <summary>
+	/// modeÇtrueÇ…Ç∑ÇÈÇ∆ÇÌÇ™Ç‹Ç‹ÉÇÅ[Éh
+	/// </summary>
+	/// <param name="pos"></param>
+	/// <param name="mode"></param>
 	void Init(Vector2 pos, bool mode = false);
 
 
@@ -56,6 +65,7 @@ public:
 	void Draw();
 
 	void ClickAddKoma(Koma add);
+	void ClickAddDress(Dress add);
 	void ClickRemoveKoma();
 
 	BoxTransform GetKomaTransform();
@@ -65,11 +75,18 @@ public:
 	bool GetBeKoma();
 	bool MaxKoma();
 
+	bool GetMode()
+	{
+		return DressMode;
+	}
+
 	void HeadReset();
 	void Order();
 	void DressOrder();
 
 	void SetCatchOn(bool catchflag);
+
+
 
 	std::vector<Koma> GetKomas();
 	
@@ -102,10 +119,11 @@ private:
 
 	float defY = 0;
 
+	DressKoma Wagamama;
+
 	std::vector<Koma> koma;
 	std::vector<Koma> orderkoma;
 
-	std::vector<Dress> huku;
 	std::vector<Dress> orderhuku;
 	//óvãÅÇ∑ÇÈãÓÇÃçÇÇ≥
 	int OrderRange = 0;

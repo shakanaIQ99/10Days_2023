@@ -1,5 +1,6 @@
 #include "DxLib.h"
 #include "Input.h"
+#include"Util.h"
 
 bool Input::GetKey(int key)
 {
@@ -57,9 +58,33 @@ Vector2 Input::GetMousePos()
 	return GetInstance()->Mousepos;
 }
 
+void Input::DrawCursor()
+{
+	Input* instance = GetInstance();
+
+	Util::DrawRotaGraph3(instance->Mousepos, 1.0, 1.0, 0, instance->GraphHandle[instance->isHanmmer]);
+
+}
+
+void Input::SetChengeCursor(bool isHanmmer_1)
+{
+	GetInstance()->isHanmmer = isHanmmer_1;
+}
+
 Input::Input()
 {
 	
+
+}
+
+void Input::SetTexture()
+{
+	Input* instance = GetInstance();
+
+	instance->GraphHandle[0] = LoadGraph(L"Resources/cursor/hand.png");
+	instance->GraphHandle[1] = LoadGraph(L"Resources/cursor/hammer.png");
+
+
 }
 
 Input* Input::GetInstance()
@@ -86,4 +111,7 @@ void Input::InputUpdate()
 	instance->MouseLeft = (GetMouseInput() & MOUSE_INPUT_LEFT);
 	// 最新のキーボード情報を取得
 	GetHitKeyStateAll(instance->keys);
+
+	// マウスを表示状態にする
+	SetMouseDispFlag(FALSE);
 }

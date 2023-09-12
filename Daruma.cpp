@@ -8,12 +8,15 @@ using namespace Util;
 
 int Daruma::darumaFace;
 int Daruma::KomaGraph[sizeof(Koma)];
+int Daruma::DressGraph[sizeof(Dress)];
 
 void Daruma::TextureSet()
 {
 	darumaFace = LoadGraph(L"Resources/Daruma/daruma01.png");
 
-	LoadDivGraph(L"Resources/Daruma/koma.png", sizeof(Koma), sizeof(Koma), 1, 64, 32,KomaGraph);
+	LoadDivGraph(L"Resources/Daruma/komaColor.png", sizeof(Koma), sizeof(Koma), 1, 64, 32,KomaGraph);
+
+	LoadDivGraph(L"Resources/Daruma/costume.png", sizeof(Dress), sizeof(Dress), 1, 64, 32, DressGraph);
 
 
 }
@@ -58,35 +61,36 @@ void Daruma::Init(Vector2 pos, bool mode)
 
 	angryEffect.reset(AngryEffect::Create());
 
-	
-
 }
 
 void Daruma::KomaReset()
 {
-	int floar = 0;
-	for (auto itr = koma.rbegin(); itr != koma.rend(); itr++)
+	if (!DressMode)
 	{
-		Vector2 pos = Komaboxs.pos;
+		int floar = 0;
+		for (auto itr = koma.rbegin(); itr != koma.rend(); itr++)
+		{
+			Vector2 pos = Komaboxs.pos;
 
-		pos.y -= (Komaboxs.height * 2) * floar;
+			pos.y -= (Komaboxs.height * 2) * floar;
 
-		std::unique_ptr<SlapKoma> newSlapKoma;
-		newSlapKoma.reset(SlapKoma::Create(pos, GetKomaColor(*itr), { (float)Util::GetRand(-8,8),20 }));
-		slapKomas.push_back(std::move(newSlapKoma));
+			std::unique_ptr<SlapKoma> newSlapKoma;
+			newSlapKoma.reset(SlapKoma::Create(pos, GetKomaColor(*itr), { (float)Util::GetRand(-8,8),20 }));
+			slapKomas.push_back(std::move(newSlapKoma));
 
-		floar++;
+			floar++;
+		}
+		koma.clear();
 	}
 
-	koma.clear();
+	Wagamama.koma.clear();
 	orderkoma.clear();
-
 }
 
 void Daruma::DressReset()
 {
 
-	huku.clear();
+	Wagamama.huku.clear();
 	orderhuku.clear();
 }
 
@@ -111,7 +115,7 @@ void Daruma::Reaction()
 		{
 			CursorKoma = 0.3;
 		}
-		if (Input::GetMouseHitBox(GetHead()))
+		if (Input::GetMouseHitBox(GetHead())&&!DressMode)
 		{
 			CursorHead = 0.3;
 		}
@@ -123,7 +127,19 @@ void Daruma::Reaction()
 
 void Daruma::Update()
 {
-	if (Input::GetTriggerKey(KEY_INPUT_R) || KomaComparison())
+
+	if (DressMode)
+	{
+		if (DressComparison() && KomaComparison())
+		{
+			Order();
+		}
+		else if (DressComparison())
+		{
+			Order();
+		}
+	}
+	else if(KomaComparison())
 	{
 		Order();
 	}
@@ -136,6 +152,10 @@ void Daruma::Update()
 	if (isSlap)
 	{
 		koma.pop_back();
+		if (DressMode)
+		{
+			Wagamama.huku.pop_back();
+		}
 		isSlap = false;
 	}
 
@@ -163,9 +183,25 @@ void Daruma::Draw()
 
 		pos.y -= (Orderboxs.height) * Orderfloar;
 		DrawRotaGraph3(pos, Komasize-0.6, Komasize-0.6, 0, GetKomaColor(*itr));
+
 		
 		Orderfloar++;
 
+	}
+	if (DressMode)
+	{
+		int OrderDressfloar = 0;
+		for (auto itr = orderhuku.rbegin(); itr != orderhuku.rend(); itr++)
+		{
+			Vector2 pos = Orderboxs.pos;
+
+			pos.y -= (Orderboxs.height) * OrderDressfloar;
+			DrawRotaGraph3(pos, Komasize - 0.6, Komasize - 0.6, 0, GetDress(*itr));
+
+
+			OrderDressfloar++;
+
+		}
 	}
 	
 	int floar = 0;
@@ -187,8 +223,25 @@ void Daruma::Draw()
 		floar++;
 		Head.pos.y = pos.y - (Head.height + Komaboxs.height);
 	}
-	//DrawBox(Head.pos, Head.width, Head.height, GetColor(0, 0, 0), true);
-	//DrawGraph(Head.pos.x - Head.width - 5, Head.pos.y - Head.height - 5, darumaFace, TRUE);
+	
+	int Dressfloar = 0;
+	for (auto itr = Wagamama.huku.rbegin(); itr != Wagamama.huku.rend(); itr++)
+	{
+		Vector2 pos = Komaboxs.pos;
+
+		pos.y -= (Komaboxs.height * 2) * Dressfloar;
+		if (floar == 0)
+		{
+			DrawRotaGraph3(pos, Komasize + CursorKoma, Komasize + CursorKoma, 0, GetDress(*itr));
+		}
+		else
+		{
+			DrawRotaGraph3(pos, Komasize + CursorCatch, Komasize + CursorCatch, 0, GetDress(*itr));
+		}
+
+		Dressfloar++;
+	}
+	
 	DrawRotaGraph3(Head.pos, 1.0+CursorHead, 1.0 + CursorHead, 0, darumaFace);
 
 	for (std::unique_ptr<SlapKoma>& slapKoma : slapKomas)
@@ -204,6 +257,11 @@ void Daruma::Draw()
 void Daruma::ClickAddKoma(Koma add)
 {
 	koma.push_back(add);
+}
+
+void Daruma::ClickAddDress(Dress add)
+{
+	if(DressMode)Wagamama.huku.push_back(add);
 }
 
 void Daruma::ClickRemoveKoma()
@@ -256,6 +314,11 @@ void Daruma::HeadReset()
 void Daruma::Order()
 {
 	KomaReset();
+
+	if (DressMode)
+	{
+		DressOrder();
+	}
 	
 
 	OrderRange = 4;
@@ -294,16 +357,21 @@ int Daruma::GetKomaColor(Koma a)
 	return KomaGraph[(int)a];
 }
 
+int Daruma::GetDress(Dress a)
+{
+	return DressGraph[(int)a];
+}
+
 
 
 bool Daruma::DressComparison()
 {
-	if (huku.size() == orderhuku.size())
+	if (Wagamama.huku.size() == orderhuku.size())
 	{
 		size_t clearNum = orderhuku.size();
 		for (int i = 0; i < orderhuku.size(); i++)
 		{
-			if (huku[i] == orderhuku[i])
+			if (Wagamama.huku[i] == orderhuku[i])
 			{
 				clearNum--;
 			}

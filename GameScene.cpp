@@ -8,7 +8,7 @@ using namespace Util;
 
 void GameScene::Init()
 {
-	daruma[0].Init(Vector2(WIN_WIDTH / 4, 470.0f));
+	daruma[0].Init(Vector2(WIN_WIDTH / 4, 470.0f),true);
     daruma[1].Init(Vector2((WIN_WIDTH / 4 )*3, 470.0f));
     for (int i = 0; i < 2; i++)
     {
@@ -46,7 +46,7 @@ void GameScene::Init()
    
     
     pileEffect.reset(PileEffect::Create());
-    Komalist.clear();
+    Komalist.koma.clear();
 
     for (int colorCounts: ColorCounts)
     {
@@ -64,10 +64,21 @@ void GameScene::Update()
 {
     CursorAdd = 0.0;
     CursorKeep = 0.0;
-    if (Input::GetMouseHitBox(AddButton))CursorAdd = 0.3;
-    if (Input::GetMouseHitBox(KeepButton))CursorKeep = 0.3;
+
+    if (Komacatch || Input::GetMouseHitBox(AddButton) || Input::GetMouseHitBox(KeepButton))
+    {
+        Input::SetChengeCursor(false);
+    }
+    else
+    {
+        Input::SetChengeCursor(true);
+    }
+
+    if (Input::GetMouseHitBox(AddButton)&&!Komacatch)CursorAdd = 0.3;
+    if (Input::GetMouseHitBox(KeepButton)&& !Komacatch)CursorKeep = 0.3;
     GameTime::DecreaseTime();
     KomaUpdate();
+
 
 
     pileEffect->Update();
@@ -109,7 +120,7 @@ void GameScene::ButtonsDraw()
     DrawBox(AddButton.pos, AddButton.width, AddButton.height, GetColor(255, 255, 0), false);
     DrawBox(KeepButton.pos, KeepButton.width, KeepButton.height, GetColor(0, 255, 255), false);
     int floar = 0;
-    for (auto itr = Komalist.begin(); itr != Komalist.end(); itr++)
+    for (auto itr = Komalist.koma.begin(); itr != Komalist.koma.end(); itr++)
     {
         if (floar == 0)
         {
@@ -124,7 +135,27 @@ void GameScene::ButtonsDraw()
         }
         floar++;
     }
-    if (KeepFlag) DrawRotaGraph3(KeepKoma.pos, 1.6 + CursorKeep, 1.6 + CursorKeep, 0, Daruma::GetKomaColor(KeepSlot));
+    int Dressfloar = 0;
+    for (auto itr = Komalist.huku.begin(); itr != Komalist.huku.end(); itr++)
+    {
+        if (Dressfloar == 0)
+        {
+            DrawRotaGraph3(Komas[Dressfloar].pos, 1.6 + CursorAdd, 1.6 + CursorAdd, 0, Daruma::GetDress(*itr));
+        }
+        else
+        {
+            Vector2 prePos = Komas[Dressfloar].pos;
+            prePos.y += 80.0f;
+
+            DrawRotaGraph3(prePos, 1.6, 1.6, 0, Daruma::GetDress(*itr));
+        }
+        Dressfloar++;
+    }
+    if (KeepFlag)
+    {
+        DrawRotaGraph3(KeepKoma.pos, 1.6 + CursorKeep, 1.6 + CursorKeep, 0, Daruma::GetKomaColor(KeepSlot));
+        DrawRotaGraph3(KeepKoma.pos, 1.6 + CursorKeep, 1.6 + CursorKeep, 0, Daruma::GetDress(KeepSlotDress));
+    }
 }
 
 void GameScene::KomaUpdate()
@@ -177,9 +208,10 @@ void GameScene::KomaUpdate()
 
 void GameScene::KomaSlotUpdate()
 {
-    if (Komalist.size() < 4)
+    if (Komalist.koma.size() < 4)
     {
         Koma AddKoma = static_cast<Koma>(GetRand(0, sizeof(Koma) - 1));
+        Dress AddDress = static_cast<Dress>(GetRand(0, sizeof(Dress) - 1));
         Kyuusai = false;
         switch (AddKoma)
         {
@@ -202,12 +234,17 @@ void GameScene::KomaSlotUpdate()
             if (ColorCounts[i] > 4)
             {
                 Kyuusai = true;
-                Komalist.push_back(static_cast<Koma>(i));
+                Komalist.koma.push_back(static_cast<Koma>(i));
+                Komalist.huku.push_back(AddDress);
                 ColorCounts[i] = 0;
                 break;
             }
         }
-        if (!Kyuusai)Komalist.push_back(AddKoma);
+        if (!Kyuusai)
+        {
+            Komalist.koma.push_back(AddKoma);
+            Komalist.huku.push_back(AddDress);
+        }
 
     }
 }
@@ -217,11 +254,17 @@ void GameScene::KeepAction()
     if (Input::GetMouseHitBox(KeepButton))
     {
         Koma preKoma = KeepSlot;
-        KeepSlot = Komalist.front();
-        Komalist.erase(Komalist.begin());
+        Dress preDress = KeepSlotDress;
+
+        KeepSlot = Komalist.koma.front();
+        KeepSlotDress = Komalist.huku.front();
+
+        Komalist.koma.erase(Komalist.koma.begin());
+        Komalist.huku.erase(Komalist.huku.begin());
         if (KeepFlag)
         {
-            Komalist.insert(Komalist.begin(), preKoma);
+            Komalist.koma.insert(Komalist.koma.begin(), preKoma);
+            Komalist.huku.insert(Komalist.huku.begin(), preDress);
         }
         KeepFlag = true;
 
@@ -246,6 +289,7 @@ void GameScene::HammerAction()
         }
         if (Input::GetTriggerMouseLeftButton(daruma[i].GetHead()))
         {
+            
             GameTime::LossTime(5);
             daruma[i].Order();
         }
@@ -264,12 +308,15 @@ void GameScene::AddAction(bool keep)
                 if (keep)
                 {
                     daruma[i].ClickAddKoma(KeepSlot);
+                    daruma[i].ClickAddDress(KeepSlotDress);
                     KeepFlag = false;
                 }
                 else
                 {
-                    daruma[i].ClickAddKoma(Komalist.front());
-                    Komalist.erase(Komalist.begin());
+                    daruma[i].ClickAddKoma(Komalist.koma.front());
+                    daruma[i].ClickAddDress(Komalist.huku.front());
+                    Komalist.koma.erase(Komalist.koma.begin());
+                    Komalist.huku.erase(Komalist.huku.begin());
                 }
                 
                 for (size_t j = 0; j < 2; j++)

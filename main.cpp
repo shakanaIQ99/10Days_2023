@@ -45,6 +45,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	// 画面の背景色を設定する
 	SetBackgroundColor(0xaa, 0xaa, 0xaa);
 
+	
+
 	// DXlibの初期化
 	if (DxLib_Init() == -1) { return -1; }
 
@@ -53,6 +55,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 	// 画像などのリソースデータの変数宣言と読み込み
 	Daruma::TextureSet();
+	Input::SetTexture();
 
 	// ゲームループで使う変数の宣言
 	SceneNum scene = SceneNum::TitleScene;
@@ -118,6 +121,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 			break;
 		}
+
+		Input::DrawCursor();
 
 		//---------  ここまでにプログラムを記述  ---------//
 		// (ダブルバッファ)裏面
