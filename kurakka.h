@@ -14,9 +14,9 @@ public:
 		WHITE
 	};
 
-	static Cracker* Create(const int& texNum_, const Vector2& pos_, const Vector2& velocity_);
+	static Cracker* Create(const int& texNum_, const Vector2& pos_, const Vector2& velocity_, const double& rate);
 
-	void Init(const int& texNum_, const Vector2& pos_, const Vector2& velocity_);
+	void Init(const int& texNum_, const Vector2& pos_, const Vector2& velocity_, const double& rate);
 
 	void Update();
 
@@ -40,7 +40,7 @@ private:
 	int32_t green = 0;
 	int32_t blue = 0;
 
-
+	double rate = 0;
 
 	CrackerColor crackerColor;
 };

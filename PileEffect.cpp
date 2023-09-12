@@ -91,22 +91,38 @@ void PileEffect::FanfarleSet()
 	{
 		std::unique_ptr<Cracker> newRight;
 		newRight.reset(Cracker::Create(texNum, { 1280,(float)Util::GetRand(WIN_HEIGHT / 2, WIN_HEIGHT * 2 / 3) },
-			{ -(float)(Util::GetRand(4,20)),(float)(Util::GetRand(10,35)) }));
+			{ -(float)(Util::GetRand(4,20)),(float)(Util::GetRand(10,35)) },0.5f));
 		crackers.push_back(std::move(newRight));
 
 		std::unique_ptr<Cracker> newFrameRight;
 		newFrameRight.reset(Cracker::Create(texNum2, { 1280,(float)Util::GetRand(WIN_HEIGHT / 2, WIN_HEIGHT * 2/3) },
-			{ -(float)(Util::GetRand(4,20)),(float)(Util::GetRand(10,35)) }));
+			{ -(float)(Util::GetRand(4,20)),(float)(Util::GetRand(10,35)) },0.5f));
 		crackers.push_back(std::move(newFrameRight));
 
 		std::unique_ptr<Cracker> newLeft;
 		newLeft.reset(Cracker::Create(texNum, { 0,(float)Util::GetRand(WIN_HEIGHT / 2, WIN_HEIGHT * 2 / 3) },
-			{ (float)(Util::GetRand(4,20)),(float)(Util::GetRand(10,35)) }));
+			{ (float)(Util::GetRand(4,20)),(float)(Util::GetRand(10,35)) }, 0.5f));
 		crackers.push_back(std::move(newLeft));
 
 		std::unique_ptr<Cracker> newFrameLeft;
 		newFrameLeft.reset(Cracker::Create(texNum2, { 0,(float)Util::GetRand(WIN_HEIGHT / 2, WIN_HEIGHT * 2 / 3) },
-			{ (float)(Util::GetRand(4,20)),(float)(Util::GetRand(10,35)) }));
+			{ (float)(Util::GetRand(4,20)),(float)(Util::GetRand(10,35)) }, 0.5f));
 		crackers.push_back(std::move(newFrameLeft));
+	}
+}
+
+void PileEffect::SmallCracker(const Vector2& pos_)
+{
+	for (size_t i = 0; i < 16; i++)
+	{
+		std::unique_ptr<Cracker> newCracker;
+		newCracker.reset(Cracker::Create(texNum, pos_,
+			{ (float)(Util::GetRand(-4,4)),(float)(Util::GetRand(10,35)) }, 0.2f));
+		crackers.push_back(std::move(newCracker));
+
+		std::unique_ptr<Cracker> newFrameCracker;
+		newFrameCracker.reset(Cracker::Create(texNum, pos_,
+			{ (float)(Util::GetRand(-4,4)),(float)(Util::GetRand(10,35)) }, 0.2f));
+		crackers.push_back(std::move(newFrameCracker));
 	}
 }
