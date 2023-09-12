@@ -287,10 +287,12 @@ void GameScene::HammerAction()
         }
         if (Input::GetTriggerMouseLeftButton(daruma[i].GetHead()))
         {
-            
-            GameTime::LossTime(5);
-            daruma[i].SlapEffect();
-            daruma[i].Order();
+            if (daruma[i].GetMode())
+            {
+                GameTime::LossTime(5);
+                daruma[i].SlapEffect();
+                daruma[i].Order();
+            }
         }
     }
     
