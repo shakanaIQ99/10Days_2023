@@ -99,7 +99,6 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			
 			//描画処理
 			titleScene->Draw();
-			DrawFormatString(500, 300, GetColor(255, 0, 0), L"TitleScene");
 
 			break;
 		case SceneNum::GameScene:

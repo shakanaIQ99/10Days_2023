@@ -16,5 +16,4 @@ void TitleScene::Update()
 void TitleScene::Draw()
 {
 	DxLib::DrawGraph(0, 0, title, TRUE);
-	Util::DrawBox(boxPos, width, height, DxLib::GetColor(255, 0, 0), true);
 }
