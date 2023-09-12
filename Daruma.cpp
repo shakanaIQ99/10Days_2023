@@ -286,9 +286,12 @@ void Daruma::Draw()
 		slapHead->Draw();
 	}
 
-	DrawBox(DragAndDropArea.pos, DragAndDropArea.width, DragAndDropArea.height, GetColor(20, 120, 255), false);
+	
 
-	if(debugBool)DrawBox(DragAndDropArea.pos, DragAndDropArea.width, DragAndDropArea.height, GetColor(20, 120, 255), false);
+	if (debugBool)
+	{
+		DrawBox(DragAndDropArea.pos, DragAndDropArea.width, DragAndDropArea.height, GetColor(20, 120, 255), false);
+	}
 
 	comitEffect->Draw();
 
