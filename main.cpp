@@ -116,6 +116,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			break;
 		case SceneNum::GameScene:
 
+			//アルファ値をリセット
+			titleScene->Reset();
+
 			if (GameTime::TimeUp())
 			{
 				sceneChangeEffect->EffectStart();
