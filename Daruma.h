@@ -19,9 +19,16 @@ enum struct Koma : int
 
 enum struct Dress :int
 {
-	BOOTS,
-	WEAR,
-	PANTS
+	ACCESSORY,
+	TOP,
+	BOTTOM,
+	BOOTS
+};
+
+struct DressKoma
+{
+	std::vector<Koma> koma;
+	std::vector<Dress> huku;
 };
 
 
@@ -31,6 +38,8 @@ class Daruma
 public:
 	static int GetKomaColor(Koma a);
 
+	static int GetDress(Dress a);
+
 	static void TextureSet();
 
 	
@@ -39,11 +48,18 @@ private:
 
 	static int KomaGraph[sizeof(Koma)];
 
+	static int DressGraph[sizeof(Dress)];
+
 	static int darumaFace;
 
 public:
 
-	void Init(Vector2 pos);
+	/// <summary>
+	/// modeをtrueにするとわがままモード
+	/// </summary>
+	/// <param name="pos"></param>
+	/// <param name="mode"></param>
+	void Init(Vector2 pos, bool mode = false);
 
 
 	void Update();
@@ -51,6 +67,7 @@ public:
 	void Draw();
 
 	void ClickAddKoma(Koma add);
+	void ClickAddDress(Dress add);
 	void ClickRemoveKoma();
 
 	BoxTransform GetKomaTransform();
@@ -60,10 +77,18 @@ public:
 	bool GetBeKoma();
 	bool MaxKoma();
 
+	bool GetMode()
+	{
+		return DressMode;
+	}
+
 	void HeadReset();
 	void Order();
+	void DressOrder();
 
 	void SetCatchOn(bool catchflag);
+
+
 
 	std::vector<Koma> GetKomas();
 
@@ -76,7 +101,14 @@ private:
 
 	void KomaReset();
 
+	void DressReset();
+
 	void Reaction();
+
+	bool DressComparison();
+	bool KomaComparison();
+
+	bool DressMode = false;
 
 	BoxTransform Orderboxs;
 	BoxTransform Head;
@@ -94,17 +126,24 @@ private:
 
 	float defY = 0;
 
+	DressKoma Wagamama;
+
 	std::vector<Koma> koma;
 	std::vector<Koma> orderkoma;
 
-	std::vector<Dress> huku;
 	std::vector<Dress> orderhuku;
 	//要求する駒の高さ
 	int OrderRange = 0;
 	//今駒が何段目か
 	int OrderNum = 0;
 
+	//要求する駒の高さ
+	int OrderHukuRange = 0;
+	//今駒が何段目か
+	int OrderHukuNum = 0;
+
 	bool Ordered = false;
+	bool DressOrdered = false;
 	
 	bool isSlap = false;
 

@@ -1,5 +1,6 @@
 #include "TitleScene.h"
 #include "Util.h"
+#include"Input.h"
 
 void TitleScene::Init()
 {
@@ -9,7 +10,7 @@ void TitleScene::Init()
 
 void TitleScene::Update()
 {
-	
+	Input::SetChengeCursor(true);
 }
 
 void TitleScene::Draw()

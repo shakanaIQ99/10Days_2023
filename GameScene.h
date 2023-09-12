@@ -21,6 +21,8 @@ public:
 
 	void Draw();
 
+	
+
 private:
 
 	Daruma daruma[2];
@@ -47,11 +49,13 @@ private:
 	BoxTransform KeepKoma;
 
 	int ColorCounts[sizeof(Koma)];
+	int DressCounts[sizeof(Dress)];
 
 	Koma KeepSlot;
+	Dress KeepSlotDress;
 	bool KeepFlag = false;;
 
-	std::vector<Koma> Komalist;
+	DressKoma Komalist;
 
 	bool Kyuusai = false;
 
