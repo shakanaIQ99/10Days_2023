@@ -52,7 +52,7 @@ void Daruma::SlapEffect()
 	slapHeads.push_back(std::move(newSlapHead));
 }
 
-void Daruma::Init(Vector2 pos)
+void Daruma::Init(Vector2 pos, bool mode)
 {
 	KomaReset();
 	DressReset();
@@ -154,22 +154,21 @@ void Daruma::Update()
 	{
 		if (DressComparison() && KomaComparison())
 		{
+			comitEffect->FanfarleSet();
 			Order();
 		}
 		else if (DressComparison())
 		{
+			comitEffect->FanfarleSet();
 			Order();
 		}
 	}
 	else if(KomaComparison())
 	{
-		Order();
-	}
-	if (Input::GetTriggerKey(KEY_INPUT_R) || Comparison())
-	{
 		comitEffect->FanfarleSet();
 		Order();
 	}
+	
 
 	Reaction();
 
