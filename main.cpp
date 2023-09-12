@@ -7,6 +7,7 @@
 #include"TitleScene.h"
 #include"GameTime.h"
 #include"Util.h"
+#include "SceneChangeEffect.h"
 
 template<class T> inline void SafeDelete(T*& p)
 {
@@ -68,6 +69,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 	std::unique_ptr<TitleScene> titleScene = std::make_unique<TitleScene>();
 	titleScene->Init();
+
+	std::unique_ptr<SceneChangeEffect> sceneChangeEffect;
+	sceneChangeEffect.reset(SceneChangeEffect::Create());
 	
 	// ゲームループ
 	while (true)
@@ -90,12 +94,21 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		case SceneNum::TitleScene:
 			if (Input::Input::GetTriggerMouseLeft())
 			{
+				sceneChangeEffect->EffectStart();
+			}
+
+			if (sceneChangeEffect->GetIsChange())
+			{
 				scene = SceneNum::GameScene;
 				gameScene->Init();
+				sceneChangeEffect->SetIsSceneChange(false);
 			}
 			
-			//更新処理
-			titleScene->Update();
+			if (!sceneChangeEffect->GetIsEffect())
+			{
+				//更新処理
+				titleScene->Update();
+			}
 			
 			//描画処理
 			titleScene->Draw();
@@ -105,11 +118,21 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 			if (GameTime::TimeUp())
 			{
+				sceneChangeEffect->EffectStart();
+			}
+
+			if (sceneChangeEffect->GetIsChange())
+			{
 				scene = SceneNum::TitleScene;
 				titleScene->Init();
+				sceneChangeEffect->SetIsSceneChange(false);
 			}
-			//更新処理
-			gameScene->Update();
+
+			if (!sceneChangeEffect->GetIsEffect())
+			{
+				//更新処理
+				gameScene->Update();
+			}
 
 			//描画処理
 			gameScene->Draw();
@@ -120,6 +143,10 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 			break;
 		}
+
+		sceneChangeEffect->Update();
+
+		sceneChangeEffect->Draw();
 
 		Input::DrawCursor();
 
