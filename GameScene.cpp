@@ -8,9 +8,12 @@ using namespace Util;
 
 void GameScene::Init()
 {
-	daruma[0].Init(Vector2(WIN_WIDTH / 4, 470.0f),true);
+	daruma[0].Init(Vector2(WIN_WIDTH / 4, 470.0f));
     daruma[1].Init(Vector2((WIN_WIDTH / 4 )*3, 470.0f));
-    for (int i = 0; i < 2; i++)
+
+    daruma[2].Init(Vector2((WIN_WIDTH / 2), 470.0f),true);
+
+    for (int i = 0; i < DarumaNum; i++)
     {
         daruma[i].Order();
     }
@@ -79,7 +82,7 @@ void GameScene::Update()
     GameTime::DecreaseTime();
     KomaUpdate();
 
-    for (int i = 0; i < 2; i++)
+    for (int i = 0; i < DarumaNum; i++)
     {
         daruma[i].SetCatchOn(Komacatch);
 	    daruma[i].Update();
@@ -94,12 +97,13 @@ void GameScene::Draw()
 {
     DrawGraph(0, 0, backGroundGame, TRUE);
     DrawRotaGraph3(Vector2(WIN_WIDTH / 4, 530.0f), 1.0, 1.0, 0, pedestal);
+    DrawRotaGraph3(Vector2(WIN_WIDTH / 2, 530.0f), 1.0, 1.0, 0, pedestal);
     DrawRotaGraph3(Vector2((WIN_WIDTH/4)*3, 530.0f), 1.0, 1.0, 0, pedestal);
     //DrawGraph(780, 450, pedestal, TRUE);
 
     audience->Draw();
 
-    for (int i = 0; i < 2; i++)
+    for (int i = 0; i < DarumaNum; i++)
     {
 	    daruma[i].Draw();
 
@@ -275,7 +279,7 @@ void GameScene::KeepAction()
 
 void GameScene::HammerAction()
 {
-    for (int i = 0; i < 2; i++)
+    for (int i = 0; i < DarumaNum; i++)
     {
         if (Input::GetTriggerMouseLeftButton(daruma[i].GetKomaTransform()))
         {
@@ -300,7 +304,7 @@ void GameScene::HammerAction()
 
 void GameScene::AddAction(bool keep)
 {
-    for (int i = 0; i < 2; i++)
+    for (int i = 0; i < DarumaNum; i++)
     {
         if (Input::GetMouseHitBox(daruma[i].GetDragAndDropArea()))
         {

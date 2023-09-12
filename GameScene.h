@@ -25,7 +25,10 @@ public:
 
 private:
 
-	Daruma daruma[2];
+	static const int DarumaNum = 3;
+
+	Daruma daruma[DarumaNum];
+
 
 	Daruma preDaruma;
 
