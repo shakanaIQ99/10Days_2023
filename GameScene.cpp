@@ -70,6 +70,10 @@ void GameScene::Init()
 	KomaSlotUpdate();
 
 	light.reset(Light::Create());
+
+	countDown.reset(CountDown::Create());
+
+	isGameStart = false;
 }
 
 
@@ -79,13 +83,11 @@ void GameScene::Update()
 	CursorKeep = 0.0;
 	Kyuusai = true;
 
-	if (startCountTimer > startCountTime)
+	countDown->Update();
+
+	if (countDown->GetIsStart())
 	{
 		isGameStart = true;
-	}
-	else
-	{
-		startCountTimer++;
 	}
 
 	if (Komacatch || Input::GetMouseHitBox(AddButton) || Input::GetMouseHitBox(KeepButton))
@@ -144,6 +146,8 @@ void GameScene::Draw()
     DrawFormatString(WIN_WIDTH/2-20, WIN_HEIGHT / 2, GetColor(255, 255, 255), L"Time:%d", GameTime::GetNowTime());
 
     Score::Draw();
+
+	countDown->Draw();
 
 }
 
