@@ -18,7 +18,7 @@ public:
 
 	void SetIsSceneChange(bool sceneChange_);
 
-	void EffectStart();
+	void EffectStart(bool isBlack_ = false);
 
 private:
 	int texNum = 0;
@@ -32,5 +32,7 @@ private:
 	bool isIn = false;
 
 	bool isOut = false;
+
+	bool isBlack = false;
 };
 

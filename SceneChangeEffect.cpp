@@ -58,7 +58,16 @@ void SceneChangeEffect::Update()
 void SceneChangeEffect::Draw()
 {
     DxLib::SetDrawBlendMode(DX_BLENDMODE_ALPHA, alphaNum);
+    if (isBlack)
+    {
+        DxLib::SetDrawBright(0, 0, 0);
+    }
+    else
+    {
+        DxLib::SetDrawBright(255, 255, 255);
+    }
     DxLib::DrawExtendGraph(0, 0, WIN_WIDTH, WIN_HEIGHT, texNum, true);
+    DxLib::SetDrawBright(255, 255, 255);
     DxLib::SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 }
 
@@ -77,11 +86,12 @@ void SceneChangeEffect::SetIsSceneChange(bool sceneChange_)
     sceneChange = sceneChange_;
 }
 
-void SceneChangeEffect::EffectStart()
+void SceneChangeEffect::EffectStart(bool isBlack_)
 {
     if (!isEffect)
     {
         isEffect = true;
         isIn = true;
+        isBlack = isBlack_;
     }
 }

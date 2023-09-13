@@ -151,7 +151,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 			if (Input::Input::GetTriggerMouseLeft())
 			{
-				sceneChangeEffect->EffectStart();
+				sceneChangeEffect->EffectStart(true);
 			}
 
 			if (sceneChangeEffect->GetIsChange())
