@@ -28,6 +28,6 @@ private:
 
 	uint32_t effectTimer = 0;
 
-	const uint32_t effectTime = 60;
+	const uint32_t effectTime = 120;
 };
 

@@ -27,11 +27,17 @@ void Light::Init()
     pos[2] = { 902,434 };
     pos[3] = { 1112,434 };
 
-    rot[0] = 0.1f;
-    rot[1] = 0.1f;
+    effectTimer = 0;
+    angle[0] = 0.7f;
+    angle[1] = 0.52f;
+    angle[2] = -0.7f;
+    angle[3] = -0.52f;
 
-    rot[2] = -0.1f;
-    rot[3] = -0.1f;
+    rot[0] = 0.05f;
+    rot[1] = 0.05f;
+
+    rot[2] = -0.05f;
+    rot[3] = -0.05f;
 }
 
 void Light::Update()
