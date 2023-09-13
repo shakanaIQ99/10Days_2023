@@ -100,5 +100,10 @@ private:
 	std::unique_ptr<Light> light = nullptr;
 
 	std::unique_ptr<CountDown> countDown = nullptr;
+
+	//SE•Ï”
+	int clickSE;
+	int getSE;
+	int putSE;
 };
 

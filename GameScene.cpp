@@ -18,6 +18,10 @@ void GameScene::Init()
 
     daruma[2].Init(Vector2((WIN_WIDTH / 2), 470.0f),true);
 
+	clickSE = LoadSoundMem(L"Resources/Music/click.mp3");
+	getSE = LoadSoundMem(L"Resources/Music/get.mp3");
+	putSE = LoadSoundMem(L"Resources/Music/put.mp3");
+
     for (int i = 0; i < DarumaNum; i++)
     {
         daruma[i].Order();
@@ -242,11 +246,16 @@ void GameScene::KomaUpdate()
 	{
 		KomaCatch = true;
 		Komacatch = true;
+
+		PlaySoundMem(getSE, DX_PLAYTYPE_BACK);
+
 	}
 	if (Input::GetTriggerMouseLeftButton(KeepButton) && KeepFlag)
 	{
 		KeepCatch = true;
 		Komacatch = true;
+
+		PlaySoundMem(getSE, DX_PLAYTYPE_BACK);
 	}
 	if (KomaCatch)
 	{
@@ -259,6 +268,7 @@ void GameScene::KomaUpdate()
 			KomaCatch = false;
 			Komacatch = false;
 
+			PlaySoundMem(putSE, DX_PLAYTYPE_BACK);
 		}
 	}
 	if (KeepCatch)
@@ -271,7 +281,7 @@ void GameScene::KomaUpdate()
 			KeepCatch = false;
 			Komacatch = false;
 
-
+			PlaySoundMem(putSE, DX_PLAYTYPE_BACK);
 		}
 	}
 
@@ -358,6 +368,8 @@ void GameScene::HammerAction()
     {
         if (Input::GetTriggerMouseLeftButton(daruma[i].GetKomaTransform()))
         {
+			PlaySoundMem(clickSE, DX_PLAYTYPE_BACK);
+
             if (daruma[i].GetBeKoma())
             {
                 daruma[i].ClickRemoveKoma();
@@ -366,6 +378,9 @@ void GameScene::HammerAction()
         }
         if (Input::GetTriggerMouseLeftButton(daruma[i].GetHead()))
         {
+
+			PlaySoundMem(clickSE, DX_PLAYTYPE_BACK);
+
             if (!daruma[i].GetMode())
             {
                 GameTime::LossTime(5);
