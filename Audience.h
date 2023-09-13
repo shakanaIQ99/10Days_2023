@@ -14,16 +14,20 @@ public:
 
 	void Draw();
 
-	void SetIsCheers(const bool isCheers_);
+	static void SetIsCheers(const bool isSccces = false);
 private:
 	std::array<BoxTransform,2> transform;
 
-	bool isCheers = false;
+	static bool isCheers;
 
 	size_t phase = 0;
 
 	float phaseTimer = 0;
 
-	const float phaseTime = 15;
+	static float phaseTime;
+
+	uint32_t effectTimer = 0;
+
+	static uint32_t effectTime;
 };
 

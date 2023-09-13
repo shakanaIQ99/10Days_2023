@@ -4,7 +4,7 @@
 #include"Util.h"
 #include"Score.h"
 #include"GameTime.h"
-
+#include "Audience.h"
 
 using namespace Util;
 
@@ -165,6 +165,8 @@ void Daruma::Update()
 			Score::AddScore(500 * WagamamaMacthColor());
 			GameTime::AddTime(3 * WagamamaMacthColor());
 			Order();
+			Score::AddScore(300);
+			GameTime::AddTime(5);
 		}
 	}
 	else
@@ -183,6 +185,7 @@ void Daruma::Update()
 			Order();
 			Score::AddScore(300);
 			GameTime::AddTime(5);
+			Audience::SetIsCheers(true);
 		}
 	}
 	
