@@ -19,7 +19,7 @@ private:
 	std::array<BoxTransform, 2> transforms;
 
 	uint32_t startCountTimer = 0;
-	const uint32_t startCountTime = 120;
+	const uint32_t startCountTime = 180;
 
 	uint32_t phase = 0;
 	
@@ -28,5 +28,7 @@ private:
 	float easeTime = 0;
 
 	bool isStart = false;
+
+	int texNum[4];
 };
 
