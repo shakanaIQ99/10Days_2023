@@ -30,7 +30,7 @@ void GameScene::Init()
 
 	for (int i = 0; i < 3; i++)
 	{
-		Komas[i + 1].pos = { ((float)WIN_WIDTH / 2.0f) + 160 + 160 * i,((float)WIN_HEIGHT / 6.0f) * 5.0f };
+		Komas[i + 1].pos = { ((float)WIN_WIDTH / 2.0f) + 160 + 160 * i,((float)WIN_HEIGHT / 6.0f) * 4.8f };
 		Komas[i + 1].width = ButtonWidth;
 		Komas[i + 1].height = Buttonheight;
 	}
@@ -43,7 +43,7 @@ void GameScene::Init()
 	KeepButton.width = 60;
 	KeepButton.height = 60;
 
-	railButton.pos = { (float)WIN_WIDTH / 1.22f,((float)WIN_HEIGHT / 8.0f) * 7.5f };
+	railButton.pos = { (float)WIN_WIDTH / 1.25f,((float)WIN_HEIGHT / 8.0f) * 7.3f };
 	railButton.width = 60;
 	railButton.height = 60;
 
