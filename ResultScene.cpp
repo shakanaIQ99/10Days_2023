@@ -8,7 +8,7 @@
 
 void ResultScene::SetTexture()
 {
-	HaikeiGHandle= LoadGraph(L"Resources/Scene/game.png");
+	HaikeiGHandle= LoadGraph(L"Resources/Scene/result.png");
 }
 
 void ResultScene::Init()
