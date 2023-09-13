@@ -48,6 +48,8 @@ private:
 	BoxTransform Komas[4];
 	BoxTransform KeepKoma;
 
+	BoxTransform railButton;
+
 	int ColorCounts[sizeof(Koma)];
 	int DressCounts[sizeof(Dress)];
 
@@ -73,6 +75,7 @@ private:
 	//リソース用変数
 	int backGroundGame;
 	int pedestal;
+	int frame[3];
 
 	bool Komacatch = false;
 
