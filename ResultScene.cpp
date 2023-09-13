@@ -54,15 +54,11 @@ void ResultScene::Draw()
 
 	while (i < 6)
 	{
-		Vector2 pos = { WIN_WIDTH / 2, WIN_HEIGHT / 4 };
+		Vector2 pos = { WIN_WIDTH * 2 / 3, WIN_HEIGHT / 4 };
 		pos.x = pos.x - (32 * (i - 3));
 		int j = scrNum % 10;
 		DrawGraph(pos.x, pos.y, Score::GetNumGHandle(j), true);
 		scrNum /= 10.0f;
 		i++;
 	}
-
-	//DrawFormatString(WIN_WIDTH / 2, WIN_HEIGHT / 4, GetColor(255, 255, 255), L"score:%d", resultScore);
-
-
 }
