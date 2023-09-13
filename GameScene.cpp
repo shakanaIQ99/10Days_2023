@@ -133,6 +133,38 @@ void GameScene::Draw()
 
 	Score::Draw();
 
+	int scrNum = GameTime::GetNowTime();
+	int i = 0;
+
+	while (i < 3)
+	{
+		Vector2 pos = { 300.0f, 250.0f };
+		pos.x = pos.x - (64 * (i - 1));
+		int j = scrNum % 10;
+		if (i == 2)
+		{
+			j = GameTime::GetNowTime() / 60;
+			pos.x -= 10.0f;
+		}
+		if (i == 1)
+		{
+			int pretime = GameTime::GetNowTime();
+
+			if (pretime <= 60)
+			{
+				pretime = GameTime::GetNowTime() + 60;
+			}
+			if (GameTime::GetNowTime() >= 120 || GameTime::GetNowTime() == 60)
+			{
+				pretime = 60;
+			}
+			j = (pretime - 60) / 10;
+		}
+		DrawExtendGraph(pos.x - 32, pos.y - 64, pos.x + 32, pos.y + 64, Score::GetNumGHandle(j), true);
+		scrNum /= 10.0f;
+		i++;
+	}
+
     for (int i = 0; i < DarumaNum; i++)
     {
 	    daruma[i].Draw();
@@ -141,38 +173,6 @@ void GameScene::Draw()
 	ButtonsDraw();
 
 	pileEffect->Draw();
-
-	int scrNum = GameTime::GetNowTime();
-	int i = 0;
-
-	while (i < 3)
-	{
-		Vector2 pos = { 300.0f, 250.0f };
-		pos.x = pos.x - (32 * (i - 1));
-		int j = scrNum % 10;
-		if(i==2)
-		{
-			j = GameTime::GetNowTime() / 60;
-			pos.x -= 10.0f;
-		}
-		if (i == 1)
-		{
-			int pretime = GameTime::GetNowTime();
-			
-			if (pretime <= 60)
-			{
-				pretime = GameTime::GetNowTime() + 60;
-			}
-			if (GameTime::GetNowTime() >= 120|| GameTime::GetNowTime() == 60)
-			{
-				pretime = 60;
-			}
-			j = (pretime -60) / 10;
-		}
-		DrawGraph(pos.x, pos.y, Score::GetNumGHandle(j), true);
-		scrNum /= 10.0f;
-		i++;
-	}
 
 	countDown->Draw();
 
