@@ -13,7 +13,7 @@ private:
 
 public:
 
-	void SetTexture();
+	static void SetTexture();
 	/// <summary>
 	/// ‰Šú‰»
 	/// </summary>

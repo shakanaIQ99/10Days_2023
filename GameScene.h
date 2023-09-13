@@ -22,7 +22,7 @@ public:
 
 	void Draw();
 
-	void SetTexture();
+	static void SetTexture();
 
 private:
 
