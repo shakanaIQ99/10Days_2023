@@ -5,6 +5,14 @@
 class Light
 {
 public:
+	enum struct LightColor : int
+	{
+		RED,
+		BLUE,
+		GREEN,
+		YELLOW
+	};
+
 	static Light* Create();
 
 	void Init();
@@ -14,6 +22,8 @@ public:
 	void Draw();
 
 	static void SetRot();
+
+	void GetCrackerColor();
 
 private:
 	int texNum = 0;
@@ -29,5 +39,13 @@ private:
 	uint32_t effectTimer = 0;
 
 	const uint32_t effectTime = 120;
+
+	int32_t red = 0;
+	int32_t green = 0;
+	int32_t blue = 0;
+
+	bool resultColor = false;
+
+	LightColor crackerColor;
 };
 

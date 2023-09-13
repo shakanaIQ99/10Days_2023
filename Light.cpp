@@ -38,12 +38,20 @@ void Light::Init()
 
     rot[2] = -0.05f;
     rot[3] = -0.05f;
+
+    resultColor = false;
 }
 
 void Light::Update()
 {
     if (isRot)
     {
+        if (!resultColor)
+        {
+            GetCrackerColor();
+            resultColor = true;
+        }
+
         effectTimer++;
 
         for (size_t i = 0; i < 4; i++)
@@ -68,6 +76,7 @@ void Light::Update()
         angle[1] = 0.52f;
         angle[2] = -0.7f;
         angle[3] = -0.52f;
+        resultColor = false;
     }
 }
 
@@ -75,11 +84,52 @@ void Light::Draw()
 {
     for (size_t i = 0; i < 4; i++)
     {
+        if (isRot)
+        {
+            DxLib::SetDrawBright(red, green, blue);
+        }
+        else
+        {
+            DxLib::SetDrawBright(255, 255, 255);
+        }
+
         Util::DrawRotaGraph3C(pos[i], 64, 255, 1.5f, 1.7f, angle[i], texNum, true);
+        DxLib::SetDrawBright(255, 255, 255);
     }
 }
 
 void Light::SetRot()
 {
     isRot = true;
+}
+
+void Light::GetCrackerColor()
+{
+    crackerColor = static_cast<LightColor>(Util::GetRand(0, 3));
+
+    switch (crackerColor)
+    {
+    case Light::LightColor::RED:
+        red = 173;
+        green = 22;
+        blue = 16;
+        break;
+    case Light::LightColor::BLUE:
+        red = 16;
+        green = 30;
+        blue = 173;
+        break;
+    case Light::LightColor::GREEN:
+        red = 47;
+        green = 183;
+        blue = 51;
+        break;
+    case Light::LightColor::YELLOW:
+        red = 244;
+        green = 220;
+        blue = 9;
+        break;
+    default:
+        break;
+    }
 }

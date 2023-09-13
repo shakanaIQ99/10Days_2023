@@ -49,8 +49,6 @@ void GameScene::Init()
 	KeepKoma.pos = KeepButton.pos;
 	KeepKoma.width = ButtonWidth;
 	KeepKoma.height = Buttonheight;
-
-   
     
     pileEffect.reset(PileEffect::Create());
     Komalist.koma.clear();
@@ -128,7 +126,6 @@ void GameScene::Draw()
     DrawRotaGraph3(Vector2(WIN_WIDTH / 4, 530.0f), 1.0, 1.0, 0, pedestal);
     DrawRotaGraph3(Vector2(WIN_WIDTH / 2, 530.0f), 1.0, 1.0, 0, pedestal);
     DrawRotaGraph3(Vector2((WIN_WIDTH/4)*3, 530.0f), 1.0, 1.0, 0, pedestal);
-    //DrawGraph(780, 450, pedestal, TRUE);
 
 	light->Draw();
 
@@ -196,10 +193,6 @@ void GameScene::SetTexture()
 
 void GameScene::ButtonsDraw()
 {
-
-	//DrawBox(AddButton.pos, AddButton.width, AddButton.height, GetColor(0, 255, 0), false);
-	//DrawBox(KeepButton.pos, KeepButton.width, KeepButton.height, GetColor(0, 255, 255), false);
-	
 	DrawRotaGraph3(AddButton.pos, 1.8, 1.9, 0, frame[0]);
 	DrawRotaGraph3(KeepButton.pos, 2, 2, 0, frame[1]);
 	DrawRotaGraph3(railButton.pos, 2.0, 1.3, 0, frame[2]);
@@ -283,9 +276,6 @@ void GameScene::KomaUpdate()
 	}
 
 	HammerAction();
-
-
-
 }
 
 void GameScene::KomaSlotUpdate()

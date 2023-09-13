@@ -5,6 +5,7 @@
 class CountDown
 {
 public:
+
 	static CountDown* Create();
 
 	void Init();

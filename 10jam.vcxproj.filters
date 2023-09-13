@@ -67,7 +67,9 @@
     <ClCompile Include="Easing.cpp">
       <Filter>ソースファイル</Filter>
     </ClCompile>
-    <ClCompile Include="CountDown.cpp" />
+    <ClCompile Include="CountDown.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -192,7 +194,9 @@
     <ClInclude Include="Easing.h">
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
-    <ClInclude Include="CountDown.h" />
+    <ClInclude Include="CountDown.h">
+      <Filter>ヘッダーファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ソースファイル">
