@@ -153,7 +153,7 @@ void GameScene::ButtonsDraw()
 	//DrawBox(AddButton.pos, AddButton.width, AddButton.height, GetColor(0, 255, 0), false);
 	//DrawBox(KeepButton.pos, KeepButton.width, KeepButton.height, GetColor(0, 255, 255), false);
 
-	DrawRotaGraph3(AddButton.pos, 2, 2, 0, frame[0]);
+	DrawRotaGraph3(AddButton.pos, 1.8, 1.8, 0, frame[0]);
 	DrawRotaGraph3(KeepButton.pos, 2, 2, 0, frame[1]);
 	DrawRotaGraph3(railButton.pos, 2.5, 1.5, 0, frame[2]);
 
