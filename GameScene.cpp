@@ -129,7 +129,7 @@ void GameScene::Draw()
 
 	light->Draw();
 
-	audience->Draw();
+	//audience->Draw();
 
 	Score::Draw();
 
@@ -191,6 +191,8 @@ void GameScene::SetTexture()
 	clickSE = LoadSoundMem(L"Resources/Music/click.mp3");
 	getSE = LoadSoundMem(L"Resources/Music/get.mp3");
 	putSE = LoadSoundMem(L"Resources/Music/put.mp3");
+
+	koronTex = LoadGraph(L"Resources/Text/koron.png");
 }
 
 

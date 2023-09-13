@@ -105,5 +105,7 @@ private:
 	int clickSE;
 	int getSE;
 	int putSE;
+
+	int32_t koronTex = 0;
 };
 
