@@ -89,22 +89,7 @@ void Daruma::Init(Vector2 pos, bool mode)
 
 void Daruma::KomaReset()
 {
-	if (!DressMode)
-	{
-		int floar = 0;
-		for (auto itr = koma.rbegin(); itr != koma.rend(); itr++)
-		{
-			Vector2 pos = Komaboxs.pos;
-
-			pos.y -= (Komaboxs.height * 2) * floar;
-
-			std::unique_ptr<SlapKoma> newSlapKoma;
-			newSlapKoma.reset(SlapKoma::Create(pos, GetKomaColor(*itr), { (float)Util::GetRand(-8,8),20 }));
-			slapKomas.push_back(std::move(newSlapKoma));
-
-			floar++;
-		}
-	}
+	
 	koma.clear();
 	orderkoma.clear();
 }
