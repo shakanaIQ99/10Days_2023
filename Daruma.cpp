@@ -136,9 +136,6 @@ void Daruma::Reaction()
 			CursorHead = 0.3;
 		}
 	}
-	
-
-
 }
 
 void Daruma::Update()
@@ -192,6 +189,7 @@ void Daruma::Update()
 			Score::AddScore(300);
 			GameTime::AddTime(5);
 			Audience::SetIsCheers();
+			Light::SetRot();
 		}
 	}
 	
