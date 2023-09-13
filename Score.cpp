@@ -35,10 +35,10 @@ void Score::Draw()
     
     while (i < 6)
     {
-        Vector2 pos = { 985.0f, 250.0f };
-        pos.x = pos.x - (32 * (i - 3));
+        Vector2 pos = { 955.0f, 230.0f };
+        pos.x = pos.x - (60 * (i - 3));
         int j = scrNum % 10;
-        DrawGraph(pos.x, pos.y,GetInstance()->NumGhandle[j], true);
+        DrawExtendGraph(pos.x - 30, pos.y - 64, pos.x + 30, pos.y + 64,GetInstance()->NumGhandle[j], true);
         scrNum /= 10.0f;
         i++;
     }

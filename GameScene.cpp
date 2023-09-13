@@ -131,6 +131,8 @@ void GameScene::Draw()
 
 	audience->Draw();
 
+	Score::Draw();
+
     for (int i = 0; i < DarumaNum; i++)
     {
 	    daruma[i].Draw();
@@ -171,9 +173,6 @@ void GameScene::Draw()
 		scrNum /= 10.0f;
 		i++;
 	}
-
-
-    Score::Draw();
 
 	countDown->Draw();
 
