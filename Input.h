@@ -4,7 +4,6 @@
 class Input
 {
 public:
-	Input();
 
 	static void SetTexture();
 

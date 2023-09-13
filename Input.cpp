@@ -74,11 +74,6 @@ void Input::SetChengeCursor(bool isHanmmer_1)
 	GetInstance()->isHanmmer = isHanmmer_1;
 }
 
-Input::Input()
-{
-	
-
-}
 
 void Input::SetTexture()
 {

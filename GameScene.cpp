@@ -7,9 +7,6 @@
 
 using namespace Util;
 
-int GameScene::backGroundGame;
-int GameScene::pedestal;
-int GameScene::frame[3];
 
 void GameScene::Init()
 {
@@ -18,9 +15,7 @@ void GameScene::Init()
 
     daruma[2].Init(Vector2((WIN_WIDTH / 2), 470.0f),true);
 
-	clickSE = LoadSoundMem(L"Resources/Music/click.mp3");
-	getSE = LoadSoundMem(L"Resources/Music/get.mp3");
-	putSE = LoadSoundMem(L"Resources/Music/put.mp3");
+	
 
     for (int i = 0; i < DarumaNum; i++)
     {
@@ -68,6 +63,7 @@ void GameScene::Init()
     GameTime::Reset();
   
     Kyuusai = false;
+	KeepFlag = false;
 	preDress = Dress::BOOTS;
 	KomaSlotUpdate();
 
@@ -192,6 +188,10 @@ void GameScene::SetTexture()
 	frame[0] = LoadGraph(L"Resources/Frame/mainFrame.png");
 	frame[1] = LoadGraph(L"Resources/Frame/subFrame.png");
 	frame[2] = LoadGraph(L"Resources/Frame/railFrame.png");
+
+	clickSE = LoadSoundMem(L"Resources/Music/click.mp3");
+	getSE = LoadSoundMem(L"Resources/Music/get.mp3");
+	putSE = LoadSoundMem(L"Resources/Music/put.mp3");
 }
 
 
@@ -379,10 +379,11 @@ void GameScene::HammerAction()
         if (Input::GetTriggerMouseLeftButton(daruma[i].GetHead()))
         {
 
-			PlaySoundMem(clickSE, DX_PLAYTYPE_BACK);
+			
 
             if (!daruma[i].GetMode())
             {
+				PlaySoundMem(clickSE, DX_PLAYTYPE_BACK);
                 GameTime::LossTime(5);
                 daruma[i].SlapEffect();
                 daruma[i].Order();

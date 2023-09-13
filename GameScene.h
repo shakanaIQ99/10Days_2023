@@ -23,7 +23,7 @@ public:
 
 	void Draw();
 
-	static void SetTexture();
+	void SetTexture();
 
 private:
 
@@ -82,9 +82,9 @@ private:
 	std::unique_ptr<PileEffect> pileEffect = nullptr;
 
 	//リソース用変数
-	static int backGroundGame;
-	static int pedestal;
-	static int frame[3];
+	int backGroundGame;
+	int pedestal;
+	int frame[3];
 
 	bool Komacatch = false;
 

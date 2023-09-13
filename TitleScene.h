@@ -13,7 +13,7 @@ private:
 
 public:
 
-	static void SetTexture();
+	void SetTexture();
 	/// <summary>
 	/// 初期化
 	/// </summary>
@@ -36,8 +36,8 @@ public:
 
 private:
 	//タイトル画像用変数
-	static int title;
-	static int click;
+	int title;
+	int click;
 
 	int color;
 	int alphaNum = 255;

@@ -4,8 +4,6 @@
 #include"Score.h"
 #include "main.h"
 
-int TitleScene::title;
-int TitleScene::click;
 
 void TitleScene::SetTexture()
 {

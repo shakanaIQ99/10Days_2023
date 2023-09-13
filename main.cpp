@@ -89,7 +89,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	std::unique_ptr<SceneChangeEffect> sceneChangeEffect;
 	sceneChangeEffect.reset(SceneChangeEffect::Create());
 
-
+	ChangeVolumeSoundMem(255 * 50 / 100, titleBGM);
+	ChangeVolumeSoundMem(255 * 80 / 100, gameBGM);
 
 	// ゲームループ
 	while (true)
@@ -113,7 +114,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			StopSoundMem(resultBGM);
 			isResultBGM = false;
 
-			if (isTitleBGM == false)
+			if (!isTitleBGM)
 			{
 				PlaySoundMem(titleBGM, DX_PLAYTYPE_LOOP);
 				isTitleBGM = true;
