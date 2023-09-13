@@ -61,3 +61,8 @@ const bool SlapKoma::GetIsDead() const
 {
     return isDead;
 }
+
+void SlapKoma::Reset()
+{
+    isDead = true;
+}

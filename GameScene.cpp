@@ -161,7 +161,7 @@ void GameScene::Draw()
 			{
 				pretime = GameTime::GetNowTime() + 60;
 			}
-			if (GameTime::GetNowTime() == 120|| GameTime::GetNowTime() == 60)
+			if (GameTime::GetNowTime() >= 120|| GameTime::GetNowTime() == 60)
 			{
 				pretime = 60;
 			}

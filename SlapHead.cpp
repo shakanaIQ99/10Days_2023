@@ -59,3 +59,8 @@ const bool SlapHead::GetIsDead() const
 {
     return isDead;
 }
+
+void SlapHead::Reset()
+{
+    isDead = true;
+}

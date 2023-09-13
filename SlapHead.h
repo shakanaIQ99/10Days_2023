@@ -14,6 +14,8 @@ public:
 
 	const bool GetIsDead() const;
 
+	void Reset();
+
 private:
 	BoxTransform box;
 

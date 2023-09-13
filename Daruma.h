@@ -95,9 +95,6 @@ public:
 	std::vector<Koma> GetKomas();
 
 	void SlapEffect();
-
-	// ¬Œ÷”»’è
-	bool Comparison();
 	
 private:
 

@@ -94,6 +94,24 @@ void Daruma::Init(Vector2 pos, bool mode)
 	angryEffect.reset(AngryEffect::Create());
 
 	comitEffect.reset(PileEffect::Create());
+
+	for (std::unique_ptr<SlapKoma>& slapKoma : slapKomas)
+	{
+		slapKoma->Reset();
+	}
+
+	for (std::unique_ptr<SlapHead>& slapHead : slapHeads)
+	{
+		slapHead->Reset();
+	}
+
+	slapKomas.remove_if([](std::unique_ptr<SlapKoma>& slapKoma) {return slapKoma->GetIsDead(); });
+	slapHeads.remove_if([](std::unique_ptr<SlapHead>& slapHead) {return slapHead->GetIsDead(); });
+
+	CursorHead = 0.0;
+	CursorKoma = 0.0;
+	CursorCatch = 0.0f;
+
 }
 
 void Daruma::KomaReset()
@@ -148,7 +166,7 @@ void Daruma::Update()
 			comitEffect->FanfarleSet();
 			Order();
 			Score::AddScore(5000);
-			GameTime::AddTime(15);
+			GameTime::AddTime(10);
 			Audience::SetIsCheers(true);
 			Light::SetRot();
 		}
@@ -165,10 +183,10 @@ void Daruma::Update()
 			}
 			comitEffect->FanfarleSet();
 			Score::AddScore(500 * WagamamaMacthColor());
-			GameTime::AddTime(3 * WagamamaMacthColor());
+			GameTime::AddTime(2 * WagamamaMacthColor());
 			Order();
 			Score::AddScore(300);
-			GameTime::AddTime(5);
+			GameTime::AddTime(2);
 			Audience::SetIsCheers();
 		}
 	}
