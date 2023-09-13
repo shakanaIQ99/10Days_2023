@@ -62,8 +62,11 @@ void Input::DrawCursor()
 {
 	Input* instance = GetInstance();
 
-	Util::DrawRotaGraph3(instance->Mousepos, 1.0, 1.0, 0, instance->GraphHandle[instance->isHanmmer]);
+	int sizex, sizey;
+	GetGraphSize(instance->GraphHandle[0], &sizex, &sizey);
 
+	//Util::DrawRotaGraph3(instance->Mousepos, sizex / 4, sizey / 4, 2.0, 2.0, 0, instance->GraphHandle[instance->isHanmmer]);
+	Util::DrawRotaGraph3C(instance->Mousepos, sizex / 4, sizey / 4, 2.0, 2.0, 0, instance->GraphHandle[instance->isHanmmer]);
 }
 
 void Input::SetChengeCursor(bool isHanmmer_1)

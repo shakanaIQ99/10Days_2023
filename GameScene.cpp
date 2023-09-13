@@ -291,7 +291,7 @@ void GameScene::HammerAction()
         }
         if (Input::GetTriggerMouseLeftButton(daruma[i].GetHead()))
         {
-            if (daruma[i].GetMode())
+            if (!daruma[i].GetMode())
             {
                 GameTime::LossTime(5);
                 daruma[i].SlapEffect();

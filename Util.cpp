@@ -24,6 +24,12 @@ void Util::DrawRotaGraph3(Vector2 pos, double widthRateX, double heightRateX, fl
 
 }
 
+void Util::DrawRotaGraph3C(Vector2 pos, int cx, int cy, double widthRateX, double heightRateX, float Angle, int Ghandle, int TransFlag, int TurnFlag)
+{
+	DxLib::DrawRotaGraph3((int)pos.x, (int)pos.y, cx, cy, widthRateX, heightRateX, Angle, Ghandle, TransFlag, TurnFlag, TurnFlag);
+
+}
+
 int Util::GetRand(int min, int max)
 {
 	std::random_device rd;

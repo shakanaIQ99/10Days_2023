@@ -126,11 +126,12 @@ private:
 
 	float defY = 0;
 
-	DressKoma Wagamama;
+	
 
 	std::vector<Koma> koma;
 	std::vector<Koma> orderkoma;
 
+	std::vector<Dress> huku;
 	std::vector<Dress> orderhuku;
 	//—v‹‚·‚é‹î‚Ì‚‚³
 	int OrderRange = 0;
