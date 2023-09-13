@@ -152,7 +152,15 @@ void Daruma::Update()
 		}
 		else if (DressComparison())
 		{
-			comitEffect->FanfarleSet();
+			float hogePosX = 60;
+			float hogePosY = 20;
+			for (size_t i = 0; i < 2; i++)
+			{
+				comitEffect->SmallCracker({ Head.pos.x + hogePosX,530.0f + hogePosY });
+				comitEffect->SmallCracker({ Head.pos.x - hogePosX,530.0f + hogePosY });
+				hogePosX *= 2;
+				hogePosY -= hogePosY;
+			}
 			Order();
 			Score::AddScore(300);
 			GameTime::AddTime(5);
@@ -162,7 +170,6 @@ void Daruma::Update()
 	{
 		if (KomaComparison())
 		{
-			//comitEffect->FanfarleSet();
 			float hogePosX = 60;
 			float hogePosY = 20;
 			for (size_t i = 0; i < 2; i++)
