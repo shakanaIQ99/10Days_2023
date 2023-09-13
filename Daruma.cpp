@@ -3,6 +3,7 @@
 #include"Input.h"
 #include"Util.h"
 #include"Score.h"
+#include"GameTime.h"
 
 
 using namespace Util;
@@ -156,12 +157,15 @@ void Daruma::Update()
 			comitEffect->FanfarleSet();
 			Order();
 			Score::AddScore(1000);
+			GameTime::AddTime(15);
+			
 		}
 		else if (DressComparison())
 		{
 			comitEffect->FanfarleSet();
 			Order();
 			Score::AddScore(300);
+			GameTime::AddTime(5);
 		}
 	}
 	else
@@ -180,6 +184,7 @@ void Daruma::Update()
 			}
 			Order();
 			Score::AddScore(300);
+			GameTime::AddTime(5);
 		}
 	}
 	

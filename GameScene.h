@@ -62,6 +62,8 @@ private:
 
 	bool Kyuusai = false;
 
+	bool KyuusaiSet = false;
+
 
 	const int ButtonWidth = 50;
 	const int Buttonheight = 20;

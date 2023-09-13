@@ -51,6 +51,7 @@ void GameScene::Init()
     
     pileEffect.reset(PileEffect::Create());
     Komalist.koma.clear();
+    Komalist.huku.clear();
 
     for (int colorCounts: ColorCounts)
     {
@@ -61,6 +62,7 @@ void GameScene::Init()
 
     GameTime::Reset();
   
+    Kyuusai = false;
 }
 
 
@@ -218,34 +220,31 @@ void GameScene::KomaSlotUpdate()
     {
         Koma AddKoma = static_cast<Koma>(GetRand(0, sizeof(Koma) - 1));
         Dress AddDress = static_cast<Dress>(GetRand(0, sizeof(Dress) - 1));
-        Kyuusai = false;
-        switch (AddKoma)
+       
+        if (Kyuusai)
         {
-        case Koma::RED:
-            ColorCounts[static_cast<int>(Koma::RED)] = 0;
-            break;
-        case Koma::BLUE:
-            ColorCounts[static_cast<int>(Koma::BLUE)] = 0;
-            break;
-        case Koma::GREEN:
-            ColorCounts[static_cast<int>(Koma::GREEN)] = 0;
-            break;
-        case Koma::YELLOW:
-            ColorCounts[static_cast<int>(Koma::YELLOW)] = 0;
-            break;
-        }
-        for (int i = 0; i < sizeof(Koma); i++)
-        {
-            ColorCounts[i]++;
-            if (ColorCounts[i] > 4)
+            for (int i = 0; i < sizeof(Koma); i++)
             {
-                Kyuusai = true;
-                Komalist.koma.push_back(static_cast<Koma>(i));
-                Komalist.huku.push_back(AddDress);
-                ColorCounts[i] = 0;
-                break;
+                for (auto itr = Komalist.koma.begin(); itr != Komalist.koma.end(); itr++)
+                {
+                    KyuusaiSet = true;
+                    if (*itr == static_cast<Koma>(i))
+                    {
+                        KyuusaiSet = false;
+                        break;
+                    }
+                }
+                if (KyuusaiSet)
+                {
+                    Komalist.koma.push_back(static_cast<Koma>(i));
+                    Komalist.huku.push_back(AddDress);
+                    break;
+                }
+
             }
+
         }
+        
         if (!Kyuusai)
         {
             Komalist.koma.push_back(AddKoma);
@@ -253,6 +252,11 @@ void GameScene::KomaSlotUpdate()
         }
 
     }
+    else
+    {
+        Kyuusai = true;
+    }
+
 }
 
 void GameScene::KeepAction()
