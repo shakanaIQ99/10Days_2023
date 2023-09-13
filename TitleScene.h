@@ -36,7 +36,7 @@ public:
 
 private:
 	//タイトル画像用変数
-	int title;
+	static int title;
 	int color;
 	int alphaNum = 255;
 

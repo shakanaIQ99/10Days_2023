@@ -3,6 +3,8 @@
 #include"Input.h"
 #include"Score.h"
 
+int TitleScene::title;
+
 void TitleScene::SetTexture()
 {
 	title = DxLib::LoadGraph(L"Resources/Scene/title.png");

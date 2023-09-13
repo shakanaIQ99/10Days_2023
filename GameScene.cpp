@@ -7,6 +7,11 @@
 
 using namespace Util;
 
+int GameScene::backGroundGame;
+int GameScene::pedestal;
+int GameScene::frame[3];
+int GameScene::mekuri;
+
 void GameScene::Init()
 {
 	daruma[0].Init(Vector2(WIN_WIDTH / 4, 470.0f));
@@ -18,15 +23,6 @@ void GameScene::Init()
     {
         daruma[i].Order();
     }
-
-	//リソース読み込み
-	backGroundGame = LoadGraph(L"Resources/Scene/game.png");
-	pedestal = LoadGraph(L"Resources/Scene/pedestal.png");
-
-	frame[0] = LoadGraph(L"Resources/Frame/mainFrame.png");
-	frame[1] = LoadGraph(L"Resources/Frame/subFrame.png");
-	frame[2] = LoadGraph(L"Resources/Frame/railFrame.png");
-
 
 	for (int i = 0; i < 3; i++)
 	{
@@ -150,6 +146,18 @@ void GameScene::Draw()
 
     Score::Draw();
 
+}
+
+void GameScene::SetTexture()
+{
+	//リソース読み込み
+	backGroundGame = LoadGraph(L"Resources/Scene/game.png");
+	pedestal = LoadGraph(L"Resources/Scene/pedestal.png");
+	mekuri = LoadGraph(L"Resources/Daruma/mekuriTable.png");
+
+	frame[0] = LoadGraph(L"Resources/Frame/mainFrame.png");
+	frame[1] = LoadGraph(L"Resources/Frame/subFrame.png");
+	frame[2] = LoadGraph(L"Resources/Frame/railFrame.png");
 }
 
 

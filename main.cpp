@@ -66,6 +66,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	GameTime::SetMaxTime(120);
 
 	std::unique_ptr<GameScene> gameScene = std::make_unique<GameScene>();
+	gameScene->SetTexture();
 	gameScene->Init();
 
 
