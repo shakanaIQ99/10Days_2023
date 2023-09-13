@@ -73,6 +73,8 @@ void GameScene::Init()
     Kyuusai = false;
 	preDress = Dress::BOOTS;
 	KomaSlotUpdate();
+
+	light.reset(Light::Create());
 }
 
 
@@ -119,6 +121,8 @@ void GameScene::Update()
 
 		audience->Update();
 	}
+
+	light->Update();
 }
 
 void GameScene::Draw()
@@ -128,6 +132,8 @@ void GameScene::Draw()
     DrawRotaGraph3(Vector2(WIN_WIDTH / 2, 530.0f), 1.0, 1.0, 0, pedestal);
     DrawRotaGraph3(Vector2((WIN_WIDTH/4)*3, 530.0f), 1.0, 1.0, 0, pedestal);
     //DrawGraph(780, 450, pedestal, TRUE);
+
+	light->Draw();
 
 	audience->Draw();
 

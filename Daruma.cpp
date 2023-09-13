@@ -6,6 +6,8 @@
 #include"GameTime.h"
 #include "Audience.h"
 
+#include "Light.h"
+
 using namespace Util;
 
 int Daruma::darumaFace;
@@ -187,6 +189,7 @@ void Daruma::Update()
 			Score::AddScore(300);
 			GameTime::AddTime(5);
 			Audience::SetIsCheers();
+			Light::SetRot();
 		}
 	}
 	

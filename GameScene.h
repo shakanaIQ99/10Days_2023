@@ -4,6 +4,7 @@
 
 #include "PileEffect.h"
 #include "Audience.h"
+#include "Light.h"
 
 enum struct GameType
 {
@@ -97,5 +98,7 @@ private:
 	const uint32_t startCountTime = 120;
 
 	bool isGameStart = false;
+
+	std::unique_ptr<Light> light = nullptr;
 };
 
