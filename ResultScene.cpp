@@ -4,7 +4,7 @@
 #include"Easing.h"
 #include"main.h"
 #include"Input.h"
-
+#include "Ease.h"
 
 void ResultScene::SetTexture()
 {
@@ -22,8 +22,10 @@ void ResultScene::Update()
 {
 	if (sceneNum == 0)
 	{
-		resultScore = (int)easeOutQuint(0, (double)Score::GetScore(), (double)timer, 120.0);
 		timer++;
+
+		resultScore = static_cast<int>(Ease::OutQuadFloat(0, (float)Score::GetScore(), (float)timer / 120));
+
 		if (timer >= 120)
 		{
 			timer = 120;

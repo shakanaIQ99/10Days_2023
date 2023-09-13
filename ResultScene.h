@@ -21,6 +21,6 @@ private:
 
 	int resultScore = 0;
 
-	int timer = 0;
+	float timer = 0;
 };
 
