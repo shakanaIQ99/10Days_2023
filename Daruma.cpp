@@ -2,6 +2,7 @@
 #include<stdlib.h>
 #include"Input.h"
 #include"Util.h"
+#include"Score.h"
 
 
 using namespace Util;
@@ -154,11 +155,13 @@ void Daruma::Update()
 		{
 			comitEffect->FanfarleSet();
 			Order();
+			Score::AddScore(1000);
 		}
 		else if (DressComparison())
 		{
 			comitEffect->FanfarleSet();
 			Order();
+			Score::AddScore(300);
 		}
 	}
 	else
@@ -176,6 +179,7 @@ void Daruma::Update()
 				hogePosY -= hogePosY;
 			}
 			Order();
+			Score::AddScore(300);
 		}
 	}
 	

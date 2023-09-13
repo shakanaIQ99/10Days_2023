@@ -4,10 +4,11 @@
 #include "main.h"
 #include "TitleScene.h"
 #include<memory>
-#include"TitleScene.h"
 #include"GameTime.h"
 #include"Util.h"
 #include "SceneChangeEffect.h"
+#include"ResultScene.h"
+#include"Score.h"
 
 template<class T> inline void SafeDelete(T*& p)
 {
@@ -57,18 +58,22 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	// 画像などのリソースデータの変数宣言と読み込み
 	Daruma::TextureSet();
 	Input::SetTexture();
+	Score::SetTexture();
 
 	// ゲームループで使う変数の宣言
 	SceneNum scene = SceneNum::TitleScene;
 
 	GameTime::SetMaxTime(60);
 
-	GameScene* gameScene = nullptr;
-	gameScene = new GameScene();
+	std::unique_ptr<GameScene> gameScene = std::make_unique<GameScene>();
 	gameScene->Init();
 
 	std::unique_ptr<TitleScene> titleScene = std::make_unique<TitleScene>();
+	titleScene->SetTexture();
 	titleScene->Init();
+
+	std::unique_ptr<ResultScene> resultScene = std::make_unique<ResultScene>();
+	resultScene->Init();
 
 	std::unique_ptr<SceneChangeEffect> sceneChangeEffect;
 	sceneChangeEffect.reset(SceneChangeEffect::Create());
@@ -126,8 +131,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 			if (sceneChangeEffect->GetIsChange())
 			{
-				scene = SceneNum::TitleScene;
-				titleScene->Init();
+				scene = SceneNum::ResultScene;
+				resultScene->Init();
 				sceneChangeEffect->SetIsSceneChange(false);
 			}
 
@@ -143,6 +148,28 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 			break;
 		case SceneNum::ResultScene:
+
+			if (Input::Input::GetTriggerMouseLeft())
+			{
+				sceneChangeEffect->EffectStart();
+			}
+
+			if (sceneChangeEffect->GetIsChange())
+			{
+				scene = SceneNum::TitleScene;
+				titleScene->Init();
+				sceneChangeEffect->SetIsSceneChange(false);
+			}
+
+			if (!sceneChangeEffect->GetIsEffect())
+			{
+				//更新処理
+				resultScene->Update();
+			}
+
+			//描画処理
+			resultScene->Draw();
+
 
 			break;
 		}
@@ -174,7 +201,6 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	}
 	// Dxライブラリ終了処理
 	InitGraph();
-	SafeDelete(gameScene);
 	DxLib_End();
 
 	// 正常終了

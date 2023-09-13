@@ -12,6 +12,8 @@ private:
 	int height = 720;
 
 public:
+
+	void SetTexture();
 	/// <summary>
 	/// ‰Šú‰»
 	/// </summary>

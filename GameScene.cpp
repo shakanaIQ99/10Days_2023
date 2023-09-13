@@ -3,6 +3,7 @@
 #include"Util.h"
 #include"main.h"
 #include"GameTime.h"
+#include"Score.h"
 
 using namespace Util;
 
@@ -113,6 +114,9 @@ void GameScene::Draw()
     pileEffect->Draw();
 
     DrawFormatString(WIN_WIDTH/2-20, WIN_HEIGHT / 2, GetColor(255, 255, 255), L"Time:%d", GameTime::GetNowTime());
+
+    Score::Draw();
+
 }
 
 

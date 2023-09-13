@@ -6,6 +6,8 @@ public:
 
 	static GameTime* GetInstance();
 
+	static void SetTexture();
+
 	static void Reset();
 
 	/// <summary>
