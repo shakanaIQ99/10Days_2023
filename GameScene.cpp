@@ -136,15 +136,18 @@ void GameScene::Draw()
 	int scrNum = GameTime::GetNowTime();
 	int i = 0;
 
+	DrawExtendGraph(272 - 32, 250 - 64, 272 + 32, 250 + 64,
+		koronTex, true);
+
 	while (i < 3)
 	{
-		Vector2 pos = { 300.0f, 250.0f };
+		Vector2 pos = { 320.0f, 250.0f };
 		pos.x = pos.x - (64 * (i - 1));
 		int j = scrNum % 10;
 		if (i == 2)
 		{
 			j = GameTime::GetNowTime() / 60;
-			pos.x -= 10.0f;
+			pos.x -= 30.0f;
 		}
 		if (i == 1)
 		{
