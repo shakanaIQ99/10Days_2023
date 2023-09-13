@@ -1,4 +1,5 @@
 #include "GameTime.h"
+#include "Score.h"
 
 GameTime* GameTime::GetInstance()
 {
