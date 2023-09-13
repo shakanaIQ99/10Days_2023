@@ -71,6 +71,7 @@ void GameScene::Init()
     GameTime::Reset();
   
     Kyuusai = false;
+	KomaSlotUpdate();
 }
 
 
@@ -78,6 +79,7 @@ void GameScene::Update()
 {
 	CursorAdd = 0.0;
 	CursorKeep = 0.0;
+	Kyuusai = true;
 
 	if (Komacatch || Input::GetMouseHitBox(AddButton) || Input::GetMouseHitBox(KeepButton))
 	{
@@ -91,6 +93,7 @@ void GameScene::Update()
 	if (Input::GetMouseHitBox(AddButton) && !Komacatch)CursorAdd = 0.3;
 	if (Input::GetMouseHitBox(KeepButton) && !Komacatch)CursorKeep = 0.3;
 	GameTime::DecreaseTime();
+	KomaSlotUpdate();
 	KomaUpdate();
 
     for (int i = 0; i < DarumaNum; i++)
@@ -181,9 +184,6 @@ void GameScene::ButtonsDraw()
 
 void GameScene::KomaUpdate()
 {
-
-	KomaSlotUpdate();
-
 	if (Input::GetTriggerMouseLeftButton(AddButton))
 	{
 		KomaCatch = true;
@@ -229,7 +229,7 @@ void GameScene::KomaUpdate()
 
 void GameScene::KomaSlotUpdate()
 {
-    if (Komalist.koma.size() < 4)
+	while(Komalist.koma.size() < 4)
     {
         Koma AddKoma = static_cast<Koma>(GetRand(0, sizeof(Koma) - 1));
         Dress AddDress = static_cast<Dress>(GetRand(0, sizeof(Dress) - 1));
@@ -265,11 +265,7 @@ void GameScene::KomaSlotUpdate()
         }
 
     }
-    else
-    {
-        Kyuusai = true;
-    }
-
+   
 }
 
 void GameScene::KeepAction()
