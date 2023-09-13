@@ -58,6 +58,8 @@ private:
 
 	Koma KeepSlot;
 	Dress KeepSlotDress;
+
+	Dress preDress = Dress::BOOTS;
 	bool KeepFlag = false;;
 
 	DressKoma Komalist;

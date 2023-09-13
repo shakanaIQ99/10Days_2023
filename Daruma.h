@@ -108,6 +108,8 @@ private:
 	bool DressComparison();
 	bool KomaComparison();
 
+	int WagamamaMacthColor();
+
 	bool DressMode = false;
 
 	BoxTransform Orderboxs;

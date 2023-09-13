@@ -146,7 +146,7 @@ void Daruma::Update()
 		{
 			comitEffect->FanfarleSet();
 			Order();
-			Score::AddScore(1000);
+			Score::AddScore(5000);
 			GameTime::AddTime(15);
 			
 		}
@@ -161,9 +161,10 @@ void Daruma::Update()
 				hogePosX *= 2;
 				hogePosY -= hogePosY;
 			}
+			comitEffect->FanfarleSet();
+			Score::AddScore(500 * WagamamaMacthColor());
+			GameTime::AddTime(3 * WagamamaMacthColor());
 			Order();
-			Score::AddScore(300);
-			GameTime::AddTime(5);
 		}
 	}
 	else
@@ -492,4 +493,23 @@ bool Daruma::KomaComparison()
 		}
 	}
 	return false;
+}
+
+int Daruma::WagamamaMacthColor()
+{
+	int clearNum = 0;
+	if (koma.size() == orderkoma.size())
+	{
+		
+		for (int i = 0; i < orderkoma.size(); i++)
+		{
+			if (koma[i] == orderkoma[i])
+			{
+				clearNum++;
+			}
+			
+		}
+	}
+
+	return clearNum;
 }

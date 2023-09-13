@@ -71,6 +71,7 @@ void GameScene::Init()
     GameTime::Reset();
   
     Kyuusai = false;
+	preDress = Dress::BOOTS;
 	KomaSlotUpdate();
 }
 
@@ -242,10 +243,17 @@ void GameScene::KomaUpdate()
 
 void GameScene::KomaSlotUpdate()
 {
+	Dress AddDress;
+
 	while(Komalist.koma.size() < 4)
     {
         Koma AddKoma = static_cast<Koma>(GetRand(0, sizeof(Koma) - 1));
-        Dress AddDress = static_cast<Dress>(GetRand(0, sizeof(Dress) - 1));
+		do
+		{
+			AddDress = static_cast<Dress>(GetRand(0, sizeof(Dress) - 1));
+		} while (preDress == AddDress);
+		
+		preDress = AddDress;
        
         if (Kyuusai)
         {
