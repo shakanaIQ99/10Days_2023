@@ -189,7 +189,6 @@ void Daruma::Update()
 			Score::AddScore(300);
 			GameTime::AddTime(5);
 			Audience::SetIsCheers();
-			Light::SetRot();
 		}
 	}
 	
