@@ -23,6 +23,8 @@ public:
 
 	void FanfarleSet();
 
+	void SmallCracker(const Vector2& pos_);
+
 private:
 	std::list<std::unique_ptr<Star>> objects;
 	std::list<std::unique_ptr<Cracker>> crackers;

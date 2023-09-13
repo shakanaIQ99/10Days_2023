@@ -55,6 +55,9 @@
     <ClCompile Include="kurakka.cpp">
       <Filter>ソースファイル</Filter>
     </ClCompile>
+    <ClCompile Include="SceneChangeEffect.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -165,6 +168,9 @@
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
     <ClInclude Include="SlapHead.h">
+      <Filter>ヘッダーファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneChangeEffect.h">
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
   </ItemGroup>

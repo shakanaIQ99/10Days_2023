@@ -7,6 +7,10 @@
 /// </summary>
 class TitleScene
 {
+private:
+	int width = 1280;
+	int height = 720;
+
 public:
 	/// <summary>
 	/// 初期化
@@ -23,12 +27,17 @@ public:
 	/// </summary>
 	void Draw();
 
+	/// <summary>
+	/// リセット関数
+	/// </summary>
+	void Reset();
+
 private:
 	//タイトル画像用変数
 	int title;
-	
+	int color;
+	int alphaNum = 255;
+
 	Vector2 boxPos;
-	int width = 100;
-	int height = 100;
 };
 

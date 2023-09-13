@@ -2,7 +2,7 @@
 #include "main.h"
 #include "Util.h"
 
-Cracker* Cracker::Create(const int& texNum_, const Vector2& pos_, const Vector2& velocity_)
+Cracker* Cracker::Create(const int& texNum_, const Vector2& pos_, const Vector2& velocity_, const double& rate)
 {
     Cracker* instance = new Cracker();
     if (instance == nullptr)
@@ -10,12 +10,12 @@ Cracker* Cracker::Create(const int& texNum_, const Vector2& pos_, const Vector2&
         return nullptr;
     }
 
-    instance->Init(texNum_, pos_, velocity_);
+    instance->Init(texNum_, pos_, velocity_, rate);
 
     return instance;
 }
 
-void Cracker::Init(const int& texNum_, const Vector2& pos_, const Vector2& velocity_)
+void Cracker::Init(const int& texNum_, const Vector2& pos_, const Vector2& velocity_, const double& rate)
 {
     texNum = texNum_;
 
@@ -26,6 +26,8 @@ void Cracker::Init(const int& texNum_, const Vector2& pos_, const Vector2& veloc
     isDead = false;
 
     angle = 0;
+
+    this->rate = rate;
 
     GetCrackerColor();
 }
@@ -48,7 +50,7 @@ void Cracker::Update()
 void Cracker::Draw()
 {
     DxLib::SetDrawBright(red, green, blue);
-    DxLib::DrawRotaGraph(pos.x, pos.y, 0.5f, angle, texNum, true);
+    DxLib::DrawRotaGraph(pos.x, pos.y, rate, angle, texNum, true);
     DxLib::SetDrawBright(255, 255, 255);
 }
 
