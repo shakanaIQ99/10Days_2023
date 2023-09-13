@@ -153,6 +153,7 @@ void Daruma::Update()
 			Score::AddScore(5000);
 			GameTime::AddTime(15);
 			Audience::SetIsCheers(true);
+			Light::SetRot();
 		}
 		else if (DressComparison())
 		{
@@ -191,7 +192,6 @@ void Daruma::Update()
 			Score::AddScore(300);
 			GameTime::AddTime(5);
 			Audience::SetIsCheers();
-			Light::SetRot();
 		}
 	}
 	
