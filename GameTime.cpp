@@ -6,6 +6,10 @@ GameTime* GameTime::GetInstance()
 	return &instance;
 }
 
+void GameTime::SetTexture()
+{
+}
+
 void GameTime::Reset()
 {
 	GameTime* instance = GetInstance();

@@ -25,6 +25,11 @@ namespace Util
 	/// </summary>
 	void DrawRotaGraph3(Vector2 pos, double widthRateX, double heightRateX, float Angle, int Ghandle, int TransFlag = 1, int TurnFlag = 0);
 
+	/// <summary>
+	/// 中心座標指定版
+	/// </summary>
+	void DrawRotaGraph3C(Vector2 pos,int cx,int cy, double widthRateX, double heightRateX, float Angle, int Ghandle, int TransFlag = 1, int TurnFlag = 0);
+
 	//void DrawExtendGraph(Vector2 pos, Vector2 pos, int width, int height, int color, bool fillflag)
 
 	//乱数生成(一様分布)

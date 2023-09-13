@@ -58,6 +58,7 @@
     <ClCompile Include="SceneChangeEffect.cpp">
       <Filter>ソースファイル</Filter>
     </ClCompile>
+    <ClCompile Include="ResultScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -173,6 +174,7 @@
     <ClInclude Include="SceneChangeEffect.h">
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
+    <ClInclude Include="ResultScene.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ソースファイル">

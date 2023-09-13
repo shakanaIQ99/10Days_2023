@@ -2,6 +2,8 @@
 #include<stdlib.h>
 #include"Input.h"
 #include"Util.h"
+#include"Score.h"
+#include"GameTime.h"
 
 
 using namespace Util;
@@ -102,17 +104,15 @@ void Daruma::KomaReset()
 
 			floar++;
 		}
-		koma.clear();
 	}
-
-	Wagamama.koma.clear();
+	koma.clear();
 	orderkoma.clear();
 }
 
 void Daruma::DressReset()
 {
 
-	Wagamama.huku.clear();
+	huku.clear();
 	orderhuku.clear();
 }
 
@@ -156,26 +156,36 @@ void Daruma::Update()
 		{
 			comitEffect->FanfarleSet();
 			Order();
+			Score::AddScore(1000);
+			GameTime::AddTime(15);
+			
 		}
 		else if (DressComparison())
 		{
 			comitEffect->FanfarleSet();
 			Order();
+			Score::AddScore(300);
+			GameTime::AddTime(5);
 		}
 	}
-	else if(KomaComparison())
+	else
 	{
-		//comitEffect->FanfarleSet();
-		float hogePosX = 60;
-		float hogePosY = 20;
-		for (size_t i = 0; i < 2; i++)
+		if (KomaComparison())
 		{
-			comitEffect->SmallCracker({ Head.pos.x + hogePosX,530.0f + hogePosY });
-			comitEffect->SmallCracker({ Head.pos.x - hogePosX,530.0f + hogePosY });
-			hogePosX *= 2;
-			hogePosY -= hogePosY;
+			//comitEffect->FanfarleSet();
+			float hogePosX = 60;
+			float hogePosY = 20;
+			for (size_t i = 0; i < 2; i++)
+			{
+				comitEffect->SmallCracker({ Head.pos.x + hogePosX,530.0f + hogePosY });
+				comitEffect->SmallCracker({ Head.pos.x - hogePosX,530.0f + hogePosY });
+				hogePosX *= 2;
+				hogePosY -= hogePosY;
+			}
+			Order();
+			Score::AddScore(300);
+			GameTime::AddTime(5);
 		}
-		Order();
 	}
 	
 
@@ -187,7 +197,7 @@ void Daruma::Update()
 		koma.pop_back();
 		if (DressMode)
 		{
-			Wagamama.huku.pop_back();
+			huku.pop_back();
 		}
 		isSlap = false;
 	}
@@ -266,12 +276,12 @@ void Daruma::Draw()
 	}
 	
 	int Dressfloar = 0;
-	for (auto itr = Wagamama.huku.rbegin(); itr != Wagamama.huku.rend(); itr++)
+	for (auto itr = huku.rbegin(); itr != huku.rend(); itr++)
 	{
 		Vector2 pos = Komaboxs.pos;
 
 		pos.y -= (Komaboxs.height * 2) * Dressfloar;
-		if (floar == 0)
+		if (Dressfloar == 0)
 		{
 			DrawRotaGraph3(pos, Komasize + CursorKoma, Komasize + CursorKoma, 0, GetDress(*itr));
 		}
@@ -314,7 +324,7 @@ void Daruma::ClickAddKoma(Koma add)
 
 void Daruma::ClickAddDress(Dress add)
 {
-	if(DressMode)Wagamama.huku.push_back(add);
+	if(DressMode)huku.push_back(add);
 }
 
 void Daruma::ClickRemoveKoma()
@@ -419,12 +429,12 @@ int Daruma::GetDress(Dress a)
 
 bool Daruma::DressComparison()
 {
-	if (Wagamama.huku.size() == orderhuku.size())
+	if (huku.size() == orderhuku.size())
 	{
 		size_t clearNum = orderhuku.size();
 		for (int i = 0; i < orderhuku.size(); i++)
 		{
-			if (Wagamama.huku[i] == orderhuku[i])
+			if (huku[i] == orderhuku[i])
 			{
 				clearNum--;
 			}

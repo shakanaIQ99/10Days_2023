@@ -154,6 +154,7 @@
     <ClCompile Include="kurakka.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PileEffect.cpp" />
+    <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="SceneChangeEffect.cpp" />
     <ClCompile Include="SlapHead.cpp" />
     <ClCompile Include="SlapKoma.cpp" />
@@ -175,6 +176,7 @@
     <ClInclude Include="kurakka.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="PileEffect.h" />
+    <ClInclude Include="ResultScene.h" />
     <ClInclude Include="SceneChangeEffect.h" />
     <ClInclude Include="SlapHead.h" />
     <ClInclude Include="SlapKoma.h" />

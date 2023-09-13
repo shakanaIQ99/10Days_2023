@@ -1,12 +1,19 @@
 #include "TitleScene.h"
 #include "Util.h"
 #include"Input.h"
+#include"Score.h"
+
+void TitleScene::SetTexture()
+{
+	title = DxLib::LoadGraph(L"Resources/Scene/title.png");
+}
 
 void TitleScene::Init()
 {
 	boxPos = { 0,0 };
 	color = DxLib::GetColor(0, 0, 0);
-	title = DxLib::LoadGraph(L"Resources/Scene/title.png");
+	Score::Reset();
+	
 }
 
 void TitleScene::Update()

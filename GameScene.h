@@ -25,7 +25,10 @@ public:
 
 private:
 
-	Daruma daruma[2];
+	static const int DarumaNum = 3;
+
+	Daruma daruma[DarumaNum];
+
 
 	Daruma preDaruma;
 
@@ -60,6 +63,8 @@ private:
 	DressKoma Komalist;
 
 	bool Kyuusai = false;
+
+	bool KyuusaiSet = false;
 
 
 	const int ButtonWidth = 50;
