@@ -84,7 +84,6 @@ private:
 	static int backGroundGame;
 	static int pedestal;
 	static int frame[3];
-	static int mekuri;
 
 	bool Komacatch = false;
 

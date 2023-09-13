@@ -13,6 +13,7 @@ using namespace Util;
 int Daruma::darumaFace;
 int Daruma::KomaGraph[sizeof(Koma)];
 int Daruma::DressGraph[sizeof(Dress)];
+int Daruma::mekuri;
 
 void Daruma::TextureSet()
 {
@@ -22,7 +23,8 @@ void Daruma::TextureSet()
 
 	LoadDivGraph(L"Resources/Daruma/costume.png", sizeof(Dress), sizeof(Dress), 1, 64, 32, DressGraph);
 
-
+	mekuri = LoadGraph(L"Resources/Daruma/mekuriTable.png");
+	
 }
 void Daruma::SetCatchOn(bool catchflag)
 {
@@ -232,6 +234,11 @@ void Daruma::Update()
 
 void Daruma::Draw()
 {
+	Vector2 mekuriPos = Orderboxs.pos;
+	mekuriPos.x += 7;
+	mekuriPos.y -= 50;
+	DrawRotaGraph3(mekuriPos,1.6,1.3,0,mekuri);
+
 	int Orderfloar = 0;
 	for (auto itr = orderkoma.rbegin(); itr != orderkoma.rend(); itr++)
 	{

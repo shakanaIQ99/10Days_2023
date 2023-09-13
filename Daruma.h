@@ -52,6 +52,8 @@ private:
 
 	static int darumaFace;
 
+	static int mekuri;
+
 public:
 
 	/// <summary>

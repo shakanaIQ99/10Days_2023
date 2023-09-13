@@ -10,7 +10,6 @@ using namespace Util;
 int GameScene::backGroundGame;
 int GameScene::pedestal;
 int GameScene::frame[3];
-int GameScene::mekuri;
 
 void GameScene::Init()
 {
@@ -153,7 +152,6 @@ void GameScene::SetTexture()
 	//ÉäÉ\Å[ÉXì«Ç›çûÇ›
 	backGroundGame = LoadGraph(L"Resources/Scene/game.png");
 	pedestal = LoadGraph(L"Resources/Scene/pedestal.png");
-	mekuri = LoadGraph(L"Resources/Daruma/mekuriTable.png");
 
 	frame[0] = LoadGraph(L"Resources/Frame/mainFrame.png");
 	frame[1] = LoadGraph(L"Resources/Frame/subFrame.png");
