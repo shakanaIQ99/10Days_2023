@@ -30,7 +30,7 @@ void GameScene::Init()
 
 	for (int i = 0; i < 3; i++)
 	{
-		Komas[i + 1].pos = { ((float)WIN_WIDTH / 2.0f) + 160 + 160 * i,((float)WIN_HEIGHT / 6.0f) * 4.8f };
+		Komas[i + 1].pos = { ((float)WIN_WIDTH / 2.0f) + 160 + 160 * i,((float)WIN_HEIGHT / 6.0f) * 4.7f };
 		Komas[i + 1].width = ButtonWidth;
 		Komas[i + 1].height = Buttonheight;
 	}
@@ -43,7 +43,7 @@ void GameScene::Init()
 	KeepButton.width = 60;
 	KeepButton.height = 60;
 
-	railButton.pos = { (float)WIN_WIDTH / 1.25f,((float)WIN_HEIGHT / 8.0f) * 7.3f };
+	railButton.pos = { (float)WIN_WIDTH / 1.26f,((float)WIN_HEIGHT / 8.0f) * 7.6f };
 	railButton.width = 60;
 	railButton.height = 60;
 
@@ -152,10 +152,10 @@ void GameScene::ButtonsDraw()
 
 	//DrawBox(AddButton.pos, AddButton.width, AddButton.height, GetColor(0, 255, 0), false);
 	//DrawBox(KeepButton.pos, KeepButton.width, KeepButton.height, GetColor(0, 255, 255), false);
-
-	DrawRotaGraph3(AddButton.pos, 1.8, 1.8, 0, frame[0]);
+	
+	DrawRotaGraph3(AddButton.pos, 1.8, 1.9, 0, frame[0]);
 	DrawRotaGraph3(KeepButton.pos, 2, 2, 0, frame[1]);
-	DrawRotaGraph3(railButton.pos, 2.5, 1.5, 0, frame[2]);
+	DrawRotaGraph3(railButton.pos, 2.0, 1.3, 0, frame[2]);
 
 	int floar = 0;
 	for (auto itr = Komalist.koma.begin(); itr != Komalist.koma.end(); itr++)
