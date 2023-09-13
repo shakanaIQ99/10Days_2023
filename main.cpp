@@ -68,12 +68,14 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	std::unique_ptr<GameScene> gameScene = std::make_unique<GameScene>();
 	gameScene->Init();
 
+
 	std::unique_ptr<TitleScene> titleScene = std::make_unique<TitleScene>();
 	titleScene->SetTexture();
 	titleScene->Init();
 
 	std::unique_ptr<ResultScene> resultScene = std::make_unique<ResultScene>();
 	resultScene->Init();
+	resultScene->SetTexture();
 
 	std::unique_ptr<SceneChangeEffect> sceneChangeEffect;
 	sceneChangeEffect.reset(SceneChangeEffect::Create());

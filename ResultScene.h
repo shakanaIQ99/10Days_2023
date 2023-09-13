@@ -5,6 +5,7 @@ class ResultScene
 {
 public:
 
+	void SetTexture();
 
 	void Init();
 
@@ -12,8 +13,14 @@ public:
 
 	void Draw();
 
+private:
 
+	int HaikeiGHandle = 0;
 
+	int sceneNum = 0;
 
+	int resultScore = 0;
+
+	int timer = 0;
 };
 
