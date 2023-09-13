@@ -148,7 +148,7 @@ void Daruma::Update()
 			Order();
 			Score::AddScore(5000);
 			GameTime::AddTime(15);
-			
+			Audience::SetIsCheers(true);
 		}
 		else if (DressComparison())
 		{
@@ -167,6 +167,7 @@ void Daruma::Update()
 			Order();
 			Score::AddScore(300);
 			GameTime::AddTime(5);
+			Audience::SetIsCheers();
 		}
 	}
 	else
@@ -185,7 +186,7 @@ void Daruma::Update()
 			Order();
 			Score::AddScore(300);
 			GameTime::AddTime(5);
-			Audience::SetIsCheers(true);
+			Audience::SetIsCheers();
 		}
 	}
 	
