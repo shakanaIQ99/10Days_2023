@@ -59,6 +59,11 @@ void Daruma::Init(Vector2 pos, bool mode)
 	KomaReset();
 	DressReset();
 
+	for (size_t i = 0; i < sizeof(Koma); i++)
+	{
+		colorCount[i] = 0;
+	}
+
 	DressMode = mode;
 
 	defY = pos.y;
@@ -372,16 +377,45 @@ void Daruma::Order()
 	OrderRange = 4;
 	OrderNum = 0;
 
-	
+	for (size_t i = 0; i < sizeof(Koma); i++)
+	{
+		colorCount[i] = 0;
+	}
 
 	while (OrderNum < OrderRange)
 	{
 		Koma AddKoma = static_cast<Koma>(GetRand(0, sizeof(Koma)-1));
 
-		orderkoma.push_back(AddKoma);
+		switch (AddKoma)
+		{
+		case Koma::RED:
+			colorCount[0]++;
+			break;
+		case Koma::BLUE:
+			colorCount[1]++;
+			break;
+		case Koma::GREEN:
+			colorCount[2]++;
+			break;
+		case Koma::YELLOW:
+			colorCount[3]++;
+			break;
+		}
 
-		OrderNum++;
-
+		for (size_t i = 0; i < sizeof(Koma); i++)
+		{
+			if (i == (int)AddKoma)
+			{
+				if (colorCount[i] < 3)
+				{
+					orderkoma.push_back(AddKoma);
+					OrderNum++;
+					break;
+				}
+			}
+		}
+		
+			
 	}
 
 	Ordered = true;

@@ -161,5 +161,7 @@ private:
 	bool CacthFlag = false;
 
 	std::unique_ptr<PileEffect> comitEffect = nullptr;
+
+	int colorCount[sizeof(Koma)];
 };
 
