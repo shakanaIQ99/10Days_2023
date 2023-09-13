@@ -81,6 +81,15 @@ void GameScene::Update()
 	CursorKeep = 0.0;
 	Kyuusai = true;
 
+	if (startCountTimer > startCountTime)
+	{
+		isGameStart = true;
+	}
+	else
+	{
+		startCountTimer++;
+	}
+
 	if (Komacatch || Input::GetMouseHitBox(AddButton) || Input::GetMouseHitBox(KeepButton))
 	{
 		Input::SetChengeCursor(false);
@@ -90,21 +99,25 @@ void GameScene::Update()
 		Input::SetChengeCursor(true);
 	}
 
-	if (Input::GetMouseHitBox(AddButton) && !Komacatch)CursorAdd = 0.3;
-	if (Input::GetMouseHitBox(KeepButton) && !Komacatch)CursorKeep = 0.3;
-	GameTime::DecreaseTime();
 	KomaSlotUpdate();
-	KomaUpdate();
 
-    for (int i = 0; i < DarumaNum; i++)
-    {
-        daruma[i].SetCatchOn(Komacatch);
-	    daruma[i].Update();
-    }
+	if (isGameStart)
+	{
+		if (Input::GetMouseHitBox(AddButton) && !Komacatch)CursorAdd = 0.3;
+		if (Input::GetMouseHitBox(KeepButton) && !Komacatch)CursorKeep = 0.3;
+		GameTime::DecreaseTime();
+		KomaUpdate();
 
-	pileEffect->Update();
+		for (int i = 0; i < DarumaNum; i++)
+		{
+			daruma[i].SetCatchOn(Komacatch);
+			daruma[i].Update();
+		}
 
-	audience->Update();
+		pileEffect->Update();
+
+		audience->Update();
+	}
 }
 
 void GameScene::Draw()

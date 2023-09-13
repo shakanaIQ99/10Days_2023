@@ -90,5 +90,10 @@ private:
 
 	double CursorAdd = 0.0;
 	double CursorKeep = 0.0;
+
+	uint32_t startCountTimer = 0;
+	const uint32_t startCountTime = 120;
+
+	bool isGameStart = false;
 };
 
