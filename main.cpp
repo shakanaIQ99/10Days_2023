@@ -1,13 +1,68 @@
-﻿#include "DxLib.h"
+﻿#define _SILENCE_STDEXT_ARR_ITERS_DEPRECATION_WARNING
+
+#include "DxLib.h"
 #include "Input.h"
 #include "main.h"
 #include<memory>
+#include <cpprest/filestream.h>
+#include <cpprest/http_client.h>
+
+using namespace utility;
+using namespace web;
+using namespace web::http;
+using namespace web::http::client;
+using namespace concurrency::streams;
 
 
 template<class T> inline void SafeDelete(T*& p)
 {
 	delete p;
 	p = nullptr;
+}
+
+
+template <class I>
+
+pplx::task<I> Get(const std::wstring& url) {
+	return pplx::create_task([=] {
+		http_client client(url);
+
+		return client.request(methods::GET);
+		}).then([](http_response response) {
+			if (response.status_code() == status_codes::OK) {
+				return response.extract_json();
+			}
+			else {
+				throw std::runtime_error("Recevived non-OK HTTP status code");
+			}
+			});
+}
+
+pplx::task<int> Post(const std::wstring& url,int Score)
+{
+	return pplx::create_task([=]
+		{
+			json::value postData;
+
+			postData[L"score"] = Score;
+			http_client client(url);
+
+			return client.request(methods::POST, L"", postData.serialize(), L"application/json");
+		})
+		.then([](http_response response)
+			{
+				if (response.status_code() == status_codes::Created)
+				{
+					return response.extract_json();
+				}
+				else {
+					throw std::runtime_error("Recevived non-OK HTTP status code");
+				}
+				})
+		.then([](json::value json)
+			{
+				return json[L"status_code"].as_integer();
+			});
 }
 
 
@@ -52,6 +107,12 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 	float countTime = 0;
 
+	int score = 0;
+
+	int ranking[5] = {};
+
+	Concurrency::task_status severStatus;
+
 
 	// ゲームループ
 	while (true)
@@ -78,7 +139,10 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			break;
 		case 1:
 			countTime += 1.0f;
-
+			if (Input::GetTriggerKey(KEY_INPUT_SPACE))
+			{
+				gameScene = 2;
+			}
 			break;
 
 		case 2:
@@ -86,6 +150,26 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			{
 				gameScene = 1;
 				countTime = 0.0f;
+			}
+
+			if (1)
+			{
+				try {
+					auto severStatusCode = Post(L"http://localhost:3000/scores/", score).wait();
+					if (severStatusCode == 1)
+					{
+						auto task = Get<json::value>(L"http://localhost:3000/scores/");
+						const json::value j = task.get();
+						auto array = j.as_array();
+						for (int i = 0; i < array.size(); i++)
+						{
+							ranking[i] = array[i].at(U("score")).as_integer();
+						}
+					}
+				}
+				catch(const std::exception& e){
+					DrawFormatString(100, 200, GetColor(255, 255, 255), L"Error exception:%s", e.what());
+				}
 			}
 			break;
 
@@ -96,8 +180,24 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 	
 		//描画処理
+		switch (gameScene)
+		{
+		case 0:
+			DrawFormatString(100, 200, GetColor(255, 255, 255), L"Count:%f", countTime / 60.0f);
+			break;
+		case 1:
+			if (countTime / 60.0f < 5.0f)
+			{
+				DrawFormatString(100, 200, GetColor(255, 255, 255), L"Count:%f", countTime / 60.0f);
+			}
+			break;
 
-		DrawString(100, 100, L"&f", countTime);
+		case 2:
+			DrawFormatString(100, 200, GetColor(255, 255, 255), L"Count:%f", countTime / 60.0f);
+			break;
+
+		}
+		
 
 
 		//---------  ここまでにプログラムを記述  ---------//
