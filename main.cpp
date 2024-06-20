@@ -1,14 +1,8 @@
 ﻿#include "DxLib.h"
 #include "Input.h"
-#include "GameScene.h"
 #include "main.h"
-#include "TitleScene.h"
 #include<memory>
-#include"GameTime.h"
-#include"Util.h"
-#include "SceneChangeEffect.h"
-#include"ResultScene.h"
-#include"Score.h"
+
 
 template<class T> inline void SafeDelete(T*& p)
 {
@@ -16,12 +10,6 @@ template<class T> inline void SafeDelete(T*& p)
 	p = nullptr;
 }
 
-enum class SceneNum
-{
-	TitleScene,
-	GameScene,
-	ResultScene
-};
 
 int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _In_ LPSTR lpCmdLine, _In_ int nCmdShow)
 {
@@ -56,41 +44,14 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	SetDrawScreen(DX_SCREEN_BACK);
 
 	// 画像などのリソースデータの変数宣言と読み込み
-	Daruma::TextureSet();
-	Input::SetTexture();
-	Score::SetTexture();
-
-	int titleBGM = LoadSoundMem(L"Resources/Music/title.mp3");
-	int gameBGM = LoadSoundMem(L"Resources/Music/game.mp3");
-	int resultBGM = LoadSoundMem(L"Resources/Music/result.mp3");
-
-	bool isTitleBGM = false;
-	bool isGameBGM = false;
-	bool isResultBGM = false;
+	
 
 	// ゲームループで使う変数の宣言
-	SceneNum scene = SceneNum::TitleScene;
 
-	GameTime::SetMaxTime(120);
+	int gameScene = 0;
 
-	std::unique_ptr<GameScene> gameScene = std::make_unique<GameScene>();
-	gameScene->SetTexture();
-	gameScene->Init();
+	float countTime = 0;
 
-
-	std::unique_ptr<TitleScene> titleScene = std::make_unique<TitleScene>();
-	titleScene->SetTexture();
-	titleScene->Init();
-
-	std::unique_ptr<ResultScene> resultScene = std::make_unique<ResultScene>();
-	resultScene->Init();
-	resultScene->SetTexture();
-
-	std::unique_ptr<SceneChangeEffect> sceneChangeEffect;
-	sceneChangeEffect.reset(SceneChangeEffect::Create());
-
-	ChangeVolumeSoundMem(255 * 50 / 100, titleBGM);
-	ChangeVolumeSoundMem(255 * 80 / 100, gameBGM);
 
 	// ゲームループ
 	while (true)
@@ -103,124 +64,41 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		ClearDrawScreen();
 		//---------  ここからプログラムを記述  ----------//
 
-		if (Input::GetTriggerKey(KEY_INPUT_F5))
-		{
-			Util::debugBool = !Util::debugBool;
-		}
 
 		
+		//更新処理
 
-		switch (scene)
+		switch (gameScene)
 		{
-		case SceneNum::TitleScene:
-			StopSoundMem(resultBGM);
-			isResultBGM = false;
-
-			if (!isTitleBGM)
+		case 0:
+			if (Input::GetTriggerKey(KEY_INPUT_SPACE))
 			{
-				PlaySoundMem(titleBGM, DX_PLAYTYPE_LOOP);
-				isTitleBGM = true;
+				gameScene = 1;
 			}
-
-			if (Input::GetTriggerMouseLeft())
-			{
-				sceneChangeEffect->EffectStart();
-			}
-
-			if (sceneChangeEffect->GetIsChange())
-			{
-				scene = SceneNum::GameScene;
-				gameScene->Init();
-				sceneChangeEffect->SetIsSceneChange(false);
-			}
-
-			if (!sceneChangeEffect->GetIsEffect())
-			{
-				//更新処理
-				titleScene->Update();
-			}
-
-			//描画処理
-			titleScene->Draw();
+			break;
+		case 1:
+			countTime += 1.0f;
 
 			break;
-		case SceneNum::GameScene:
-			StopSoundMem(titleBGM);
-			isTitleBGM = false;
 
-			if (isGameBGM == false)
+		case 2:
+			if (Input::GetTriggerKey(KEY_INPUT_SPACE))
 			{
-				PlaySoundMem(gameBGM, DX_PLAYTYPE_LOOP);
-				isGameBGM = true;
+				gameScene = 1;
+				countTime = 0.0f;
 			}
-
-			//アルファ値をリセット
-			titleScene->Reset();
-
-			if (GameTime::TimeUp())
-			{
-				sceneChangeEffect->EffectStart();
-				StopSoundMem(gameBGM);
-			}
-
-			if (sceneChangeEffect->GetIsChange())
-			{
-				scene = SceneNum::ResultScene;
-				resultScene->Init();
-				sceneChangeEffect->SetIsSceneChange(false);
-			}
-
-			if (!sceneChangeEffect->GetIsEffect())
-			{
-				//更新処理
-				gameScene->Update();
-			}
-
-			//描画処理
-			gameScene->Draw();
-
-
 			break;
-		case SceneNum::ResultScene:
-			isGameBGM = false;
 
-			if (isResultBGM == false)
-			{
-				PlaySoundMem(resultBGM, DX_PLAYTYPE_LOOP);
-				isResultBGM = true;
-			}
-
-
-			if (Input::Input::GetTriggerMouseLeft())
-			{
-				sceneChangeEffect->EffectStart(true);
-			}
-
-			if (sceneChangeEffect->GetIsChange())
-			{
-				scene = SceneNum::TitleScene;
-				titleScene->Init();
-				sceneChangeEffect->SetIsSceneChange(false);
-			}
-
-			if (!sceneChangeEffect->GetIsEffect())
-			{
-				//更新処理
-				resultScene->Update();
-			}
-
-			//描画処理
-			resultScene->Draw();
-
-
-			break;
 		}
 
-		sceneChangeEffect->Update();
 
-		sceneChangeEffect->Draw();
 
-		Input::DrawCursor();
+
+	
+		//描画処理
+
+		DrawString(100, 100, L"&f", countTime);
+
 
 		//---------  ここまでにプログラムを記述  ---------//
 		// (ダブルバッファ)裏面
@@ -246,8 +124,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		}*/
 	}
 	// Dxライブラリ終了処理
-	InitGraph();
-	InitSoundMem();
+
 	DxLib_End();
 
 	// 正常終了
