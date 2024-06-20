@@ -38,7 +38,7 @@ pplx::task<I> Get(const std::wstring& url) {
 			});
 }
 
-pplx::task<int> Post(const std::wstring& url,int Score)
+pplx::task<int> Post(const std::wstring &url,int Score)
 {
 	return pplx::create_task([=]
 		{
@@ -51,7 +51,7 @@ pplx::task<int> Post(const std::wstring& url,int Score)
 		})
 		.then([](http_response response)
 			{
-				if (response.status_code() == status_codes::Created)
+				if (response.status_code() == status_codes::OK)
 				{
 					return response.extract_json();
 				}
@@ -113,6 +113,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 	Concurrency::task_status severStatus;
 
+	bool b_API = false;
 
 	// ゲームループ
 	while (true)
@@ -142,6 +143,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			if (Input::GetTriggerKey(KEY_INPUT_SPACE))
 			{
 				gameScene = 2;
+				score = 10000 * ((countTime / 60.0f)/ 10.0f);
+				b_API = false;
 			}
 			break;
 
@@ -150,12 +153,14 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			{
 				gameScene = 1;
 				countTime = 0.0f;
+				score = 0;
 			}
 
-			if (1)
+			if (!b_API)
 			{
 				try {
 					auto severStatusCode = Post(L"http://localhost:3000/scores/", score).wait();
+					b_API = true;
 					if (severStatusCode == 1)
 					{
 						auto task = Get<json::value>(L"http://localhost:3000/scores/");
@@ -164,10 +169,12 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 						for (int i = 0; i < array.size(); i++)
 						{
 							ranking[i] = array[i].at(U("score")).as_integer();
+							
 						}
 					}
 				}
 				catch(const std::exception& e){
+					//setlocale(LC_CTYPE, "ja_JP.UTF-8");
 					DrawFormatString(100, 200, GetColor(255, 255, 255), L"Error exception:%s", e.what());
 				}
 			}
@@ -193,7 +200,14 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			break;
 
 		case 2:
+			DrawFormatString(300, 220, GetColor(255, 255, 255), L"1:%d", ranking[0]);
+			DrawFormatString(300, 240, GetColor(255, 255, 255), L"2:%d", ranking[1]);
+			DrawFormatString(300, 260, GetColor(255, 255, 255), L"3:%d", ranking[2]);
+			DrawFormatString(300, 280, GetColor(255, 255, 255), L"4:%d", ranking[3]);
+			DrawFormatString(300, 300, GetColor(255, 255, 255), L"5:%d", ranking[4]);
 			DrawFormatString(100, 200, GetColor(255, 255, 255), L"Count:%f", countTime / 60.0f);
+			DrawFormatString(100, 240, GetColor(255, 255, 255), L"Score:%d", score);
+			DrawFormatString(300, 200, GetColor(255, 255, 255), L"Ranking");
 			break;
 
 		}
