@@ -15,12 +15,6 @@ public:
 
 private:
 
-	int HaikeiGHandle = 0;
 
-	int sceneNum = 0;
-
-	int resultScore = 0;
-
-	float timer = 0;
 };
 

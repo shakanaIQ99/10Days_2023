@@ -3,7 +3,7 @@
 #include "Vector2.h"
 
 /// <summary>
-/// ƒ^ƒCƒgƒ‹ƒV[ƒ“
+/// ã‚¿ã‚¤ãƒˆãƒ«ã‚·ãƒ¼ãƒ³
 /// </summary>
 class TitleScene
 {
@@ -15,33 +15,26 @@ public:
 
 	void SetTexture();
 	/// <summary>
-	/// ‰Šú‰»
+	/// åˆæœŸåŒ–
 	/// </summary>
 	void Init();
 
 	/// <summary>
-	/// XV
+	/// æ›´æ–°
 	/// </summary>
 	void Update();
 
 	/// <summary>
-	/// •`‰æ
+	/// æç”»
 	/// </summary>
 	void Draw();
 
 	/// <summary>
-	/// ƒŠƒZƒbƒgŠÖ”
+	/// ãƒªã‚»ãƒƒãƒˆé–¢æ•°
 	/// </summary>
 	void Reset();
 
 private:
-	//ƒ^ƒCƒgƒ‹‰æ‘œ—p•Ï”
-	int title;
-	int click;
 
-	int color;
-	int alphaNum = 255;
-
-	Vector2 boxPos;
 };
 

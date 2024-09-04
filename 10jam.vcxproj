@@ -143,50 +143,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Angry.cpp" />
-    <ClCompile Include="AngryEffect.cpp" />
-    <ClCompile Include="Audience.cpp" />
-    <ClCompile Include="CountDown.cpp" />
-    <ClCompile Include="Daruma.cpp" />
     <ClCompile Include="Ease.cpp" />
     <ClCompile Include="Easing.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GameTime.cpp" />
     <ClCompile Include="Input.cpp" />
-    <ClCompile Include="kurakka.cpp" />
-    <ClCompile Include="Light.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="PileEffect.cpp" />
     <ClCompile Include="ResultScene.cpp" />
-    <ClCompile Include="SceneChangeEffect.cpp" />
-    <ClCompile Include="SlapHead.cpp" />
-    <ClCompile Include="SlapKoma.cpp" />
-    <ClCompile Include="Star.cpp" />
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="Util.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Angry.h" />
-    <ClInclude Include="AngryEffect.h" />
-    <ClInclude Include="Audience.h" />
-    <ClInclude Include="CountDown.h" />
-    <ClInclude Include="Daruma.h" />
     <ClInclude Include="Ease.h" />
     <ClInclude Include="Easing.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GameTime.h" />
     <ClInclude Include="Input.h" />
-    <ClInclude Include="kurakka.h" />
-    <ClInclude Include="Light.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="PileEffect.h" />
     <ClInclude Include="ResultScene.h" />
-    <ClInclude Include="SceneChangeEffect.h" />
-    <ClInclude Include="SlapHead.h" />
-    <ClInclude Include="SlapKoma.h" />
-    <ClInclude Include="Star.h" />
     <ClInclude Include="Score.h" />
     <ClInclude Include="struct.h" />
     <ClInclude Include="Util.h" />

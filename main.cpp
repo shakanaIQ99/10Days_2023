@@ -6,7 +6,6 @@
 #include<memory>
 #include"GameTime.h"
 #include"Util.h"
-#include "SceneChangeEffect.h"
 #include"ResultScene.h"
 #include"Score.h"
 
@@ -56,17 +55,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	SetDrawScreen(DX_SCREEN_BACK);
 
 	// 画像などのリソースデータの変数宣言と読み込み
-	Daruma::TextureSet();
 	Input::SetTexture();
 	Score::SetTexture();
 
-	int titleBGM = LoadSoundMem(L"Resources/Music/title.mp3");
-	int gameBGM = LoadSoundMem(L"Resources/Music/game.mp3");
-	int resultBGM = LoadSoundMem(L"Resources/Music/result.mp3");
-
-	bool isTitleBGM = false;
-	bool isGameBGM = false;
-	bool isResultBGM = false;
 
 	// ゲームループで使う変数の宣言
 	SceneNum scene = SceneNum::TitleScene;
@@ -86,11 +77,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	resultScene->Init();
 	resultScene->SetTexture();
 
-	std::unique_ptr<SceneChangeEffect> sceneChangeEffect;
-	sceneChangeEffect.reset(SceneChangeEffect::Create());
 
-	ChangeVolumeSoundMem(255 * 50 / 100, titleBGM);
-	ChangeVolumeSoundMem(255 * 80 / 100, gameBGM);
 
 	// ゲームループ
 	while (true)
@@ -113,68 +100,21 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 		switch (scene)
 		{
 		case SceneNum::TitleScene:
-			StopSoundMem(resultBGM);
-			isResultBGM = false;
 
-			if (!isTitleBGM)
-			{
-				PlaySoundMem(titleBGM, DX_PLAYTYPE_LOOP);
-				isTitleBGM = true;
-			}
 
-			if (Input::GetTriggerMouseLeft())
-			{
-				sceneChangeEffect->EffectStart();
-			}
 
-			if (sceneChangeEffect->GetIsChange())
-			{
-				scene = SceneNum::GameScene;
-				gameScene->Init();
-				sceneChangeEffect->SetIsSceneChange(false);
-			}
+			titleScene->Update();
+			
 
-			if (!sceneChangeEffect->GetIsEffect())
-			{
-				//更新処理
-				titleScene->Update();
-			}
-
-			//描画処理
 			titleScene->Draw();
 
 			break;
 		case SceneNum::GameScene:
-			StopSoundMem(titleBGM);
-			isTitleBGM = false;
 
-			if (isGameBGM == false)
-			{
-				PlaySoundMem(gameBGM, DX_PLAYTYPE_LOOP);
-				isGameBGM = true;
-			}
 
-			//アルファ値をリセット
-			titleScene->Reset();
 
-			if (GameTime::TimeUp())
-			{
-				sceneChangeEffect->EffectStart();
-				StopSoundMem(gameBGM);
-			}
-
-			if (sceneChangeEffect->GetIsChange())
-			{
-				scene = SceneNum::ResultScene;
-				resultScene->Init();
-				sceneChangeEffect->SetIsSceneChange(false);
-			}
-
-			if (!sceneChangeEffect->GetIsEffect())
-			{
-				//更新処理
-				gameScene->Update();
-			}
+			gameScene->Update();
+	
 
 			//描画処理
 			gameScene->Draw();
@@ -182,32 +122,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 			break;
 		case SceneNum::ResultScene:
-			isGameBGM = false;
 
-			if (isResultBGM == false)
-			{
-				PlaySoundMem(resultBGM, DX_PLAYTYPE_LOOP);
-				isResultBGM = true;
-			}
-
-
-			if (Input::Input::GetTriggerMouseLeft())
-			{
-				sceneChangeEffect->EffectStart(true);
-			}
-
-			if (sceneChangeEffect->GetIsChange())
-			{
-				scene = SceneNum::TitleScene;
-				titleScene->Init();
-				sceneChangeEffect->SetIsSceneChange(false);
-			}
-
-			if (!sceneChangeEffect->GetIsEffect())
-			{
-				//更新処理
-				resultScene->Update();
-			}
+			resultScene->Update();
+			
 
 			//描画処理
 			resultScene->Draw();
@@ -216,9 +133,6 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			break;
 		}
 
-		sceneChangeEffect->Update();
-
-		sceneChangeEffect->Draw();
 
 		Input::DrawCursor();
 
