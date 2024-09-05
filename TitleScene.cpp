@@ -25,7 +25,8 @@ void TitleScene::Update()
 
 void TitleScene::Draw()
 {
-
+	//タスクバーの表示
+	Util::DrawBox({ 640,704 }, 1280, 16, GetColor(255, 255, 255), TRUE);
 }
 
 void TitleScene::Reset()

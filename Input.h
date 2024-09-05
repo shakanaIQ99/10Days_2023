@@ -5,8 +5,6 @@ class Input
 {
 public:
 
-	static void SetTexture();
-
 	static Input* GetInstance();
 
 	/// <summary>
@@ -42,10 +40,6 @@ public:
 	static bool GetMouseHitBox(BoxTransform box);
 
 	static Vector2 GetMousePos();
-
-	static void DrawCursor();
-
-	static void SetChengeCursor(bool isHanmmer_1);
 	
 private:
 	// 最新のキーボード情報用
@@ -58,8 +52,6 @@ private:
 
 	Vector2 Mousepos = { 0,0 };
 	int mouseX, mouseY;
-
-	int GraphHandle[2];
 
 	bool isHanmmer = false;
 

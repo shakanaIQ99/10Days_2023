@@ -54,35 +54,7 @@ bool Input::GetMouseHitBox(BoxTransform box)
 
 Vector2 Input::GetMousePos()
 {
-
 	return GetInstance()->Mousepos;
-}
-
-void Input::DrawCursor()
-{
-	Input* instance = GetInstance();
-
-	int sizex, sizey;
-	GetGraphSize(instance->GraphHandle[0], &sizex, &sizey);
-
-	//Util::DrawRotaGraph3(instance->Mousepos, sizex / 4, sizey / 4, 2.0, 2.0, 0, instance->GraphHandle[instance->isHanmmer]);
-	Util::DrawRotaGraph3C(instance->Mousepos, sizex / 4, sizey / 4, 2.0, 2.0, 0, instance->GraphHandle[instance->isHanmmer]);
-}
-
-void Input::SetChengeCursor(bool isHanmmer_1)
-{
-	GetInstance()->isHanmmer = isHanmmer_1;
-}
-
-
-void Input::SetTexture()
-{
-	Input* instance = GetInstance();
-
-	instance->GraphHandle[0] = LoadGraph(L"Resources/cursor/hand.png");
-	instance->GraphHandle[1] = LoadGraph(L"Resources/cursor/hammer.png");
-
-
 }
 
 Input* Input::GetInstance()
@@ -111,5 +83,5 @@ void Input::InputUpdate()
 	GetHitKeyStateAll(instance->keys);
 
 	// マウスを表示状態にする
-	SetMouseDispFlag(FALSE);
+	SetMouseDispFlag(TRUE);
 }
