@@ -38,8 +38,8 @@ void Score::Draw()
         Vector2 pos = { 955.0f, 230.0f };
         pos.x = pos.x - (60 * (i - 3));
         int j = scrNum % 10;
-        DrawExtendGraph(pos.x - 30, pos.y - 64, pos.x + 30, pos.y + 64,GetInstance()->NumGhandle[j], true);
-        scrNum /= 10.0f;
+        DrawExtendGraph((int)pos.x - 30, (int)pos.y - 64, (int)pos.x + 30, (int)pos.y + 64,GetInstance()->NumGhandle[j], true);
+        scrNum /= 10;
         i++;
     }
 }
