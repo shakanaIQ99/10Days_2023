@@ -5,13 +5,14 @@
 #include"GameTime.h"
 #include"Score.h"
 #include "HydeGame.h"
+#include "LightGame.h"
 
 using namespace Util;
 
 
 void GameScene::Init()
 {
-	baseGame_ = std::make_unique<HydeGame>();
+	baseGame_ = std::make_unique<LightGame>();
 	baseGame_->Init();
 }
 
