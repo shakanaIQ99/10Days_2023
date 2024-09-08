@@ -151,6 +151,7 @@
     <ClCompile Include="GameTime.cpp" />
     <ClCompile Include="HydeGame.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="LightGame.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="Score.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="GameTime.h" />
     <ClInclude Include="HydeGame.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="LightGame.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="Score.h" />
