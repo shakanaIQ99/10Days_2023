@@ -1,5 +1,6 @@
 #include "HydeGame.h"
 #include "Util.h"
+#include "Collision.h"
 
 void HydeGame::Init(){
 	input_ = Input::GetInstance();
@@ -20,6 +21,13 @@ void HydeGame::Update(){
 		player_.pos.x = input_->GetMousePos().x;
 	}
 
+	if (Collision::BoxToBoxCollision(player_, hydeObject_, true)) {
+		playerColor_ = GetColor(0, 255, 0);
+	}
+	else {
+		playerColor_ = GetColor(0, 0, 255);
+	}
+
 	// プレイヤーが画面外に出ないように
 	if (player_.pos.x - player_.width / 2 <= window_.pos.x - window_.width / 2){
 		player_.pos.x = window_.pos.x - window_.width / 2 + player_.width / 2;
@@ -35,5 +43,5 @@ void HydeGame::Draw(){
 	// 隠れる場所
 	Util::DrawBox(hydeObject_.pos, hydeObject_.width / 2, hydeObject_.height / 2, GetColor(255, 0, 0), false);
 	// プレイヤー
-	Util::DrawBox(player_.pos, player_.width / 2, player_.height / 2, GetColor(0, 0, 255), true);
+	Util::DrawBox(player_.pos, player_.width / 2, player_.height / 2, playerColor_, true);
 }

@@ -13,5 +13,6 @@ private:
 	Input* input_ = nullptr;
 	BoxTransform hydeObject_;
 	BoxTransform player_;
+	int playerColor_;
 };
 
