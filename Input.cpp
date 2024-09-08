@@ -31,6 +31,15 @@ bool Input::GetMouseLeft()
 	return (GetMouseInput() & MOUSE_INPUT_LEFT);
 }
 
+bool Input::GetMouseLeftButton(BoxTransform box)
+{
+	if (GetMouseHitBox(box))
+	{
+		return GetMouseLeft();
+	}
+	return false;
+}
+
 bool Input::GetTriggerMouseLeftButton(BoxTransform box)
 {
 	if (GetMouseHitBox(box))
