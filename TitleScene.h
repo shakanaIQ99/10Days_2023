@@ -35,5 +35,5 @@ public:
 	void Reset();
 
 private:
-
+	int hacker;
 };

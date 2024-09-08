@@ -7,7 +7,7 @@
 
 void TitleScene::SetTexture()
 {
-	
+	hacker = DxLib::LoadGraph(L"Resources/backGround/hacker.png");
 }
 
 void TitleScene::Init()
@@ -25,6 +25,7 @@ void TitleScene::Update()
 
 void TitleScene::Draw()
 {
+	DxLib::DrawGraph(0,0,hacker,TRUE);
 }
 
 void TitleScene::Reset()
