@@ -34,6 +34,9 @@
     <ClCompile Include="Easing.cpp">
       <Filter>ソースファイル</Filter>
     </ClCompile>
+    <ClCompile Include="BaseGame.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
     <ClCompile Include="DrawManager.cpp">
       <Filter>ソースファイル</Filter>
     </ClCompile>
@@ -117,6 +120,9 @@
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
     <ClInclude Include="DrawManager.h" />
+    <ClInclude Include="BaseGame.h">
+      <Filter>ヘッダーファイル</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ソースファイル">
