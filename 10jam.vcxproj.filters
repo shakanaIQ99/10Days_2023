@@ -52,6 +52,9 @@
     <ClCompile Include="KusogakiGame.cpp">
       <Filter>ソースファイル</Filter>
     </ClCompile>
+    <ClCompile Include="DrawManager.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -149,6 +152,7 @@
     <ClInclude Include="KusogakiGame.h">
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
+    <ClInclude Include="DrawManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="ソースファイル">
