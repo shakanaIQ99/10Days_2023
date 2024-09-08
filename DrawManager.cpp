@@ -5,7 +5,13 @@ bool comp(const shared_ptr<BaseGame> lo, const shared_ptr<BaseGame> ro) {
 	return lo->GetLayer() < ro->GetLayer();
 }
 
-void ManageDraw() 
+void PushListAGame()
+{
+
+	
+}
+
+void ManageDraw()
 {
 	layerList.sort(comp);
 
@@ -19,11 +25,7 @@ void ManageDraw()
 
 		order->Draw();
 
-		if (order->GetEnd()) {
-			itr = layerList.erase(itr);
-		}
-		else {
-			itr++;
-		}
+		
+		itr = layerList.erase(itr);
 	}
 }
