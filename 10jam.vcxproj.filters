@@ -1,15 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="Vector2.cpp">
-      <Filter>ソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Util.cpp">
-      <Filter>ソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="TitleScene.cpp">
-      <Filter>ソースファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Score.cpp">
       <Filter>ソースファイル</Filter>
     </ClCompile>
@@ -22,38 +13,47 @@
     <ClCompile Include="GameTime.cpp">
       <Filter>ソースファイル</Filter>
     </ClCompile>
-    <ClCompile Include="GameScene.cpp">
-      <Filter>ソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Ease.cpp">
-      <Filter>ソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="ResultScene.cpp">
-      <Filter>ソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Easing.cpp">
-      <Filter>ソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="BaseGame.cpp">
-      <Filter>ソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Collision.cpp">
+    <ClCompile Include="DrawManager.cpp">
       <Filter>ソースファイル</Filter>
     </ClCompile>
     <ClCompile Include="HelpSunGame.cpp">
-      <Filter>ソースファイル</Filter>
+      <Filter>ソースファイル\Minigames</Filter>
     </ClCompile>
     <ClCompile Include="HydeGame.cpp">
-      <Filter>ソースファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="LightGame.cpp">
-      <Filter>ソースファイル</Filter>
+      <Filter>ソースファイル\Minigames</Filter>
     </ClCompile>
     <ClCompile Include="KusogakiGame.cpp">
-      <Filter>ソースファイル</Filter>
+      <Filter>ソースファイル\Minigames</Filter>
     </ClCompile>
-    <ClCompile Include="DrawManager.cpp">
-      <Filter>ソースファイル</Filter>
+    <ClCompile Include="LightGame.cpp">
+      <Filter>ソースファイル\Minigames</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseGame.cpp">
+      <Filter>ソースファイル\Minigames</Filter>
+    </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>ソースファイル\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ResultScene.cpp">
+      <Filter>ソースファイル\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>ソースファイル\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Util.cpp">
+      <Filter>UtilsClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Easing.cpp">
+      <Filter>UtilsClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Ease.cpp">
+      <Filter>UtilsClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>UtilsClass</Filter>
+    </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>UtilsClass</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -75,9 +75,6 @@
     <ClCompile Include="TitleScene.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClInclude Include="GameScene.h">
-      <Filter>ヘッダーファイル</Filter>
-    </ClInclude>
     <ClInclude Include="GameTime.h">
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
@@ -90,18 +87,6 @@
     <ClInclude Include="Score.h">
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
-    <ClInclude Include="struct.h">
-      <Filter>ヘッダーファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="TitleScene.h">
-      <Filter>ヘッダーファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Util.h">
-      <Filter>ヘッダーファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Vector2.h">
-      <Filter>ヘッダーファイル</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameScene.h">
@@ -125,32 +110,49 @@
     <ClInclude Include="main.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Ease.h">
-      <Filter>ヘッダーファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="ResultScene.h">
-      <Filter>ヘッダーファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Easing.h">
-      <Filter>ヘッダーファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="DrawManager.h" />
-    <ClInclude Include="BaseGame.h">
-      <Filter>ヘッダーファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="Collision.h">
-      <Filter>ヘッダーファイル</Filter>
-    </ClInclude>
     <ClInclude Include="HelpSunGame.h">
-      <Filter>ヘッダーファイル</Filter>
+      <Filter>ヘッダーファイル\Minigames</Filter>
     </ClInclude>
     <ClInclude Include="HydeGame.h">
-      <Filter>ヘッダーファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="LightGame.h">
-      <Filter>ヘッダーファイル</Filter>
+      <Filter>ヘッダーファイル\Minigames</Filter>
     </ClInclude>
     <ClInclude Include="KusogakiGame.h">
+      <Filter>ヘッダーファイル\Minigames</Filter>
+    </ClInclude>
+    <ClInclude Include="LightGame.h">
+      <Filter>ヘッダーファイル\Minigames</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseGame.h">
+      <Filter>ヘッダーファイル\Minigames</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>ヘッダーファイル\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="ResultScene.h">
+      <Filter>ヘッダーファイル\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>ヘッダーファイル\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Ease.h">
+      <Filter>UtilsClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Easing.h">
+      <Filter>UtilsClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
+      <Filter>UtilsClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Util.h">
+      <Filter>UtilsClass</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>UtilsClass</Filter>
+    </ClInclude>
+    <ClInclude Include="struct.h">
+      <Filter>UtilsClass</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawManager.h">
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
   </ItemGroup>
@@ -160,6 +162,21 @@
     </Filter>
     <Filter Include="ヘッダーファイル">
       <UniqueIdentifier>{c7994ac0-324d-43e6-b80a-4aaee2bf0533}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダーファイル\Minigames">
+      <UniqueIdentifier>{0b7b8bf8-0592-4c01-bfbc-4c28eec87f02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\Minigames">
+      <UniqueIdentifier>{d1c32afb-dd6d-4e96-80f2-26347ea12c96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソースファイル\Scenes">
+      <UniqueIdentifier>{454be1db-d882-4282-a351-430db1612d30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダーファイル\Scenes">
+      <UniqueIdentifier>{2acd95e7-293a-46bb-b328-1b96100e3159}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UtilsClass">
+      <UniqueIdentifier>{c53ac41f-621a-4635-8de5-f4f6e9a26603}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
