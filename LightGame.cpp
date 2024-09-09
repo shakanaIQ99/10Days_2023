@@ -6,16 +6,16 @@ LightGame::LightGame(const Vector2& pos)
 	input_ = Input::GetInstance();
 
 	window_.pos = pos;
-	window_.width = WIN_WIDTH * 1 / 3;
-	window_.height = WIN_HEIGHT * 1 / 3;
+	window_.width = 420;
+	window_.height = 240;
 
 	topBar_.width = window_.width;
 	topBar_.height = 32 * 3 / 2;
 	topBar_.pos = { window_.pos.x, window_.pos.y - (window_.height / 2 + topBar_.height / 2) };
 
 	tip_.pos = { window_.pos };
-	tip_.width = 12;
-	tip_.height = 12;
+	tip_.width = 36;
+	tip_.height = 36;
 
 	isLightChange = false;
 
@@ -74,7 +74,7 @@ void LightGame::Update()
 		tip_.pos.y = window_.pos.y;
 	}
 
-	if (tip_.pos.y >= window_.pos.y + 20)
+	if (tip_.pos.y >= window_.pos.y + 100)
 	{
 		if (!isLightChange) {
 			isLightChange = true;

@@ -6,8 +6,8 @@ HelpSunGame::HelpSunGame(const Vector2& pos)
 	input_ = Input::GetInstance();
 
 	window_.pos = pos;
-	window_.width = WIN_WIDTH * 2 / 7;
-	window_.height = WIN_HEIGHT * 2 / 7;
+	window_.width = 360;
+	window_.height = 200;
 
 	topBar_.width = window_.width;
 	topBar_.height = 32 * 3 / 2;
@@ -21,8 +21,8 @@ HelpSunGame::HelpSunGame(const Vector2& pos)
 	{
 		clouds_[i].pos = { sun_.pos.x + Util::GetRand(-sun_.width / 2,sun_.width / 2),
 			sun_.pos.y + Util::GetRand(-sun_.height / 2,sun_.height / 2) };
-		clouds_[i].width = Util::GetRand(50.0f, 100.0f);
-		clouds_[i].height = clouds_[i].width - 10.0f;
+		clouds_[i].width = (int)Util::GetRand(50.0f, 100.0f);
+		clouds_[i].height = (int)clouds_[i].width - 10;
 		isClouds_[i] = true;
 	}
 }
@@ -51,8 +51,8 @@ void HelpSunGame::Init()
 	{
 		clouds_[i].pos = { sun_.pos.x + Util::GetRand(-sun_.width / 2,sun_.width / 2),
 			sun_.pos.y + Util::GetRand(-sun_.height / 2,sun_.height / 2) };
-		clouds_[i].width = Util::GetRand(50.0f, 100.0f);
-		clouds_[i].height = clouds_[i].width - 10.0f;
+		clouds_[i].width = (int)Util::GetRand(50.0f, 100.0f);
+		clouds_[i].height = (int)clouds_[i].width - 10;
 		isClouds_[i] = true;
 	}
 }

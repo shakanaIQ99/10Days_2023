@@ -2,13 +2,13 @@
 #include "Util.h"
 #include "Collision.h"
 
-HydeGame::HydeGame(const Vector2& pos = { WIN_WIDTH / 2,WIN_HEIGHT / 2 })
+HydeGame::HydeGame(const Vector2& pos)
 {
 	input_ = Input::GetInstance();
 
 	window_.pos = pos;
-	window_.width = WIN_WIDTH * 2 / 7;
-	window_.height = WIN_HEIGHT * 2 / 7;
+	window_.width = 360;
+	window_.height = 200;
 
 	topBar_.width = window_.width;
 	topBar_.height = 32 * 3 / 2;
@@ -17,7 +17,7 @@ HydeGame::HydeGame(const Vector2& pos = { WIN_WIDTH / 2,WIN_HEIGHT / 2 })
 	hydeObject_.pos = { window_.pos.x + 60.0f,window_.pos.y + 55.0f };
 	hydeObject_.width = 140;
 	hydeObject_.height = 90;
-	player_.pos = { window_.pos.x - 60.0f,window_.pos.y + 60.0f };
+	player_.pos = { window_.pos.x - 80.0f,window_.pos.y + 75.0f };
 	player_.width = 120;
 	player_.height = 50;
 }
