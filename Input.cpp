@@ -31,6 +31,15 @@ bool Input::GetMouseLeft()
 	return (GetMouseInput() & MOUSE_INPUT_LEFT);
 }
 
+bool Input::GetMouseLeftButton(BoxTransform box)
+{
+	if (GetMouseHitBox(box))
+	{
+		return GetMouseLeft();
+	}
+	return false;
+}
+
 bool Input::GetTriggerMouseLeftButton(BoxTransform box)
 {
 	if (GetMouseHitBox(box))
@@ -42,10 +51,10 @@ bool Input::GetTriggerMouseLeftButton(BoxTransform box)
 
 bool Input::GetMouseHitBox(BoxTransform box)
 {
-	if (box.pos.x - (float)box.width <= GetInstance()->Mousepos.x &&
-		box.pos.x + (float)box.width >= GetInstance()->Mousepos.x &&
-		box.pos.y - (float)box.height <= GetInstance()->Mousepos.y &&
-		box.pos.y + (float)box.height >= GetInstance()->Mousepos.y)
+	if (box.pos.x - (float)box.width / 2 <= GetInstance()->Mousepos.x &&
+		box.pos.x + (float)box.width / 2 >= GetInstance()->Mousepos.x &&
+		box.pos.y - (float)box.height / 2 <= GetInstance()->Mousepos.y &&
+		box.pos.y + (float)box.height / 2 >= GetInstance()->Mousepos.y)
 	{
 		return true;
 	}

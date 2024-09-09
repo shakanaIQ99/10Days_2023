@@ -1,7 +1,7 @@
 #pragma once
 #include"DxLib.h"
-
-
+#include "BaseGame.h"
+#include <memory>
 
 class GameScene
 {
@@ -16,7 +16,7 @@ public:
 	void SetTexture();
 
 private:
-
+	std::unique_ptr<BaseGame> baseGame_ = nullptr;
 	
 };
 

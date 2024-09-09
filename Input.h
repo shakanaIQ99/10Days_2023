@@ -35,6 +35,7 @@ public:
 	/// BoxTransform\‘¢‘Ì‚Åì‚Á‚½Box‚ğ‰Ÿ‚µ‚Ä‚é‚©‚Ì”»’è
 	/// </summary>
 	/// <returns></returns>
+	static bool GetMouseLeftButton(BoxTransform box);
 	static bool GetTriggerMouseLeftButton(BoxTransform box);
 
 	static bool GetMouseHitBox(BoxTransform box);
