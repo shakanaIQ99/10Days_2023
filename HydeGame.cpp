@@ -2,18 +2,47 @@
 #include "Util.h"
 #include "Collision.h"
 
+HydeGame::HydeGame(const Vector2& pos)
+{
+	input_ = Input::GetInstance();
+
+	window_.pos = pos;
+	window_.width = 360;
+	window_.height = 200;
+
+	topBar_.width = window_.width;
+	topBar_.height = 32 * 3 / 2;
+	topBar_.pos = { window_.pos.x, window_.pos.y - (window_.height / 2 + topBar_.height / 2) };
+
+	hydeObject_.pos = { window_.pos.x + 60.0f,window_.pos.y + 55.0f };
+	hydeObject_.width = 140;
+	hydeObject_.height = 90;
+	player_.pos = { window_.pos.x - 80.0f,window_.pos.y + 75.0f };
+	player_.width = 120;
+	player_.height = 50;
+}
+
+HydeGame::~HydeGame()
+{
+}
+
 void HydeGame::Init(){
 	input_ = Input::GetInstance();
 
 	window_.pos = { WIN_WIDTH / 2,WIN_HEIGHT / 2 };
 	window_.width = WIN_WIDTH * 2 / 7;
 	window_.height = WIN_HEIGHT * 2 / 7;
+
+	topBar_.width = window_.width;
+	topBar_.height = 32 * 3 / 2;
+	topBar_.pos = { window_.pos.x, window_.pos.y - (window_.height / 2 + topBar_.height / 2) };
+
 	hydeObject_.pos = { window_.pos.x + 60.0f,window_.pos.y + 55.0f };
-	hydeObject_.width = 70;
-	hydeObject_.height = 35;
+	hydeObject_.width = 140;
+	hydeObject_.height = 90;
 	player_.pos = { window_.pos.x - 60.0f,window_.pos.y + 60.0f };
-	player_.width = 60;
-	player_.height = 25;
+	player_.width = 120;
+	player_.height = 50;
 }
 
 void HydeGame::Update(){
@@ -40,6 +69,7 @@ void HydeGame::Update(){
 void HydeGame::Draw(){
 	// ウィンドウ
 	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(255, 255, 255), false);
+	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), false);
 	// 隠れる場所
 	Util::DrawBox(hydeObject_.pos, hydeObject_.width / 2, hydeObject_.height / 2, GetColor(255, 0, 0), false);
 	// プレイヤー

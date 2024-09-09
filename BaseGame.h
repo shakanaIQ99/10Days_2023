@@ -44,4 +44,5 @@ protected:
 	int layer_ = 50;
 	bool end_ = false;
 	bool active_ = false;
+	BoxTransform topBar_;
 };
