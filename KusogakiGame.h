@@ -1,6 +1,7 @@
 #pragma once
 #include "BaseGame.h"
 #include "Input.h"
+#include <array>
 
 class KusogakiGame : public BaseGame
 {
@@ -13,5 +14,7 @@ public:
 
 private:
 	Input* input_ = nullptr;
+
+	std::array<BoxTransform, 3> panels_;
 };
 
