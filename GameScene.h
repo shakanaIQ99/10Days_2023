@@ -16,7 +16,7 @@ public:
 	void SetTexture();
 
 private:
-	std::unique_ptr<BaseGame> baseGame_ = nullptr;
+	/*std::unique_ptr<BaseGame> baseGame_ = nullptr;*/
 	
 };
 

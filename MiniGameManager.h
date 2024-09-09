@@ -23,8 +23,8 @@ public:
 
 	static MiniGameManager* GetInstance();
 
-	static void CreateLightGame(Vector2 pos);
-	static void CreateHydeGame(Vector2 pos);
+	static void CreateLightGame(const Vector2& pos = { WIN_WIDTH / 2,WIN_HEIGHT / 2 });
+	static void CreateHydeGame(const Vector2& pos = { (WIN_WIDTH / 2)+50,WIN_HEIGHT / 2 });
 
 
 	static void ManageMiniGames();
@@ -36,5 +36,6 @@ private:
 	void Initialize();
 	static list<unique_ptr<BaseGame>> gameList;
 
+	//bool comp(const unique_ptr<BaseGame> lo, const unique_ptr<BaseGame> ro);
 
 };

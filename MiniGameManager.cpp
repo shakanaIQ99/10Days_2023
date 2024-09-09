@@ -2,7 +2,7 @@
 #include "Input.h"
 std::list<std::unique_ptr<BaseGame>> MiniGameManager::gameList;
 
-bool comp(const unique_ptr<BaseGame> lo, const unique_ptr<BaseGame> ro) {
+bool comp(const unique_ptr<BaseGame>& lo, const unique_ptr<BaseGame>& ro) {
 	return lo->GetLayer() < ro->GetLayer();
 }
 
@@ -16,19 +16,20 @@ MiniGameManager* MiniGameManager::GetInstance()
 	return &instance;
 }
 
-void MiniGameManager::CreateLightGame(Vector2 pos)
+void MiniGameManager::CreateLightGame(const Vector2& pos)
 {
-	GetInstance()->gameList.emplace_back(std::make_unique<LightGame>());
+	GetInstance()->gameList.emplace_back(std::make_unique<LightGame>(pos));
 }
 
-void MiniGameManager::CreateHydeGame(Vector2 pos)
+void MiniGameManager::CreateHydeGame(const Vector2& pos)
 {
-	GetInstance()->gameList.emplace_back(std::make_unique<HydeGame>());
+	GetInstance()->gameList.emplace_back(std::make_unique<HydeGame>(pos));
 }
 
 void MiniGameManager::ManageMiniGames()
 {
-	gameList.sort(comp);
+	
+	GetInstance()->gameList.sort(comp);
 
 	int Maxlayer = gameList.back().get()->GetLayer();
 
@@ -37,14 +38,14 @@ void MiniGameManager::ManageMiniGames()
 
 		if (Input::GetTriggerMouseLeftButton(obj->GetTransform()))
 		{
-			if (obj->GetLayer() < Maxlayer)
+			if (obj->GetLayer() <= Maxlayer)
 			{
 				obj->SetLayer(Maxlayer + 1);
 			}
 
 			break;
 		}
-	
+		itr++;
 	}
 
 	for (list<unique_ptr<BaseGame>>::iterator itr = GetInstance()->gameList.begin(); itr != GetInstance()->gameList.end();) {
@@ -72,3 +73,5 @@ void MiniGameManager::Initialize()
 {
 	GetInstance()->gameList.clear();
 }
+
+

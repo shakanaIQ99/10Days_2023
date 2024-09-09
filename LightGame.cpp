@@ -20,6 +20,7 @@ LightGame::LightGame(const Vector2& pos)
 	isLightChange = false;
 
 	lightCount = 0;
+	lightColor = 0;
 }
 
 LightGame::~LightGame()
@@ -87,8 +88,8 @@ void LightGame::Update()
 void LightGame::Draw()
 {
 	// ウィンドウ
-	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(255, 255, 255), false);
-	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), false);
+	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(255, 255, 255), true);
+	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), true);
 
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 50);
 	// 暗転状態
