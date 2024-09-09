@@ -5,7 +5,8 @@
 #include "BaseGame.h"
 
 //É~ÉjÉQÅ[ÉÄÇ«Ç‡
-
+#include"LightGame.h"
+#include"HydeGame.h"
 
 
 //
@@ -22,8 +23,8 @@ public:
 
 	static MiniGameManager* GetInstance();
 
-	/*static void CreateHomingBullet(ObjModel* Model, Vector3 Position, Vector3 Velocity, Vector3* Target, float Size, float BulletSpeed, const Tag& Tag);
-	static void CreateNormalBullet(ObjModel* Model, Vector3 Position, Vector3 Velocity, float Size, float BulletSpeed, const Tag& Tag);*/
+	static void CreateLightGame(Vector2 pos);
+	static void CreateHydeGame(Vector2 pos);
 
 
 	static void ManageMiniGames();

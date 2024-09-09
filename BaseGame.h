@@ -14,8 +14,28 @@ public:
 		return layer_;
 	}
 
+	void SetLayer(int layer)
+	{
+		layer_ = layer;
+	}
+
 	bool GetEnd() {
 		return end_;
+	}
+
+	void OnActive()
+	{
+		active_ = true;
+	}
+
+	void OffActive()
+	{
+		active_ = false;
+	}
+
+	BoxTransform GetTransform()
+	{
+		return window_;
 	}
 
 protected:
@@ -23,4 +43,5 @@ protected:
 	BoxTransform window_;
 	int layer_ = 50;
 	bool end_ = false;
+	bool active_ = false;
 };
