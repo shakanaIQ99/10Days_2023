@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DrawManager.cpp" />
     <ClCompile Include="BaseGame.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="DrawManager.cpp" />
@@ -163,6 +164,7 @@
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DrawManager.h" />
     <ClInclude Include="BaseGame.h" />
     <ClInclude Include="Collision.h" />
     <ClInclude Include="DrawManager.h" />
