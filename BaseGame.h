@@ -19,7 +19,6 @@ public:
 	}
 
 protected:
-	int layer_ = 0;
 
 	BoxTransform window_;
 	int layer_ = 50;
