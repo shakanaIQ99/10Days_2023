@@ -13,7 +13,6 @@ void GameScene::Init()
 	
 }
 
-
 void GameScene::Update()
 {
 	
