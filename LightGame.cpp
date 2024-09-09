@@ -1,6 +1,31 @@
 #include "LightGame.h"
 #include "Util.h"
 
+LightGame::LightGame(const Vector2& pos)
+{
+	input_ = Input::GetInstance();
+
+	window_.pos = pos;
+	window_.width = WIN_WIDTH * 1 / 3;
+	window_.height = WIN_HEIGHT * 1 / 3;
+
+	topBar_.width = window_.width;
+	topBar_.height = 32 * 3 / 2;
+	topBar_.pos = { window_.pos.x, window_.pos.y - (window_.height / 2 + topBar_.height / 2) };
+
+	tip_.pos = { window_.pos };
+	tip_.width = 12;
+	tip_.height = 12;
+
+	isLightChange = false;
+
+	lightCount = 0;
+}
+
+LightGame::~LightGame()
+{
+}
+
 void LightGame::Init()
 {
 	input_ = Input::GetInstance();
@@ -8,6 +33,10 @@ void LightGame::Init()
 	window_.pos = { WIN_WIDTH / 2,WIN_HEIGHT / 2 };
 	window_.width = WIN_WIDTH * 1 / 3;
 	window_.height = WIN_HEIGHT * 1 / 3;
+
+	topBar_.width = window_.width;
+	topBar_.height = 32 * 3 / 2;
+	topBar_.pos = { window_.pos.x, window_.pos.y - (window_.height / 2 + topBar_.height / 2) };
 
 	tip_.pos = { window_.pos };
 	tip_.width = 12;
@@ -59,6 +88,7 @@ void LightGame::Draw()
 {
 	// ウィンドウ
 	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(255, 255, 255), false);
+	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), false);
 
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 50);
 	// 暗転状態

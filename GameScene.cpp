@@ -14,7 +14,7 @@ using namespace Util;
 
 void GameScene::Init()
 {
-	baseGame_ = std::make_unique<HelpSunGame>();
+	baseGame_ = std::make_unique<HydeGame>();
 	baseGame_->Init();
 }
 

@@ -14,4 +14,5 @@ protected:
 	int layer_ = 0;
 
 	BoxTransform window_;
+	BoxTransform topBar_;
 };
