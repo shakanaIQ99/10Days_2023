@@ -6,8 +6,8 @@ void HydeGame::Init(){
 	input_ = Input::GetInstance();
 
 	window_.pos = { WIN_WIDTH / 2,WIN_HEIGHT / 2 };
-	window_.width = WIN_WIDTH * 1 / 5;
-	window_.height = WIN_HEIGHT * 1 / 5;
+	window_.width = WIN_WIDTH * 2 / 7;
+	window_.height = WIN_HEIGHT * 2 / 7;
 	hydeObject_.pos = { window_.pos.x + 60.0f,window_.pos.y + 55.0f };
 	hydeObject_.width = 70;
 	hydeObject_.height = 35;

@@ -6,8 +6,8 @@ void HelpSunGame::Init()
 	input_ = Input::GetInstance();
 
 	window_.pos = { WIN_WIDTH / 2,WIN_HEIGHT / 2 };
-	window_.width = WIN_WIDTH * 1 / 3;
-	window_.height = WIN_HEIGHT * 1 / 3;
+	window_.width = WIN_WIDTH * 2 / 7;
+	window_.height = WIN_HEIGHT * 2 / 7;
 
 	sun_.pos = window_.pos;
 	sun_.width = 120;

@@ -7,6 +7,7 @@
 #include "HydeGame.h"
 #include "LightGame.h"
 #include "HelpSunGame.h"
+#include "KusogakiGame.h"
 
 using namespace Util;
 
