@@ -20,8 +20,7 @@ void GameScene::Update()
 
 void GameScene::Draw()
 {
-	//タスクバーの表示
-	Util::DrawBox({ 640,704 }, 1280, 16, GetColor(255, 255, 255), TRUE);
+	
 }
 
 void GameScene::SetTexture()
