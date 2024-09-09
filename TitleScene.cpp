@@ -19,13 +19,17 @@ void TitleScene::Init()
 
 void TitleScene::Update()
 {
-
-
+	drawHacker = true;
 }
 
 void TitleScene::Draw()
 {
-	DxLib::DrawGraph(0,0,hacker,TRUE);
+	if (drawHacker)
+	{
+		SetDrawBlendMode(DX_BLENDMODE_ALPHA, alpha);
+		DxLib::DrawGraph(0, 0, hacker, TRUE);
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 255);
+	}
 }
 
 void TitleScene::Reset()

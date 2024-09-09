@@ -36,4 +36,7 @@ public:
 
 private:
 	int hacker;
+	bool drawHacker = false;
+	float alpha = 255.0f;
+
 };
