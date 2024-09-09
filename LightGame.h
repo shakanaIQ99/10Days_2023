@@ -5,7 +5,7 @@
 class LightGame : public BaseGame
 {
 public:
-	LightGame(const Vector2& pos = { WIN_WIDTH / 2,WIN_HEIGHT / 2 });
+	LightGame(const Vector2& pos);
 	 ~LightGame();
 	void Init() override;
 	void Update() override;
@@ -20,6 +20,6 @@ private:
 
 	int lightCount = 0;
 
-	int lightColor;
+	int lightColor=0;
 };
 

@@ -143,7 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DrawManager.cpp" />
+    <ClCompile Include="MiniGameManager.cpp" />
     <ClCompile Include="BaseGame.cpp" />
     <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Ease.cpp" />
@@ -163,9 +163,9 @@
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MiniGameManager.h" />
     <ClInclude Include="BaseGame.h" />
     <ClInclude Include="Collision.h" />
-    <ClInclude Include="DrawManager.h" />
     <ClInclude Include="Ease.h" />
     <ClInclude Include="Easing.h" />
     <ClInclude Include="GameScene.h" />

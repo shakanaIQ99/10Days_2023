@@ -8,24 +8,27 @@
 #include "LightGame.h"
 #include "HelpSunGame.h"
 #include "KusogakiGame.h"
+#include"MiniGameManager.h"
 
 using namespace Util;
 
 
 void GameScene::Init()
 {
-	baseGame_ = std::make_unique<HelpSunGame>();
+	MiniGameManager::Clear();
+	MiniGameManager::CreateHydeGame();
+	MiniGameManager::CreateLightGame();
 }
 
 
 void GameScene::Update()
 {
-	baseGame_->Update();
+	
 }
 
 void GameScene::Draw()
 {
-	baseGame_->Draw();
+	MiniGameManager::ManageMiniGames();
 }
 
 void GameScene::SetTexture()
