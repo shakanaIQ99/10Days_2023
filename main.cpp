@@ -9,7 +9,7 @@
 #include"ResultScene.h"
 #include"Score.h"
 
-#include "DrawManager.h"
+#include "MiniGameManager.h"
 
 template<class T> inline void SafeDelete(T*& p)
 {
