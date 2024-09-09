@@ -143,11 +143,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DrawManager.cpp" />
+    <ClCompile Include="BaseGame.cpp" />
+    <ClCompile Include="Collision.cpp" />
     <ClCompile Include="Ease.cpp" />
     <ClCompile Include="Easing.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GameTime.cpp" />
+    <ClCompile Include="HelpSunGame.cpp" />
+    <ClCompile Include="HydeGame.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="KusogakiGame.cpp" />
+    <ClCompile Include="LightGame.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="Score.cpp" />
@@ -156,11 +163,18 @@
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DrawManager.h" />
+    <ClInclude Include="BaseGame.h" />
+    <ClInclude Include="Collision.h" />
     <ClInclude Include="Ease.h" />
     <ClInclude Include="Easing.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GameTime.h" />
+    <ClInclude Include="HelpSunGame.h" />
+    <ClInclude Include="HydeGame.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="KusogakiGame.h" />
+    <ClInclude Include="LightGame.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="Score.h" />
