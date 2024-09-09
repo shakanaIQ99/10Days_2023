@@ -107,6 +107,11 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 			titleScene->Draw();
 
+			if ((GetMouseInput() & MOUSE_INPUT_LEFT) != 0)
+			{
+				scene = SceneNum::GameScene;
+			}
+
 			break;
 		case SceneNum::GameScene:
 
