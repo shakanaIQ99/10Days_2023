@@ -152,6 +152,7 @@
     <ClCompile Include="HelpSunGame.cpp" />
     <ClCompile Include="HydeGame.cpp" />
     <ClCompile Include="Input.cpp" />
+    <ClCompile Include="KusogakiGame.cpp" />
     <ClCompile Include="LightGame.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ResultScene.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="HelpSunGame.h" />
     <ClInclude Include="HydeGame.h" />
     <ClInclude Include="Input.h" />
+    <ClInclude Include="KusogakiGame.h" />
     <ClInclude Include="LightGame.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="ResultScene.h" />

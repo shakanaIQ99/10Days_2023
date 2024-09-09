@@ -49,6 +49,9 @@
     <ClCompile Include="LightGame.cpp">
       <Filter>ソースファイル</Filter>
     </ClCompile>
+    <ClCompile Include="KusogakiGame.cpp">
+      <Filter>ソースファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -141,6 +144,9 @@
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
     <ClInclude Include="LightGame.h">
+      <Filter>ヘッダーファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="KusogakiGame.h">
       <Filter>ヘッダーファイル</Filter>
     </ClInclude>
   </ItemGroup>
