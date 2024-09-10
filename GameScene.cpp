@@ -18,6 +18,8 @@ void GameScene::Init()
 	MiniGameManager::Clear();
 	MiniGameManager::CreateHydeGame(0);
 	MiniGameManager::CreateLightGame(1);
+	MiniGameManager::CreateHelpSunGame(2);
+	MiniGameManager::CreateKusogakiGame(3);
 }
 
 

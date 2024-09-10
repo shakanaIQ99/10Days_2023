@@ -24,10 +24,10 @@ public:
 	static MiniGameManager* GetInstance();
 
 
-	static void CreateLightGame(int LayerNum, const Vector2& pos = { WIN_WIDTH / 2,WIN_HEIGHT / 2 });
-	static void CreateHydeGame(int LayerNum, const Vector2& pos = { (WIN_WIDTH / 2),WIN_HEIGHT / 2 });
-	static void CreateHelpSunGame(int LayerNum, const Vector2& pos = { WIN_WIDTH / 2,WIN_HEIGHT / 2 });
-	static void CreateKusogakiGame(int LayerNum, const Vector2& pos = { WIN_WIDTH / 2,WIN_HEIGHT / 2 });
+	static void CreateLightGame(int LayerNum, const Vector2& pos = { (WIN_WIDTH / 2)-50,WIN_HEIGHT / 2 });
+	static void CreateHydeGame(int LayerNum, const Vector2& pos = { (WIN_WIDTH / 2)+50,WIN_HEIGHT / 2 });
+	static void CreateHelpSunGame(int LayerNum, const Vector2& pos = { WIN_WIDTH / 2,(WIN_HEIGHT / 2)+50 });
+	static void CreateKusogakiGame(int LayerNum, const Vector2& pos = { WIN_WIDTH / 2,(WIN_HEIGHT / 2) - 50 });
 
 
 	static void ManageMiniGames();

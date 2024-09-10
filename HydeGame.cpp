@@ -70,7 +70,7 @@ void HydeGame::Update(){
 
 void HydeGame::Draw(){
 	// ウィンドウ
-	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(255, 255, 255), false);
+	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(255, 255, 0), true);
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), false);
 	// 隠れる場所
 	Util::DrawBox(hydeObject_.pos, hydeObject_.width / 2, hydeObject_.height / 2, GetColor(255, 0, 0), false);
