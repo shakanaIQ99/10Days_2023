@@ -40,6 +40,6 @@ void KusogakiGame::Update()
 void KusogakiGame::Draw()
 {
 	// ウィンドウ
-	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(0, 255, 255), true);
-	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), false);
+	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(0, 200, 200), true);
+	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), true);
 }
