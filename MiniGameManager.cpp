@@ -16,31 +16,54 @@ MiniGameManager* MiniGameManager::GetInstance()
 	return &instance;
 }
 
-void MiniGameManager::CreateLightGame(const Vector2& pos)
+void MiniGameManager::CreateLightGame(int LayerNum, const Vector2& pos)
 {
-	GetInstance()->gameList.emplace_back(std::make_unique<LightGame>(pos));
+	GetInstance()->gameList.emplace_back(std::make_unique<LightGame>(LayerNum,pos));
 }
 
-void MiniGameManager::CreateHydeGame(const Vector2& pos)
+void MiniGameManager::CreateHydeGame(int LayerNum, const Vector2& pos)
 {
-	GetInstance()->gameList.emplace_back(std::make_unique<HydeGame>(pos));
+	GetInstance()->gameList.emplace_back(std::make_unique<HydeGame>(LayerNum, pos));
+}
+
+void MiniGameManager::CreateHelpSunGame(int LayerNum, const Vector2& pos)
+{
+	GetInstance()->gameList.emplace_back(std::make_unique<HelpSunGame>(LayerNum, pos));
+}
+
+void MiniGameManager::CreateKusogakiGame(int LayerNum, const Vector2& pos)
+{
+	GetInstance()->gameList.emplace_back(std::make_unique<KusogakiGame>(LayerNum, pos));
 }
 
 void MiniGameManager::ManageMiniGames()
 {
 	
-	GetInstance()->gameList.sort(comp);
+	GetInstance()->gameList.sort(comp);//レイヤー順でソート
 
-	int Maxlayer = gameList.back().get()->GetLayer();
+	int Maxlayer = gameList.back().get()->GetLayer();//最大レイヤー値を取得
+
+	bool firstCheck = false;
 
 	for (list<unique_ptr<BaseGame>>::reverse_iterator itr = GetInstance()->gameList.rbegin(); itr != GetInstance()->gameList.rend();) {
 		BaseGame* obj = (*itr).get();
 
-		if (Input::GetTriggerMouseLeftButton(obj->GetTransform()))
+		if (!firstCheck)
+		{
+			firstCheck = true;
+			obj->OnActive();//最前面だけオンにしているBool関数
+		}
+		else
+		{
+			obj->OffActive();//それ以外off
+		}
+
+		if (Input::GetTriggerMouseLeftButton(obj->GetTransform()))//クリックしたウィンドウを最前面にする関数
 		{
 			if (obj->GetLayer() <= Maxlayer)
 			{
 				obj->SetLayer(Maxlayer + 1);
+				obj->OnActive();
 			}
 
 			break;
@@ -52,7 +75,7 @@ void MiniGameManager::ManageMiniGames()
 		BaseGame* obj = (*itr).get();
 
 
-		if (obj->GetEnd()) {
+		if (obj->GetEnd()) {//終わったウィンドウをListから消す
 			itr = GetInstance()->gameList.erase(itr);
 			continue;
 		}

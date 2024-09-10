@@ -1,13 +1,15 @@
 #include "LightGame.h"
 #include "Util.h"
 
-LightGame::LightGame(const Vector2& pos)
+LightGame::LightGame(int layernum, const Vector2& pos)
 {
 	input_ = Input::GetInstance();
 
 	window_.pos = pos;
 	window_.width = 420;
 	window_.height = 240;
+
+	layer_ = layernum;
 
 	topBar_.width = window_.width;
 	topBar_.height = 32 * 3 / 2;
@@ -87,19 +89,19 @@ void LightGame::Update()
 
 void LightGame::Draw()
 {
-	// ÉEÉBÉìÉhÉE
+	// „Ç¶„Ç£„É≥„Éâ„Ç¶
 	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(255, 255, 255), true);
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), true);
 
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 50);
-	// à√ì]èÛë‘
+	// ÊöóËª¢Áä∂ÊÖã
 	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, lightColor, true);
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 
-	// ïR
+	// Á¥ê
 	DxLib::DrawLine(window_.pos.x, window_.pos.y - window_.height / 2,
 		tip_.pos.x, tip_.pos.y - tip_.height / 2,
 		GetColor(255, 255, 255));
-	// êÊÇ¡ÇøÇÂ
+	// ÂÖà„Å£„Å°„Çá
 	Util::DrawBox(tip_.pos, tip_.width / 2, tip_.height / 2, GetColor(255, 255, 255), false);
 }

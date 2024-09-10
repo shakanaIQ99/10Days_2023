@@ -16,8 +16,8 @@ using namespace Util;
 void GameScene::Init()
 {
 	MiniGameManager::Clear();
-	MiniGameManager::CreateHydeGame();
-	MiniGameManager::CreateLightGame();
+	MiniGameManager::CreateHydeGame(0);
+	MiniGameManager::CreateLightGame(1);
 }
 
 

@@ -41,7 +41,7 @@ public:
 protected:
 
 	BoxTransform window_;
-	int layer_ = 50;
+	int layer_ = 0;
 	bool end_ = false;
 	bool active_ = false;
 	BoxTransform topBar_;

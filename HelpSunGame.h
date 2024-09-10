@@ -9,7 +9,7 @@ const size_t CLOUD_NUM = 5;
 class HelpSunGame : public BaseGame
 {
 public:
-	HelpSunGame(const Vector2& pos = { WIN_WIDTH / 2,WIN_HEIGHT / 2 });
+	HelpSunGame(int layernum, const Vector2& pos);
 	~HelpSunGame();
 	void Init() override;
 	void Update() override;

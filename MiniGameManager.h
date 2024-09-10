@@ -4,11 +4,11 @@
 #include <memory>
 #include "BaseGame.h"
 
-//É~ÉjÉQÅ[ÉÄÇ«Ç‡
+//„Éü„Éã„Ç≤„Éº„É†„Å©„ÇÇ
 #include"LightGame.h"
 #include"HydeGame.h"
-
-
+#include"KusogakiGame.h"
+#include"HelpSunGame.h"
 //
 
 using namespace std;
@@ -23,8 +23,11 @@ public:
 
 	static MiniGameManager* GetInstance();
 
-	static void CreateLightGame(const Vector2& pos = { WIN_WIDTH / 2,WIN_HEIGHT / 2 });
-	static void CreateHydeGame(const Vector2& pos = { (WIN_WIDTH / 2)+50,WIN_HEIGHT / 2 });
+
+	static void CreateLightGame(int LayerNum, const Vector2& pos = { WIN_WIDTH / 2,WIN_HEIGHT / 2 });
+	static void CreateHydeGame(int LayerNum, const Vector2& pos = { (WIN_WIDTH / 2),WIN_HEIGHT / 2 });
+	static void CreateHelpSunGame(int LayerNum, const Vector2& pos = { WIN_WIDTH / 2,WIN_HEIGHT / 2 });
+	static void CreateKusogakiGame(int LayerNum, const Vector2& pos = { WIN_WIDTH / 2,WIN_HEIGHT / 2 });
 
 
 	static void ManageMiniGames();

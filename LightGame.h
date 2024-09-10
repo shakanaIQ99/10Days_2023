@@ -5,7 +5,7 @@
 class LightGame : public BaseGame
 {
 public:
-	LightGame(const Vector2& pos);
+	LightGame(int layernum, const Vector2& pos);
 	 ~LightGame();
 	void Init() override;
 	void Update() override;

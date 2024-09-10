@@ -6,7 +6,7 @@
 class KusogakiGame : public BaseGame
 {
 public:
-	KusogakiGame(const Vector2& pos = { WIN_WIDTH / 2,WIN_HEIGHT / 2 });
+	KusogakiGame(int layernum, const Vector2& pos);
 	~KusogakiGame();
 	void Init() override;
 	void Update() override;

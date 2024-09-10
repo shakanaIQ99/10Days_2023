@@ -2,13 +2,15 @@
 #include "Util.h"
 #include "Collision.h"
 
-HydeGame::HydeGame(const Vector2& pos)
+HydeGame::HydeGame(int layernum, const Vector2& pos)
 {
 	input_ = Input::GetInstance();
 
 	window_.pos = pos;
 	window_.width = 360;
 	window_.height = 200;
+
+	layer_ = layernum;
 
 	topBar_.width = window_.width;
 	topBar_.height = 32 * 3 / 2;
@@ -57,7 +59,7 @@ void HydeGame::Update(){
 		playerColor_ = GetColor(0, 0, 255);
 	}
 
-	// ƒvƒŒƒCƒ„[‚ª‰æ–ÊŠO‚Éo‚È‚¢‚æ‚¤‚É
+	// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒç”»é¢å¤–ã«å‡ºãªã„ã‚ˆã†ã«
 	if (player_.pos.x - player_.width / 2 <= window_.pos.x - window_.width / 2){
 		player_.pos.x = window_.pos.x - window_.width / 2 + player_.width / 2;
 	}
@@ -67,11 +69,11 @@ void HydeGame::Update(){
 }
 
 void HydeGame::Draw(){
-	// ƒEƒBƒ“ƒhƒE
+	// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦
 	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(255, 255, 255), false);
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), false);
-	// ‰B‚ê‚éêŠ
+	// éš ã‚Œã‚‹å ´æ‰€
 	Util::DrawBox(hydeObject_.pos, hydeObject_.width / 2, hydeObject_.height / 2, GetColor(255, 0, 0), false);
-	// ƒvƒŒƒCƒ„[
+	// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼
 	Util::DrawBox(player_.pos, player_.width / 2, player_.height / 2, playerColor_, true);
 }

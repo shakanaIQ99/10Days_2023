@@ -1,7 +1,7 @@
 #include "HelpSunGame.h"
 #include "Util.h"
 
-HelpSunGame::HelpSunGame(const Vector2& pos)
+HelpSunGame::HelpSunGame(int layernum, const Vector2& pos)
 {
 	input_ = Input::GetInstance();
 
@@ -16,6 +16,8 @@ HelpSunGame::HelpSunGame(const Vector2& pos)
 	sun_.pos = window_.pos;
 	sun_.width = 120;
 	sun_.height = 120;
+
+	layer_ = layernum;
 
 	for (size_t i = 0; i < CLOUD_NUM; i++)
 	{
@@ -69,7 +71,7 @@ void HelpSunGame::Update()
 
 void HelpSunGame::Draw()
 {
-	// ウィンドウ
+	// 繧ｦ繧｣繝ｳ繝峨え
 	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(255, 255, 255), false);
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), false);
 	Util::DrawBox(sun_.pos, sun_.width / 2, sun_.height / 2, GetColor(255, 0, 0), true);
