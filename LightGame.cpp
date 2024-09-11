@@ -29,27 +29,6 @@ LightGame::~LightGame()
 {
 }
 
-void LightGame::Init()
-{
-	input_ = Input::GetInstance();
-
-	window_.pos = { WIN_WIDTH / 2,WIN_HEIGHT / 2 };
-	window_.width = WIN_WIDTH * 1 / 3;
-	window_.height = WIN_HEIGHT * 1 / 3;
-
-	topBar_.width = window_.width;
-	topBar_.height = 32 * 3 / 2;
-	topBar_.pos = { window_.pos.x, window_.pos.y - (window_.height / 2 + topBar_.height / 2) };
-
-	tip_.pos = { window_.pos };
-	tip_.width = 12;
-	tip_.height = 12;
-
-	isLightChange = false;
-
-	lightCount = 0;
-}
-
 void LightGame::Update()
 {
 	if (input_->GetMouseLeftButton(tip_)) {
@@ -99,8 +78,8 @@ void LightGame::Draw()
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 
 	// 紐
-	DxLib::DrawLine(window_.pos.x, window_.pos.y - window_.height / 2,
-		tip_.pos.x, tip_.pos.y - tip_.height / 2,
+	DxLib::DrawLine((int)window_.pos.x, (int)window_.pos.y - (int)window_.height / 2,
+		(int)tip_.pos.x, (int)tip_.pos.y - (int)tip_.height / 2,
 		GetColor(255, 255, 255));
 	// 先っちょ
 	Util::DrawBox(tip_.pos, tip_.width / 2, tip_.height / 2, GetColor(255, 255, 255), false);

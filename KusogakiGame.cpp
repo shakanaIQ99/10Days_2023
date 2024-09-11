@@ -20,19 +20,6 @@ KusogakiGame::~KusogakiGame()
 {
 }
 
-void KusogakiGame::Init()
-{
-	input_ = Input::GetInstance();
-
-	window_.pos = { WIN_WIDTH * 2 / 3,WIN_HEIGHT * 2 / 3 };
-	window_.width = 420;
-	window_.height = 240;
-
-	topBar_.width = window_.width;
-	topBar_.height = 32 * 3 / 2;
-	topBar_.pos = { window_.pos.x, window_.pos.y - (window_.height / 2 + topBar_.height / 2) };
-}
-
 void KusogakiGame::Update()
 {
 }
