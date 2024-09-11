@@ -32,12 +32,12 @@ HydeGame::~HydeGame()
 }
 
 void HydeGame::Update(){
-	if (input_->GetTriggerMouseLeftButton(topBar_)) {
+	if (input_->GetMouseLeftButton(topBar_)) {
 		topBar_.pos = input_->GetMousePos();
 	}
 
 	if (input_->GetMouseLeftButton(player_)) {
-		nowPlayer_.x = input_->GetMousePos().x;
+		nowPlayer_.x = input_->GetMousePos().x - window_.pos.x;
 	}
 
 	if (Collision::BoxToBoxCollision(player_, hydeObject_, true)) {

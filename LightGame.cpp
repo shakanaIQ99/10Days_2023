@@ -5,17 +5,18 @@ LightGame::LightGame(int layernum, const Vector2& pos)
 {
 	input_ = Input::GetInstance();
 
-	window_.pos = pos;
+	topBar_.width = 420;
+	topBar_.height = 32 * 3 / 2;
+	topBar_.pos = pos;
+
 	window_.width = 420;
 	window_.height = 240;
+	window_.pos = { topBar_.pos.x, topBar_.pos.y + (topBar_.height / 2 + window_.height / 2) };
 
 	layer_ = layernum;
 
-	topBar_.width = window_.width;
-	topBar_.height = 32 * 3 / 2;
-	topBar_.pos = { window_.pos.x, window_.pos.y - (window_.height / 2 + topBar_.height / 2) };
-
-	tip_.pos = { window_.pos };
+	nowTip_ = { 0,0 };
+	tip_.pos = nowTip_ + window_.pos;
 	tip_.width = 36;
 	tip_.height = 36;
 
@@ -31,8 +32,8 @@ LightGame::~LightGame()
 
 void LightGame::Update()
 {
-	if (input_->GetMouseLeftButton(tip_)) {
-		tip_.pos.y = input_->GetMousePos().y;
+	if (input_->GetMouseLeftButton(topBar_)) {
+		topBar_.pos = input_->GetMousePos();
 	}
 
 	switch (lightCount)
@@ -50,19 +51,21 @@ void LightGame::Update()
 		break;
 	}
 
-	if (tip_.pos.y <= window_.pos.y)
-	{
-		isLightChange = false;
-		tip_.pos.y = window_.pos.y;
-	}
+	window_.pos = { topBar_.pos.x, topBar_.pos.y + (topBar_.height / 2 + window_.height / 2) };
+	tip_.pos = nowTip_ + window_.pos;
 
-	if (tip_.pos.y >= window_.pos.y + 100)
+	if (nowTip_.y < 0) {
+		nowTip_.y = 0;
+	}
+	else if (nowTip_.y >= 100)
 	{
-		if (!isLightChange) {
-			isLightChange = true;
-			lightCount++;
+		lightCount++;
+		nowTip_.y = 0;
+	}
+	else {
+		if (input_->GetMouseLeftButton(tip_)) {
+			nowTip_.y = input_->GetMousePos().y - window_.pos.y;
 		}
-		tip_.pos.y = window_.pos.y;
 	}
 }
 

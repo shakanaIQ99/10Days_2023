@@ -14,6 +14,7 @@ private:
 	Input* input_ = nullptr;
 
 	BoxTransform tip_;
+	Vector2 nowTip_;
 
 	bool isLightChange = false;
 
