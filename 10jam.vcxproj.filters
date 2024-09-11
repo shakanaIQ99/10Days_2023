@@ -49,6 +49,9 @@
     <ClCompile Include="Score.cpp">
       <Filter>OutGame</Filter>
     </ClCompile>
+    <ClCompile Include="HakcerGauge.cpp">
+      <Filter>OutGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MiniGameManager.h" />
@@ -101,6 +104,9 @@
     </ClInclude>
     <ClInclude Include="TitleScene.h">
       <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="HakcerGauge.h">
+      <Filter>OutGame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

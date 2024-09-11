@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="HakcerGauge.cpp" />
     <ClCompile Include="MiniGameManager.cpp" />
     <ClCompile Include="BaseGame.cpp" />
     <ClCompile Include="Collision.cpp" />
@@ -163,6 +164,7 @@
     <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="HakcerGauge.h" />
     <ClInclude Include="MiniGameManager.h" />
     <ClInclude Include="BaseGame.h" />
     <ClInclude Include="Collision.h" />
