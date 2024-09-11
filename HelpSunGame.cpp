@@ -4,7 +4,6 @@
 HelpSunGame::HelpSunGame(int layernum, const Vector2& pos)
 {
 	input_ = Input::GetInstance();
-	windowMode_ = Game;
 
 	topBar_.width = 360;
 	topBar_.height = 32 * 3 / 2;
