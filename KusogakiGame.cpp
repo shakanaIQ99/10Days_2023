@@ -50,7 +50,7 @@ void KusogakiGame::Update()
 {
 	for (size_t i = 0; i < 6; i++) {
 		if (input_->GetTriggerMouseLeftButton(buttons_[i])) {
-			buttonColors_[i] = GetColor(255, 0, 0);
+			buttonColors_[i] = GetColor(255, 255, 100);
 		}
 	}
 
