@@ -14,6 +14,10 @@ KusogakiGame::KusogakiGame(int layernum, const Vector2& pos)
 	topBar_.width = window_.width;
 	topBar_.height = 32 * 3 / 2;
 	topBar_.pos = { window_.pos.x, window_.pos.y - (window_.height / 2 + topBar_.height / 2) };
+
+	fullwindow_.width = topBar_.width;
+	fullwindow_.height = topBar_.height + window_.height;
+	fullwindow_.pos = { topBar_.pos.x,topBar_.pos.y + (window_.height / 2) };
 }
 
 KusogakiGame::~KusogakiGame()
@@ -22,6 +26,8 @@ KusogakiGame::~KusogakiGame()
 
 void KusogakiGame::Update()
 {
+
+	fullwindow_.pos = { topBar_.pos.x,topBar_.pos.y + (window_.height / 2) };
 }
 
 void KusogakiGame::Draw()

@@ -38,14 +38,20 @@ public:
 		active_ = false;
 	}
 
+	bool GetMove()
+	{
+		return isMove_;
+	}
+
 	BoxTransform GetTransform()
 	{
-		return window_;
+		return fullwindow_;
 	}
 
 protected:
 	WindowMode windowMode_;
 	BoxTransform window_;
+	BoxTransform fullwindow_;
 	int layer_ = 0;
 	bool end_ = false;
 	bool active_ = false;

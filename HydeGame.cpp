@@ -14,6 +14,11 @@ HydeGame::HydeGame(int layernum, const Vector2& pos)
 	window_.height = 200;
 	window_.pos = { topBar_.pos.x, topBar_.pos.y + (topBar_.height / 2 + window_.height / 2) };
 
+
+	fullwindow_.width = topBar_.width;
+	fullwindow_.height = topBar_.height + window_.height;
+	fullwindow_.pos = { topBar_.pos.x,topBar_.pos.y + (window_.height / 2) };
+
 	layer_ = layernum;
 
 	nowHydeObject_ = { 60.0f,55.0f };
@@ -32,8 +37,13 @@ HydeGame::~HydeGame()
 }
 
 void HydeGame::Update(){
-	if (input_->GetMouseLeftButton(topBar_)) {
+	if (input_->GetMouseLeftButton(topBar_) && active_) {
 		topBar_.pos = input_->GetMousePos();
+		isMove_ = true;
+	}
+	else
+	{
+		isMove_ = false;
 	}
 
 	if (input_->GetMouseLeftButton(player_)) {
@@ -58,6 +68,8 @@ void HydeGame::Update(){
 	if (player_.pos.x + player_.width / 2 >= window_.pos.x + window_.width / 2) {
 		player_.pos.x = window_.pos.x + window_.width / 2 - player_.width / 2;
 	}
+
+	fullwindow_.pos = { topBar_.pos.x,topBar_.pos.y + (window_.height / 2) };
 }
 
 void HydeGame::Draw(){

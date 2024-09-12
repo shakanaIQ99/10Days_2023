@@ -13,6 +13,11 @@ HelpSunGame::HelpSunGame(int layernum, const Vector2& pos)
 	window_.height = 200;
 	window_.pos = { topBar_.pos.x, topBar_.pos.y + (topBar_.height / 2 + window_.height / 2) };
 
+	fullwindow_.width = topBar_.width;
+	fullwindow_.height = topBar_.height + window_.height;
+
+	fullwindow_.pos = { topBar_.pos.x,topBar_.pos.y + (window_.height / 2) };
+
 	sun_.pos = window_.pos;
 	sun_.width = 120;
 	sun_.height = 120;
@@ -44,16 +49,22 @@ void HelpSunGame::Update()
 		}
 	}
 
-	if (input_->GetMouseLeftButton(topBar_)) {
+	if (input_->GetMouseLeftButton(topBar_) && active_) {
 		topBar_.pos = input_->GetMousePos();
+		isMove_ = true;
 	}
-
+	else
+	{
+		isMove_ = false;
+	}
 	window_.pos = { topBar_.pos.x, topBar_.pos.y + (topBar_.height / 2 + window_.height / 2) };
 
 	sun_.pos = nowSun_ + window_.pos;
 	for (size_t i = 0; i < CLOUD_NUM; i++) {
 		clouds_[i].pos = nowClouds_[i] + window_.pos;
 	}
+
+	fullwindow_.pos = { topBar_.pos.x,topBar_.pos.y + (window_.height / 2) };
 }
 
 void HelpSunGame::Draw()
