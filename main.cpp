@@ -11,6 +11,7 @@
 
 #include "MiniGameManager.h"
 
+
 template<class T> inline void SafeDelete(T*& p)
 {
 	delete p;
@@ -112,6 +113,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			if (titleScene->GetOpenExe())
 			{
 				scene = SceneNum::GameScene;
+				GameTime::Reset();
 			}
 
 			break;

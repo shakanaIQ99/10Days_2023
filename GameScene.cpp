@@ -20,6 +20,7 @@ void GameScene::Init()
 	MiniGameManager::CreateLightGame(1);
 	MiniGameManager::CreateHelpSunGame(2);
 	MiniGameManager::CreateKusogakiGame(3);
+	MiniGameManager::CreateHackerGauge(4, { WIN_WIDTH / 2,WIN_HEIGHT / 7 });
 }
 
 
