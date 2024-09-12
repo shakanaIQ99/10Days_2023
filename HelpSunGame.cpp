@@ -61,6 +61,7 @@ void HelpSunGame::Draw()
 	// ウィンドウ
 	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(200, 0, 200), true);
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), true);
+	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(0, 0, 0), false);
 	Util::DrawBox(sun_.pos, sun_.width / 2, sun_.height / 2, GetColor(255, 0, 0), true);
 	for (size_t i = 0; i < CLOUD_NUM; i++)
 	{

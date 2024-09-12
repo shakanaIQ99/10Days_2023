@@ -158,6 +158,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="Score.cpp" />
+    <ClCompile Include="SimozaGame.cpp" />
     <ClCompile Include="Util.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="TitleScene.cpp" />
@@ -178,6 +179,7 @@
     <ClInclude Include="main.h" />
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="Score.h" />
+    <ClInclude Include="SimozaGame.h" />
     <ClInclude Include="struct.h" />
     <ClInclude Include="Util.h" />
     <ClInclude Include="Vector2.h" />

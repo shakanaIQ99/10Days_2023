@@ -74,7 +74,7 @@ void LightGame::Draw()
 	// ウィンドウ
 	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(200, 200, 200), true);
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), true);
-
+	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(0, 0, 0), false);
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 50);
 	// 暗転状態
 	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, lightColor, true);

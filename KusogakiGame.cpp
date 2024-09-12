@@ -73,7 +73,7 @@ void KusogakiGame::Draw()
 	// ウィンドウ
 	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(0, 200, 200), true);
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), true);
-
+	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(0, 0, 0), false);
 	// パネル
 	for (size_t i = 0; i < 3; i++) {
 		Util::DrawBox(panels_[i].pos, panels_[i].width, panels_[i].height, GetColor(200, 200, 200), true);
