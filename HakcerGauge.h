@@ -11,9 +11,24 @@ public:
 
 private:
 
+	int HackerDokuro[2];
+	int HackedText;
 
 	BoxTransform gauge_bar;
 	BoxTransform gauge_frame;
+
+	Vector2 dokuroPos;
+	Vector2 textpos;
+
+	Vector2 defaulutpos;
+
+	bool changeface = false;
+
+	int changetime = 0;
+
+	int dokuromove = 0;
+
+	int alpha = 0;
 
 };
 
