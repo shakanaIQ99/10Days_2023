@@ -32,6 +32,8 @@ void GameScene::Draw()
 {
 	DrawGraph(0, 0, BackGroundTexture, true);
 	MiniGameManager::ManageMiniGames();
+	//タスクバーの表示
+	Util::DrawBox({ 640,704 }, 1280, 16, GetColor(255, 255, 255), TRUE);
 
 }
 

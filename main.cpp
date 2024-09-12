@@ -61,7 +61,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 
 	// ゲームループで使う変数の宣言
-	SceneNum scene = SceneNum::GameScene;
+	SceneNum scene = SceneNum::TitleScene;
 
 	GameTime::SetMaxTime(120);
 
@@ -108,6 +108,11 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			
 
 			titleScene->Draw();
+
+			if (titleScene->GetOpenExe())
+			{
+				scene = SceneNum::GameScene;
+			}
 
 			break;
 		case SceneNum::GameScene:

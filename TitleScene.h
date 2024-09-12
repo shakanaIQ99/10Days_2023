@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include"DxLib.h"
 #include "Vector2.h"
+#include"struct.h"
 
 /// <summary>
 /// タイトルシーン
@@ -10,6 +11,8 @@ class TitleScene
 private:
 	int width = 1280;
 	int height = 720;
+
+
 
 public:
 
@@ -34,6 +37,27 @@ public:
 	/// </summary>
 	void Reset();
 
+	bool GetOpenExe()
+	{
+		return openExe;
+	}
+
+
 private:
+
+	int fileIconTexturep;
+
+	bool openExe = false;
+
+	bool doubleClick = false;
+	int doubleClickTimer = 0;
+
+	bool next = false;
+
+	BoxTransform startExe;
+
+	int BackGroundTexture;
+
+	int exeTexture;
 
 };
