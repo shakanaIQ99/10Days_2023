@@ -17,6 +17,8 @@ public:
 
 private:
 	/*std::unique_ptr<BaseGame> baseGame_ = nullptr;*/
+
+	int BackGroundTexture;
 	
 };
 

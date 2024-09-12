@@ -30,12 +30,15 @@ void GameScene::Update()
 
 void GameScene::Draw()
 {
+	DrawGraph(0, 0, BackGroundTexture, true);
 	MiniGameManager::ManageMiniGames();
+
 }
 
 void GameScene::SetTexture()
 {
 	//リソース読み込み
+	BackGroundTexture = LoadGraph(L"Resources/backGround/desktop.png");
 	
 }
 
