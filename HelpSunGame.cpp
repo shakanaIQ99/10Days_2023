@@ -44,7 +44,14 @@ void HelpSunGame::Update()
 		}
 	}
 
-	if (input_->GetMouseLeftButton(topBar_)) {
+	if (input_->GetTriggerMouseLeftButton(topBar_) && active_) {
+		isMove_ = true;
+	}
+	else if (input_->GetReleaseMouseLeft()) {
+		isMove_ = false;
+	}
+
+	if (isMove_) {
 		topBar_.pos = input_->GetMousePos();
 	}
 
