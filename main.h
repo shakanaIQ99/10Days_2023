@@ -1,7 +1,7 @@
 #pragma once
 
 // ウィンドウのタイトルに表示する文字列
-const wchar_t TITLE[] = L"3023_わがままファッションDARUMA'S MODE";
+const wchar_t TITLE[] = L"4023_ボトム・アンダー・ダウン";
 
 // ウィンドウ横幅
 const int WIN_WIDTH = 1280;

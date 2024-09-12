@@ -7,7 +7,6 @@ class LightGame : public BaseGame
 public:
 	LightGame(int layernum, const Vector2& pos);
 	 ~LightGame();
-	void Init() override;
 	void Update() override;
 	void Draw() override;
 
@@ -15,6 +14,7 @@ private:
 	Input* input_ = nullptr;
 
 	BoxTransform tip_;
+	Vector2 nowTip_;
 
 	bool isLightChange = false;
 

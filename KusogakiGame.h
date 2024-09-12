@@ -8,7 +8,6 @@ class KusogakiGame : public BaseGame
 public:
 	KusogakiGame(int layernum, const Vector2& pos);
 	~KusogakiGame();
-	void Init() override;
 	void Update() override;
 	void Draw() override;
 

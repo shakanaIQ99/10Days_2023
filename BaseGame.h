@@ -6,7 +6,12 @@
 class BaseGame
 {
 public:
-	virtual void Init() = 0;
+	enum WindowMode {
+		Game,
+		Mode
+	};
+
+public:
 	virtual void Update() = 0;
 	virtual void Draw() = 0;
 
@@ -39,10 +44,11 @@ public:
 	}
 
 protected:
-
+	WindowMode windowMode_;
 	BoxTransform window_;
 	int layer_ = 0;
 	bool end_ = false;
 	bool active_ = false;
+	bool isMove_ = false;
 	BoxTransform topBar_;
 };

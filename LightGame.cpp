@@ -5,17 +5,18 @@ LightGame::LightGame(int layernum, const Vector2& pos)
 {
 	input_ = Input::GetInstance();
 
-	window_.pos = pos;
+	topBar_.width = 420;
+	topBar_.height = 32 * 3 / 2;
+	topBar_.pos = pos;
+
 	window_.width = 420;
 	window_.height = 240;
+	window_.pos = { topBar_.pos.x, topBar_.pos.y + (topBar_.height / 2 + window_.height / 2) };
 
 	layer_ = layernum;
 
-	topBar_.width = window_.width;
-	topBar_.height = 32 * 3 / 2;
-	topBar_.pos = { window_.pos.x, window_.pos.y - (window_.height / 2 + topBar_.height / 2) };
-
-	tip_.pos = { window_.pos };
+	nowTip_ = { 0,0 };
+	tip_.pos = nowTip_ + window_.pos;
 	tip_.width = 36;
 	tip_.height = 36;
 
@@ -29,31 +30,10 @@ LightGame::~LightGame()
 {
 }
 
-void LightGame::Init()
-{
-	input_ = Input::GetInstance();
-
-	window_.pos = { WIN_WIDTH / 2,WIN_HEIGHT / 2 };
-	window_.width = WIN_WIDTH * 1 / 3;
-	window_.height = WIN_HEIGHT * 1 / 3;
-
-	topBar_.width = window_.width;
-	topBar_.height = 32 * 3 / 2;
-	topBar_.pos = { window_.pos.x, window_.pos.y - (window_.height / 2 + topBar_.height / 2) };
-
-	tip_.pos = { window_.pos };
-	tip_.width = 12;
-	tip_.height = 12;
-
-	isLightChange = false;
-
-	lightCount = 0;
-}
-
 void LightGame::Update()
 {
-	if (input_->GetMouseLeftButton(tip_)) {
-		tip_.pos.y = input_->GetMousePos().y;
+	if (input_->GetMouseLeftButton(topBar_)) {
+		topBar_.pos = input_->GetMousePos();
 	}
 
 	switch (lightCount)
@@ -71,26 +51,28 @@ void LightGame::Update()
 		break;
 	}
 
-	if (tip_.pos.y <= window_.pos.y)
-	{
-		isLightChange = false;
-		tip_.pos.y = window_.pos.y;
-	}
+	window_.pos = { topBar_.pos.x, topBar_.pos.y + (topBar_.height / 2 + window_.height / 2) };
+	tip_.pos = nowTip_ + window_.pos;
 
-	if (tip_.pos.y >= window_.pos.y + 100)
+	if (nowTip_.y < 0) {
+		nowTip_.y = 0;
+	}
+	else if (nowTip_.y >= 100)
 	{
-		if (!isLightChange) {
-			isLightChange = true;
-			lightCount++;
+		lightCount++;
+		nowTip_.y = 0;
+	}
+	else {
+		if (input_->GetMouseLeftButton(tip_)) {
+			nowTip_.y = input_->GetMousePos().y - window_.pos.y;
 		}
-		tip_.pos.y = window_.pos.y;
 	}
 }
 
 void LightGame::Draw()
 {
 	// ウィンドウ
-	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(255, 255, 255), true);
+	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(200, 200, 200), true);
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), true);
 
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 50);
@@ -99,8 +81,8 @@ void LightGame::Draw()
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 
 	// 紐
-	DxLib::DrawLine(window_.pos.x, window_.pos.y - window_.height / 2,
-		tip_.pos.x, tip_.pos.y - tip_.height / 2,
+	DxLib::DrawLine((int)window_.pos.x, (int)window_.pos.y - (int)window_.height / 2,
+		(int)tip_.pos.x, (int)tip_.pos.y - (int)tip_.height / 2,
 		GetColor(255, 255, 255));
 	// 先っちょ
 	Util::DrawBox(tip_.pos, tip_.width / 2, tip_.height / 2, GetColor(255, 255, 255), false);
