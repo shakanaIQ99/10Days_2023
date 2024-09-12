@@ -21,7 +21,7 @@ void GameScene::Init()
 	MiniGameManager::CreateHelpSunGame(2);
 	MiniGameManager::CreateKusogakiGame(3);
 	MiniGameManager::CreateHackerGauge(4, { WIN_WIDTH / 2,WIN_HEIGHT / 7 });
-	MiniGameManager::CreateSetumei(5, { WIN_WIDTH / 6-50,WIN_HEIGHT / 7-50 });
+	MiniGameManager::CreateSetumei(5, { WIN_WIDTH / 6+ WIN_WIDTH / 2,WIN_HEIGHT / 7-50 });
 }
 
 

@@ -56,7 +56,7 @@ void SetumeiTextFile::Draw()
 	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(255, 255, 255), true);
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(120, 120, 120), true);
 
-	Util::DrawJpaneseString(textpos.x, textpos.y, GetColor(0, 0, 0), L"asasaああああ");
+	Util::DrawJpaneseString(textpos.x, textpos.y, GetColor(0, 0, 0), L"悪いがお前のパソコンをハッキングさせて\nもらった!!\n俺様の名は天才ハッカーの\nボトム・アンダー・ダウン様だ!\n止めてほしかったら俺様の作った\nミニゲームウイルス達を\nクリアするんだな!!");
 
 
 }
