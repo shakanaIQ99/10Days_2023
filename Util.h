@@ -20,6 +20,8 @@ namespace Util
 	/// <param name="height2=下"></param>
 	void DrawBox(Vector2 pos, int width,int width2, int height,int height2, int color, bool fillflag);
 
+	void DrawJpaneseString(int x, int y, int color, const wchar_t* string);
+
 	/// <summary>
 	/// 書きやすさのかたまりRotaGraph
 	/// </summary>

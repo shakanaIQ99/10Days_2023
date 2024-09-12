@@ -30,6 +30,9 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	//Log.txtを無効
 	SetOutApplicationLogValidFlag(FALSE);
 
+	SetUseCharCodeFormat(DX_CHARCODEFORMAT_UTF8);
+
+
 	// ウィンドウモードに設定
 	ChangeWindowMode(TRUE);
 

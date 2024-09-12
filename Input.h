@@ -8,20 +8,20 @@ public:
 	static Input* GetInstance();
 
 	/// <summary>
-	/// ƒL[XV
+	/// ã‚­ãƒ¼æ›´æ–°
 	/// </summary>
 	static void InputUpdate();
 
 	/// <summary>
-	/// ‰Ÿ‚µ‘±‚¯‚½
+	/// æŠ¼ã—ç¶šã‘ãŸæ™‚
 	/// </summary>
 	static bool GetKey(int key);
 	/// <summary>
-	/// ‰Ÿ‚µ‚½
+	/// æŠ¼ã—ãŸæ™‚
 	/// </summary>
 	static bool GetTriggerKey(int key);
 	/// <summary>
-	/// —£‚µ‚½
+	/// é›¢ã—ãŸæ™‚
 	/// </summary>
 	static bool GetReleaseKey(int key);
 
@@ -32,7 +32,7 @@ public:
 	static bool GetMouseLeft();
 
 	/// <summary>
-	/// BoxTransform\‘¢‘Ì‚Åì‚Á‚½Box‚ğ‰Ÿ‚µ‚Ä‚é‚©‚Ì”»’è
+	/// BoxTransformæ§‹é€ ä½“ã§ä½œã£ãŸBoxã‚’æŠ¼ã—ã¦ã‚‹ã‹ã®åˆ¤å®š
 	/// </summary>
 	/// <returns></returns>
 	static bool GetMouseLeftButton(BoxTransform box);
@@ -43,9 +43,9 @@ public:
 	static Vector2 GetMousePos();
 	
 private:
-	// ÅV‚ÌƒL[ƒ{[ƒhî•ñ—p
+	// æœ€æ–°ã®ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰æƒ…å ±ç”¨
 	char keys[256] = { 0 };
-	// 1ƒ‹[ƒv(ƒtƒŒ[ƒ€)‘O‚ÌƒL[ƒ{[ƒhî•ñ
+	// 1ãƒ«ãƒ¼ãƒ—(ãƒ•ãƒ¬ãƒ¼ãƒ )å‰ã®ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰æƒ…å ±
 	char prev[256] = { 0 };
 
 	bool preMouseLeft = false;

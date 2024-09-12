@@ -11,12 +11,12 @@ public:
 	static void Reset();
 
 	/// <summary>
-	/// ƒQ[ƒ€ŠÔ•b”w’è
+	/// ã‚²ãƒ¼ãƒ æ™‚é–“ç§’æ•°æŒ‡å®š
 	/// </summary>
 	/// <param name="timer"></param>
 	static void SetMaxTime(int timer);
 	/// <summary>
-	/// •b”w’è‰ÁZ
+	/// ç§’æ•°æŒ‡å®šåŠ ç®—
 	/// </summary>
 	/// <param name="timeNum"></param>
 	static void AddTime(int timeNum);
@@ -24,7 +24,7 @@ public:
 	static void DecreaseTime();
 
 	/// <summary>
-	/// •b”w’èŒ¸Z
+	/// ç§’æ•°æŒ‡å®šæ¸›ç®—
 	/// </summary>
 	/// <param name="timeNum"></param>
 	static void LossTime(int timeNum);

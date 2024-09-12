@@ -10,6 +10,7 @@
 #include"KusogakiGame.h"
 #include"HelpSunGame.h"
 #include"HakcerGauge.h"
+#include"SetumeiTextFile.h"
 //
 
 using namespace std;
@@ -30,6 +31,7 @@ public:
 	static void CreateHelpSunGame(int LayerNum, const Vector2& pos = { WIN_WIDTH / 2,(WIN_HEIGHT / 2)+50 });
 	static void CreateKusogakiGame(int LayerNum, const Vector2& pos = { WIN_WIDTH / 2,(WIN_HEIGHT / 2) - 50 });
 	static void CreateHackerGauge(int LayerNum, const Vector2& pos = { WIN_WIDTH / 2,(WIN_HEIGHT / 2) - 50 });
+	static void CreateSetumei(int LayerNum, const Vector2& pos = { WIN_WIDTH / 2,(WIN_HEIGHT / 2) - 50 });
 
 
 	static void ManageMiniGames();

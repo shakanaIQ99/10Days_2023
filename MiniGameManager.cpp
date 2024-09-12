@@ -41,6 +41,11 @@ void MiniGameManager::CreateHackerGauge(int LayerNum, const Vector2& pos)
 	GetInstance()->gameList.emplace_back(std::make_unique<HakcerGauge>(LayerNum, pos));
 }
 
+void MiniGameManager::CreateSetumei(int LayerNum, const Vector2& pos)
+{
+	GetInstance()->gameList.emplace_back(std::make_unique<SetumeiTextFile>(LayerNum, pos));
+}
+
 void MiniGameManager::ManageMiniGames()
 {
 	

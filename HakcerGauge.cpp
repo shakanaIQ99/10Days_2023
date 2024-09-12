@@ -75,14 +75,18 @@ void HakcerGauge::Update()
 		changetime = 0;
 		dokuromove = 0;
 	}
+	if (Input::GetTriggerMouseLeftButton(topBar_) && active_) {
 
-	if (Input::GetMouseLeftButton(topBar_) && active_) {
-		topBar_.pos = Input::GetMousePos();
 		isMove_ = true;
 	}
-	else
+	else if (Input::GetReleaseMouseLeft())
 	{
 		isMove_ = false;
+	}
+
+	if (isMove_)
+	{
+		topBar_.pos = Input::GetMousePos();
 	}
 	window_.pos = { topBar_.pos.x, topBar_.pos.y + (topBar_.height / 2 + window_.height / 2) };
 
@@ -100,6 +104,7 @@ void HakcerGauge::Draw()
 	// ウィンドウ
 	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(0, 0, 0), true);
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), true);
+	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(0, 0, 0), false);
 
 	Util::DrawRotaGraph3(dokuroPos,1,1,0,HackerDokuro[(int)changeface]);
 	if (GameTime::GetNowTime() % 2 == 0)
