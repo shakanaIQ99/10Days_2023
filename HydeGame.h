@@ -11,6 +11,10 @@ public:
 	void Draw() override;
 
 private:
+	void DragAct();
+	void TableCollision();
+
+private:
 	Input* input_ = nullptr;
 	BoxTransform hydeObject_;
 	Vector2 nowHydeObject_;

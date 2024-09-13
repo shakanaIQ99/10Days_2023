@@ -57,4 +57,9 @@ protected:
 	bool active_ = false;
 	bool isMove_ = false;
 	BoxTransform topBar_;
+
+	bool isSuccess_ = false;;
+	BoxTransform success_;
+	float easeTimer_ = 0;
+	float easeTime_ = 0;
 };

@@ -157,11 +157,14 @@
     <ClCompile Include="KusogakiGame.cpp" />
     <ClCompile Include="LightGame.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MoguraGame.cpp" />
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="Score.cpp" />
+    <ClCompile Include="SimozaGame.cpp" />
     <ClCompile Include="Util.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="ZihannGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HakcerGauge.h" />
@@ -178,12 +181,15 @@
     <ClInclude Include="KusogakiGame.h" />
     <ClInclude Include="LightGame.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="MoguraGame.h" />
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="Score.h" />
+    <ClInclude Include="SimozaGame.h" />
     <ClInclude Include="struct.h" />
     <ClInclude Include="Util.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="ZihannGame.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
