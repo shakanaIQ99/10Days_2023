@@ -57,7 +57,7 @@ void SetumeiTextFile::Draw()
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(120, 120, 120), true);
 	Util::DrawJpaneseString(topBar_.pos.x- topBar_.width / 2, topBar_.pos.y, GetColor(0, 0, 0), L"説明.txt");
 
-	Util::DrawJpaneseString(textpos.x, textpos.y, GetColor(0, 0, 0), L"悪いがお前のパソコンをハッキングさせて\nもらった!!\n俺様の名は天才ハッカーの\nボトム・アンダー・ダウン様だ!\n止めてほしかったら俺様の作った\nミニゲームウイルス達を\nクリアするんだな!!");
+	Util::DrawJpaneseString(textpos.x, textpos.y, GetColor(0, 0, 0), L"悪いがお前のパソコンをハッキングさせて\nもらった!!\n俺様の名は天才ハッカーの\nボトム・アンダー・ダウン様だ!\n止めてほしかったら俺様の作った\n「下」にまつわるミニゲームウイルス達を\nクリアするんだな!!");
 
 
 }
