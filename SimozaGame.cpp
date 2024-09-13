@@ -68,15 +68,12 @@ void SimozaGame::Draw()
 	DrawRotaGraph(window_.pos.x, window_.pos.y, 1.0f, 0, tatamiTexture_, true);
 
 	// 上座
-	//Util::DrawBox(kamiza_.pos, kamiza_.width / 2, kamiza_.height / 2, kamizaColor_, true);
 	DrawRotaGraph(kamiza_.pos.x, kamiza_.pos.y, 1.0f, 0, kamizaTexture_, true);
 
 	// テーブル
-	//Util::DrawBox(table_.pos, table_.width / 2, table_.height / 2, GetColor(0, 200, 0), true);
 	DrawRotaGraph(table_.pos.x, table_.pos.y, 1.0f, 0, TableTexture_, true);
 
 	// 下座
-	//Util::DrawBox(simoza_.pos, simoza_.width / 2, simoza_.height / 2, simozaColor_, true);
 	DrawRotaGraph(simoza_.pos.x, simoza_.pos.y, 1.0f, 0, simozaTexture_, true);
 }
 

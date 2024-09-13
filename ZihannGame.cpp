@@ -7,11 +7,11 @@ ZihannGame::ZihannGame(int layernum, const Vector2& pos)
 
 	layer_ = layernum;
 
-	topBar_.width = 420;
+	topBar_.width = 480;
 	topBar_.height = 32 * 3 / 2;
 	topBar_.pos = pos;
 
-	window_.width = 420;
+	window_.width = 480;
 	window_.height = 240;
 	window_.pos = { topBar_.pos.x, topBar_.pos.y + (topBar_.height / 2 + window_.height / 2) };
 
@@ -63,18 +63,11 @@ void ZihannGame::Draw()
 	{
 	case ZihannGame::ZihannMae:
 		// 自販機
-		Util::DrawBox({ zihannki_.pos.x - zihannki_.width * 4 / 5,zihannki_.pos.y },
-			zihannki_.width / 4, zihannki_.height / 2, GetColor(0, 200, 0), true);
-		DrawGraph(zihannki_.pos.x - zihannki_.width * 4 / 5 - zihannki_.width / 4,
-			zihannki_.pos.y - zihannki_.height / 2, ZihannLeftTexture_, true);
+		DrawRotaGraph(zihannki_.pos.x - zihannki_.width * 4 / 5, zihannki_.pos.y, 1.0f, 0, ZihannLeftTexture_, true);
 
-		Util::DrawBox({ zihannki_.pos.x + zihannki_.width * 4 / 5,zihannki_.pos.y },
-			zihannki_.width / 4, zihannki_.height / 2, GetColor(0, 0, 200), true);
-		DrawGraph(zihannki_.pos.x + zihannki_.width * 4 / 5 - zihannki_.width / 2-10,
-			zihannki_.pos.y - zihannki_.height / 2, ZihannRightTexture_, true);
+		DrawRotaGraph(zihannki_.pos.x + zihannki_.width * 4 / 5, zihannki_.pos.y, 1.0f, 0, ZihannRightTexture_, true);
 
-		Util::DrawBox(zihannki_.pos, zihannki_.width / 2, zihannki_.height / 2, GetColor(200, 0, 0), true);
-		DrawGraph(zihannki_.pos.x - zihannki_.width / 2, zihannki_.pos.y - zihannki_.height / 2, ZihannTexture_, true);
+		DrawRotaGraph(zihannki_.pos.x, zihannki_.pos.y, 1.0f, 0, ZihannTexture_, true);
 		break;
 	case ZihannGame::ZihannSita:
 		DrawGraph(window_.pos.x - window_.width / 2, window_.pos.y - window_.height / 2, ZihannBottom_, true);

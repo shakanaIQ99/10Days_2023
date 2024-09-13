@@ -30,6 +30,10 @@ HydeGame::HydeGame(int layernum, const Vector2& pos)
 	player_.pos = nowPlayer_ + window_.pos;
 	player_.width = 120;
 	player_.height = 50;
+
+	BackTexture_ = LoadGraph(L"Resources/miniGame/bg/kakureru.png");
+	TableTexture_ = LoadGraph(L"Resources/miniGame/item/desk.png");
+	HumanTexture_ = LoadGraph(L"Resources/miniGame/item/human.png");
 }
 
 HydeGame::~HydeGame()
@@ -47,10 +51,12 @@ void HydeGame::Draw(){
 	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(200, 200, 0), true);
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), true);
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(0, 0, 0), false);
+
+	DrawRotaGraph(window_.pos.x, window_.pos.y, 1.0f, 0, BackTexture_, true);
 	// 隠れる場所
-	Util::DrawBox(hydeObject_.pos, hydeObject_.width / 2, hydeObject_.height / 2, GetColor(255, 0, 0), false);
+	DrawRotaGraph(hydeObject_.pos.x, hydeObject_.pos.y, 1.0f, 0, TableTexture_, true);
 	// プレイヤー
-	Util::DrawBox(player_.pos, player_.width / 2, player_.height / 2, playerColor_, true);
+	DrawRotaGraph(player_.pos.x, player_.pos.y, 1.0f, 0, HumanTexture_, true);
 }
 
 void HydeGame::DragAct()

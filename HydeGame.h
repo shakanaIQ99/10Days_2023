@@ -21,5 +21,9 @@ private:
 	BoxTransform player_;
 	Vector2 nowPlayer_;
 	int playerColor_;
+
+	int BackTexture_;
+	int TableTexture_;
+	int HumanTexture_;
 };
 
