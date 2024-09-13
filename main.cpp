@@ -63,6 +63,13 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	// 画像などのリソースデータの変数宣言と読み込み
 	Score::SetTexture();
 
+	//int titleBGM = LoadSoundMem(L"Resources/Music/title.mp3");
+	int gameBGM = LoadSoundMem(L"Resources/Music/game.mp3");
+	//int resultBGM = LoadSoundMem(L"Resources/Music/result.mp3");
+
+	//bool isTitleBGM = false;
+	bool isGameBGM = false;
+	//bool isResultBGM = false;
 
 	// ゲームループで使う変数の宣言
 	SceneNum scene = SceneNum::TitleScene;
@@ -124,7 +131,11 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			break;
 		case SceneNum::GameScene:
 
-
+			if (isGameBGM == false)
+			{
+				PlaySoundMem(gameBGM, DX_PLAYTYPE_LOOP);
+				isGameBGM = true;
+			}
 
 			gameScene->Update();
 			
@@ -132,10 +143,12 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			{
 				scene = SceneNum::ResultScene;
 				resultScene->SetGameover();
+				StopSoundMem(gameBGM);
 			}
 			else if(MiniGameManager::GetGameList().size()<3&&gameScene->GetEnd())
 			{
 				scene = SceneNum::ResultScene;
+				StopSoundMem(gameBGM);
 			}
 
 			//描画処理
