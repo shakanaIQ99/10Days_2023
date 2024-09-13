@@ -55,8 +55,23 @@ void KusogakiGame::Update()
 	for (size_t i = 0; i < 6; i++) {
 		if (input_->GetTriggerMouseLeftButton(buttons_[i])) {
 			buttonColors_[i] = GetColor(255, 255, 100);
-
 		}
+	}
+
+	if (input_->GetTriggerMouseLeftButton(buttons_[3])) {
+		isPanels_[0] = true;
+	}
+
+	if (input_->GetTriggerMouseLeftButton(buttons_[4])) {
+		isPanels_[1] = true;
+	}
+
+	if (input_->GetTriggerMouseLeftButton(buttons_[5])) {
+		isPanels_[2] = true;
+	}
+
+	if (isPanels_[0] && isPanels_[1] && isPanels_[2]) {
+		end_ = true;
 	}
 
 	if (input_->GetTriggerMouseLeftButton(topBar_) && active_) {

@@ -94,6 +94,7 @@ void HydeGame::TableCollision()
 {
 	if (Collision::BoxToBoxCollision(player_, hydeObject_, true)) {
 		playerColor_ = GetColor(0, 255, 0);
+		end_ = true;
 	}
 	else {
 		playerColor_ = GetColor(0, 0, 255);

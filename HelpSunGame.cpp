@@ -71,6 +71,10 @@ void HelpSunGame::Update()
 		clouds_[i].pos = nowClouds_[i] + window_.pos;
 	}
 
+	if (!isClouds_[0] && !isClouds_[1] && !isClouds_[2] && !isClouds_[3] && !isClouds_[4]) {
+		end_ = true;
+	}
+
 	fullwindow_.pos = { topBar_.pos.x,topBar_.pos.y + (window_.height / 2) };
 }
 

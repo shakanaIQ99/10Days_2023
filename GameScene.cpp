@@ -61,6 +61,7 @@ void GameScene::Reset()
 {
 	MiniGameManager::Clear();
 	endFlag = false;
+	makeGameNum = 0;
 }
 
 void GameScene::Draw()

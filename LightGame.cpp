@@ -52,6 +52,10 @@ void LightGame::Update()
 	default:
 		break;
 	}
+
+	if (lightCount >= 2) {
+		end_ = true;
+	}
 }
 
 void LightGame::Draw()

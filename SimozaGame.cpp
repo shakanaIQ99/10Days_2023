@@ -116,6 +116,7 @@ void SimozaGame::SelectAct()
 
 	if (isSimoza_) {
 		simozaColor_ = GetColor(0, 0, 0);
+		end_ = true;
 	}
 	else {
 		simozaColor_ = GetColor(200, 200, 0);

@@ -103,7 +103,7 @@ void ZihannGame::ClickAct()
 		break;
 	case ZihannGame::ZihannSita:
 		if (input_->GetTriggerMouseLeftButton(coin_) && active_) {
-			phase_ = ZihannMae;
+			end_ = true;
 		}
 		break;
 	default:
