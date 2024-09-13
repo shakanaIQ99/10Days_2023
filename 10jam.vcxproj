@@ -156,7 +156,7 @@
     <ClCompile Include="KusogakiGame.cpp" />
     <ClCompile Include="LightGame.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="MoguraGame.cpp" />
+    <ClCompile Include="AirconGame.cpp" />
     <ClCompile Include="ResultScene.cpp" />
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="SimozaGame.cpp" />
@@ -179,7 +179,7 @@
     <ClInclude Include="KusogakiGame.h" />
     <ClInclude Include="LightGame.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="MoguraGame.h" />
+    <ClInclude Include="AirconGame.h" />
     <ClInclude Include="ResultScene.h" />
     <ClInclude Include="Score.h" />
     <ClInclude Include="SimozaGame.h" />

@@ -46,6 +46,11 @@ void MiniGameManager::CreateZihannGame(int LayerNum, const Vector2& pos)
 	GetInstance()->gameList.emplace_back(std::make_unique<ZihannGame>(LayerNum, pos));
 }
 
+void MiniGameManager::CreateAirconGame(int LayerNum, const Vector2& pos)
+{
+	GetInstance()->gameList.emplace_back(std::make_unique<AirconGame>(LayerNum, pos));
+}
+
 void MiniGameManager::ManageMiniGames()
 {
 	

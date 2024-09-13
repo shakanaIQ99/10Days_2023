@@ -22,6 +22,7 @@ void GameScene::Init()
 	MiniGameManager::CreateKusogakiGame(3);
 	MiniGameManager::CreateSimozaGame(4);
 	MiniGameManager::CreateZihannGame(5);
+	MiniGameManager::CreateAirconGame(6);
 }
 
 
