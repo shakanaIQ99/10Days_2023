@@ -34,6 +34,11 @@ HelpSunGame::HelpSunGame(int layernum, const Vector2& pos)
 		clouds_[i].height = 80;
 		isClouds_[i] = true;
 	}
+
+	BackTexture_ = LoadGraph(L"Resources/miniGame/bg/sky.png");
+	SunSadTexture_ = LoadGraph(L"Resources/miniGame/item/sun_sad.png");
+	SunTexture_ = LoadGraph(L"Resources/miniGame/item/sun_smile.png");
+	CloudTexture_ = LoadGraph(L"Resources/miniGame/item/cloud.png");
 }
 
 HelpSunGame::~HelpSunGame()
@@ -84,11 +89,12 @@ void HelpSunGame::Draw()
 	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(200, 0, 200), true);
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), true);
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(0, 0, 0), false);
-	Util::DrawBox(sun_.pos, sun_.width / 2, sun_.height / 2, GetColor(255, 0, 0), true);
+	DrawRotaGraph(window_.pos.x, window_.pos.y, 1.0f, 0, BackTexture_, true);
+	DrawRotaGraph(sun_.pos.x, sun_.pos.y, 1.0f, 0, SunTexture_, true);
 	for (size_t i = 0; i < CLOUD_NUM; i++)
 	{
 		if (isClouds_[i]) {
-			Util::DrawBox(clouds_[i].pos, clouds_[i].width / 2, clouds_[i].height / 2, GetColor(150, 150, 150), true);
+			DrawRotaGraph(clouds_[i].pos.x, clouds_[i].pos.y, 1.0f, 0, CloudTexture_, true);
 		}
 	}
 }

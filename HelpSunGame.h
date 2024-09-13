@@ -21,5 +21,10 @@ private:
 	std::array<BoxTransform, CLOUD_NUM> clouds_;
 	std::array<Vector2, CLOUD_NUM> nowClouds_;
 	std::array<bool, CLOUD_NUM> isClouds_;
+
+	int BackTexture_;
+	int SunSadTexture_;
+	int SunTexture_;
+	int CloudTexture_;
 };
 
