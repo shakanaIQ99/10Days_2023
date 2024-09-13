@@ -18,6 +18,7 @@ public:
 
 private:
 	void DragAct();
+	void ClickAct();
 
 private:
 	Input* input_ = nullptr;
@@ -26,5 +27,9 @@ private:
 
 	BoxTransform zihannki_;
 	Vector2 nowZihannki_;
+	BoxTransform zihannkiBottom_;
+
+	BoxTransform coin_;
+	Vector2 nowCoin_;
 };
 

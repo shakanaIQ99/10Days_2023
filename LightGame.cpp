@@ -32,16 +32,7 @@ LightGame::~LightGame()
 
 void LightGame::Update()
 {
-	if (input_->GetTriggerMouseLeftButton(topBar_) && active_) {
-		isMove_ = true;
-	}
-	else if (input_->GetReleaseMouseLeft()) {
-		isMove_ = false;
-	}
-
-	if (isMove_) {
-		topBar_.pos = input_->GetMousePos();
-	}
+	DragAct();
 
 	switch (lightCount)
 	{
@@ -56,23 +47,6 @@ void LightGame::Update()
 		break;
 	default:
 		break;
-	}
-
-	window_.pos = { topBar_.pos.x, topBar_.pos.y + (topBar_.height / 2 + window_.height / 2) };
-	tip_.pos = nowTip_ + window_.pos;
-
-	if (nowTip_.y < 0) {
-		nowTip_.y = 0;
-	}
-	else if (nowTip_.y >= 100)
-	{
-		lightCount++;
-		nowTip_.y = 0;
-	}
-	else {
-		if (input_->GetMouseLeftButton(tip_)) {
-			nowTip_.y = input_->GetMousePos().y - window_.pos.y;
-		}
 	}
 }
 
@@ -93,4 +67,43 @@ void LightGame::Draw()
 		GetColor(255, 255, 255));
 	// 先っちょ
 	Util::DrawBox(tip_.pos, tip_.width / 2, tip_.height / 2, GetColor(255, 255, 255), false);
+}
+
+void LightGame::DragAct()
+{
+	if (input_->GetTriggerMouseLeftButton(topBar_) && active_) {
+		isMove_ = true;
+	}
+	else if (input_->GetReleaseMouseLeft()) {
+		isMove_ = false;
+	}
+
+	if (isMove_) {
+		topBar_.pos = input_->GetMousePos();
+	}
+
+	if (nowTip_.y < 0) {
+		nowTip_.y = 0;
+	}
+	else if (nowTip_.y >= 100)
+	{
+		lightCount++;
+		isTip_ = false;
+		nowTip_.y = 0;
+	}
+	else {
+		if (input_->GetTriggerMouseLeftButton(tip_) && active_) {
+			isTip_ = true;
+		}
+		else if (input_->GetReleaseMouseLeft()) {
+			isTip_ = false;
+		}
+
+		if (isTip_) {
+			nowTip_.y = input_->GetMousePos().y - window_.pos.y;
+		}
+	}
+
+	window_.pos = { topBar_.pos.x, topBar_.pos.y + (topBar_.height / 2 + window_.height / 2) };
+	tip_.pos = nowTip_ + window_.pos;
 }
