@@ -1,6 +1,7 @@
 #pragma once
 #include "BaseGame.h"
 #include "Input.h"
+#include <array>
 
 class AirconGame : public BaseGame
 {
@@ -31,5 +32,7 @@ private:
 
 	int upButtonColor_;
 	int downButtonColor_;
+
+	int NumGhandle_[10];
 };
 

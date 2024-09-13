@@ -36,6 +36,8 @@ AirconGame::AirconGame(int layernum, const Vector2& pos)
 	downButton_.pos = { remocon_.pos.x - 30,remocon_.pos.y + 20 };
 	downButton_.width = 50;
 	downButton_.height = 50;
+
+	LoadDivGraph(L"Resources/Number/number.png", 10, 10, 1, 32, 64, NumGhandle_);
 }
 
 AirconGame::~AirconGame()
