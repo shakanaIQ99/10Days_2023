@@ -66,6 +66,18 @@ void AirconGame::Draw()
 	Util::DrawBox(temperatureNum_.pos, temperatureNum_.width / 2, temperatureNum_.height / 2, GetColor(150, 150, 150), true);
 	Util::DrawBox(upButton_.pos, upButton_.width / 2, upButton_.height / 2, upButtonColor_, true);
 	Util::DrawBox(downButton_.pos, downButton_.width / 2, downButton_.height / 2, downButtonColor_, true);
+
+	int i = 0;
+
+	while (i < 2)
+	{
+		Vector2 pos = { 955.0f, 230.0f };
+		pos.x = pos.x - (60 * (i - 3));
+		int j = temperature_ % 10;
+		DrawExtendGraph(pos.x - 30, pos.y - 64, pos.x + 30, pos.y + 64, NumGhandle_[j], true);
+		temperature_ /= 10.0f;
+		i++;
+	}
 }
 
 void AirconGame::DragAct()

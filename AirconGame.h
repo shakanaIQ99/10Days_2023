@@ -28,7 +28,7 @@ private:
 	BoxTransform upButton_;
 	BoxTransform downButton_;
 
-	int temperature_ = 0;
+	int temperature_ = 45;
 
 	int upButtonColor_;
 	int downButtonColor_;
