@@ -43,7 +43,7 @@ void ZihannGame::Update()
 
 void ZihannGame::Draw()
 {
-	// �E�B���h�E
+	// ウィンドウ
 	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(200, 200, 200), true);
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), true);
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(0, 0, 0), false);
@@ -51,7 +51,7 @@ void ZihannGame::Draw()
 	switch (phase_)
 	{
 	case ZihannGame::ZihannMae:
-		// ���̋@
+		// 自販機
 		Util::DrawBox(zihannki_.pos, zihannki_.width / 2, zihannki_.height / 2, GetColor(200, 0, 0), true);
 		Util::DrawBox({ zihannki_.pos.x - zihannki_.width * 4 / 5,zihannki_.pos.y },
 			zihannki_.width / 4, zihannki_.height / 2, GetColor(0, 200, 0), true);
