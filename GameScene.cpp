@@ -46,15 +46,12 @@ void GameScene::Update()
 		MiniGameManager::CreateZihannGame(makeGameNum, { Util::GetRand(300.0f,900.0f),Util::GetRand(100.0f,500.0f) });
 		break;
 	case 35:
-		MiniGameManager::CreateHydeGame(makeGameNum, { Util::GetRand(300.0f,900.0f),Util::GetRand(100.0f,500.0f) });
-		break;
-	case 40:
 		MiniGameManager::CreateSetumei(makeGameNum, { WIN_WIDTH / 6 + WIN_WIDTH / 2,WIN_HEIGHT / 7 - 50 });
 		endFlag = true;
 
 		break;
 	}
-	if (makeGameNum < 41)
+	if (makeGameNum < 36)
 	{
 		makeGameNum++;
 	}

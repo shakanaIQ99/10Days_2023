@@ -15,6 +15,10 @@ ZihannGame::ZihannGame(int layernum, const Vector2& pos)
 	window_.height = 240;
 	window_.pos = { topBar_.pos.x, topBar_.pos.y + (topBar_.height / 2 + window_.height / 2) };
 
+	fullwindow_.width = topBar_.width;
+	fullwindow_.height = topBar_.height + window_.height;
+	fullwindow_.pos = { topBar_.pos.x,topBar_.pos.y + (window_.height / 2) };
+
 	nowZihannki_ = { 0,0 };
 	zihannki_.pos = nowZihannki_ + window_.pos;
 	zihannki_.width = 200;
@@ -84,6 +88,8 @@ void ZihannGame::DragAct()
 	zihannki_.pos = nowZihannki_ + window_.pos;
 	zihannkiBottom_.pos = { zihannki_.pos.x, zihannki_.pos.y + 70 };
 	coin_.pos = nowCoin_ + window_.pos;
+
+	fullwindow_.pos = { topBar_.pos.x,topBar_.pos.y + (window_.height / 2) };
 }
 
 void ZihannGame::ClickAct()

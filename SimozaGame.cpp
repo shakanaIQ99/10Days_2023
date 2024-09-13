@@ -13,6 +13,10 @@ SimozaGame::SimozaGame(int layernum, const Vector2& pos)
 	window_.height = 200;
 	window_.pos = { topBar_.pos.x, topBar_.pos.y + (topBar_.height / 2 + window_.height / 2) };
 
+	fullwindow_.width = topBar_.width;
+	fullwindow_.height = topBar_.height + window_.height;
+	fullwindow_.pos = { topBar_.pos.x,topBar_.pos.y + (window_.height / 2) };
+
 	layer_ = layernum;
 
 	nowKamiza_ = { 0,-window_.height * 1.0f / 3.0f };
@@ -83,6 +87,8 @@ void SimozaGame::DragAct()
 	kamiza_.pos = nowKamiza_ + window_.pos;
 	table_.pos = nowTable_ + window_.pos;
 	simoza_.pos = nowSimoza_ + window_.pos;
+
+	fullwindow_.pos = { topBar_.pos.x,topBar_.pos.y + (window_.height / 2) };
 }
 
 void SimozaGame::SelectAct()

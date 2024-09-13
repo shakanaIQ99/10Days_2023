@@ -15,6 +15,10 @@ KusogakiGame::KusogakiGame(int layernum, const Vector2& pos)
 	window_.height = 240;
 	window_.pos = { topBar_.pos.x, topBar_.pos.y + (topBar_.height / 2 + window_.height / 2) };
 
+	fullwindow_.width = topBar_.width;
+	fullwindow_.height = topBar_.height + window_.height;
+	fullwindow_.pos = { topBar_.pos.x,topBar_.pos.y + (window_.height / 2) };
+
 	nowPanels_[0] = { -window_.width * 1.0f / 4.0f,0 };
 	nowPanels_[1] = { 0,0 };
 	nowPanels_[2] = { window_.width * 1.0f / 4.0f,0 };
@@ -51,6 +55,7 @@ void KusogakiGame::Update()
 	for (size_t i = 0; i < 6; i++) {
 		if (input_->GetTriggerMouseLeftButton(buttons_[i])) {
 			buttonColors_[i] = GetColor(255, 255, 100);
+
 		}
 	}
 
@@ -73,6 +78,8 @@ void KusogakiGame::Update()
 	for (size_t i = 0; i < 6; i++) {
 		buttons_[i].pos = nowButtons_[i] + window_.pos;
 	}
+
+	fullwindow_.pos = { topBar_.pos.x,topBar_.pos.y + (window_.height / 2) };
 }
 
 void KusogakiGame::Draw()
