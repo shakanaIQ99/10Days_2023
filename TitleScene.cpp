@@ -63,6 +63,7 @@ void TitleScene::Update()
 		if (Input::GetTriggerMouseLeftButton(startButton))
 		{
 			titlefasa = Titlefase::EXEFPHASE;
+			
 		}
 		if (Input::GetMouseHitBox(startButton))
 		{
@@ -75,6 +76,7 @@ void TitleScene::Update()
 		break;
 
 	case EXEFPHASE:
+		
 		if (Input::GetTriggerMouseLeftButton(startExe) && doubleClick)
 		{
 			titlefasa = Titlefase::WARNINGFPHASE;

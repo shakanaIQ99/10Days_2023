@@ -78,6 +78,8 @@ private:
 	int startTexture;
 	int startButtonTexture;
 
+	//int startUpSound;
+
 	double scale;
 	double scale2;
 
