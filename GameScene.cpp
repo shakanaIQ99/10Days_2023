@@ -43,6 +43,7 @@ void GameScene::SetTexture()
 {
 	//リソース読み込み
 	BackGroundTexture = LoadGraph(L"Resources/backGround/desktop.png");
+
 	
 }
 

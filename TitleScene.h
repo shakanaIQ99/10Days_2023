@@ -3,6 +3,13 @@
 #include "Vector2.h"
 #include"struct.h"
 
+
+enum Titlefase
+{
+	EXEFPHASE,
+	WARNINGFPHASE
+};
+
 /// <summary>
 /// タイトルシーン
 /// </summary>
@@ -55,9 +62,19 @@ private:
 	bool next = false;
 
 	BoxTransform startExe;
+	Vector2 warningpos;
+
+	BoxTransform zikkou;
+	BoxTransform zikkou2;
 
 	int BackGroundTexture;
 
 	int exeTexture;
+	int warningExeTexture;
+	int zikkouTexture;
 
+	double scale;
+	double scale2;
+
+	Titlefase titlefasa = Titlefase::EXEFPHASE;
 };
