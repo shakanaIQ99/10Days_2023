@@ -27,6 +27,9 @@ public:
 
 private:
 	int GameOverTexture[4];
+	int GameClearTexture;
+
+	int loserTexture;
 
 	bool gameover_flag = false;
 
@@ -34,6 +37,8 @@ private:
 	const int frame = 10;
 	int gameovercount = 0;
 	bool changeScene = false;
+
+	float angle = 0;
 
 };
 

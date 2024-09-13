@@ -51,18 +51,18 @@ void SimozaGame::Update()
 
 void SimozaGame::Draw()
 {
-	// ウィンドウ
+	// 繧ｦ繧｣繝ｳ繝峨え
 	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(200, 0, 0), true);
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), true);
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(0, 0, 0), false);
 
-	// 上座
+	// 荳雁ｺｧ
 	Util::DrawBox(kamiza_.pos, kamiza_.width / 2, kamiza_.height / 2, kamizaColor_, true);
 
-	// テーブル
+	// 繝�繝ｼ繝悶Ν
 	Util::DrawBox(table_.pos, table_.width / 2, table_.height / 2, GetColor(0, 200, 0), true);
 
-	// 下座
+	// 荳句ｺｧ
 	Util::DrawBox(simoza_.pos, simoza_.width / 2, simoza_.height / 2, simozaColor_, true);
 }
 

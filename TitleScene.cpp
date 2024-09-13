@@ -13,6 +13,8 @@ void TitleScene::SetTexture()
 	exeTexture= LoadGraph(L"Resources/Startexe.png");
 	warningExeTexture = LoadGraph(L"Resources/warningExe.png");
 	zikkouTexture = LoadGraph(L"Resources/execute.png");
+	startTexture = LoadGraph(L"Resources/title/title.png");
+	startButtonTexture = LoadGraph(L"Resources/title/startButton.png");
 }
 
 void TitleScene::Init()
@@ -35,6 +37,11 @@ void TitleScene::Init()
 	scale = 2.0;
 	scale2 = 2.0;
 
+	startButton.width = 304;
+	startButton.height = 70;
+
+	startButton.pos = { WIN_WIDTH / 2,440 };
+
 }
 
 void TitleScene::Update()
@@ -51,6 +58,22 @@ void TitleScene::Update()
 
 	switch (titlefasa)
 	{
+
+	case STARTFPHASE:
+		if (Input::GetTriggerMouseLeftButton(startButton))
+		{
+			titlefasa = Titlefase::EXEFPHASE;
+		}
+		if (Input::GetMouseHitBox(startButton))
+		{
+			scale = 1.2;
+		}
+		else
+		{
+			scale = 1.0;
+		}
+		break;
+
 	case EXEFPHASE:
 		if (Input::GetTriggerMouseLeftButton(startExe) && doubleClick)
 		{
@@ -102,7 +125,9 @@ void TitleScene::Draw()
 
 	DrawGraph(0, 0, BackGroundTexture, true);
 	Util::DrawRotaGraph3(startExe.pos, 1, 1, 0, exeTexture, true);
-	if (Input::GetMouseHitBox(startExe)&&titlefasa==Titlefase::EXEFPHASE)
+
+
+	if ((doubleClick||Input::GetMouseHitBox(startExe))&&titlefasa==Titlefase::EXEFPHASE)
 	{
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, 100);
 		DrawBox(startExe.pos.x - startExe.width / 2, startExe.pos.y+10 - startExe.height / 2, startExe.pos.x + startExe.width / 2, startExe.pos.y + 10 + startExe.height / 2, GetColor(200, 200, 200), true);
@@ -118,9 +143,15 @@ void TitleScene::Draw()
 	}
 	//タスクバーの表示
 	Util::DrawBox({ 640,704 }, 1280, 16, GetColor(255, 255, 255), TRUE);
+	if (titlefasa == Titlefase::STARTFPHASE)
+	{
+		DrawGraph(0, 0, startTexture, true);
+		Util::DrawRotaGraph3(startButton.pos, scale, scale, 0, startButtonTexture);
+	}
 }
 
 void TitleScene::Reset()
 {
 	openExe = false;
+	titlefasa = Titlefase::STARTFPHASE;
 }

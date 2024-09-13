@@ -9,6 +9,8 @@
 void ResultScene::SetTexture()
 {
 	LoadDivGraph(L"Resources/backGround/gameover.png", 4, 4, 1, 1280, 720, GameOverTexture);
+	GameClearTexture = LoadGraph(L"Resources/gameclear/clear.png");
+	loserTexture = LoadGraph(L"Resources/gameclear/haker.png");
 }
 
 void ResultScene::Init()
@@ -50,7 +52,8 @@ void ResultScene::Draw()
 	if(gameover_flag)DrawGraph(0, 0, GameOverTexture[gameovercount], true);
 	else
 	{
-
+		DrawGraph(0, 0, GameClearTexture, true);
+		Util::DrawRotaGraph3({ 160.0f,720.0f - 160.0f }, 1, 1, angle+=0.1f, loserTexture, true);
 	}
 }
 

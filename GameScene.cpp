@@ -35,6 +35,12 @@ void GameScene::Reset()
 	MiniGameManager::Clear();
 	MiniGameManager::CreateHackerGauge(4, { WIN_WIDTH / 2,WIN_HEIGHT / 7 });
 	MiniGameManager::CreateSetumei(5, { WIN_WIDTH / 6 + WIN_WIDTH / 2,WIN_HEIGHT / 7 - 50 });
+	MiniGameManager::CreateHydeGame(0);
+	MiniGameManager::CreateLightGame(1);
+	MiniGameManager::CreateHelpSunGame(2);
+	MiniGameManager::CreateKusogakiGame(3);
+	MiniGameManager::CreateSimozaGame(4);
+	MiniGameManager::CreateZihannGame(5);
 }
 
 void GameScene::Draw()

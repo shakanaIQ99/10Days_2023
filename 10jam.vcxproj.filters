@@ -55,6 +55,15 @@
     <ClCompile Include="SetumeiTextFile.cpp">
       <Filter>OutGame</Filter>
     </ClCompile>
+    <ClCompile Include="MoguraGame.cpp">
+      <Filter>MiniGames</Filter>
+    </ClCompile>
+    <ClCompile Include="SimozaGame.cpp">
+      <Filter>MiniGames</Filter>
+    </ClCompile>
+    <ClCompile Include="ZihannGame.cpp">
+      <Filter>MiniGames</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MiniGameManager.h" />
@@ -113,6 +122,15 @@
     </ClInclude>
     <ClInclude Include="SetumeiTextFile.h">
       <Filter>OutGame</Filter>
+    </ClInclude>
+    <ClInclude Include="MoguraGame.h">
+      <Filter>MiniGames</Filter>
+    </ClInclude>
+    <ClInclude Include="SimozaGame.h">
+      <Filter>MiniGames</Filter>
+    </ClInclude>
+    <ClInclude Include="ZihannGame.h">
+      <Filter>MiniGames</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

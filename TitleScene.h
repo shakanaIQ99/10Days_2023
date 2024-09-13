@@ -6,6 +6,7 @@
 
 enum Titlefase
 {
+	STARTFPHASE,
 	EXEFPHASE,
 	WARNINGFPHASE
 };
@@ -67,14 +68,18 @@ private:
 	BoxTransform zikkou;
 	BoxTransform zikkou2;
 
+	BoxTransform startButton;
+
 	int BackGroundTexture;
 
 	int exeTexture;
 	int warningExeTexture;
 	int zikkouTexture;
+	int startTexture;
+	int startButtonTexture;
 
 	double scale;
 	double scale2;
 
-	Titlefase titlefasa = Titlefase::EXEFPHASE;
+	Titlefase titlefasa = Titlefase::STARTFPHASE;
 };
