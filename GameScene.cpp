@@ -37,12 +37,16 @@ void GameScene::Update()
 		MiniGameManager::CreateHelpSunGame(makeGameNum, { Util::GetRand(300.0f,900.0f),Util::GetRand(100.0f,500.0f) });
 		break;
 	case 20:
+		MiniGameManager::CreateHydeGame(makeGameNum, { Util::GetRand(300.0f,900.0f),Util::GetRand(100.0f,500.0f) });
 		break;
 	case 25:
+		MiniGameManager::CreateHydeGame(makeGameNum, { Util::GetRand(300.0f,900.0f),Util::GetRand(100.0f,500.0f) });
 		break;
 	case 30:
+		MiniGameManager::CreateHydeGame(makeGameNum, { Util::GetRand(300.0f,900.0f),Util::GetRand(100.0f,500.0f) });
 		break;
 	case 35:
+		MiniGameManager::CreateHydeGame(makeGameNum, { Util::GetRand(300.0f,900.0f),Util::GetRand(100.0f,500.0f) });
 		break;
 	case 40:
 		MiniGameManager::CreateSetumei(makeGameNum, { WIN_WIDTH / 6 + WIN_WIDTH / 2,WIN_HEIGHT / 7 - 50 });
@@ -50,7 +54,7 @@ void GameScene::Update()
 
 		break;
 	}
-	if (makeGameNum < 40)
+	if (makeGameNum < 41)
 	{
 		makeGameNum++;
 	}
