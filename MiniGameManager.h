@@ -10,6 +10,8 @@
 #include"KusogakiGame.h"
 #include"HelpSunGame.h"
 #include"SimozaGame.h"
+#include"ZihannGame.h"
+#include"MoguraGame.h"
 //
 
 using namespace std;
@@ -30,6 +32,7 @@ public:
 	static void CreateHelpSunGame(int LayerNum, const Vector2& pos = { WIN_WIDTH / 2,(WIN_HEIGHT / 2)+50 });
 	static void CreateKusogakiGame(int LayerNum, const Vector2& pos = { WIN_WIDTH / 2,(WIN_HEIGHT / 2) - 50 });
 	static void CreateSimozaGame(int LayerNum, const Vector2& pos = { WIN_WIDTH / 2 - 50,(WIN_HEIGHT / 2) - 50 });
+	static void CreateZihannGame(int LayerNum, const Vector2& pos = { WIN_WIDTH / 2 - 50,(WIN_HEIGHT / 2) - 100 });
 
 	static void ManageMiniGames();
 	static void Clear();

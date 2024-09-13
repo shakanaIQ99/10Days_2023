@@ -17,6 +17,9 @@ public:
 	void Draw() override;
 
 private:
+	void DragAct();
+
+private:
 	Input* input_ = nullptr;
 
 	Phase phase_ = ZihannMae;

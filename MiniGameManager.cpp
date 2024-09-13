@@ -41,6 +41,11 @@ void MiniGameManager::CreateSimozaGame(int LayerNum, const Vector2& pos)
 	GetInstance()->gameList.emplace_back(std::make_unique<SimozaGame>(LayerNum, pos));
 }
 
+void MiniGameManager::CreateZihannGame(int LayerNum, const Vector2& pos)
+{
+	GetInstance()->gameList.emplace_back(std::make_unique<ZihannGame>(LayerNum, pos));
+}
+
 void MiniGameManager::ManageMiniGames()
 {
 	
