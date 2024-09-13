@@ -20,6 +20,8 @@
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="SimozaGame.cpp" />
+    <ClCompile Include="ZihannGame.cpp" />
+    <ClCompile Include="MoguraGame.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MiniGameManager.h" />
@@ -42,5 +44,7 @@
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="SimozaGame.h" />
+    <ClInclude Include="ZihannGame.h" />
+    <ClInclude Include="MoguraGame.h" />
   </ItemGroup>
 </Project>
