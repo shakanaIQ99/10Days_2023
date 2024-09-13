@@ -21,5 +21,7 @@ private:
 	std::array<BoxTransform, 6> buttons_;
 	std::array<Vector2, 6> nowButtons_;
 	std::array<int, 6> buttonColors_;
+
+	int ButtonTexture_;
 };
 

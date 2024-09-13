@@ -44,6 +44,8 @@ KusogakiGame::KusogakiGame(int layernum, const Vector2& pos)
 		buttons_[i].height = 32;
 		buttonColors_[i] = GetColor(255, 255, 255);
 	}
+
+	ButtonTexture_ = LoadGraph(L"Resources/miniGame/item/button.png");
 }
 
 KusogakiGame::~KusogakiGame()
@@ -110,6 +112,15 @@ void KusogakiGame::Draw()
 
 	// ボタン
 	for (size_t i = 0; i < 6; i++) {
+		if (i < 3) {
+			DrawRotaGraph(buttons_[i].pos.x, buttons_[i].pos.y, 1.0f, 0, ButtonTexture_, true);
+		}
+		else {
+			DrawRotaGraph(buttons_[i].pos.x, buttons_[i].pos.y, 1.0f, 0, ButtonTexture_, true, false, true);
+		}
+		SetDrawBlendMode(DX_BLENDMODE_ALPHA, 50);
+		// 暗転状態
 		Util::DrawBox(buttons_[i].pos, buttons_[i].width, buttons_[i].height, buttonColors_[i], true);
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 	}
 }
