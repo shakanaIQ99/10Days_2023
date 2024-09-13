@@ -16,31 +16,49 @@ using namespace Util;
 void GameScene::Init()
 {
 	MiniGameManager::Clear();
-	MiniGameManager::CreateHydeGame(0);
-	MiniGameManager::CreateLightGame(1);
-	MiniGameManager::CreateHelpSunGame(2);
-	MiniGameManager::CreateKusogakiGame(3);
-	MiniGameManager::CreateSimozaGame(4);
-	MiniGameManager::CreateZihannGame(5);
+	endFlag = false;
 }
 
 
 void GameScene::Update()
 {
-	
+	switch (makeGameNum)
+	{
+	case 0:
+		MiniGameManager::CreateHackerGauge(makeGameNum, { WIN_WIDTH / 2,WIN_HEIGHT / 7 });
+		break;
+	case 5:
+		MiniGameManager::CreateHydeGame(makeGameNum, { Util::GetRand(300.0f,900.0f),Util::GetRand(100.0f,500.0f) });
+		break;
+	case 10:
+		MiniGameManager::CreateLightGame(makeGameNum, { Util::GetRand(300.0f,900.0f),Util::GetRand(100.0f,500.0f) });
+		break;
+	case 15:
+		MiniGameManager::CreateHelpSunGame(makeGameNum, { Util::GetRand(300.0f,900.0f),Util::GetRand(100.0f,500.0f) });
+		break;
+	case 20:
+		break;
+	case 25:
+		break;
+	case 30:
+		break;
+	case 35:
+		break;
+	case 40:
+		MiniGameManager::CreateSetumei(makeGameNum, { WIN_WIDTH / 6 + WIN_WIDTH / 2,WIN_HEIGHT / 7 - 50 });
+		endFlag = true;
+
+		break;
+	}
+	if (makeGameNum < 40)
+	{
+		makeGameNum++;
+	}
 }
 
 void GameScene::Reset()
 {
 	MiniGameManager::Clear();
-	MiniGameManager::CreateHackerGauge(4, { WIN_WIDTH / 2,WIN_HEIGHT / 7 });
-	MiniGameManager::CreateSetumei(5, { WIN_WIDTH / 6 + WIN_WIDTH / 2,WIN_HEIGHT / 7 - 50 });
-	MiniGameManager::CreateHydeGame(0);
-	MiniGameManager::CreateLightGame(1);
-	MiniGameManager::CreateHelpSunGame(2);
-	MiniGameManager::CreateKusogakiGame(3);
-	MiniGameManager::CreateSimozaGame(4);
-	MiniGameManager::CreateZihannGame(5);
 }
 
 void GameScene::Draw()

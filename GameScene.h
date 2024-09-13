@@ -17,11 +17,19 @@ public:
 
 	void SetTexture();
 
+	bool GetEnd()
+	{
+		return endFlag;
+	}
+
 private:
 	/*std::unique_ptr<BaseGame> baseGame_ = nullptr;*/
 
 	int BackGroundTexture;
+
+	bool endFlag = false;
 	
+	int makeGameNum;
 	
 };
 

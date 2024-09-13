@@ -133,7 +133,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 				scene = SceneNum::ResultScene;
 				resultScene->SetGameover();
 			}
-			else if(MiniGameManager::GetGameList().size()<3)
+			else if(MiniGameManager::GetGameList().size()<3&&gameScene->GetEnd())
 			{
 				scene = SceneNum::ResultScene;
 			}
