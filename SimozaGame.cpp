@@ -5,12 +5,12 @@ SimozaGame::SimozaGame(int layernum, const Vector2& pos)
 {
 	input_ = Input::GetInstance();
 
-	topBar_.width = 360;
+	topBar_.width = 420;
 	topBar_.height = 32 * 3 / 2;
 	topBar_.pos = pos;
 
-	window_.width = 360;
-	window_.height = 200;
+	window_.width = 420;
+	window_.height = 240;
 	window_.pos = { topBar_.pos.x, topBar_.pos.y + (topBar_.height / 2 + window_.height / 2) };
 
 	fullwindow_.width = topBar_.width;
@@ -40,6 +40,11 @@ SimozaGame::SimozaGame(int layernum, const Vector2& pos)
 
 	kamizaColor_ = GetColor(0, 0, 200);
 	simozaColor_ = GetColor(200, 200, 0);
+
+	kamizaTexture_ = LoadGraph(L"Resources/miniGame/item/kami.png");
+	TableTexture_ = LoadGraph(L"Resources/miniGame/item/desk2.png");
+	simozaTexture_ = LoadGraph(L"Resources/miniGame/item/simo.png");
+	tatamiTexture_ = LoadGraph(L"Resources/miniGame/bg/tatami.png");
 }
 
 SimozaGame::~SimozaGame()
@@ -60,14 +65,19 @@ void SimozaGame::Draw()
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), true);
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(0, 0, 0), false);
 
+	DrawRotaGraph(window_.pos.x, window_.pos.y, 1.0f, 0, tatamiTexture_, true);
+
 	// 上座
-	Util::DrawBox(kamiza_.pos, kamiza_.width / 2, kamiza_.height / 2, kamizaColor_, true);
+	//Util::DrawBox(kamiza_.pos, kamiza_.width / 2, kamiza_.height / 2, kamizaColor_, true);
+	DrawRotaGraph(kamiza_.pos.x, kamiza_.pos.y, 1.0f, 0, kamizaTexture_, true);
 
 	// テーブル
-	Util::DrawBox(table_.pos, table_.width / 2, table_.height / 2, GetColor(0, 200, 0), true);
+	//Util::DrawBox(table_.pos, table_.width / 2, table_.height / 2, GetColor(0, 200, 0), true);
+	DrawRotaGraph(table_.pos.x, table_.pos.y, 1.0f, 0, TableTexture_, true);
 
 	// 下座
-	Util::DrawBox(simoza_.pos, simoza_.width / 2, simoza_.height / 2, simozaColor_, true);
+	//Util::DrawBox(simoza_.pos, simoza_.width / 2, simoza_.height / 2, simozaColor_, true);
+	DrawRotaGraph(simoza_.pos.x, simoza_.pos.y, 1.0f, 0, simozaTexture_, true);
 }
 
 void SimozaGame::DragAct()

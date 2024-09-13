@@ -30,5 +30,10 @@ private:
 
 	int kamizaColor_;
 	int simozaColor_;
+
+	int kamizaTexture_;
+	int TableTexture_;
+	int simozaTexture_;
+	int tatamiTexture_;
 };
 
