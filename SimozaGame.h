@@ -11,6 +11,10 @@ public:
 	void Draw() override;
 
 private:
+	void DragAct();
+	void SelectAct();
+
+private:
 	Input* input_ = nullptr;
 
 	BoxTransform kamiza_;
@@ -19,5 +23,12 @@ private:
 	Vector2 nowSimoza_;
 	BoxTransform table_;
 	Vector2 nowTable_;
+
+	bool isSelect_;
+	bool isKamiza_;
+	bool isSimoza_;
+
+	int kamizaColor_;
+	int simozaColor_;
 };
 

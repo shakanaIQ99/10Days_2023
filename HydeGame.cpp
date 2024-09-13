@@ -32,6 +32,24 @@ HydeGame::~HydeGame()
 }
 
 void HydeGame::Update(){
+	DragAct();
+
+	TableCollision();
+}
+
+void HydeGame::Draw(){
+	// ウィンドウ
+	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(200, 200, 0), true);
+	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), true);
+	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(0, 0, 0), false);
+	// 隠れる場所
+	Util::DrawBox(hydeObject_.pos, hydeObject_.width / 2, hydeObject_.height / 2, GetColor(255, 0, 0), false);
+	// プレイヤー
+	Util::DrawBox(player_.pos, player_.width / 2, player_.height / 2, playerColor_, true);
+}
+
+void HydeGame::DragAct()
+{
 	if (input_->GetTriggerMouseLeftButton(topBar_) && active_) {
 		isMove_ = true;
 	}
@@ -47,19 +65,12 @@ void HydeGame::Update(){
 		nowPlayer_.x = input_->GetMousePos().x - window_.pos.x;
 	}
 
-	if (Collision::BoxToBoxCollision(player_, hydeObject_, true)) {
-		playerColor_ = GetColor(0, 255, 0);
-	}
-	else {
-		playerColor_ = GetColor(0, 0, 255);
-	}
-
 	window_.pos = { topBar_.pos.x, topBar_.pos.y + (topBar_.height / 2 + window_.height / 2) };
 	player_.pos = nowPlayer_ + window_.pos;
 	hydeObject_.pos = nowHydeObject_ + window_.pos;
 
 	// プレイヤーが画面外に出ないように
-	if (player_.pos.x - player_.width / 2 <= window_.pos.x - window_.width / 2){
+	if (player_.pos.x - player_.width / 2 <= window_.pos.x - window_.width / 2) {
 		player_.pos.x = window_.pos.x - window_.width / 2 + player_.width / 2;
 	}
 	if (player_.pos.x + player_.width / 2 >= window_.pos.x + window_.width / 2) {
@@ -67,13 +78,12 @@ void HydeGame::Update(){
 	}
 }
 
-void HydeGame::Draw(){
-	// ウィンドウ
-	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(200, 200, 0), true);
-	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), true);
-	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(0, 0, 0), false);
-	// 隠れる場所
-	Util::DrawBox(hydeObject_.pos, hydeObject_.width / 2, hydeObject_.height / 2, GetColor(255, 0, 0), false);
-	// プレイヤー
-	Util::DrawBox(player_.pos, player_.width / 2, player_.height / 2, playerColor_, true);
+void HydeGame::TableCollision()
+{
+	if (Collision::BoxToBoxCollision(player_, hydeObject_, true)) {
+		playerColor_ = GetColor(0, 255, 0);
+	}
+	else {
+		playerColor_ = GetColor(0, 0, 255);
+	}
 }
