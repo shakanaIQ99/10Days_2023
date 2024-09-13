@@ -32,6 +32,13 @@ ZihannGame::ZihannGame(int layernum, const Vector2& pos)
 	coin_.pos = nowCoin_ + window_.pos;
 	coin_.width = 50;
 	coin_.height = 50;
+
+	//リソース読み込み
+	ZihannTexture_ = LoadGraph(L"Resources/miniGame/item/center.png");
+	ZihannRightTexture_ = LoadGraph(L"Resources/miniGame/item/right.png");
+	ZihannLeftTexture_ = LoadGraph(L"Resources/miniGame/item/left.png");
+	CoinTexture_ = LoadGraph(L"Resources/miniGame/item/coin.png");
+	ZihannBottom_ = LoadGraph(L"Resources/miniGame/item/under.png");
 }
 
 ZihannGame::~ZihannGame()
@@ -56,15 +63,22 @@ void ZihannGame::Draw()
 	{
 	case ZihannGame::ZihannMae:
 		// 自販機
-		Util::DrawBox(zihannki_.pos, zihannki_.width / 2, zihannki_.height / 2, GetColor(200, 0, 0), true);
 		Util::DrawBox({ zihannki_.pos.x - zihannki_.width * 4 / 5,zihannki_.pos.y },
 			zihannki_.width / 4, zihannki_.height / 2, GetColor(0, 200, 0), true);
+		DrawGraph(zihannki_.pos.x - zihannki_.width * 4 / 5 - zihannki_.width / 4,
+			zihannki_.pos.y - zihannki_.height / 2, ZihannLeftTexture_, true);
+
 		Util::DrawBox({ zihannki_.pos.x + zihannki_.width * 4 / 5,zihannki_.pos.y },
 			zihannki_.width / 4, zihannki_.height / 2, GetColor(0, 0, 200), true);
-		Util::DrawBox(zihannkiBottom_.pos, zihannkiBottom_.width / 2, zihannkiBottom_.height / 2, GetColor(0, 0, 0), true);
+		DrawGraph(zihannki_.pos.x + zihannki_.width * 4 / 5 - zihannki_.width / 2-10,
+			zihannki_.pos.y - zihannki_.height / 2, ZihannRightTexture_, true);
+
+		Util::DrawBox(zihannki_.pos, zihannki_.width / 2, zihannki_.height / 2, GetColor(200, 0, 0), true);
+		DrawGraph(zihannki_.pos.x - zihannki_.width / 2, zihannki_.pos.y - zihannki_.height / 2, ZihannTexture_, true);
 		break;
 	case ZihannGame::ZihannSita:
-		Util::DrawBox(coin_.pos, coin_.width / 2, coin_.height / 2, GetColor(0, 0, 0), true);
+		DrawGraph(window_.pos.x - window_.width / 2, window_.pos.y - window_.height / 2, ZihannBottom_, true);
+		DrawGraph(coin_.pos.x - coin_.width / 2, coin_.pos.y - coin_.height / 2, CoinTexture_, true);
 		break;
 	default:
 		break;

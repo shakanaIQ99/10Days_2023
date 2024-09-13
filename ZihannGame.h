@@ -31,5 +31,11 @@ private:
 
 	BoxTransform coin_;
 	Vector2 nowCoin_;
+
+	int ZihannTexture_;
+	int ZihannRightTexture_;
+	int ZihannLeftTexture_;
+	int CoinTexture_;
+	int ZihannBottom_;
 };
 
