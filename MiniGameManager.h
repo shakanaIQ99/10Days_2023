@@ -13,7 +13,7 @@
 #include"SetumeiTextFile.h"
 #include"SimozaGame.h"
 #include"ZihannGame.h"
-#include"MoguraGame.h"
+#include"AirconGame.h"
 //
 
 using namespace std;

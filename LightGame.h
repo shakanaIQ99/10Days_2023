@@ -11,10 +11,14 @@ public:
 	void Draw() override;
 
 private:
+	void DragAct();
+
+private:
 	Input* input_ = nullptr;
 
 	BoxTransform tip_;
 	Vector2 nowTip_;
+	bool isTip_ = false;
 
 	bool isLightChange = false;
 
