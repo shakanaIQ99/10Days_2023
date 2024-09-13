@@ -28,6 +28,10 @@ LightGame::LightGame(int layernum, const Vector2& pos)
 
 	lightCount = 0;
 	lightColor = 0;
+
+	BackTexture_ = LoadGraph(L"Resources/miniGame/bg/lightroom.png");
+	LightTexture_ = LoadGraph(L"Resources/miniGame/item/light.png");
+	TipTexture_ = LoadGraph(L"Resources/miniGame/item/himo.png");
 }
 
 LightGame::~LightGame()
@@ -64,17 +68,24 @@ void LightGame::Draw()
 	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, GetColor(200, 200, 200), true);
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(255, 255, 255), true);
 	Util::DrawBox(topBar_.pos, topBar_.width / 2, topBar_.height / 2, GetColor(0, 0, 0), false);
+
+	DrawRotaGraph(window_.pos.x, window_.pos.y, 1.0f, 0, BackTexture_, true);
+
+	// 紐
+	DxLib::DrawLine((int)window_.pos.x, (int)window_.pos.y - (int)window_.height / 2,
+		(int)tip_.pos.x, (int)tip_.pos.y - (int)tip_.height / 2,
+		GetColor(255, 255, 255), 5);
+
+	DrawRotaGraph(window_.pos.x, window_.pos.y, 1.0f, 0, LightTexture_, true);
+
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 50);
 	// 暗転状態
 	Util::DrawBox(window_.pos, window_.width / 2, window_.height / 2, lightColor, true);
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 
-	// 紐
-	DxLib::DrawLine((int)window_.pos.x, (int)window_.pos.y - (int)window_.height / 2,
-		(int)tip_.pos.x, (int)tip_.pos.y - (int)tip_.height / 2,
-		GetColor(255, 255, 255));
 	// 先っちょ
-	Util::DrawBox(tip_.pos, tip_.width / 2, tip_.height / 2, GetColor(255, 255, 255), false);
+	//Util::DrawBox(tip_.pos, tip_.width / 2, tip_.height / 2, GetColor(255, 255, 255), false);
+	DrawRotaGraph(tip_.pos.x, tip_.pos.y, 1.0f, 0, TipTexture_, true);
 }
 
 void LightGame::DragAct()
@@ -93,7 +104,7 @@ void LightGame::DragAct()
 	if (nowTip_.y < 0) {
 		nowTip_.y = 0;
 	}
-	else if (nowTip_.y >= 100)
+	else if (nowTip_.y >= 60)
 	{
 		lightCount++;
 		isTip_ = false;

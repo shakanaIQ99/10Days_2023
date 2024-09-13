@@ -25,5 +25,9 @@ private:
 	int lightCount = 0;
 
 	int lightColor=0;
+
+	int BackTexture_;
+	int LightTexture_;
+	int TipTexture_;
 };
 
