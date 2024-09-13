@@ -11,6 +11,8 @@ public:
 
 	void Update();
 
+	void Reset();
+
 	void Draw();
 
 	void SetTexture();
@@ -19,6 +21,7 @@ private:
 	/*std::unique_ptr<BaseGame> baseGame_ = nullptr;*/
 
 	int BackGroundTexture;
+	
 	
 };
 

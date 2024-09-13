@@ -52,6 +52,9 @@
     <ClCompile Include="HakcerGauge.cpp">
       <Filter>OutGame</Filter>
     </ClCompile>
+    <ClCompile Include="SetumeiTextFile.cpp">
+      <Filter>OutGame</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MiniGameManager.h" />
@@ -108,6 +111,9 @@
     <ClInclude Include="HakcerGauge.h">
       <Filter>OutGame</Filter>
     </ClInclude>
+    <ClInclude Include="SetumeiTextFile.h">
+      <Filter>OutGame</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="MiniGames">
@@ -122,5 +128,8 @@
     <Filter Include="OutGame">
       <UniqueIdentifier>{b0e2f196-47f5-4c87-b47b-aa159d62d837}</UniqueIdentifier>
     </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".editorconfig" />
   </ItemGroup>
 </Project>

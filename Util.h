@@ -7,34 +7,38 @@ namespace Util
 	extern bool debugBool;
 
 	/// <summary>
-	/// ‘‚«‚â‚·‚³‚Ì‚©‚Ü‚½‚èDrawBoxŒN
+	/// æ›¸ãã‚„ã™ã•ã®ã‹ã¾ãŸã‚ŠDrawBoxå›
 	/// </summary>
 	void DrawBox(Vector2 pos, int width, int height, int color, bool fillflag);
 
 	/// <summary>
-	/// ¶‰Eã‰º•ÊXDrawBoxŒN(‘½•ªg‚í‚È‚¢)
+	/// å·¦å³ä¸Šä¸‹åˆ¥ã€…DrawBoxå›(å¤šåˆ†ä½¿ã‚ãªã„)
 	/// </summary>
-	/// <param name="width=¶"></param>
-	/// <param name="width2=‰E"></param>
-	/// <param name="height=ã"></param>
-	/// <param name="height2=‰º"></param>
+	/// <param name="width=å·¦"></param>
+	/// <param name="width2=å³"></param>
+	/// <param name="height=ä¸Š"></param>
+	/// <param name="height2=ä¸‹"></param>
 	void DrawBox(Vector2 pos, int width,int width2, int height,int height2, int color, bool fillflag);
 
+	void DrawJpaneseString(int x, int y, int color, const wchar_t* string);
+
 	/// <summary>
-	/// ‘‚«‚â‚·‚³‚Ì‚©‚½‚Ü‚èRotaGraph
+	/// æ›¸ãã‚„ã™ã•ã®ã‹ãŸã¾ã‚ŠRotaGraph
 	/// </summary>
 	void DrawRotaGraph3(Vector2 pos, double widthRateX, double heightRateX, float Angle, int Ghandle, int TransFlag = 1, int TurnFlag = 0);
 
 	/// <summary>
-	/// ’†SÀ•Ww’è”Å
+	/// ä¸­å¿ƒåº§æ¨™æŒ‡å®šç‰ˆ
 	/// </summary>
 	void DrawRotaGraph3C(Vector2 pos,int cx,int cy, double widthRateX, double heightRateX, float Angle, int Ghandle, int TransFlag = 1, int TurnFlag = 0);
 
 	//void DrawExtendGraph(Vector2 pos, Vector2 pos, int width, int height, int color, bool fillflag)
 
-	//—”¶¬(ˆê—l•ª•z)
+	//ä¹±æ•°ç”Ÿæˆ(ä¸€æ§˜åˆ†å¸ƒ)
 	int GetRand(int min, int max);
 	float GetRand(float min, float max);
+
+	
 
 	
 };

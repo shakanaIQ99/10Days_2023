@@ -14,6 +14,12 @@ void Util::DrawBox(Vector2 pos, int width, int width2, int height, int height2, 
 	DxLib::DrawBox((int)pos.x - width, (int)pos.y - height, (int)pos.x + width2, (int)pos.y + height2, color, fillflag);
 }
 
+void Util::DrawJpaneseString(int x, int y, int color, const wchar_t* string)
+{
+
+	DrawFormatString(x, y, color, string);
+}
+
 void Util::DrawRotaGraph3(Vector2 pos, double widthRateX, double heightRateX, float Angle, int Ghandle, int TransFlag, int TurnFlag)
 {
 

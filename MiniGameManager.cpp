@@ -36,6 +36,16 @@ void MiniGameManager::CreateKusogakiGame(int LayerNum, const Vector2& pos)
 	GetInstance()->gameList.emplace_back(std::make_unique<KusogakiGame>(LayerNum, pos));
 }
 
+void MiniGameManager::CreateHackerGauge(int LayerNum, const Vector2& pos)
+{
+	GetInstance()->gameList.emplace_back(std::make_unique<HakcerGauge>(LayerNum, pos));
+}
+
+void MiniGameManager::CreateSetumei(int LayerNum, const Vector2& pos)
+{
+	GetInstance()->gameList.emplace_back(std::make_unique<SetumeiTextFile>(LayerNum, pos));
+}
+
 void MiniGameManager::CreateSimozaGame(int LayerNum, const Vector2& pos)
 {
 	GetInstance()->gameList.emplace_back(std::make_unique<SimozaGame>(LayerNum, pos));
@@ -51,7 +61,7 @@ void MiniGameManager::ManageMiniGames()
 	
 	GetInstance()->gameList.sort(comp);//レイヤー順でソート
 
-	int Maxlayer = gameList.back().get()->GetLayer();//最大レイヤー値を取得
+	GetInstance()->Maxlayer = gameList.back().get()->GetLayer();//最大レイヤー値を取得
 
 	bool firstCheck = false;
 
@@ -70,9 +80,9 @@ void MiniGameManager::ManageMiniGames()
 
 		if (Input::GetTriggerMouseLeftButton(obj->GetTransform()))//クリックしたウィンドウを最前面にする関数
 		{
-			if (obj->GetLayer() <= Maxlayer)
+			if (obj->GetLayer() <= GetInstance()->Maxlayer)
 			{
-				obj->SetLayer(Maxlayer + 1);
+				obj->SetLayer(GetInstance()->Maxlayer + 1);
 				obj->OnActive();
 			}
 
@@ -100,11 +110,13 @@ void MiniGameManager::ManageMiniGames()
 void MiniGameManager::Clear()
 {
 	GetInstance()->gameList.clear();
+	GetInstance()->Maxlayer = 0;
 }
 
 void MiniGameManager::Initialize()
 {
 	GetInstance()->gameList.clear();
+	GetInstance()->Maxlayer = 0;
 }
 
 

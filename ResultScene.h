@@ -13,8 +13,27 @@ public:
 
 	void Draw();
 
-private:
+	void Reset();
 
+	bool GetchangeScene()
+	{
+		return changeScene;
+	}
+
+	void SetGameover()
+	{
+		gameover_flag = true;
+	}
+
+private:
+	int GameOverTexture[4];
+
+	bool gameover_flag = false;
+
+	int gameovercounttimer = 0;
+	const int frame = 10;
+	int gameovercount = 0;
+	bool changeScene = false;
 
 };
 

@@ -30,6 +30,13 @@ void GameScene::Update()
 	
 }
 
+void GameScene::Reset()
+{
+	MiniGameManager::Clear();
+	MiniGameManager::CreateHackerGauge(4, { WIN_WIDTH / 2,WIN_HEIGHT / 7 });
+	MiniGameManager::CreateSetumei(5, { WIN_WIDTH / 6 + WIN_WIDTH / 2,WIN_HEIGHT / 7 - 50 });
+}
+
 void GameScene::Draw()
 {
 	DrawGraph(0, 0, BackGroundTexture, true);
@@ -43,6 +50,7 @@ void GameScene::SetTexture()
 {
 	//リソース読み込み
 	BackGroundTexture = LoadGraph(L"Resources/backGround/desktop.png");
+
 	
 }
 

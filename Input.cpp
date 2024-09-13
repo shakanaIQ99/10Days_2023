@@ -79,7 +79,7 @@ void Input::InputUpdate()
 	GetMousePoint(&instance->mouseX, &instance->mouseY);
 	instance->Mousepos = { (float)instance->mouseX,(float)instance->mouseY };
 
-	// �ŐV�̃L�[�{�[�h��񂾂������̂�1�t���[���O�̃L�[�{�[�h���Ƃ��ĕۑ�
+	// 最新のキーボード情報だったものは1フレーム前のキーボード情報として保存
 	for (int i = 0; i < 256; i++)
 	{
 		instance->prev[i] = instance->keys[i];
@@ -88,9 +88,9 @@ void Input::InputUpdate()
 	instance->preMouseLeft = instance->MouseLeft;
 
 	instance->MouseLeft = (GetMouseInput() & MOUSE_INPUT_LEFT);
-	// �ŐV�̃L�[�{�[�h�����擾
+	// 最新のキーボード情報を取得
 	GetHitKeyStateAll(instance->keys);
 
-	// �}�E�X��\����Ԃɂ���
+	// マウスを表示状態にする
 	SetMouseDispFlag(TRUE);
 }
