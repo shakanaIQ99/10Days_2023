@@ -51,7 +51,7 @@ void HakcerGauge::Update()
 
 
 
-	if (GameTime::GetNowTime() % 30 == 0)
+	if (GameTime::GetNowTime() % 15 == 0)
 	{
 		layer_ = MiniGameManager::GetInstance()->GetMaxLayer() + 1;
 		changeface = true;
@@ -113,7 +113,7 @@ void HakcerGauge::Draw()
 	}
 	//Util::DrawRotaGraph3(textpos, 1, 1, 0, HackedText);
 
-	DrawBox(gauge_bar.pos.x- gauge_bar.width / 2, gauge_bar.pos.y - gauge_bar.height / 2, gauge_bar.pos.x - gauge_bar.width / 2 + ((gauge_bar.width/120)*(120-GameTime::GetNowTime())), gauge_bar.pos.y + gauge_bar.height / 2, GetColor(255, 50, 50), true);
+	DrawBox(gauge_bar.pos.x- gauge_bar.width / 2, gauge_bar.pos.y - gauge_bar.height / 2, gauge_bar.pos.x - gauge_bar.width / 2 + ((gauge_bar.width/60)*(60-GameTime::GetNowTime())), gauge_bar.pos.y + gauge_bar.height / 2, GetColor(255, 50, 50), true);
 	Util::DrawBox(gauge_frame.pos, gauge_frame.width / 2, gauge_frame.height / 2, GetColor(255, 255, 255), false);
 
 	
