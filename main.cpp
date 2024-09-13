@@ -1,4 +1,4 @@
-﻿#include "DxLib.h"
+#include "DxLib.h"
 #include "Input.h"
 #include "GameScene.h"
 #include "main.h"
@@ -117,6 +117,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 			{
 				scene = SceneNum::GameScene;
 				GameTime::Reset();
+				resultScene->Reset();
+				gameScene->Reset();
 			}
 
 			break;
@@ -125,7 +127,16 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 
 			gameScene->Update();
-	
+			
+			if (GameTime::TimeUp())
+			{
+				scene = SceneNum::ResultScene;
+				resultScene->SetGameover();
+			}
+			else if(MiniGameManager::GetGameList().size()<3)
+			{
+				scene = SceneNum::ResultScene;
+			}
 
 			//描画処理
 			gameScene->Draw();
@@ -136,6 +147,11 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 
 			resultScene->Update();
 			
+			if (resultScene->GetchangeScene())
+			{
+				scene = SceneNum::TitleScene;
+				titleScene->Reset();
+			}
 
 			//描画処理
 			resultScene->Draw();

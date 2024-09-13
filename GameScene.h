@@ -11,6 +11,8 @@ public:
 
 	void Update();
 
+	void Reset();
+
 	void Draw();
 
 	void SetTexture();
